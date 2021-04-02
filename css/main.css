@@ -1822,7 +1822,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #5c184b;
+  background: #8eab81;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2682,4 +2682,7 @@ body {
 }
 .main-inner {
   width: 1000px;
+}
+.pagination {
+  background-color: rgba(255,255,255,0.9);
 }
