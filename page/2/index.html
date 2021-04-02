@@ -259,7 +259,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/02/2.3%E5%8F%AF%E9%80%86%E7%9F%A9%E9%98%B5%E7%9A%84%E7%89%B9%E5%BE%81/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/02/2.2%E7%9F%A9%E9%98%B5%E7%9A%84%E9%80%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -278,7 +278,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2021/04/02/2.3%E5%8F%AF%E9%80%86%E7%9F%A9%E9%98%B5%E7%9A%84%E7%89%B9%E5%BE%81/" itemprop="url">2.3可逆矩阵的特征</a></h1>
+                <a class="post-title-link" href="/2021/04/02/2.2%E7%9F%A9%E9%98%B5%E7%9A%84%E9%80%86/" itemprop="url">2.2矩阵的逆</a></h1>
         
 
         <div class="post-meta">
@@ -352,26 +352,54 @@
       
         
           
-            <span id="more"></span>
-<h3 id="定理8"><a href="#定理8" class="headerlink" title="定理8"></a>定理8</h3><p>设A为n*n的矩阵，则下列命题是等价的，即对某一特定的A，他们同时为真或同时为假</p>
-<ol>
-<li>A是可逆矩阵</li>
-<li>A行等价于n*n的单位矩阵</li>
-<li>A有n个主元位置</li>
-<li>方程Ax=0仅有平凡解</li>
-<li>A的各列线性无关</li>
-<li>线性变化x-&gt;Ax是一对一的</li>
-<li>对$R^n$中任意b，方程Ax=b至少有一个解</li>
-<li>A的各列生成$R^n$</li>
-<li>线性变化x-&gt;Ax把$R^n$映上到$R^n$</li>
-<li>存在n*n矩阵C使CA=I</li>
-<li>存在n*n矩阵D使AD=I</li>
-<li>$A^T$是可逆矩阵</li>
+            <h3 id="定理4"><a href="#定理4" class="headerlink" title="定理4"></a>定理4</h3><p>设$A = \begin{bmatrix} a &amp; b \\ c &amp; d\end{bmatrix}$,若ad-bc=0，则A可逆且</p>
+<font size = 4>$A^{-1} = \frac{1}{ad-bc}\begin{bmatrix} d & -b \\ -c & a \end{bmatrix}$</font>
+
+<p>若ad-bc=0，则A不可逆</p>
+<h3 id="定理5"><a href="#定理5" class="headerlink" title="定理5"></a>定理5</h3><p>若A是可逆的n*n矩阵，则对每一$R^{n}$中的b，方程$Ax = b$有唯一解$x = A^{-1}b$</p>
+<h3 id="定理6"><a href="#定理6" class="headerlink" title="定理6"></a>定理6</h3><ol>
+<li>若A是可逆矩阵，则$(A^{-1})^{-1} = A$</li>
+<li>若A和B都是n*n可逆矩阵，则AB也可逆，且$(AB)^{-1} = B^{-1}A^{-1}$</li>
+<li>若A可逆，则$A^T$也可逆，且$(A^T)^{-1} = (A^{-1})^T$</li>
 </ol>
-<h3 id="可逆线性变化"><a href="#可逆线性变化" class="headerlink" title="可逆线性变化"></a>可逆线性变化</h3><p>$T:R^n \rightarrow R^n$是可逆的，若存在函数$S:R^n \rightarrow R^n$使得</p>
-<p>​    对所有$R^n$中的x，$S(T(x)) = x \qquad (1)$</p>
-<p>​    对所有$R^n$中的x，$T(S(x))=x \qquad (2)$</p>
-<h3 id="定理9"><a href="#定理9" class="headerlink" title="定理9"></a>定理9</h3><p>设$T:R^n \rightarrow R^n$为线性变化，A为T的标准矩阵，则T可逆当且仅当A是可逆矩阵，这时由$S(x)=A^{-1}x$定义得线性变化S满足(1),(2)的唯一函数，我们称S是T的逆</p>
+<p><strong>把单位矩阵进行一次初等行变换就得到初等矩阵</strong></p>
+<p>每个初等矩阵E是可逆的，E的逆是一个同类型的初等矩阵，它把E变回I</p>
+<h3 id="定理7"><a href="#定理7" class="headerlink" title="定理7"></a>定理7</h3><p>n*n的矩阵A是可逆的，当且仅当A行等价于$I_n$</p>
+<h3 id="求-A-1-的算法"><a href="#求-A-1-的算法" class="headerlink" title="求$A^{-1}$的算法"></a>求$A^{-1}$的算法</h3><p>把增广矩阵$\begin{bmatrix} A &amp; I \end{bmatrix}$进行行化简，若A行等价于I，则$\begin{bmatrix} A &amp; I \end{bmatrix}$等价于$\begin{bmatrix}I &amp; A^{-1}\end{bmatrix}$,否则A不可逆</p>
+<h3 id="不可逆矩阵有时称为奇异矩阵，而可逆矩阵有时也称为非奇异矩阵"><a href="#不可逆矩阵有时称为奇异矩阵，而可逆矩阵有时也称为非奇异矩阵" class="headerlink" title="不可逆矩阵有时称为奇异矩阵，而可逆矩阵有时也称为非奇异矩阵"></a>不可逆矩阵有时称为奇异矩阵，而可逆矩阵有时也称为非奇异矩阵</h3><h2 id="习题"><a href="#习题" class="headerlink" title="习题"></a>习题</h2><ol>
+<li><p>若n*n矩阵A为可逆，则A的各列线性无关</p>
+<p>解答：</p>
+<script type="math/tex; mode=display">
+\because 矩阵A是可逆的 \\
+则对于 Ax = 0 \\
+\because A^{-1}Ax = A^{-1}0 \\
+\therefore I_n x = 0 \\
+\therefore x = 0 \\
+\because Ax = 0 仅有平凡解x=0 \\
+\therefore A的各列线性无关</script></li>
+<li><p>若n*n矩阵A为可逆，则它的各列生成$R^n$</p>
+<p>解答：</p>
+<script type="math/tex; mode=display">
+\because 矩阵A是可逆的 \\
+\therefore 对于Ax=b有唯一解x=A^{-1}b \\
+\therefore A的各列生成R^n</script></li>
+<li><p>设A为n*n的矩阵，方程$Ax=b$对任意$R^n$中的b有解，证明A必可逆</p>
+<p>解答：</p>
+<script type="math/tex; mode=display">
+\because Ax=b对任意R^n中的b有解 \\
+\therefore A在每一行都有一个主元位置 \\
+\therefore A行等价于I_n \\
+\therefore A可逆</script></li>
+<li><p>设A是n*n的矩阵，方程Ax=0仅有平凡解，说明为什么A有n个主元列且A行等价于$I_n$，由定理7说明A必定可逆</p>
+<p>解答:</p>
+<script type="math/tex; mode=display">
+\because Ax=0仅有平凡解 \\
+\therefore A中各列都是主元列 \\
+\because A是方阵 \\
+\therefore A的每个行都有主元 \\
+\therefore A行等价于I_n
+\therefore A必定可逆</script></li>
+</ol>
 
           
         
@@ -1752,7 +1780,7 @@ C = I_n C = (DA)C = D(AC) = D I_n = D</script></li>
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/02/%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/02/%E7%89%A9%E7%90%86%E5%B1%82/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -1771,7 +1799,7 @@ C = I_n C = (DA)C = D(AC) = D I_n = D</script></li>
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2021/04/02/%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87/" itemprop="url">网络设备</a></h1>
+                <a class="post-title-link" href="/2021/04/02/%E7%89%A9%E7%90%86%E5%B1%82/" itemprop="url">物理层</a></h1>
         
 
         <div class="post-meta">
@@ -1845,42 +1873,85 @@ C = I_n C = (DA)C = D(AC) = D I_n = D</script></li>
       
         
           
-            <h1 id="网络设备"><a href="#网络设备" class="headerlink" title="网络设备"></a>网络设备</h1><h2 id="1-集线器"><a href="#1-集线器" class="headerlink" title="1.集线器"></a>1.集线器</h2><ol>
-<li>目的：解决终端主机的物理连接问题，将在其内部所有的网络设备联通</li>
-<li>不过滤任何数据，也不知道数据发送到什么地方</li>
-<li>终端集中点，通过集线器形成星型拓扑</li>
-<li>物理层设备</li>
-<li>对信号整型放大</li>
-<li>共享一个信道，性能比较差</li>
-<li>会将信息传到除自己以外的所有主机，哪怕只想和其中的一个通信，造成浪费带宽</li>
-<li>因为不能读取IP地址，所以不能在外部网络（例如互联网）交换数据</li>
+            <h1 id="2-物理层"><a href="#2-物理层" class="headerlink" title="2.物理层"></a>2.<strong>物理层</strong></h1><h2 id="2-1物理层的基本概念"><a href="#2-1物理层的基本概念" class="headerlink" title="2.1物理层的基本概念"></a><font size = 5>2.1物理层的基本概念</font></h2><font size = 4>用于物理层的协议被称为物理层规程</font>
+
+<h3 id="物理层的主要任务描述为确定与传输媒体的接口有关的一些特性："><a href="#物理层的主要任务描述为确定与传输媒体的接口有关的一些特性：" class="headerlink" title="物理层的主要任务描述为确定与传输媒体的接口有关的一些特性："></a>物理层的主要任务描述为确定与传输媒体的接口有关的一些特性：</h3><ol>
+<li>机械特性</li>
+<li>电气特性</li>
+<li>功能特性</li>
+<li>过程特性</li>
 </ol>
-<p><img src="C:\Users\Reimilia Scarlet\AppData\Roaming\Typora\typora-user-images\image-20210327095644894.png" alt="image-20210327095644894"></p>
-<h2 id="2-交换器"><a href="#2-交换器" class="headerlink" title="2.交换器"></a>2.交换器</h2><ol>
-<li>数据链路层设备，能够解析<strong>数据帧</strong>结构</li>
-<li>使用MAC地址，能够根据MAC地址进行主机的定位寻址，所以信息只会发送到目的主机减少带宽的浪费和集线器不同</li>
-<li>独享信道，所以交换机的性能远远超过集线器</li>
-<li>不能读取IP地址</li>
+<p><strong><font size = 4>数据在计算机内部多采用并行传输方式，但数据在通信线路上的传输方式一般都是串行传输</font></strong></p>
+<hr>
+<h2 id="2-2-数据通信基础知识"><a href="#2-2-数据通信基础知识" class="headerlink" title="2.2 数据通信基础知识"></a><font size = 5>2.2 数据通信基础知识</font></h2><hr>
+<h3 id="2-2-1数据通信系统的模型"><a href="#2-2-1数据通信系统的模型" class="headerlink" title="2.2.1数据通信系统的模型"></a>2.2.1数据通信系统的模型</h3><p><img src="C:\Users\Reimilia Scarlet\AppData\Roaming\Typora\typora-user-images\image-20210326095040657.png" alt="image-20210326095040657"></p>
+<h4 id="一个数据通信系统可划分为三大部分："><a href="#一个数据通信系统可划分为三大部分：" class="headerlink" title="一个数据通信系统可划分为三大部分："></a><font size = 4>一个数据通信系统可划分为三大部分</font>：</h4><ol>
+<li><strong>源系统</strong>（发送端、发送方），一般包含以下两部分：<ol>
+<li>源点：源点设备产生要传输的数据</li>
+<li>发送器：通常源点生成的数字比特流要通过发送器编码后才能够在传输系统中进行传输</li>
 </ol>
-<h2 id="3-路由器"><a href="#3-路由器" class="headerlink" title="3.路由器"></a>3.路由器</h2><ol>
-<li>实现网络连接进行数据交换</li>
-<li>网络层设备</li>
-<li>可以读取IP地址，所以可以将数据包发送到外部网络</li>
-<li>输入输出端口安装了三种协议软件，分别是<strong>物理层，数据链路层，网络层</strong></li>
+</li>
+<li><strong>传输系统</strong>（传输网络）</li>
+<li><strong>目的系统</strong>（接收端、接收方），一般包含以下两部分：<ol>
+<li>接收器：接收传输系统传送过来的信号，并把它转换为能够被目的设备处理的信息</li>
+<li>终点：终点设备从接收器获取传送来的数字比特流，然后把信息输出</li>
 </ol>
-<p><img src="C:\Users\Reimilia Scarlet\AppData\Roaming\Typora\typora-user-images\image-20210327100105170.png" alt="image-20210327100105170"></p>
-<h2 id="总之，集线器和交换机构建网络，路由器将网络与网络连接起来"><a href="#总之，集线器和交换机构建网络，路由器将网络与网络连接起来" class="headerlink" title="总之，集线器和交换机构建网络，路由器将网络与网络连接起来"></a>总之，集线器和交换机构建网络，路由器将网络与网络连接起来</h2><h2 id="4-防火墙"><a href="#4-防火墙" class="headerlink" title="4.防火墙"></a>4.防火墙</h2><p><img src="C:\Users\Reimilia Scarlet\AppData\Roaming\Typora\typora-user-images\image-20210327100318190.png" alt="image-20210327100318190"></p>
-<p>防火墙是一个系统，用来防止未经授权的网络传输侵入私有的网络系统，是由过滤传输的数据来达到这个效果</p>
+</li>
+</ol>
+<p>一些术语：    </p>
+<p>​          <font size = 4><strong>通信的目的是传送消息，数据是运送消息的实体，根据RFC 4949的定义，数据是使用特定方式表示的信息，信号是数据的电气或电磁表现。</strong></font></p>
+<h4 id="根据信号中代表消息的参数的取值不同，信号可分为两大类："><a href="#根据信号中代表消息的参数的取值不同，信号可分为两大类：" class="headerlink" title="根据信号中代表消息的参数的取值不同，信号可分为两大类："></a>根据信号中代表消息的参数的取值不同，信号可分为两大类：</h4><ol>
+<li><strong>模拟信号</strong>，或连续信号</li>
+<li><strong>数字信号</strong>，或离散信号</li>
+</ol>
+<hr>
+<h3 id="2-2-2-有关信道的几个基本概念"><a href="#2-2-2-有关信道的几个基本概念" class="headerlink" title="2.2.2  有关信道的几个基本概念"></a>2.2.2  有关信道的几个基本概念</h3><font size = 4>信道和电路并不同，信道一般都是用来表示向某一个方向传送消息的媒体。因此通信电路往往包含一个发送信道和一条接受信道</font>
+
+<h4 id="从通信的双方交互的方式来看，可以有以下三种基本方式："><a href="#从通信的双方交互的方式来看，可以有以下三种基本方式：" class="headerlink" title="从通信的双方交互的方式来看，可以有以下三种基本方式："></a>从通信的双方交互的方式来看，可以有以下三种基本方式：</h4><ol>
+<li><strong>单向通信</strong>：只能有一个方向的通信而没有反方向的交互，无线电广播或有线电广播以及电视广播就属于这种类型</li>
+<li><strong>双向交替通信</strong>：通信双方都可以发送消息，但不能双方同时发送</li>
+<li><strong>双向同时通信</strong>：通信双方可以同时发送和接收信息</li>
+</ol>
+<font size = 4>**来自信源的信号常称为基带信号**</font>
+
+<font size = 4>基带信号往往包含较多的低频成分，甚至直流成分，而许多信道并不能传输这种低频分量或直流分量，为了解决这一问题，就必须对基带信号进行**调制**</font>
+
+<h4 id="调制可分为两大类"><a href="#调制可分为两大类" class="headerlink" title="调制可分为两大类"></a>调制可分为两大类</h4><ol>
+<li><strong>基带调制</strong>：仅仅对基带信号的波形进行变换，变换后仍是基带信号，也称这一过程为<strong>编码</strong></li>
+<li>使用<strong>载波</strong>进行调制：把基带信号的频率范围搬移到较高的频段，并转换为<strong>模拟信号</strong>，经过载波调制后的信号称为<strong>带通信号</strong>，而使用载波的调制称为<strong>带通调制</strong></li>
+</ol>
+<h4 id="常用编码方式"><a href="#常用编码方式" class="headerlink" title="常用编码方式"></a>常用编码方式</h4><p><img src="C:\Users\Reimilia Scarlet\AppData\Roaming\Typora\typora-user-images\image-20210326104811984.png" alt="image-20210326104811984"></p>
 <ol>
-<li>目的：要在公共网络和私人的网络间建立一道流量管控机制</li>
-<li>防火墙由网络管理员管理和制定规则</li>
-<li>防火墙可以针对网域名，协议，软件，IP地址，端口和关键词来制定规则</li>
-<li>防火墙有多种形式，一种是<strong>主机式防火墙</strong>，一种是<strong>软件式防火墙</strong>，<strong>网络式防火墙</strong></li>
+<li>不归零制：正电平为1，负电平为0</li>
+<li>归零制：正脉冲为1，负脉冲为0</li>
+<li>曼切斯特编码：位周期中心的向上跳代表0，位周期中心的向下跳代表1。也可以反过来定义</li>
+<li>差分曼切斯特编码：在每一位的中心始终有跳变，位开始边界的跳变代表0，位开始边界没有跳变代表1</li>
 </ol>
-<h2 id="5-无线接入点（WiFi）"><a href="#5-无线接入点（WiFi）" class="headerlink" title="5.无线接入点（WiFi）"></a>5.无线接入点（WiFi）</h2><ol>
-<li>延申网络覆盖范围</li>
-<li>移动设备接入点</li>
+<h4 id="基本的带通调制方法"><a href="#基本的带通调制方法" class="headerlink" title="基本的带通调制方法"></a>基本的带通调制方法</h4><p><img src="C:\Users\Reimilia Scarlet\AppData\Roaming\Typora\typora-user-images\image-20210326101139446.png" alt="image-20210326101139446"></p>
+<ol>
+<li>调幅（AM）：载波的振幅随基带数字信号的变化而变化</li>
+<li>调频（FM）：载波的频率岁基带数字信号而变化</li>
+<li>调相（PM）：载波的初始相位岁基带数字信号而变化</li>
 </ol>
+<font size = 5>为了达到更高的信号传输速率，必须采用技术上更为复杂的多元制的振幅相位混合调制方法。例如**正交振幅调制**</font>
+
+<hr>
+<h3 id="2-2-3-信道的极限容量"><a href="#2-2-3-信道的极限容量" class="headerlink" title="2.2.3 信道的极限容量"></a><strong>2.2.3 信道的极限容量</strong></h3><font size = 4>数字通信的优点：虽然信号在信道上传输会不可避免的失真，但在接收端只要从失真的波形识别出原来的信号，那么这种失真对通信质量就没有影响</font>
+
+<font size = 4>限制**码元**在信道上的传输速率大的因素有以下两个</font>：
+
+1. 信道能够通过的频率范围：具体的信道所能通过的频率范围是有限的，信号中的高频分量往往不能通过信道
+2. 信噪比：噪声存在于所有的电子设备和通信信道中，噪声会使接收端对码元的判决（识别）产生错误
+
+<font size = 5>需要知道的是：在任何信道中，码元传输的速率是由上限的，传输速率超过此上限，就会出现严重的**码间串扰问题**，使得接收端对码元的识别成为不可能</font>
+
+<p>所谓的信噪比就是信号的平均功率和噪声的平均功率之比，记为<font size = 5>$\frac{S}{N}$</font>,并用分贝（dB）作为度量单位</p>
+<p>信噪比（dB）= <font size = 5>$10log_{10}(\frac{S}{N})(dB)$</font></p>
+<p>信道的极限信息由<strong>香农公式</strong>传输速率<font size =5>$C = W log_{2}(1+\frac{S}{N})(bit/s)$</font></p>
+<p>其中W为信道带宽，S为信道所传信号的平均功率，N为信道的高斯噪声功率</p>
+<font size = 5>**香农公式指出，信道的带宽或信道中的信噪比越大，信道的极限传输速率就越高**</font>
+
+<hr>
 
           
         
@@ -1990,10 +2061,10 @@ C = I_n C = (DA)C = D(AC) = D I_n = D</script></li>
               
               
               <div class="site-state-item site-state-tags">
-                
+                <a href="/tags/index.html">
                   <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">tags</span>
-                
+                </a>
               </div>
             
 
