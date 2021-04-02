@@ -1822,7 +1822,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #38ff8b;
+  background: #ff9036;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2675,4 +2675,8 @@ body {
 }
 .posts-collapse {
   background-color: rgba(255,255,255,0.9);
+  padding: 40px;
+}
+.posts-collapse:after {
+  top: 0px;
 }
