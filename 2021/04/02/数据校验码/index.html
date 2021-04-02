@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="运算方法和运算器," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1.什么是错误$1$变成$0$，$0$变成$1$  2.什么样的编码具有检错纠错能力**码距**：任意两个码字之间最少变化的二进制位数  具有检错纠错能力的数据校验码的实现原理是：在编码中，除去合法的码字，再加进一些非法的码字，当某个合法的码字出现错误时，就变成非法码字  **对于码距≥2的数据校验码，开始具有检错能力，码距越大，检、纠错能力就越强，而且检错能力总大于或等于纠错能力**  3.如何">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据校验码">
+<meta property="og:url" content="http://example.com/2021/04/02/%E6%95%B0%E6%8D%AE%E6%A0%A1%E9%AA%8C%E7%A0%81/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1.什么是错误$1$变成$0$，$0$变成$1$  2.什么样的编码具有检错纠错能力**码距**：任意两个码字之间最少变化的二进制位数  具有检错纠错能力的数据校验码的实现原理是：在编码中，除去合法的码字，再加进一些非法的码字，当某个合法的码字出现错误时，就变成非法码字  **对于码距≥2的数据校验码，开始具有检错能力，码距越大，检、纠错能力就越强，而且检错能力总大于或等于纠错能力**  3.如何">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="c:/Users/Reimilia%20Scarlet/AppData/Roaming/Typora/typora-user-images/image-20210331153752666.png">
+<meta property="article:published_time" content="2021-04-02T07:50:17.306Z">
+<meta property="article:modified_time" content="2021-04-02T07:52:22.168Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="运算方法和运算器">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:/Users/Reimilia%20Scarlet/AppData/Roaming/Typora/typora-user-images/image-20210331153752666.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://example.com/2021/04/02/数据校验码/"/>
+
+
+
+
+
+  <title>数据校验码 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/02/%E6%95%B0%E6%8D%AE%E6%A0%A1%E9%AA%8C%E7%A0%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">数据校验码</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-04-02T15:50:17+08:00">
+                2021-04-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机组成原理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-什么是错误"><a href="#1-什么是错误" class="headerlink" title="1.什么是错误"></a>1.什么是错误</h2><font size = 5 color = red>$1$变成$0$，$0$变成$1$</font>
+
+<h2 id="2-什么样的编码具有检错纠错能力"><a href="#2-什么样的编码具有检错纠错能力" class="headerlink" title="2.什么样的编码具有检错纠错能力"></a>2.什么样的编码具有检错纠错能力</h2><font size = 5>**码距**：任意两个码字之间最少变化的二进制位数</font>
+
+<font size = 5 style="font-weight:bold">具有检错纠错能力的数据校验码的实现原理是：在编码中，除去合法的码字，再加进一些非法的码字，当某个合法的码字出现错误时，就变成非法码字</font>
+
+<font size = 5 color = "red">**对于码距≥2的数据校验码，开始具有检错能力，码距越大，检、纠错能力就越强，而且检错能力总大于或等于纠错能力**</font>
+
+<h2 id="3-如何发现错误"><a href="#3-如何发现错误" class="headerlink" title="3.如何发现错误"></a>3.如何发现错误</h2><h3 id="奇偶校验码"><a href="#奇偶校验码" class="headerlink" title="奇偶校验码"></a>奇偶校验码</h3><font size = 5>校验位的取值（0或1）将使得整个校验码中"1"的个数为奇数或偶数：</font>
+
+<ol>
+<li><font size = 5>奇校验——使得整个校验码中"1"的个数为**奇数**</font></li>
+<li><font size= 5>偶校验——使得整个校验码中"1"的个数为**偶数**</font></li>
+<li><font size = 5>**交叉奇偶校验：传送数据块时，不仅每个字节有一个奇偶校验做横向校验，而且全部字节的同一位也设置一个奇偶校验做纵向校验**</font>
+
+</li>
+</ol>
+<h2 id="4-如何确定错误的位置"><a href="#4-如何确定错误的位置" class="headerlink" title="4. 如何确定错误的位置"></a>4. 如何确定错误的位置</h2><h3 id="海明校验码"><a href="#海明校验码" class="headerlink" title="海明校验码"></a>海明校验码</h3><font size = 5>校验位K，信息位N，则$2^{K+1} \ge N+K+1 $</font>
+
+<font size = 5>(1)编码</font>
+
+<font size = 5>一个字节由8位二进制位组成，此时N=8， K=5，故海明码总位数为N+K=13，表示为：$H_{13}\ H_{12}...H_{2}\ H_{1}$</font>
+
+<font size = 5>五个校验位$P_5~P_1$对应的海明码位为:$H_{13}、H_{8}、H_{4}、H_{2}、H_{1}$,除$P_5$外其余四位满足$P_i中i等于2^{i-1}$的关系，而$P_5$只能放在$H_{13}$</font>
+
+<p><img src="C:\Users\Reimilia Scarlet\AppData\Roaming\Typora\typora-user-images\image-20210331153752666.png" alt="image-20210331153752666"></p>
+<font size= 5>P_1校验的是$D_1、D_2、D_4、D_5、D_7$，对应的海明码为$H_1(1),H_5(4+1),H_7(4+2+1),H_9(8+1),H_{11}(8+2+1)$,化位二进制就会发现，都有一个$XXXXXXX1$的形式，也就是说$P_i$校验的是二进制中权值为i的位数值为1的那些位数$(D_{位数})$,P2,P3,P4,P5同理</font>
+
+<font size = 5>则$P_1=D_1\oplus D_2\oplus D_4\oplus D_5\oplus D_7$，用同样的方法将其他$P_i$求出</font>
+
+<font size = 5>(2)校验</font>
+
+<font size = 5>将接收到的海明码按如下关系进行偶校验：</font>
+
+<font size = 5>如右所示：$S_1=P_1\oplus D_1\oplus D_2\oplus D_4\oplus D_5\oplus D_7$ ，即将$P_1$和对应的$D_i$进行异或算出结国</font>
+
+<font size = 5>然后依次求出$S_2\ S_3\ S_4\ S_5$</font>
+
+<p><strong><font size= 5>① 如果$S_5 \sim S_1为00000$时，表明无错</font></strong></p>
+<font size = 5>② 如果$S_5 \sim S_1$仅有一位不为$0$，表明是某一位校验位出错或三位海明码同时出错</font>
+
+<font size= 5>③ 如果$S_5 \sim S_1 $有两位不为$0$，表明是两位海明码同时出错，但无法确定出错位置</font>
+
+<p><strong><font size = 5 color = "red">④ 如果$S_5 \sim S_1$有三位不为$0$，表明是一位信息位出错或三位校验位同时出错，出错位置由$S_4 \sim S_1 $四位编码指明</font></strong></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" rel="tag"># 运算方法和运算器</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/04/02/%E9%9D%9E%E6%95%B0%E5%80%BC%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95/" rel="next" title="非数值数据的表示方法">
+                <i class="fa fa-chevron-left"></i> 非数值数据的表示方法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/04/02/%E6%95%B0%E5%80%BC%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95/" rel="prev" title="数值数据的表示方法">
+                数值数据的表示方法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AF%E9%94%99%E8%AF%AF"><span class="nav-number">1.</span> <span class="nav-text">1.什么是错误</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84%E7%BC%96%E7%A0%81%E5%85%B7%E6%9C%89%E6%A3%80%E9%94%99%E7%BA%A0%E9%94%99%E8%83%BD%E5%8A%9B"><span class="nav-number">2.</span> <span class="nav-text">2.什么样的编码具有检错纠错能力</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%A6%82%E4%BD%95%E5%8F%91%E7%8E%B0%E9%94%99%E8%AF%AF"><span class="nav-number">3.</span> <span class="nav-text">3.如何发现错误</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A5%87%E5%81%B6%E6%A0%A1%E9%AA%8C%E7%A0%81"><span class="nav-number">3.1.</span> <span class="nav-text">奇偶校验码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E5%A6%82%E4%BD%95%E7%A1%AE%E5%AE%9A%E9%94%99%E8%AF%AF%E7%9A%84%E4%BD%8D%E7%BD%AE"><span class="nav-number">4.</span> <span class="nav-text">4. 如何确定错误的位置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%B7%E6%98%8E%E6%A0%A1%E9%AA%8C%E7%A0%81"><span class="nav-number">4.1.</span> <span class="nav-text">海明校验码</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+      <div>
+        
+          <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1337010074&auto=1&height=66"></iframe>
+        
+      </div>
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

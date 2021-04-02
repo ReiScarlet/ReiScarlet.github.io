@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="第三章," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="编码与调制基带信号分为  数字基带信号 模拟基带信号  信道可分为：  数字信道 模拟信道  对于数字信号​        在不改变信号性质的前提下，仅对数字基带信号的波形进行变换，成为编码，编码后的信号仍为数字信号 把数字信号的频率范围搬移到较高的频段，并转化为模拟信号，称为调制 ​        对于模拟信号同上 码元在使用时间域的波形表示数字信号时，代表不同离散数值的基本波形 传输媒体和信道">
+<meta property="og:type" content="article">
+<meta property="og:title" content="编码与调制">
+<meta property="og:url" content="http://example.com/2021/04/02/%E7%BC%96%E7%A0%81%E4%B8%8E%E8%B0%83%E5%88%B6/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="编码与调制基带信号分为  数字基带信号 模拟基带信号  信道可分为：  数字信道 模拟信道  对于数字信号​        在不改变信号性质的前提下，仅对数字基带信号的波形进行变换，成为编码，编码后的信号仍为数字信号 把数字信号的频率范围搬移到较高的频段，并转化为模拟信号，称为调制 ​        对于模拟信号同上 码元在使用时间域的波形表示数字信号时，代表不同离散数值的基本波形 传输媒体和信道">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="c:/Users/Reimilia%20Scarlet/AppData/Roaming/Typora/typora-user-images/image-20210326155102841.png">
+<meta property="og:image" content="c:/Users/Reimilia%20Scarlet/AppData/Roaming/Typora/typora-user-images/image-20210326155402028.png">
+<meta property="og:image" content="c:/Users/Reimilia%20Scarlet/AppData/Roaming/Typora/typora-user-images/image-20210326155410955.png">
+<meta property="article:published_time" content="2021-04-02T03:28:20.694Z">
+<meta property="article:modified_time" content="2021-04-02T07:43:45.778Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="第三章">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:/Users/Reimilia%20Scarlet/AppData/Roaming/Typora/typora-user-images/image-20210326155102841.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://example.com/2021/04/02/编码与调制/"/>
+
+
+
+
+
+  <title>编码与调制 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/02/%E7%BC%96%E7%A0%81%E4%B8%8E%E8%B0%83%E5%88%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">编码与调制</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-04-02T11:28:20+08:00">
+                2021-04-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机网络</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="编码与调制"><a href="#编码与调制" class="headerlink" title="编码与调制"></a>编码与调制</h1><p>基带信号分为</p>
+<ol>
+<li>数字基带信号</li>
+<li>模拟基带信号</li>
+</ol>
+<p>信道可分为：</p>
+<ol>
+<li>数字信道</li>
+<li>模拟信道</li>
+</ol>
+<h3 id="对于数字信号"><a href="#对于数字信号" class="headerlink" title="对于数字信号"></a>对于数字信号</h3><p>​        在不改变信号性质的前提下，仅对数字基带信号的波形进行变换，成为<strong>编码</strong>，编码后的信号仍为数字信号</p>
+<p>把数字信号的频率范围搬移到较高的频段，并转化为模拟信号，称为<strong>调制</strong></p>
+<p>​        对于模拟信号同上</p>
+<h3 id="码元"><a href="#码元" class="headerlink" title="码元"></a>码元</h3><p>在使用时间域的波形表示数字信号时，代表不同离散数值的<strong>基本波形</strong></p>
+<h3 id="传输媒体和信道不能划等号"><a href="#传输媒体和信道不能划等号" class="headerlink" title="传输媒体和信道不能划等号"></a>传输媒体和信道不能划等号</h3><p>一个传输媒体只有一条发送信道和一条接收信道，而信道却可以通过复用技术拥有多条发送信道和接收信道</p>
+<h3 id="常用编码"><a href="#常用编码" class="headerlink" title="常用编码"></a>常用编码</h3><ol>
+<li><p>不归零编码</p>
+<ol>
+<li>需要额外一条传输线来传输时钟信号，使发送方和接收方同步</li>
+<li>由于存在同步问题，计算机网络的数据传输不采用这种编码</li>
+</ol>
+</li>
+<li><p>归零编码</p>
+<ol>
+<li>每个码元传输结束后信号都要归零，所以接收方只要信号归零后进行采样即可，不需要单独的时钟信号</li>
+<li>归零编码相当于把时钟信号用归零方式编码在数据内，这称为<strong>自同步</strong>信号</li>
+<li>归零编码中大部分的数据带宽用来传输归零而浪费掉了，编码效率低</li>
+</ol>
+</li>
+<li><p>曼切斯特编码</p>
+<ol>
+<li>码元中间时刻的跳变即表示时钟，又表示数据</li>
+<li>传统以太网用的这种编码</li>
+</ol>
+</li>
+<li><p>差分曼切斯特编码</p>
+<ol>
+<li>跳变仅表示时钟</li>
+<li>码元开始处电平是否发生变化表示数据</li>
+</ol>
+</li>
+</ol>
+<h3 id="10BaseT以太网使用的曼切斯特编码"><a href="#10BaseT以太网使用的曼切斯特编码" class="headerlink" title="10BaseT以太网使用的曼切斯特编码"></a>10BaseT以太网使用的曼切斯特编码</h3><h3 id="基本调制方法"><a href="#基本调制方法" class="headerlink" title="基本调制方法"></a>基本调制方法</h3><p><img src="C:\Users\Reimilia Scarlet\AppData\Roaming\Typora\typora-user-images\image-20210326155102841.png" alt="image-20210326155102841"></p>
+<h4 id="使用基本调制方法，一个码元只能包含一个比特信息，如何使用一个码元包含更多的比特呢？"><a href="#使用基本调制方法，一个码元只能包含一个比特信息，如何使用一个码元包含更多的比特呢？" class="headerlink" title="使用基本调制方法，一个码元只能包含一个比特信息，如何使用一个码元包含更多的比特呢？"></a>使用基本调制方法，一个码元只能包含一个比特信息，如何使用一个码元包含更多的比特呢？</h4><p>​        <strong><font size = 5>因为频率和相位是相关的，即频率是相位随时间的变化率。所以一次只能调制频率和相位两个中的一个</font></strong></p>
+<p>​        <strong><font size = 5>通常情况下，相位和振幅可以结合来一起调制，称为正交振幅调制QAM</font></strong></p>
+<p><img src="C:\Users\Reimilia Scarlet\AppData\Roaming\Typora\typora-user-images\image-20210326155402028.png" alt="image-20210326155402028"><img src="C:\Users\Reimilia Scarlet\AppData\Roaming\Typora\typora-user-images\image-20210326155410955.png" alt="image-20210326155410955"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E7%AC%AC%E4%B8%89%E7%AB%A0/" rel="tag"># 第三章</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/04/02/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%E4%B8%8E%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/" rel="next" title="网络协议与网络体系结构">
+                <i class="fa fa-chevron-left"></i> 网络协议与网络体系结构
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/04/02/%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87/" rel="prev" title="网络设备">
+                网络设备 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BC%96%E7%A0%81%E4%B8%8E%E8%B0%83%E5%88%B6"><span class="nav-number">1.</span> <span class="nav-text">编码与调制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E4%BA%8E%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7"><span class="nav-number">1.0.1.</span> <span class="nav-text">对于数字信号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A0%81%E5%85%83"><span class="nav-number">1.0.2.</span> <span class="nav-text">码元</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%A0%E8%BE%93%E5%AA%92%E4%BD%93%E5%92%8C%E4%BF%A1%E9%81%93%E4%B8%8D%E8%83%BD%E5%88%92%E7%AD%89%E5%8F%B7"><span class="nav-number">1.0.3.</span> <span class="nav-text">传输媒体和信道不能划等号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E7%BC%96%E7%A0%81"><span class="nav-number">1.0.4.</span> <span class="nav-text">常用编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10BaseT%E4%BB%A5%E5%A4%AA%E7%BD%91%E4%BD%BF%E7%94%A8%E7%9A%84%E6%9B%BC%E5%88%87%E6%96%AF%E7%89%B9%E7%BC%96%E7%A0%81"><span class="nav-number">1.0.5.</span> <span class="nav-text">10BaseT以太网使用的曼切斯特编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E8%B0%83%E5%88%B6%E6%96%B9%E6%B3%95"><span class="nav-number">1.0.6.</span> <span class="nav-text">基本调制方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9F%BA%E6%9C%AC%E8%B0%83%E5%88%B6%E6%96%B9%E6%B3%95%EF%BC%8C%E4%B8%80%E4%B8%AA%E7%A0%81%E5%85%83%E5%8F%AA%E8%83%BD%E5%8C%85%E5%90%AB%E4%B8%80%E4%B8%AA%E6%AF%94%E7%89%B9%E4%BF%A1%E6%81%AF%EF%BC%8C%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E4%B8%80%E4%B8%AA%E7%A0%81%E5%85%83%E5%8C%85%E5%90%AB%E6%9B%B4%E5%A4%9A%E7%9A%84%E6%AF%94%E7%89%B9%E5%91%A2%EF%BC%9F"><span class="nav-number">1.0.6.1.</span> <span class="nav-text">使用基本调制方法，一个码元只能包含一个比特信息，如何使用一个码元包含更多的比特呢？</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+      <div>
+        
+          <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1337010074&auto=1&height=66"></iframe>
+        
+      </div>
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

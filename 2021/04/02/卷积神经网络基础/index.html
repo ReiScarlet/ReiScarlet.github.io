@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="卷积神经网络CNN（Convolutional Neural Network） 全连接层​    有许许多多的神经元共同连接的来的  神经元常见模型： BP算法包括信号的前向传播和误差的反向传播两个过程   CNN中独特的网络结构——卷积层 目的：进行图像特征提取  特性： 拥有局部感知机制 权值共享   引入非线性因素，使其具备解决非线性问题的能力    常用的激活函数有  sigmoid函数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="卷积神经网络基础">
+<meta property="og:url" content="http://example.com/2021/04/02/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="卷积神经网络CNN（Convolutional Neural Network） 全连接层​    有许许多多的神经元共同连接的来的  神经元常见模型： BP算法包括信号的前向传播和误差的反向传播两个过程   CNN中独特的网络结构——卷积层 目的：进行图像特征提取  特性： 拥有局部感知机制 权值共享   引入非线性因素，使其具备解决非线性问题的能力    常用的激活函数有  sigmoid函数">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="c:/Users/REIMIL~1/AppData/Local/Temp/Image.png">
+<meta property="og:image" content="c:/Users/REIMIL~1/AppData/Local/Temp/Image.png">
+<meta property="article:published_time" content="2021-04-02T07:57:49.681Z">
+<meta property="article:modified_time" content="2021-04-02T07:59:32.682Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:/Users/REIMIL~1/AppData/Local/Temp/Image.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://example.com/2021/04/02/卷积神经网络基础/"/>
+
+
+
+
+
+  <title>卷积神经网络基础 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/02/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">卷积神经网络基础</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-04-02T15:57:49+08:00">
+                2021-04-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index">
+                    <span itemprop="name">卷积神经网络</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="卷积神经网络CNN（Convolutional-Neural-Network）"><a href="#卷积神经网络CNN（Convolutional-Neural-Network）" class="headerlink" title="卷积神经网络CNN（Convolutional Neural Network）"></a>卷积神经网络CNN（Convolutional Neural Network）</h3><hr>
+<h3 id="全连接层"><a href="#全连接层" class="headerlink" title="全连接层"></a>全连接层</h3><p>​    有许许多多的神经元共同连接的来的</p>
+<ol>
+<li>神经元常见模型：<img src="C:\Users\REIMIL~1\AppData\Local\Temp\Image.png" alt="Image"></li>
+<li>BP算法包括信号的前向传播和误差的反向传播两个过程</li>
+</ol>
+<hr>
+<h3 id="CNN中独特的网络结构——卷积层"><a href="#CNN中独特的网络结构——卷积层" class="headerlink" title="CNN中独特的网络结构——卷积层"></a>CNN中独特的网络结构——卷积层</h3><ol>
+<li><p><strong>目的：进行图像特征提取</strong></p>
+<ol>
+<li>特性：<ol>
+<li>拥有局部感知机制</li>
+<li>权值共享</li>
+</ol>
+</li>
+<li>引入非线性因素，使其具备解决非线性问题的能力 </li>
+</ol>
+<ol>
+<li><p><strong>常用的激活函数有</strong></p>
+<ol>
+<li><p>sigmoid函数</p>
+<script type="math/tex; mode=display">
+  f(x) = \frac{1}{1+e^{-x}}</script><p>  sigmoid激活函数饱和时梯度值非常小，故网络层数比较深时易出现梯度消失</p>
+</li>
+<li><p>ReLU函数 </p>
+<script type="math/tex; mode=display">
+ f(x) = Max(0,x)</script><p> ReLU激活函数缺点是反向传播过程中有一个非常大的梯度经过时，反向传播更新后可能导致权重分布中心小于零，导致该处的倒数始终为0，反向传播无法更新权重，即进入失活状态</p>
+</li>
+<li><p>在卷积操作过程中，矩阵经卷积操作的尺寸由以下几个因素决定</p>
+<ol>
+<li>输入图片大小W*W</li>
+<li>卷积核Filter大小 F * F</li>
+<li>步长S</li>
+<li>padding的像素数p</li>
+</ol>
+</li>
+<li><p>则经卷积后矩阵尺寸大小计算公式为：<font size = 5>$N= \frac{W-F+2P}{S+1}$</font></p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p><strong>池化层</strong></p>
+<ol>
+<li>目的：对特征图进行稀疏处理，减少数据运算量</li>
+<li>MaxPooling下采样层</li>
+<li><p>AveragePooling下采样层</p>
+<ol>
+<li><p>特点</p>
+<ol>
+<li><p>没有训练参数</p>
+</li>
+<li><p>只改变特征矩阵的w和h，不改变channel</p>
+</li>
+<li><p>一般poolsize和stride相同</p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<hr>
+<h3 id="误差的计算"><a href="#误差的计算" class="headerlink" title="误差的计算"></a>误差的计算</h3><p>   针对一个神经网络<img src="C:\Users\REIMIL~1\AppData\Local\Temp\Image.png" alt="Image"><br>   softmax函数表达式为：</p>
+<script type="math/tex; mode=display">
+o_i = \frac{e^{y_i}}{\sum_{i}e^{y_i}}</script><p>   经过softmax处理后所有节点概率和为1</p>
+<h3 id="Corss-Entropy-Loss交叉熵损失"><a href="#Corss-Entropy-Loss交叉熵损失" class="headerlink" title="Corss Entropy Loss交叉熵损失"></a>Corss Entropy Loss交叉熵损失</h3><ol>
+<li><p>针对多分类问题（softmax输出）</p>
+<script type="math/tex; mode=display">
+H = - \sum_{i}o_i^{*}log(o_i)</script></li>
+<li><p>针对二分类问题（sigmoid输出）</p>
+<script type="math/tex; mode=display">
+H = - \frac{1}{N}\sum_{i=1}^N[o_i^{*}logo_i+(1-o_i^{*})log(1-o_i)]</script></li>
+<li><p>误差的反向传播</p>
+</li>
+</ol>
+<hr>
+<h3 id="权重的更新"><a href="#权重的更新" class="headerlink" title="权重的更新"></a>权重的更新</h3><ol>
+<li><p>优化器</p>
+<ol>
+<li>目的：为了网络更快的收敛</li>
+</ol>
+<ol>
+<li><p>SGD优化器</p>
+<ol>
+<li><p>更新公式：</p>
+<script type="math/tex; mode=display">
+  W_{t+1} = W_{t} - \alpha{g(W_{t})}</script></li>
+<li><p>α是学习率，$g(w_t)$为t时刻对参数$w_t$的损失梯度</p>
+</li>
+<li><p>缺点：</p>
+<ol>
+<li>易受样本噪声影响</li>
+<li>可能陷入局部最优解</li>
+</ol>
+</li>
+</ol>
+<ol>
+<li><p>SGD+Momentum优化器</p>
+<ol>
+<li><p>公式：</p>
+<script type="math/tex; mode=display">
+ V_{t} = \eta{V_{t-1}} + \alpha{g(W_{t})}</script><script type="math/tex; mode=display">
+ W_{t+1} = W_{t} - V_{t}</script></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<hr>
+<p><strong>pytorch Tensor的通道排序[batch, channel, height, width]</strong></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/04/02/%E6%B1%A0%E5%8C%96%E5%B1%82/" rel="next" title="池化层">
+                <i class="fa fa-chevron-left"></i> 池化层
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/04/02/%E4%BC%98%E5%8C%96%E5%99%A8/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9CCNN%EF%BC%88Convolutional-Neural-Network%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">卷积神经网络CNN（Convolutional Neural Network）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%A8%E8%BF%9E%E6%8E%A5%E5%B1%82"><span class="nav-number">2.</span> <span class="nav-text">全连接层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CNN%E4%B8%AD%E7%8B%AC%E7%89%B9%E7%9A%84%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%E2%80%94%E2%80%94%E5%8D%B7%E7%A7%AF%E5%B1%82"><span class="nav-number">3.</span> <span class="nav-text">CNN中独特的网络结构——卷积层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%AF%E5%B7%AE%E7%9A%84%E8%AE%A1%E7%AE%97"><span class="nav-number">4.</span> <span class="nav-text">误差的计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Corss-Entropy-Loss%E4%BA%A4%E5%8F%89%E7%86%B5%E6%8D%9F%E5%A4%B1"><span class="nav-number">5.</span> <span class="nav-text">Corss Entropy Loss交叉熵损失</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9D%83%E9%87%8D%E7%9A%84%E6%9B%B4%E6%96%B0"><span class="nav-number">6.</span> <span class="nav-text">权重的更新</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+      <div>
+        
+          <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1337010074&auto=1&height=66"></iframe>
+        
+      </div>
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
