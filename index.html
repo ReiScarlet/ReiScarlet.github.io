@@ -499,123 +499,14 @@
 
       
         
-          
-            <h3 id="卷积神经网络CNN（Convolutional-Neural-Network）"><a href="#卷积神经网络CNN（Convolutional-Neural-Network）" class="headerlink" title="卷积神经网络CNN（Convolutional Neural Network）"></a>卷积神经网络CNN（Convolutional Neural Network）</h3><hr>
-<h3 id="全连接层"><a href="#全连接层" class="headerlink" title="全连接层"></a>全连接层</h3><p>​    有许许多多的神经元共同连接的来的</p>
-<ol>
-<li>神经元常见模型：<img src="C:\Users\REIMIL~1\AppData\Local\Temp\Image.png" alt="Image"></li>
-<li>BP算法包括信号的前向传播和误差的反向传播两个过程</li>
-</ol>
-<hr>
-<h3 id="CNN中独特的网络结构——卷积层"><a href="#CNN中独特的网络结构——卷积层" class="headerlink" title="CNN中独特的网络结构——卷积层"></a>CNN中独特的网络结构——卷积层</h3><ol>
-<li><p><strong>目的：进行图像特征提取</strong></p>
-<ol>
-<li>特性：<ol>
-<li>拥有局部感知机制</li>
-<li>权值共享</li>
-</ol>
-</li>
-<li>引入非线性因素，使其具备解决非线性问题的能力 </li>
-</ol>
-<ol>
-<li><p><strong>常用的激活函数有</strong></p>
-<ol>
-<li><p>sigmoid函数</p>
-<script type="math/tex; mode=display">
-  f(x) = \frac{1}{1+e^{-x}}</script><p>  sigmoid激活函数饱和时梯度值非常小，故网络层数比较深时易出现梯度消失</p>
-</li>
-<li><p>ReLU函数 </p>
-<script type="math/tex; mode=display">
- f(x) = Max(0,x)</script><p> ReLU激活函数缺点是反向传播过程中有一个非常大的梯度经过时，反向传播更新后可能导致权重分布中心小于零，导致该处的倒数始终为0，反向传播无法更新权重，即进入失活状态</p>
-</li>
-<li><p>在卷积操作过程中，矩阵经卷积操作的尺寸由以下几个因素决定</p>
-<ol>
-<li>输入图片大小W*W</li>
-<li>卷积核Filter大小 F * F</li>
-<li>步长S</li>
-<li>padding的像素数p</li>
-</ol>
-</li>
-<li><p>则经卷积后矩阵尺寸大小计算公式为：<font size = 5>$N= \frac{W-F+2P}{S+1}$</font></p>
-</li>
-</ol>
-</li>
-</ol>
-</li>
-<li><p><strong>池化层</strong></p>
-<ol>
-<li>目的：对特征图进行稀疏处理，减少数据运算量</li>
-<li>MaxPooling下采样层</li>
-<li><p>AveragePooling下采样层</p>
-<ol>
-<li><p>特点</p>
-<ol>
-<li><p>没有训练参数</p>
-</li>
-<li><p>只改变特征矩阵的w和h，不改变channel</p>
-</li>
-<li><p>一般poolsize和stride相同</p>
-</li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-<hr>
-<h3 id="误差的计算"><a href="#误差的计算" class="headerlink" title="误差的计算"></a>误差的计算</h3><p>   针对一个神经网络<img src="C:\Users\REIMIL~1\AppData\Local\Temp\Image.png" alt="Image"><br>   softmax函数表达式为：</p>
-<script type="math/tex; mode=display">
-o_i = \frac{e^{y_i}}{\sum_{i}e^{y_i}}</script><p>   经过softmax处理后所有节点概率和为1</p>
-<h3 id="Corss-Entropy-Loss交叉熵损失"><a href="#Corss-Entropy-Loss交叉熵损失" class="headerlink" title="Corss Entropy Loss交叉熵损失"></a>Corss Entropy Loss交叉熵损失</h3><ol>
-<li><p>针对多分类问题（softmax输出）</p>
-<script type="math/tex; mode=display">
-H = - \sum_{i}o_i^{*}log(o_i)</script></li>
-<li><p>针对二分类问题（sigmoid输出）</p>
-<script type="math/tex; mode=display">
-H = - \frac{1}{N}\sum_{i=1}^N[o_i^{*}logo_i+(1-o_i^{*})log(1-o_i)]</script></li>
-<li><p>误差的反向传播</p>
-</li>
-</ol>
-<hr>
-<h3 id="权重的更新"><a href="#权重的更新" class="headerlink" title="权重的更新"></a>权重的更新</h3><ol>
-<li><p>优化器</p>
-<ol>
-<li>目的：为了网络更快的收敛</li>
-</ol>
-<ol>
-<li><p>SGD优化器</p>
-<ol>
-<li><p>更新公式：</p>
-<script type="math/tex; mode=display">
-  W_{t+1} = W_{t} - \alpha{g(W_{t})}</script></li>
-<li><p>α是学习率，$g(w_t)$为t时刻对参数$w_t$的损失梯度</p>
-</li>
-<li><p>缺点：</p>
-<ol>
-<li>易受样本噪声影响</li>
-<li>可能陷入局部最优解</li>
-</ol>
-</li>
-</ol>
-<ol>
-<li><p>SGD+Momentum优化器</p>
-<ol>
-<li><p>公式：</p>
-<script type="math/tex; mode=display">
- V_{t} = \eta{V_{t-1}} + \alpha{g(W_{t})}</script><script type="math/tex; mode=display">
- W_{t+1} = W_{t} - V_{t}</script></li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-<hr>
-<p><strong>pytorch Tensor的通道排序[batch, channel, height, width]</strong></p>
-
-          
+          <h3 id="卷积神经网络CNN（Convolutional-Neural-Network）"><a href="#卷积神经网络CNN（Convolutional-Neural-Network）" class="headerlink" title="卷积神经网络CNN（Convolutional Neural Network）"></a>卷积神经网络CNN（Convolutional Neural Network）</h3><hr>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2021/04/02/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1364,6 +1255,167 @@ H = - \frac{1}{N}\sum_{i=1}^N[o_i^{*}logo_i+(1-o_i^{*})log(1-o_i)]</script></li>
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/02/2.3%E5%8F%AF%E9%80%86%E7%9F%A9%E9%98%B5%E7%9A%84%E7%89%B9%E5%BE%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/04/02/2.3%E5%8F%AF%E9%80%86%E7%9F%A9%E9%98%B5%E7%9A%84%E7%89%B9%E5%BE%81/" itemprop="url">2.3可逆矩阵的特征</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-04-02T15:39:22+08:00">
+                2021-04-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">线性代数</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <span id="more"></span>
+<h3 id="定理8"><a href="#定理8" class="headerlink" title="定理8"></a>定理8</h3><p>设A为n*n的矩阵，则下列命题是等价的，即对某一特定的A，他们同时为真或同时为假</p>
+<ol>
+<li>A是可逆矩阵</li>
+<li>A行等价于n*n的单位矩阵</li>
+<li>A有n个主元位置</li>
+<li>方程Ax=0仅有平凡解</li>
+<li>A的各列线性无关</li>
+<li>线性变化x-&gt;Ax是一对一的</li>
+<li>对$R^n$中任意b，方程Ax=b至少有一个解</li>
+<li>A的各列生成$R^n$</li>
+<li>线性变化x-&gt;Ax把$R^n$映上到$R^n$</li>
+<li>存在n*n矩阵C使CA=I</li>
+<li>存在n*n矩阵D使AD=I</li>
+<li>$A^T$是可逆矩阵</li>
+</ol>
+<h3 id="可逆线性变化"><a href="#可逆线性变化" class="headerlink" title="可逆线性变化"></a>可逆线性变化</h3><p>$T:R^n \rightarrow R^n$是可逆的，若存在函数$S:R^n \rightarrow R^n$使得</p>
+<p>​    对所有$R^n$中的x，$S(T(x)) = x \qquad (1)$</p>
+<p>​    对所有$R^n$中的x，$T(S(x))=x \qquad (2)$</p>
+<h3 id="定理9"><a href="#定理9" class="headerlink" title="定理9"></a>定理9</h3><p>设$T:R^n \rightarrow R^n$为线性变化，A为T的标准矩阵，则T可逆当且仅当A是可逆矩阵，这时由$S(x)=A^{-1}x$定义得线性变化S满足(1),(2)的唯一函数，我们称S是T的逆</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/02/2.2%E7%9F%A9%E9%98%B5%E7%9A%84%E9%80%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1506,167 +1558,6 @@ H = - \frac{1}{N}\sum_{i=1}^N[o_i^{*}logo_i+(1-o_i^{*})log(1-o_i)]</script></li>
 \therefore A行等价于I_n
 \therefore A必定可逆</script></li>
 </ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/02/2.3%E5%8F%AF%E9%80%86%E7%9F%A9%E9%98%B5%E7%9A%84%E7%89%B9%E5%BE%81/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/04/02/2.3%E5%8F%AF%E9%80%86%E7%9F%A9%E9%98%B5%E7%9A%84%E7%89%B9%E5%BE%81/" itemprop="url">2.3可逆矩阵的特征</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-04-02T15:39:22+08:00">
-                2021-04-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" itemprop="url" rel="index">
-                    <span itemprop="name">线性代数</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <span id="more"></span>
-<h3 id="定理8"><a href="#定理8" class="headerlink" title="定理8"></a>定理8</h3><p>设A为n*n的矩阵，则下列命题是等价的，即对某一特定的A，他们同时为真或同时为假</p>
-<ol>
-<li>A是可逆矩阵</li>
-<li>A行等价于n*n的单位矩阵</li>
-<li>A有n个主元位置</li>
-<li>方程Ax=0仅有平凡解</li>
-<li>A的各列线性无关</li>
-<li>线性变化x-&gt;Ax是一对一的</li>
-<li>对$R^n$中任意b，方程Ax=b至少有一个解</li>
-<li>A的各列生成$R^n$</li>
-<li>线性变化x-&gt;Ax把$R^n$映上到$R^n$</li>
-<li>存在n*n矩阵C使CA=I</li>
-<li>存在n*n矩阵D使AD=I</li>
-<li>$A^T$是可逆矩阵</li>
-</ol>
-<h3 id="可逆线性变化"><a href="#可逆线性变化" class="headerlink" title="可逆线性变化"></a>可逆线性变化</h3><p>$T:R^n \rightarrow R^n$是可逆的，若存在函数$S:R^n \rightarrow R^n$使得</p>
-<p>​    对所有$R^n$中的x，$S(T(x)) = x \qquad (1)$</p>
-<p>​    对所有$R^n$中的x，$T(S(x))=x \qquad (2)$</p>
-<h3 id="定理9"><a href="#定理9" class="headerlink" title="定理9"></a>定理9</h3><p>设$T:R^n \rightarrow R^n$为线性变化，A为T的标准矩阵，则T可逆当且仅当A是可逆矩阵，这时由$S(x)=A^{-1}x$定义得线性变化S满足(1),(2)的唯一函数，我们称S是T的逆</p>
 
           
         
