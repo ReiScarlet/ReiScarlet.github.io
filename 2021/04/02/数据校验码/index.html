@@ -79,16 +79,16 @@
 
 
 
-<meta name="description" content="1.什么是错误$1$变成$0$，$0$变成$1$  2.什么样的编码具有检错纠错能力**码距**：任意两个码字之间最少变化的二进制位数  具有检错纠错能力的数据校验码的实现原理是：在编码中，除去合法的码字，再加进一些非法的码字，当某个合法的码字出现错误时，就变成非法码字  **对于码距≥2的数据校验码，开始具有检错能力，码距越大，检、纠错能力就越强，而且检错能力总大于或等于纠错能力**  3.如何">
+<meta name="description" content="数据校验是为保证数据的完整性进行的一种验证操作。通常用一种指定的算法对原始数据计算出的一个校验值，接收方用同样的算法计算一次校验值，如果两次计算得到的检验值相同，则说明数据是完整的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据校验码">
 <meta property="og:url" content="http://example.com/2021/04/02/%E6%95%B0%E6%8D%AE%E6%A0%A1%E9%AA%8C%E7%A0%81/index.html">
 <meta property="og:site_name" content="Reimilia">
-<meta property="og:description" content="1.什么是错误$1$变成$0$，$0$变成$1$  2.什么样的编码具有检错纠错能力**码距**：任意两个码字之间最少变化的二进制位数  具有检错纠错能力的数据校验码的实现原理是：在编码中，除去合法的码字，再加进一些非法的码字，当某个合法的码字出现错误时，就变成非法码字  **对于码距≥2的数据校验码，开始具有检错能力，码距越大，检、纠错能力就越强，而且检错能力总大于或等于纠错能力**  3.如何">
+<meta property="og:description" content="数据校验是为保证数据的完整性进行的一种验证操作。通常用一种指定的算法对原始数据计算出的一个校验值，接收方用同样的算法计算一次校验值，如果两次计算得到的检验值相同，则说明数据是完整的">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="c:/Users/Reimilia%20Scarlet/AppData/Roaming/Typora/typora-user-images/image-20210331153752666.png">
 <meta property="article:published_time" content="2021-04-02T07:50:17.306Z">
-<meta property="article:modified_time" content="2021-04-02T07:52:22.168Z">
+<meta property="article:modified_time" content="2021-04-03T05:33:31.789Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="运算方法和运算器">
 <meta name="twitter:card" content="summary">
@@ -354,7 +354,9 @@
       
 
       
-        <h2 id="1-什么是错误"><a href="#1-什么是错误" class="headerlink" title="1.什么是错误"></a>1.什么是错误</h2><font size = 5 color = red>$1$变成$0$，$0$变成$1$</font>
+        <p>数据校验是为保证数据的完整性进行的一种验证操作。通常用一种指定的算法对<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/原始数据/10119290">原始数据</a>计算出的一个校验值，接收方用同样的算法计算一次校验值，如果两次计算得到的检验值相同，则说明数据是完整的</p>
+<span id="more"></span>
+<h2 id="1-什么是错误"><a href="#1-什么是错误" class="headerlink" title="1.什么是错误"></a>1.什么是错误</h2><font size = 5 color = red>$1$变成$0$，$0$变成$1$</font>
 
 <h2 id="2-什么样的编码具有检错纠错能力"><a href="#2-什么样的编码具有检错纠错能力" class="headerlink" title="2.什么样的编码具有检错纠错能力"></a>2.什么样的编码具有检错纠错能力</h2><font size = 5>**码距**：任意两个码字之间最少变化的二进制位数</font>
 
