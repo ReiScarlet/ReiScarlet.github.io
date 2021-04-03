@@ -1091,9 +1091,14 @@ pre .javascript .function {
 }
 .header {
   background: transparent;
+/*以下是我自己写的*/
+  background-color: rgba(255,255,255,0.9);
 }
 .header-inner {
   position: relative;
+/*以下是我自己写的*/
+  margin-bottom: 20px;
+  display: flex;
 }
 .headband {
   height: 3px;
@@ -1822,7 +1827,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #2d0dff;
+  background: #c90311;
 }
 .links-of-blogroll {
   font-size: 13px;
