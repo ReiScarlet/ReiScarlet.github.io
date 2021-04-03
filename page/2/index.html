@@ -261,7 +261,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/02/2.2%E7%9F%A9%E9%98%B5%E7%9A%84%E9%80%86/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/02/2.5%E7%9F%A9%E9%98%B5%E5%9B%A0%E5%BC%8F%E5%88%86%E8%A7%A3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -280,7 +280,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2021/04/02/2.2%E7%9F%A9%E9%98%B5%E7%9A%84%E9%80%86/" itemprop="url">2.2矩阵的逆</a></h1>
+                <a class="post-title-link" href="/2021/04/02/2.5%E7%9F%A9%E9%98%B5%E5%9B%A0%E5%BC%8F%E5%88%86%E8%A7%A3/" itemprop="url">2.5矩阵因式分解</a></h1>
         
 
         <div class="post-meta">
@@ -353,14 +353,32 @@
 
       
         
-          <p>矩阵A为n阶方阵，若存在n阶矩阵B，使得矩阵A、B的乘积为单位阵，则称A为可逆阵，B为A的逆矩阵。若方阵的逆阵存在，则称为可逆矩阵或非奇异矩阵，且其逆矩阵唯一。相关定理如下</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2021/04/02/2.2%E7%9F%A9%E9%98%B5%E7%9A%84%E9%80%86/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <span id="more"></span>
+<h2 id="LU分解"><a href="#LU分解" class="headerlink" title="LU分解"></a>LU分解</h2><p>设A是m<em>n矩阵，它可以行化简为阶梯形而<strong>不必行变换</strong>，则A可写成形式$A=LU$，L是m\</em>m<strong>下三角矩阵</strong>，主对角线全是1，U是A得一个m*n<strong>阶梯形矩阵</strong>，这样一个分解称为<strong>LU分解</strong>，矩阵L是可逆的，称为<strong>单位下三角矩阵</strong></p>
+<script type="math/tex; mode=display">
+A = \begin{bmatrix}  
+1 & 0 & 0 & 0 \\
+* & 1 & 0 & 0 \\
+* & * & 1 & 0 \\
+* & * & * & 1
+\end{bmatrix}
+\begin{bmatrix}
+■ & * & * & * & * \\
+0 & ■ & * & * & * \\
+0 & 0 & 0 & ■ & * \\
+0 & 0 & 0 & 0 & 0
+\end{bmatrix}
+\\L\qquad \qquad \qquad \ \ \ \ \ U</script><h2 id="LU分解算法"><a href="#LU分解算法" class="headerlink" title="LU分解算法"></a>LU分解算法</h2><p>设<strong>A</strong>可以化位阶梯形<strong>U</strong>，化简得过程中仅用行倍加变换，即把一行得倍数加于它下面得另一行，这样存在单位下三角初等矩阵$E_1,……E_p$使得$E_p……E_1A = U$,</p>
+<p>于是$A = (E_p……E_1)^{-1}U = LU$</p>
+<p>其中$L = (E_p……E_1)^{-1}$</p>
+<h3 id="具体方法为："><a href="#具体方法为：" class="headerlink" title="具体方法为："></a>具体方法为：</h3><ol>
+<li>先将A化为m*n的阶梯形矩阵</li>
+<li>将A的主元列列出，如果构不成m*m矩阵的话补齐并化为为单位下三角矩阵即可</li>
+</ol>
+<hr>
+<h2 id="习题"><a href="#习题" class="headerlink" title="习题"></a>习题</h2>
+          
         
       
     </div>
@@ -553,7 +571,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/02/2.5%E7%9F%A9%E9%98%B5%E5%9B%A0%E5%BC%8F%E5%88%86%E8%A7%A3/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/02/2.2%E7%9F%A9%E9%98%B5%E7%9A%84%E9%80%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -572,7 +590,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2021/04/02/2.5%E7%9F%A9%E9%98%B5%E5%9B%A0%E5%BC%8F%E5%88%86%E8%A7%A3/" itemprop="url">2.5矩阵因式分解</a></h1>
+                <a class="post-title-link" href="/2021/04/02/2.2%E7%9F%A9%E9%98%B5%E7%9A%84%E9%80%86/" itemprop="url">2.2矩阵的逆</a></h1>
         
 
         <div class="post-meta">
@@ -645,32 +663,14 @@
 
       
         
-          
-            <span id="more"></span>
-<h2 id="LU分解"><a href="#LU分解" class="headerlink" title="LU分解"></a>LU分解</h2><p>设A是m<em>n矩阵，它可以行化简为阶梯形而<strong>不必行变换</strong>，则A可写成形式$A=LU$，L是m\</em>m<strong>下三角矩阵</strong>，主对角线全是1，U是A得一个m*n<strong>阶梯形矩阵</strong>，这样一个分解称为<strong>LU分解</strong>，矩阵L是可逆的，称为<strong>单位下三角矩阵</strong></p>
-<script type="math/tex; mode=display">
-A = \begin{bmatrix}  
-1 & 0 & 0 & 0 \\
-* & 1 & 0 & 0 \\
-* & * & 1 & 0 \\
-* & * & * & 1
-\end{bmatrix}
-\begin{bmatrix}
-■ & * & * & * & * \\
-0 & ■ & * & * & * \\
-0 & 0 & 0 & ■ & * \\
-0 & 0 & 0 & 0 & 0
-\end{bmatrix}
-\\L\qquad \qquad \qquad \ \ \ \ \ U</script><h2 id="LU分解算法"><a href="#LU分解算法" class="headerlink" title="LU分解算法"></a>LU分解算法</h2><p>设<strong>A</strong>可以化位阶梯形<strong>U</strong>，化简得过程中仅用行倍加变换，即把一行得倍数加于它下面得另一行，这样存在单位下三角初等矩阵$E_1,……E_p$使得$E_p……E_1A = U$,</p>
-<p>于是$A = (E_p……E_1)^{-1}U = LU$</p>
-<p>其中$L = (E_p……E_1)^{-1}$</p>
-<h3 id="具体方法为："><a href="#具体方法为：" class="headerlink" title="具体方法为："></a>具体方法为：</h3><ol>
-<li>先将A化为m*n的阶梯形矩阵</li>
-<li>将A的主元列列出，如果构不成m*m矩阵的话补齐并化为为单位下三角矩阵即可</li>
-</ol>
-<hr>
-<h2 id="习题"><a href="#习题" class="headerlink" title="习题"></a>习题</h2>
-          
+          <p>矩阵A为n阶方阵，若存在n阶矩阵B，使得矩阵A、B的乘积为单位阵，则称A为可逆阵，B为A的逆矩阵。若方阵的逆阵存在，则称为可逆矩阵或非奇异矩阵，且其逆矩阵唯一。相关定理如下</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2021/04/02/2.2%E7%9F%A9%E9%98%B5%E7%9A%84%E9%80%86/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
