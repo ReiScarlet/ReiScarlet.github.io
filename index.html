@@ -1160,57 +1160,15 @@
 
       
         
-          
-            <span id="more"></span>
-<h2 id="变补："><a href="#变补：" class="headerlink" title="变补："></a>变补：</h2><font size= 5>$[-Y]_{补}$被称为$[Y]_{补}$的机器负数，由$[Y]_{补}求[-Y]_{补}$的过程称为对[Y]补的变补</font>
-
-<font size= 5>表示为：$[-Y]_{补} = [[Y]_{补}]_{变 补}$</font>
-
-<h3 id="补码与变补的区别"><a href="#补码与变补的区别" class="headerlink" title="补码与变补的区别"></a>补码与变补的区别</h3><font size= 5>一个负数由原码转换为补码时，符号位是不变的，仅对数值求补，而变补则不论这个数的正值是正是负，一律连同符号位取反，末位加1</font>
-
-<hr>
-<font size = 5>在补码的加减法中，若做加法则两数直接相加，若做减法，则将被减数与减数的机器负数相加，运算结果用补码表示</font>
-
-<font size= 5>表示为$[X]_{补} - [Y]_{补} = [X]_{补} + [-Y]_{补} = [X]_{补} + [[Y]_{补}]_{变 补}$</font>
-
-<h3 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h3><font size= 5>最后答案要写出真值</font>
-
-<hr>
-<h3 id="溢出"><a href="#溢出" class="headerlink" title="溢出"></a>溢出</h3><font size=5>若X，Y异号，不会溢出</font>
-
-<font size=5>若X，Y同号，运算结果超出所能表示的范围是，溢出，大于最大正数称为正溢，小于最小负数称之为负溢</font>
-
-<font size=5>**检测溢出**</font>
-
-<font size=5>(1)单符号位：</font>
-
-<font size=5>当两个同号的数值进行加减操作后，所得到的结果的符号位与之不同时，则发生了溢出。</font>
-
-<font size=5>**缺点**：如果符号位的后一位在运算过后产生了进位，可能会影响检测溢出结果的正确性</font>
-
-<font size=5>(2)采用进位位</font>
-
-<font size=5>在考虑了进位对符号位的影响后，进行改进得到的</font>
-
-<font size=5>如果符号位产生进位而最高有效位没有进位时，发生负溢</font>
-
-<font size=5>如果符号位没有进位，而最高有效位发生进位时，发生正溢</font>
-
-<font size=5>(3)采用变形补码(双符号位补码)</font>
-
-<font size=5>双符号位的含义如下：</font>
-
-<font size=5>$S_{S1}S_{S2}=00$,结果为正数，无溢出</font>
-
-<font size=5>$S_{S1}S_{S2}=01$,正溢</font>
-
-<font size=5>$S_{S1}S_{S2}=10$,负溢</font>
-
-<font size=5>$S_{S1}S_{S2}=11$,结果为负数，无溢出</font>
-
-<hr>
-
-          
+          <p>数值运算的核心是指加、减、乘、除四则算术。由于计算机中的数有定点和浮点两种表示形式，因此相应有定点数的运算和浮点数的运算。本文将介绍计算机中定点数的加减法运算过程。</p>
+<p>注意，理解本文的前提是要清楚知道顶点数的源码、反码和补码的含义，以及定点数在计算机中的表示形式。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2021/04/02/%E5%AE%9A%E7%82%B9%E6%95%B0%E7%9A%84%E5%8A%A0%E5%87%8F%E6%B3%95/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
