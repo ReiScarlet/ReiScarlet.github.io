@@ -271,16 +271,12 @@
     <div class="content-article">
         <p>计算机只能识别二进制数，计算机需要处理的数（无符号数，有符号数等）。数据可分为两大类：数值数据，非数值数据。前者数量的多少；后者字符汉字图像等。</p>
 <span id="more"></span>
-<h2 id="原码表示法"><a href="#原码表示法" class="headerlink" title="原码表示法"></a>原码表示法</h2><font size="5">$[X]_原 = \left\{\begin{aligned}\begin{equation} X, 2^n > X\ge 0  \\
-2^n-X, 0\ge X>-2^n \end{equation}\end{aligned}
-\right.$</font>
-
+<h2 id="原码表示法"><a href="#原码表示法" class="headerlink" title="原码表示法"></a>原码表示法</h2><p>$[X]_原 = \left\{\begin{aligned}\begin{equation} X, \qquad 2^n &gt; X\ge 0  \\<br>2^n-X, 0\ge X&gt;-2^n \end{equation}\end{aligned}<br>\right.$</p>
 <font size="5">其中n为小数点前的位数，小数时n=0</font>
 
 <hr>
 <h2 id="补码表示法"><a href="#补码表示法" class="headerlink" title="补码表示法"></a>补码表示法</h2><h4 id="模：一个字长为n-1位的纯整数的溢出量为-2-n-1-，即是以-2-n-1-模。一个纯小数的溢出量为2"><a href="#模：一个字长为n-1位的纯整数的溢出量为-2-n-1-，即是以-2-n-1-模。一个纯小数的溢出量为2" class="headerlink" title="模：一个字长为n+1位的纯整数的溢出量为$2^{n+1}$，即是以$2^{n+1}$模。一个纯小数的溢出量为2"></a>模：一个字长为n+1位的纯整数的溢出量为$2^{n+1}$，即是以$2^{n+1}$模。一个纯小数的溢出量为2</h4><h4 id="同余：两个整数A，B除于同一个整数M，所得余数相同，称A和B对模M同余"><a href="#同余：两个整数A，B除于同一个整数M，所得余数相同，称A和B对模M同余" class="headerlink" title="同余：两个整数A，B除于同一个整数M，所得余数相同，称A和B对模M同余"></a>同余：两个整数A，B除于同一个整数M，所得余数相同，称A和B对模M同余</h4><p>只要确定了一个模，就可以找到一个与负数等价的正数来替代此负数，而这个正数可以用模加上负数本身求得，这样就可把减法运算用加法实现了</p>
-<font size="5"> $[X]_补 =\left\{\begin{aligned}\begin{equation} X, 1 > X \ge 0 \\ 2^{n+1} + X, 0 > X \ge -1(mod2)  \end{equation}\end{aligned}\right.$ </font>
-
+<p>$[X]_补 =\left\{\begin{aligned}\begin{equation} X, \qquad\quad 1 &gt; X \ge 0 \\ 2^{n+1} + X, 0 &gt; X \ge -1(mod2)  \end{equation}\end{aligned}\right.$ </p>
 <p>小数n=0</p>
 <h4 id="补码快捷方式：数值部分按位取反，末尾加1，符号位不变"><a href="#补码快捷方式：数值部分按位取反，末尾加1，符号位不变" class="headerlink" title="补码快捷方式：数值部分按位取反，末尾加1，符号位不变"></a>补码快捷方式：数值部分按位取反，末尾加1，符号位不变</h4><hr>
 <h2 id="定点表示法"><a href="#定点表示法" class="headerlink" title="定点表示法"></a>定点表示法</h2><p>小数点的位置固定为最高有效位之前，符号位之后，记为$X_s.X_1X_2…X_n$ </p>
@@ -294,12 +290,8 @@
 <h4 id="补码表示的最小负数为：-X-最大负数-1"><a href="#补码表示的最小负数为：-X-最大负数-1" class="headerlink" title="补码表示的最小负数为：$X_{最大负数} = -1$"></a>补码表示的最小负数为：$X_{最大负数} = -1$</h4><h4 id="整数和上面同理"><a href="#整数和上面同理" class="headerlink" title="整数和上面同理"></a>整数和上面同理</h4><p><strong>在这里，为什么最大负数为-1？，在补码中，零具有唯一确定性，补码比原码少一个-0的表示，多一个-1的表示以及整数表示范围多了一个$-2^{n}$ </strong></p>
 <hr>
 <h2 id="移码"><a href="#移码" class="headerlink" title="移码"></a>移码</h2><p>由于补码很难直接判断真值大小，因为如果一个负数和正数比较会出现$[+21]_{补}=010101$和$[-21]_{补}=101011$比较出现$010101$小于$101011$的结果，然而实际上真值是$+21$大于$-21$，此时我们可以将所有的数往正数方向偏移一定的量，使得负数为正，再来比较数值的就不会出错</p>
-<h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><font size="5">$[X]_{移} = 2^n + X(2^n>X\ge -2^n)$</font>
-
-
-
-<font size="5">$[X]_{移} = [X]_{补} + 2^n$</font>
-
+<h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>$[X]_{移} = 2^n + X(2^n&gt;X\ge -2^n)$</p>
+<p>$[X]_{移} = [X]_{补} + 2^n$</p>
 
     </div>
 </article>
@@ -432,13 +424,7 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/04/4.2%20PPP%E5%8D%8F%E8%AE%AE/">4.2 PPP协议</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2021/04/02/2.3%E5%8F%AF%E9%80%86%E7%9F%A9%E9%98%B5%E7%9A%84%E7%89%B9%E5%BE%81/">2.3可逆矩阵的特征</a>
+                    <a href="/2021/04/04/IPv4%E9%A6%96%E9%83%A8%E6%A0%BC%E5%BC%8F/">4.3-1 IPv4数据报</a>
                 </span>
             </li>
             
@@ -450,25 +436,25 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E4%BC%A0%E8%BE%93%E6%96%B9%E5%BC%8F/">传输方式</a>
+                    <a href="/2021/04/02/%E4%B9%A0%E9%A2%98/">第三章部分习题</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E4%BF%A1%E9%81%93%E6%9E%81%E9%99%90%E5%AE%B9%E9%87%8F/">信道极限容量</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2021/04/02/%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B/">参考模型</a>
+                    <a href="/2021/04/02/%E4%BC%A0%E8%BE%93%E5%AA%92%E4%BB%8B/">传输媒介</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
                     <a href="/2021/04/02/%E5%AE%9A%E7%82%B9%E6%95%B0%E7%9A%84%E5%8A%A0%E5%87%8F%E6%B3%95/">定点数的加减法</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2021/04/02/%E6%95%B0%E6%8D%AE%E6%A0%A1%E9%AA%8C%E7%A0%81/">数据校验码</a>
                 </span>
             </li>
             
@@ -481,6 +467,12 @@
             <li class="list-group-item">
                 <span class="post-title">
                     <a href="/2021/04/02/%E7%89%A9%E7%90%86%E5%B1%82/">物理层</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2021/04/02/%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87/">网络设备</a>
                 </span>
             </li>
             
@@ -513,19 +505,19 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/%E7%9F%A9%E9%98%B5%E4%BB%A3%E6%95%B0/" style="font-size: 14.779589342882996px;" class="tag-cloud-link">矩阵代数</a>
+    <a href="/tags/%E7%9F%A9%E9%98%B5%E4%BB%A3%E6%95%B0/" style="font-size: 9.145601579306298px;" class="tag-cloud-link">矩阵代数</a>
     
-    <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 13.170026508013262px;" class="tag-cloud-link">IP网络协议</a>
+    <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 16.07954094008507px;" class="tag-cloud-link">IP网络协议</a>
     
-    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 8.760213756172273px;" class="tag-cloud-link">网络传输、设备与企业网架构</a>
+    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 11.1744908816158px;" class="tag-cloud-link">网络传输、设备与企业网架构</a>
     
-    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 8.968323827704587px;" class="tag-cloud-link">网络体系架构与网络协议</a>
+    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 15.594411331593424px;" class="tag-cloud-link">网络体系架构与网络协议</a>
     
-    <a href="/tags/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" style="font-size: 15.739873358082946px;" class="tag-cloud-link">运算方法和运算器</a>
+    <a href="/tags/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" style="font-size: 19.80956902912763px;" class="tag-cloud-link">运算方法和运算器</a>
     
-    <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 14.430863219468767px;" class="tag-cloud-link">笔记</a>
+    <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 14.965882495787351px;" class="tag-cloud-link">笔记</a>
     
-    <a href="/tags/%E4%B9%A0%E9%A2%98/" style="font-size: 16.74492204915238px;" class="tag-cloud-link">习题</a>
+    <a href="/tags/%E4%B9%A0%E9%A2%98/" style="font-size: 13.01045945430106px;" class="tag-cloud-link">习题</a>
     
 </div>
                 
