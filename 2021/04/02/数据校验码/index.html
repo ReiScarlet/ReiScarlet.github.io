@@ -263,50 +263,50 @@
     <div class="content-article">
         <p>数据校验是为保证数据的完整性进行的一种验证操作。通常用一种指定的算法对<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/原始数据/10119290">原始数据</a>计算出的一个校验值，接收方用同样的算法计算一次校验值，如果两次计算得到的检验值相同，则说明数据是完整的</p>
 <span id="more"></span>
-<h2 id="1-什么是错误"><a href="#1-什么是错误" class="headerlink" title="1.什么是错误"></a>1.什么是错误</h2><font size = 5 color = red>$1$变成$0$，$0$变成$1$</font>
+<h2 id="1-什么是错误"><a href="#1-什么是错误" class="headerlink" title="1.什么是错误"></a>1.什么是错误</h2><font size="5" color="red">$1$变成$0$，$0$变成$1$</font>
 
-<h2 id="2-什么样的编码具有检错纠错能力"><a href="#2-什么样的编码具有检错纠错能力" class="headerlink" title="2.什么样的编码具有检错纠错能力"></a>2.什么样的编码具有检错纠错能力</h2><font size = 5>**码距**：任意两个码字之间最少变化的二进制位数</font>
+<h2 id="2-什么样的编码具有检错纠错能力"><a href="#2-什么样的编码具有检错纠错能力" class="headerlink" title="2.什么样的编码具有检错纠错能力"></a>2.什么样的编码具有检错纠错能力</h2><font size="5">**码距**：任意两个码字之间最少变化的二进制位数</font>
 
-<font size = 5 style="font-weight:bold">具有检错纠错能力的数据校验码的实现原理是：在编码中，除去合法的码字，再加进一些非法的码字，当某个合法的码字出现错误时，就变成非法码字</font>
+<font size="5" style="font-weight:bold">具有检错纠错能力的数据校验码的实现原理是：在编码中，除去合法的码字，再加进一些非法的码字，当某个合法的码字出现错误时，就变成非法码字</font>
 
-<font size = 5 color = "red">**对于码距≥2的数据校验码，开始具有检错能力，码距越大，检、纠错能力就越强，而且检错能力总大于或等于纠错能力**</font>
+<font size="5" color="red">**对于码距≥2的数据校验码，开始具有检错能力，码距越大，检、纠错能力就越强，而且检错能力总大于或等于纠错能力**</font>
 
-<h2 id="3-如何发现错误"><a href="#3-如何发现错误" class="headerlink" title="3.如何发现错误"></a>3.如何发现错误</h2><h3 id="奇偶校验码"><a href="#奇偶校验码" class="headerlink" title="奇偶校验码"></a>奇偶校验码</h3><font size = 5>校验位的取值（0或1）将使得整个校验码中"1"的个数为奇数或偶数：</font>
+<h2 id="3-如何发现错误"><a href="#3-如何发现错误" class="headerlink" title="3.如何发现错误"></a>3.如何发现错误</h2><h3 id="奇偶校验码"><a href="#奇偶校验码" class="headerlink" title="奇偶校验码"></a>奇偶校验码</h3><font size="5">校验位的取值（0或1）将使得整个校验码中"1"的个数为奇数或偶数：</font>
 
 <ol>
-<li><font size = 5>奇校验——使得整个校验码中"1"的个数为**奇数**</font></li>
-<li><font size= 5>偶校验——使得整个校验码中"1"的个数为**偶数**</font></li>
-<li><font size = 5>**交叉奇偶校验：传送数据块时，不仅每个字节有一个奇偶校验做横向校验，而且全部字节的同一位也设置一个奇偶校验做纵向校验**</font>
+<li><font size="5">奇校验——使得整个校验码中"1"的个数为**奇数**</font></li>
+<li><font size="5">偶校验——使得整个校验码中"1"的个数为**偶数**</font></li>
+<li><font size="5">**交叉奇偶校验：传送数据块时，不仅每个字节有一个奇偶校验做横向校验，而且全部字节的同一位也设置一个奇偶校验做纵向校验**</font>
 
 </li>
 </ol>
-<h2 id="4-如何确定错误的位置"><a href="#4-如何确定错误的位置" class="headerlink" title="4. 如何确定错误的位置"></a>4. 如何确定错误的位置</h2><h3 id="海明校验码"><a href="#海明校验码" class="headerlink" title="海明校验码"></a>海明校验码</h3><font size = 5>校验位K，信息位N，则$2^{K+1} \ge N+K+1 $</font>
+<h2 id="4-如何确定错误的位置"><a href="#4-如何确定错误的位置" class="headerlink" title="4. 如何确定错误的位置"></a>4. 如何确定错误的位置</h2><h3 id="海明校验码"><a href="#海明校验码" class="headerlink" title="海明校验码"></a>海明校验码</h3><font size="5">校验位K，信息位N，则$2^{K+1} \ge N+K+1 $</font>
 
-<font size = 5>(1)编码</font>
+<font size="5">(1)编码</font>
 
-<font size = 5>一个字节由8位二进制位组成，此时N=8， K=5，故海明码总位数为N+K=13，表示为：$H_{13}\ H_{12}...H_{2}\ H_{1}$</font>
+<font size="5">一个字节由8位二进制位组成，此时N=8， K=5，故海明码总位数为N+K=13，表示为：$H_{13}\ H_{12}...H_{2}\ H_{1}$</font>
 
-<font size = 5>五个校验位$P_5~P_1$对应的海明码位为:$H_{13}、H_{8}、H_{4}、H_{2}、H_{1}$,除$P_5$外其余四位满足$P_i中i等于2^{i-1}$的关系，而$P_5$只能放在$H_{13}$</font>
+<font size="5">五个校验位$P_5~P_1$对应的海明码位为:$H_{13}、H_{8}、H_{4}、H_{2}、H_{1}$,除$P_5$外其余四位满足$P_i中i等于2^{i-1}$的关系，而$P_5$只能放在$H_{13}$</font>
 
-<p><img src="C:\Users\Reimilia Scarlet\AppData\Roaming\Typora\typora-user-images\image-20210331153752666.png" alt="image-20210331153752666"></p>
-<font size= 5>P_1校验的是$D_1、D_2、D_4、D_5、D_7$，对应的海明码为$H_1(1),H_5(4+1),H_7(4+2+1),H_9(8+1),H_{11}(8+2+1)$,化位二进制就会发现，都有一个$XXXXXXX1$的形式，也就是说$P_i$校验的是二进制中权值为i的位数值为1的那些位数$(D_{位数})$,P2,P3,P4,P5同理</font>
+<p><img src="/2021/04/02/%E6%95%B0%E6%8D%AE%E6%A0%A1%E9%AA%8C%E7%A0%81/githubBox\blog\source\images\image-20210331153752666.png" alt="image-20210331153752666"></p>
+<font size="5">P_1校验的是$D_1、D_2、D_4、D_5、D_7$，对应的海明码为$H_1(1),H_5(4+1),H_7(4+2+1),H_9(8+1),H_{11}(8+2+1)$,化位二进制就会发现，都有一个$XXXXXXX1$的形式，也就是说$P_i$校验的是二进制中权值为i的位数值为1的那些位数$(D_{位数})$,P2,P3,P4,P5同理</font>
 
-<font size = 5>则$P_1=D_1\oplus D_2\oplus D_4\oplus D_5\oplus D_7$，用同样的方法将其他$P_i$求出</font>
+<font size="5">则$P_1=D_1\oplus D_2\oplus D_4\oplus D_5\oplus D_7$，用同样的方法将其他$P_i$求出</font>
 
-<font size = 5>(2)校验</font>
+<font size="5">(2)校验</font>
 
-<font size = 5>将接收到的海明码按如下关系进行偶校验：</font>
+<font size="5">将接收到的海明码按如下关系进行偶校验：</font>
 
-<font size = 5>如右所示：$S_1=P_1\oplus D_1\oplus D_2\oplus D_4\oplus D_5\oplus D_7$ ，即将$P_1$和对应的$D_i$进行异或算出结国</font>
+<font size="5">如右所示：$S_1=P_1\oplus D_1\oplus D_2\oplus D_4\oplus D_5\oplus D_7$ ，即将$P_1$和对应的$D_i$进行异或算出结国</font>
 
-<font size = 5>然后依次求出$S_2\ S_3\ S_4\ S_5$</font>
+<font size="5">然后依次求出$S_2\ S_3\ S_4\ S_5$</font>
 
-<p><strong><font size= 5>① 如果$S_5 \sim S_1为00000$时，表明无错</font></strong></p>
-<font size = 5>② 如果$S_5 \sim S_1$仅有一位不为$0$，表明是某一位校验位出错或三位海明码同时出错</font>
+<p><strong><font size="5">① 如果$S_5 \sim S_1为00000$时，表明无错</font></strong></p>
+<font size="5">② 如果$S_5 \sim S_1$仅有一位不为$0$，表明是某一位校验位出错或三位海明码同时出错</font>
 
-<font size= 5>③ 如果$S_5 \sim S_1 $有两位不为$0$，表明是两位海明码同时出错，但无法确定出错位置</font>
+<font size="5">③ 如果$S_5 \sim S_1 $有两位不为$0$，表明是两位海明码同时出错，但无法确定出错位置</font>
 
-<p><strong><font size = 5 color = "red">④ 如果$S_5 \sim S_1$有三位不为$0$，表明是一位信息位出错或三位校验位同时出错，出错位置由$S_4 \sim S_1 $四位编码指明</font></strong></p>
+<p><strong><font size="5" color="red">④ 如果$S_5 \sim S_1$有三位不为$0$，表明是一位信息位出错或三位校验位同时出错，出错位置由$S_4 \sim S_1 $四位编码指明</font></strong></p>
 
     </div>
 </article>
@@ -433,6 +433,12 @@
             
             <li class="list-group-item">
                 <span class="post-title">
+                    <a href="/2021/04/02/2.3%E5%8F%AF%E9%80%86%E7%9F%A9%E9%98%B5%E7%9A%84%E7%89%B9%E5%BE%81/">2.3可逆矩阵的特征</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
                     <a href="/2021/04/02/2.2%E7%9F%A9%E9%98%B5%E7%9A%84%E9%80%86/">2.2矩阵的逆</a>
                 </span>
             </li>
@@ -445,7 +451,13 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/04/4.1%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E8%BF%87%E7%A8%8B%E5%8F%8A%E4%BB%A5%E5%A4%AA%E7%BD%91%E5%B8%A7%E7%BB%93%E6%9E%84/">4.1数据传输过程及以太网帧结构</a>
+                    <a href="/2021/04/04/4.2%20PPP%E5%8D%8F%E8%AE%AE/">4.2 PPP协议</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2021/04/02/hello-world/">Hello World</a>
                 </span>
             </li>
             
@@ -457,13 +469,7 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B/">参考模型</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2021/04/02/%E4%BC%A0%E8%BE%93%E5%AA%92%E4%BB%8B/">传输媒介</a>
+                    <a href="/2021/04/02/%E4%BC%A0%E8%BE%93%E6%96%B9%E5%BC%8F/">传输方式</a>
                 </span>
             </li>
             
@@ -481,13 +487,7 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E6%B1%A0%E5%8C%96%E5%B1%82/">池化层</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2021/04/04/IPv4%E9%A6%96%E9%83%A8%E6%A0%BC%E5%BC%8F/">4.3-1 IPv4数据报</a>
+                    <a href="/2021/04/02/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%E4%B8%8E%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">网络协议与网络体系结构</a>
                 </span>
             </li>
             
@@ -520,15 +520,15 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/%E7%9F%A9%E9%98%B5%E4%BB%A3%E6%95%B0/" style="font-size: 19.914564330480594px;" class="tag-cloud-link">矩阵代数</a>
+    <a href="/tags/%E7%9F%A9%E9%98%B5%E4%BB%A3%E6%95%B0/" style="font-size: 9.824462358679403px;" class="tag-cloud-link">矩阵代数</a>
     
-    <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 9.60424770234034px;" class="tag-cloud-link">IP网络协议</a>
+    <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 11.677932752278025px;" class="tag-cloud-link">IP网络协议</a>
     
-    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 12.534381967145453px;" class="tag-cloud-link">网络传输、设备与企业网架构</a>
+    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 12.626417216956636px;" class="tag-cloud-link">网络传输、设备与企业网架构</a>
     
-    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 12.824348653182428px;" class="tag-cloud-link">网络体系架构与网络协议</a>
+    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 9.978858032914172px;" class="tag-cloud-link">网络体系架构与网络协议</a>
     
-    <a href="/tags/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" style="font-size: 15.71708102678172px;" class="tag-cloud-link">运算方法和运算器</a>
+    <a href="/tags/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" style="font-size: 15.702677619693151px;" class="tag-cloud-link">运算方法和运算器</a>
     
 </div>
                 
