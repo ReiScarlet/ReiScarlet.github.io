@@ -12,7 +12,7 @@
     
     
     
-    <title>categories: 卷积神经网络 | Reimilia</title>
+    <title>4.2 PPP协议 | Reimilia</title>
     <link href="http://example.com" rel="prefetch" />
 
     
@@ -200,19 +200,34 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 gal-right" id="mainstay">
-                    <article class="article well article-body" id="article-category">
+                    
+<article class="article well article-body" id="article">
     <div class="breadcrumb">
         <i class="fa fa-home"></i>
         <a href="http://example.com">Reimilia</a>
         >
-        <span>目录</span>
+        <span>4.2 PPP协议</span>
     </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/categories/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/index.html">卷积神经网络</a>
+                <a href="/2021/04/04/4.2%20PPP%E5%8D%8F%E8%AE%AE/">4.2 PPP协议</a>
             </h1>
+        </div>
+        <div class="tag-article">
+            
+            <span class="label label-gal">
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/">IP网络协议</a>
+                
+            </span>
+            
+            <span class="label label-gal">
+                <i class="fa fa-calendar"></i> 2021-04-04
+            </span>
+            
         </div>
     </div>
     <!-- 小型设备详细文章 -->
@@ -220,27 +235,86 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/categories/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/index.html">卷积神经网络</a>
+                    <a href="/2021/04/04/4.2%20PPP%E5%8D%8F%E8%AE%AE/">4.2 PPP协议</a>
                 </h4>
             </div>
+            <p>
+                <i class="fa fa-calendar"></i> 2021-04-04
+            </p>
+            <p>
+                
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/">IP网络协议</a>
+                
+                
+                
+            </p>
         </center>
     </div>
-    <div class="content-article" style="margin-top: 30px;">
-        <div class="alert alert-info" style="font-size: 14px; line-height: 2; font-weight: bold;">
-            
-            <a href="/2021/04/02/%E5%BC%A0%E9%87%8FTensor/">张量Tensor</a>
-            <br>
-            
-            <a href="/2021/04/02/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">卷积神经网络基础</a>
-            <br>
-            
-            <a href="/2021/04/02/%E6%B1%A0%E5%8C%96%E5%B1%82/">池化层</a>
-            <br>
-            
-            
-        </div>
+    <div class="content-article">
+        <p>PPP(Point-to-Point Protocol, P2P)是目前使用最广泛的点对点数据链路层协议</p>
+<p>PPP主要由以下三部分组成：</p>
+<ol>
+<li>对各种协议的数据报的封装方法</li>
+<li>链路控制协议LCP，用于建立、配置以及测试数据链路的连接</li>
+<li>一套网络控制协议NCPs，对每一个协议支持不同的网络协议</li>
+</ol>
+<span id="more"></span>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th>PPP帧的格式</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1字节</td>
+<td>1字节</td>
+<td>1字节</td>
+<td>2节</td>
+<td>不超过1500字节</td>
+<td>2字节</td>
+<td>1字节</td>
+</tr>
+<tr>
+<td>标志</td>
+<td>地址</td>
+<td>控制</td>
+<td>协议</td>
+<td>数据载荷</td>
+<td>FCS</td>
+<td>标志</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>标志(Flag):PPP帧的定界符，取值为0x7E</p>
+<p>地址(Address)：取值为0xFF,预留</p>
+<p>控制(Control)：取值为0x03，预留</p>
+<p>协议(Protocol)：指明帧的数据部分送交哪个协议处理：</p>
+<ol>
+<li>取值0x0021：帧的数据部分为IP数据报</li>
+<li>取值0xC021：帧的数据部分为LCP分组</li>
+<li>取值0x8021：帧的数据部分为NCP分组</li>
+</ol>
+<p>帧检测序列(FCS, Frame Check Sequence)：CRC计算出的校验码</p>
+<hr>
+<p>PPP协议的工作状态：</p>
+<p><img src="C:\Users\Reimilia Scarlet\AppData\Roaming\Typora\typora-user-images\image-20210404111039724.png" alt="image-20210404111039724"></p>
+<p>注意：PAP认证过程是两次握手，而CHAP认证是3次握手，CHAP认证比PAP认证的安全性高</p>
+
     </div>
 </article>
+
+
                 </div>
                 <aside class="col-md-4 gal-left" id="sidebar">
     <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
@@ -380,19 +454,25 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/2.2%E7%9F%A9%E9%98%B5%E7%9A%84%E9%80%86/">2.2矩阵的逆</a>
+                    <a href="/2021/04/02/2.3%E5%8F%AF%E9%80%86%E7%9F%A9%E9%98%B5%E7%9A%84%E7%89%B9%E5%BE%81/">2.3可逆矩阵的特征</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/hello-world/">Hello World</a>
+                    <a href="/2021/04/02/%E4%BF%A1%E9%81%93%E6%9E%81%E9%99%90%E5%AE%B9%E9%87%8F/">信道极限容量</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">卷积神经网络基础</a>
+                    <a href="/2021/04/02/%E4%BC%A0%E8%BE%93%E5%AA%92%E4%BB%8B/">传输媒介</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2021/04/02/%E4%BC%A0%E8%BE%93%E6%96%B9%E5%BC%8F/">传输方式</a>
                 </span>
             </li>
             
@@ -410,25 +490,19 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B/">参考模型</a>
+                    <a href="/2021/04/02/%E5%AE%9A%E7%82%B9%E6%95%B0%E7%9A%84%E5%8A%A0%E5%87%8F%E6%B3%95/">定点数的加减法</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E7%BC%96%E7%A0%81%E4%B8%8E%E8%B0%83%E5%88%B6/">编码与调制</a>
+                    <a href="/2021/04/02/%E6%95%B0%E6%8D%AE%E6%A0%A1%E9%AA%8C%E7%A0%81/">数据校验码</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%E4%B8%8E%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">网络协议与网络体系结构</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2021/04/02/%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87/">网络设备</a>
+                    <a href="/2021/04/02/%E6%B1%A0%E5%8C%96%E5%B1%82/">池化层</a>
                 </span>
             </li>
             
@@ -443,17 +517,17 @@
 
                 
                 <li>
-                    <a href="/categories/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/2021/04/04/4.2%20PPP%E5%8D%8F%E8%AE%AE/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/categories/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/2021/04/04/4.2%20PPP%E5%8D%8F%E8%AE%AE/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/categories/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/2021/04/04/4.2%20PPP%E5%8D%8F%E8%AE%AE/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
                 
             </ul>
@@ -461,15 +535,15 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/%E7%9F%A9%E9%98%B5%E4%BB%A3%E6%95%B0/" style="font-size: 8.92636986330283px;" class="tag-cloud-link">矩阵代数</a>
+    <a href="/tags/%E7%9F%A9%E9%98%B5%E4%BB%A3%E6%95%B0/" style="font-size: 11.123934242209819px;" class="tag-cloud-link">矩阵代数</a>
     
-    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 19.67179705281198px;" class="tag-cloud-link">网络传输、设备与企业网架构</a>
+    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 14.694445880722458px;" class="tag-cloud-link">网络传输、设备与企业网架构</a>
     
-    <a href="/tags/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" style="font-size: 11.691226930441168px;" class="tag-cloud-link">运算方法和运算器</a>
+    <a href="/tags/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" style="font-size: 17.981979030332912px;" class="tag-cloud-link">运算方法和运算器</a>
     
-    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 18.998053116042264px;" class="tag-cloud-link">网络体系架构与网络协议</a>
+    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 17.62713850622892px;" class="tag-cloud-link">网络体系架构与网络协议</a>
     
-    <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 12.171920760288248px;" class="tag-cloud-link">IP网络协议</a>
+    <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 9.72493110619407px;" class="tag-cloud-link">IP网络协议</a>
     
 </div>
                 
