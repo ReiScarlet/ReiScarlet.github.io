@@ -100,7 +100,7 @@
     root: '',
     scheme: 'Muse',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"remove","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -469,6 +469,127 @@
 
 
         </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/head.jpg"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E7%A0%81%E8%A1%A8%E7%A4%BA%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">原码表示法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A1%A5%E7%A0%81%E8%A1%A8%E7%A4%BA%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">补码表示法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A8%A1%EF%BC%9A%E4%B8%80%E4%B8%AA%E5%AD%97%E9%95%BF%E4%B8%BAn-1%E4%BD%8D%E7%9A%84%E7%BA%AF%E6%95%B4%E6%95%B0%E7%9A%84%E6%BA%A2%E5%87%BA%E9%87%8F%E4%B8%BA-2-n-1-%EF%BC%8C%E5%8D%B3%E6%98%AF%E4%BB%A5-2-n-1-%E6%A8%A1%E3%80%82%E4%B8%80%E4%B8%AA%E7%BA%AF%E5%B0%8F%E6%95%B0%E7%9A%84%E6%BA%A2%E5%87%BA%E9%87%8F%E4%B8%BA2"><span class="nav-number">2.0.1.</span> <span class="nav-text">模：一个字长为n+1位的纯整数的溢出量为$2^{n+1}$，即是以$2^{n+1}$模。一个纯小数的溢出量为2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%8C%E4%BD%99%EF%BC%9A%E4%B8%A4%E4%B8%AA%E6%95%B4%E6%95%B0A%EF%BC%8CB%E9%99%A4%E4%BA%8E%E5%90%8C%E4%B8%80%E4%B8%AA%E6%95%B4%E6%95%B0M%EF%BC%8C%E6%89%80%E5%BE%97%E4%BD%99%E6%95%B0%E7%9B%B8%E5%90%8C%EF%BC%8C%E7%A7%B0A%E5%92%8CB%E5%AF%B9%E6%A8%A1M%E5%90%8C%E4%BD%99"><span class="nav-number">2.0.2.</span> <span class="nav-text">同余：两个整数A，B除于同一个整数M，所得余数相同，称A和B对模M同余</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A1%A5%E7%A0%81%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F%EF%BC%9A%E6%95%B0%E5%80%BC%E9%83%A8%E5%88%86%E6%8C%89%E4%BD%8D%E5%8F%96%E5%8F%8D%EF%BC%8C%E6%9C%AB%E5%B0%BE%E5%8A%A01%EF%BC%8C%E7%AC%A6%E5%8F%B7%E4%BD%8D%E4%B8%8D%E5%8F%98"><span class="nav-number">2.0.3.</span> <span class="nav-text">补码快捷方式：数值部分按位取反，末尾加1，符号位不变</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E7%82%B9%E8%A1%A8%E7%A4%BA%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">定点表示法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%80%E5%A4%A7%E6%AD%A3%E6%95%B0%E4%B8%BA%EF%BC%9A-X-%E6%9C%80%E5%A4%A7%E6%AD%A3%E6%95%B0-1-2-n"><span class="nav-number">3.0.1.</span> <span class="nav-text">最大正数为：$X_{最大正数} &#x3D; (1 - 2^{-n})$</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%80%E5%B0%8F%E6%AD%A3%E6%95%B0%E4%B8%BA%EF%BC%9A-X-%E6%9C%80%E5%B0%8F%E6%AD%A3%E6%95%B0-2-n"><span class="nav-number">3.0.2.</span> <span class="nav-text">最小正数为：$ X_{最小正数}&#x3D;2^{-n}$ </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8E%9F%E7%A0%81%E8%A1%A8%E7%A4%BA%E6%9C%80%E5%B0%8F%E8%B4%9F%E6%95%B0%E4%B8%BA%EF%BC%9A-X-%E6%9C%80%E5%B0%8F%E8%B4%9F%E6%95%B0-1-2-n"><span class="nav-number">3.0.3.</span> <span class="nav-text">原码表示最小负数为：$X_{最小负数} &#x3D; -(1-2^{-n})$</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A1%A5%E7%A0%81%E8%A1%A8%E7%A4%BA%E7%9A%84%E6%9C%80%E5%B0%8F%E8%B4%9F%E6%95%B0%E4%B8%BA%EF%BC%9A-X-%E6%9C%80%E5%A4%A7%E8%B4%9F%E6%95%B0-1"><span class="nav-number">3.0.4.</span> <span class="nav-text">补码表示的最小负数为：$X_{最大负数} &#x3D; -1$</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B4%E6%95%B0%E5%92%8C%E4%B8%8A%E9%9D%A2%E5%90%8C%E7%90%86"><span class="nav-number">3.0.5.</span> <span class="nav-text">整数和上面同理</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A7%BB%E7%A0%81"><span class="nav-number">4.</span> <span class="nav-text">移码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">4.0.1.</span> <span class="nav-text">定义</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+      <div>
+        
+          <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1337010074&auto=1&height=66"></iframe>
+        
+      </div>
+    </div>
+  </aside>
+
+
         
       </div>
     </main>
