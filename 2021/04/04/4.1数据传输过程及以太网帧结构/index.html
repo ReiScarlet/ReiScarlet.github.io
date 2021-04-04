@@ -136,7 +136,7 @@
                         </li>
                         
                         <li>
-                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a>
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%AC%AC%E5%9B%9B%E7%AB%A0/">第四章</a>
                         </li>
                         
                         <li>
@@ -144,7 +144,7 @@
                         </li>
                         
                         <li>
-                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%AC%AC%E5%9B%9B%E7%AB%A0/">第四章</a>
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a>
                         </li>
                         
                         
@@ -299,7 +299,7 @@
 <p><strong>如何区分两种协议</strong>：</p>
 <script type="math/tex; mode=display">
 Length/Type \ge 1536(0x0600) \quad Ethernet II \\
-Length/Type \le 1500(0x05DC) \quad IEEE 802.3</script><font size = 5>**目前以太网大多数数据帧使用的Ethernet II格式**</font>
+Length/Type \le 1500(0x05DC) \quad IEEE 802.3</script><font size="5">**目前以太网大多数数据帧使用的Ethernet II格式**</font>
 
 <p>以太网在数据链路层通过MAC地址来唯一识别网络设备，并且实现局域网上网络设备之间的通信。</p>
 <p>MAC地址也叫物理地址、硬件地址，大多数网卡厂商把MAC地址烧入网卡的ROM中，网络设备的MAC地址是全球唯一的</p>
@@ -315,7 +315,7 @@ Length/Type \le 1500(0x05DC) \quad IEEE 802.3</script><font size = 5>**目前以
 <li>帧头和帧尾包含有重要的控制信息</li>
 <li>帧头和帧尾的作用之一就是</li>
 </ol>
-<p>以太网通过增加<font color=red><strong>前同步码</strong></font>和<font color=red><strong>帧开始定界符</strong></font>来标识一个帧的开始和结束</p>
+<p>以太网通过增加<font color="red"><strong>前同步码</strong></font>和<font color="red"><strong>帧开始定界符</strong></font>来标识一个帧的开始和结束</p>
 <p>在传输媒体上实际传送的要比MAC帧还要多8个字节(由硬件生成)。这8个字节由两个字段构成，第一个字段是7个字节的前同步码(1和0交替码)。第二个字段是帧开始定界符，定义为10101011</p>
 <p>以太网帧校验采用CRC校验</p>
 <p>由于以太网规定了帧间间隔时间96比特的发送时间，因此MAC帧不需要帧结束定界符</p>
@@ -401,7 +401,7 @@ G(x) &= x^4 + x^2 + x + 1 \\
 <li>检查余数：余数的位数与多项式最高次数相同，位数不同则补0</li>
 </ol>
 <p>例如：待发送信息为101001，生成多项式$G(x)=x^3+x^2+1$</p>
-<font size = 5>无法纠正错误，检错能力很好，计算复杂但易于用硬件实现，纠错码开销较大，计算机网络较少使用</font>
+<font size="5">无法纠正错误，检错能力很好，计算复杂但易于用硬件实现，纠错码开销较大，计算机网络较少使用</font>
 
 <hr>
 
@@ -508,7 +508,7 @@ G(x) &= x^4 + x^2 + x + 1 \\
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/2.3%E5%8F%AF%E9%80%86%E7%9F%A9%E9%98%B5%E7%9A%84%E7%89%B9%E5%BE%81/">2.3可逆矩阵的特征</a>
+                    <a href="/2021/04/02/2.5%E7%9F%A9%E9%98%B5%E5%9B%A0%E5%BC%8F%E5%88%86%E8%A7%A3/">2.5矩阵因式分解</a>
                 </span>
             </li>
             
@@ -530,7 +530,25 @@ G(x) &= x^4 + x^2 + x + 1 \\
             
             <li class="list-group-item">
                 <span class="post-title">
+                    <a href="/2021/04/02/2.1%E7%9F%A9%E9%98%B5%E8%BF%90%E7%AE%97/">2.1矩阵运算习题</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2021/04/02/2.2%E7%9F%A9%E9%98%B5%E7%9A%84%E9%80%86/">2.2矩阵的逆</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
                     <a href="/2021/04/04/4.2%20PPP%E5%8D%8F%E8%AE%AE/">4.2 PPP协议</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2021/04/04/IPv4%E9%A6%96%E9%83%A8%E6%A0%BC%E5%BC%8F/">4.3-1 IPv4数据报</a>
                 </span>
             </li>
             
@@ -542,37 +560,19 @@ G(x) &= x^4 + x^2 + x + 1 \\
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B/">参考模型</a>
+                    <a href="/2021/04/02/%E4%B9%A0%E9%A2%98/">第三章部分习题</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E4%BC%A0%E8%BE%93%E5%AA%92%E4%BB%8B/">传输媒介</a>
+                    <a href="/2021/04/02/%E4%BC%A0%E8%BE%93%E6%96%B9%E5%BC%8F/">传输方式</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E6%95%B0%E5%80%BC%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95/">数值数据的表示方法</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2021/04/02/%E6%95%B0%E6%8D%AE%E6%A0%A1%E9%AA%8C%E7%A0%81/">数据校验码</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2021/04/02/%E6%B1%A0%E5%8C%96%E5%B1%82/">池化层</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2021/04/02/%E7%89%A9%E7%90%86%E5%B1%82/">物理层</a>
+                    <a href="/2021/04/02/%E5%BC%A0%E9%87%8FTensor/">张量Tensor</a>
                 </span>
             </li>
             
@@ -584,7 +584,7 @@ G(x) &= x^4 + x^2 + x + 1 \\
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87/">网络设备</a>
+                    <a href="/2021/04/02/%E7%BC%96%E7%A0%81%E4%B8%8E%E8%B0%83%E5%88%B6/">编码与调制</a>
                 </span>
             </li>
             
@@ -617,15 +617,15 @@ G(x) &= x^4 + x^2 + x + 1 \\
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/%E7%9F%A9%E9%98%B5%E4%BB%A3%E6%95%B0/" style="font-size: 12.16478226447417px;" class="tag-cloud-link">矩阵代数</a>
+    <a href="/tags/%E7%9F%A9%E9%98%B5%E4%BB%A3%E6%95%B0/" style="font-size: 18.275763739285708px;" class="tag-cloud-link">矩阵代数</a>
     
-    <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 10.624262756540848px;" class="tag-cloud-link">IP网络协议</a>
+    <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 11.943040607528214px;" class="tag-cloud-link">IP网络协议</a>
     
-    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 14.866937145740096px;" class="tag-cloud-link">网络传输、设备与企业网架构</a>
+    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 12.843412744685022px;" class="tag-cloud-link">网络传输、设备与企业网架构</a>
     
-    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 14.679494626732097px;" class="tag-cloud-link">网络体系架构与网络协议</a>
+    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 17.378367398151152px;" class="tag-cloud-link">网络体系架构与网络协议</a>
     
-    <a href="/tags/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" style="font-size: 12.827018471296366px;" class="tag-cloud-link">运算方法和运算器</a>
+    <a href="/tags/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" style="font-size: 11.619499995155119px;" class="tag-cloud-link">运算方法和运算器</a>
     
 </div>
                 
