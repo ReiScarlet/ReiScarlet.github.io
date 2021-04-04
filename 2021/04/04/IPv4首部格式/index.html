@@ -12,7 +12,7 @@
     
     
     
-    <title>2.1矩阵运算习题 | Reimilia</title>
+    <title>IPv4数据报 | Reimilia</title>
     <link href="http://example.com" rel="prefetch" />
 
     
@@ -214,13 +214,13 @@
         <i class="fa fa-home"></i>
         <a href="http://example.com">Reimilia</a>
         >
-        <span>2.1矩阵运算习题</span>
+        <span>IPv4数据报</span>
     </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/2021/04/02/2.1%E7%9F%A9%E9%98%B5%E8%BF%90%E7%AE%97/">2.1矩阵运算习题</a>
+                <a href="/2021/04/04/IPv4%E9%A6%96%E9%83%A8%E6%A0%BC%E5%BC%8F/">IPv4数据报</a>
             </h1>
         </div>
         <div class="tag-article">
@@ -228,12 +228,12 @@
             <span class="label label-gal">
                 <i class="fa fa-tags"></i>
                 
-                <a href="/tags/%E7%9F%A9%E9%98%B5%E4%BB%A3%E6%95%B0/">矩阵代数</a>
+                <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/">IP网络协议</a>
                 
             </span>
             
             <span class="label label-gal">
-                <i class="fa fa-calendar"></i> 2021-04-02
+                <i class="fa fa-calendar"></i> 2021-04-04
             </span>
             
         </div>
@@ -243,17 +243,17 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/2021/04/02/2.1%E7%9F%A9%E9%98%B5%E8%BF%90%E7%AE%97/">2.1矩阵运算习题</a>
+                    <a href="/2021/04/04/IPv4%E9%A6%96%E9%83%A8%E6%A0%BC%E5%BC%8F/">IPv4数据报</a>
                 </h4>
             </div>
             <p>
-                <i class="fa fa-calendar"></i> 2021-04-02
+                <i class="fa fa-calendar"></i> 2021-04-04
             </p>
             <p>
                 
                 <i class="fa fa-tags"></i>
                 
-                <a href="/tags/%E7%9F%A9%E9%98%B5%E4%BB%A3%E6%95%B0/">矩阵代数</a>
+                <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/">IP网络协议</a>
                 
                 
                 
@@ -261,38 +261,52 @@
         </center>
     </div>
     <div class="content-article">
-        <span id="more"></span>
-<h2 id="习题相关"><a href="#习题相关" class="headerlink" title="习题相关"></a>习题相关</h2><ol>
-<li><p>设$CA=I_n$证明方程$Ax=0$只有平凡解，解释为什么A的列数不能多余行数</p>
-<p>解答：</p>
-<script type="math/tex; mode=display">
-\because Ax = 0 \\
-\therefore CAx = C0 = 0 \\
-\because CA = I_n \\
-\therefore I_n x = 0 \\
-\therefore x = 0 \\
-\therefore A的各列线性无关 \\
-\therefore A中列数小于行数</script></li>
-<li><p>设$AD = I_n$证明对任意的$R^m$中的b，方程$Ax = b$有解，解释为什么A的行数不可以多余列数</p>
-<p>解答：</p>
-<script type="math/tex; mode=display">
-\because AD = I_n \\
-\therefore ADb = I_nb = b \\
-\therefore ADb = b \\
-令Db=x \\
-\therefore Ax = b \\
-\therefore Ax = b有解，且解为x=Db \\
-\because Ax = b 有解 \\
-\therefore A在每一行都有主元位置 \\
-\therefore A的行数不可以多余列数</script></li>
-<li><p>设A式m*m的矩阵，存在n*m矩阵C和D，使得$CA=I_n$和$AD=I_m$,证明m=n且C=D</p>
-<p>解答：</p>
-<script type="math/tex; mode=display">
-由24、25题可知，m=n \\
-\because DAC = (DA)C = I_nC = C \\
-\because DAC = D(AC) = DI_n = D \\
-\therefore C = D \\
-C = I_n C = (DA)C = D(AC) = D I_n = D</script></li>
+        <p><strong>网际协议版本4</strong>（英语：<strong>I</strong>nternet <strong>P</strong>rotocol <strong>v</strong>ersion <strong>4</strong>，<strong>IPv4</strong>），又称<strong>互联网通信协议第四版</strong>，是<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/网际协议">网际协议</a>开发过程中的第四个修订版本，也是此协议第一个被广泛部署的版本。IPv4是互联网的核心，也是使用最广泛的网际协议版本，其后继版本为<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/IPv6">IPv6</a>，直到2011年，<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/IANA">IANA</a> IPv4位址完全用尽时，IPv6仍处在部署的初期</p>
+<span id="more"></span>
+<p><strong>网络层的主要任务是实现网络互连，进而实现数据包在网络之间的传输</strong></p>
+<p>实现网络层的任务，需要解决以下主要问题：</p>
+<ol>
+<li>网络层向运输层提供怎样的服务</li>
+<li>网络层寻址问题</li>
+<li>路由选择问题</li>
+</ol>
+<hr>
+<h3 id="IPV4数据报的首部形式"><a href="#IPV4数据报的首部形式" class="headerlink" title="IPV4数据报的首部形式"></a>IPV4数据报的首部形式</h3><p><img src="C:\Users\Reimilia Scarlet\AppData\Roaming\Typora\typora-user-images\image-20210404154103172.png" alt="image-20210404154103172"></p>
+<ol>
+<li>首部长度：占4比特，表示<strong>IP数据报首部</strong>的长度，该字段的取值以4字节为单位。<ol>
+<li>最小十进制取值为5，表示IP数据报首部只有20字节固定部分</li>
+<li>最大十进制取值为15，表示IP数据报首部包含20字节固定部分和40字节的可变部分</li>
+</ol>
+</li>
+<li>可选字段：长度从1到40字节不等，用来支持排错，测量及安全措施</li>
+<li>填充字段：确保首部长度为4字节的整数倍，使用全0进行填充</li>
+<li>总长度：占16比特，表示IP数据报的总长度(首部+数据载荷)，最大取值65535字节</li>
+<li><p>标识、标志、片偏移：共同用于IP数据报分片，当IP数据报长度超过MUT（首部+数据载荷）时将数据报分成几份</p>
+<ol>
+<li>标志：占3比特，各比特含义如下：<ol>
+<li>DF位：1表示不允许分片。0表示允许</li>
+<li>MF位：1表示后面还有分片，0表示这是最后一个分片</li>
+<li>保留位：必须为0</li>
+</ol>
+</li>
+<li>标识：占16比特，属于同个数据报的数据报分片应该具有相同的标识。IP软件维持一个计数器，每产生一个数据报，计数器值加1，并将该值赋给标识字段</li>
+<li>片偏移：占13比特，指出分片数据报的数据载荷部分偏移其在原数据报的位置有几个单位</li>
+</ol>
+</li>
+<li><p>生存时间TTL：8比特，路由器转发IP数据报时，将IP数据报首部中的该字段的值减去IP数据报在本路由器所耗费的时间，若不为0就转发，否则就丢弃</p>
+</li>
+<li><p>协议：占8比特，指明IPv4数据报部分是何种协议数据单元，常用的一些协议和相应的协议字段值如下</p>
+<ol>
+<li>ICMP：1</li>
+<li>IGMP：2</li>
+<li>TCP：6</li>
+<li>UDP：17</li>
+<li>IPv6：41</li>
+<li>OSPF：89</li>
+</ol>
+</li>
+<li><p>首部检验和：占16比特，用来检测首部在传输过程中是否出现差错，成为因特网检验和，IPv6中路由器不在计算首部校验和，从而更快的转发IP数据报。由于转发过程中标识等字段可变，所有首部校验和可变</p>
+</li>
 </ol>
 
     </div>
@@ -420,13 +434,37 @@ C = I_n C = (DA)C = D(AC) = D I_n = D</script></li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/04/4.1%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E8%BF%87%E7%A8%8B%E5%8F%8A%E4%BB%A5%E5%A4%AA%E7%BD%91%E5%B8%A7%E7%BB%93%E6%9E%84/">4.1数据传输过程及以太网帧结构</a>
+                    <a href="/2021/04/02/2.3%E5%8F%AF%E9%80%86%E7%9F%A9%E9%98%B5%E7%9A%84%E7%89%B9%E5%BE%81/">2.3可逆矩阵的特征</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/04/4.2%20PPP%E5%8D%8F%E8%AE%AE/">4.2 PPP协议</a>
+                    <a href="/2021/04/02/2.2%E7%9F%A9%E9%98%B5%E7%9A%84%E9%80%86/">2.2矩阵的逆</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2021/04/02/hello-world/">Hello World</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2021/04/02/%E4%B9%A0%E9%A2%98/">第三章部分习题</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2021/04/02/%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B/">参考模型</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2021/04/02/%E4%BC%A0%E8%BE%93%E6%96%B9%E5%BC%8F/">传输方式</a>
                 </span>
             </li>
             
@@ -444,37 +482,13 @@ C = I_n C = (DA)C = D(AC) = D I_n = D</script></li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E5%BC%A0%E9%87%8FTensor/">张量Tensor</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2021/04/02/%E6%95%B0%E5%80%BC%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95/">数值数据的表示方法</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2021/04/02/%E6%95%B0%E6%8D%AE%E6%A0%A1%E9%AA%8C%E7%A0%81/">数据校验码</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2021/04/02/%E7%89%A9%E7%90%86%E5%B1%82/">物理层</a>
+                    <a href="/2021/04/02/%E7%BC%96%E7%A0%81%E4%B8%8E%E8%B0%83%E5%88%B6/">编码与调制</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
                     <a href="/2021/04/02/%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87/">网络设备</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2021/04/04/IPv4%E9%A6%96%E9%83%A8%E6%A0%BC%E5%BC%8F/">IPv4数据报</a>
                 </span>
             </li>
             
@@ -489,17 +503,17 @@ C = I_n C = (DA)C = D(AC) = D I_n = D</script></li>
 
                 
                 <li>
-                    <a href="/2021/04/02/2.1%E7%9F%A9%E9%98%B5%E8%BF%90%E7%AE%97/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/2021/04/04/IPv4%E9%A6%96%E9%83%A8%E6%A0%BC%E5%BC%8F/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/2021/04/02/2.1%E7%9F%A9%E9%98%B5%E8%BF%90%E7%AE%97/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/2021/04/04/IPv4%E9%A6%96%E9%83%A8%E6%A0%BC%E5%BC%8F/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/2021/04/02/2.1%E7%9F%A9%E9%98%B5%E8%BF%90%E7%AE%97/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/2021/04/04/IPv4%E9%A6%96%E9%83%A8%E6%A0%BC%E5%BC%8F/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
                 
             </ul>
@@ -507,15 +521,15 @@ C = I_n C = (DA)C = D(AC) = D I_n = D</script></li>
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/%E7%9F%A9%E9%98%B5%E4%BB%A3%E6%95%B0/" style="font-size: 15.054769663198694px;" class="tag-cloud-link">矩阵代数</a>
+    <a href="/tags/%E7%9F%A9%E9%98%B5%E4%BB%A3%E6%95%B0/" style="font-size: 17.697980059569367px;" class="tag-cloud-link">矩阵代数</a>
     
-    <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 14.230153367164611px;" class="tag-cloud-link">IP网络协议</a>
+    <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 13.4098116181826px;" class="tag-cloud-link">IP网络协议</a>
     
-    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 18.320273121418204px;" class="tag-cloud-link">网络传输、设备与企业网架构</a>
+    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 14.754668013586855px;" class="tag-cloud-link">网络传输、设备与企业网架构</a>
     
-    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 9.5123416958766px;" class="tag-cloud-link">网络体系架构与网络协议</a>
+    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 18.449571953796244px;" class="tag-cloud-link">网络体系架构与网络协议</a>
     
-    <a href="/tags/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" style="font-size: 15.932016372870688px;" class="tag-cloud-link">运算方法和运算器</a>
+    <a href="/tags/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" style="font-size: 9.738741523864892px;" class="tag-cloud-link">运算方法和运算器</a>
     
 </div>
                 
