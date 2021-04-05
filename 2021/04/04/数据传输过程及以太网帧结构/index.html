@@ -12,7 +12,7 @@
     
     
     
-    <title>4.2 PPP协议 | Reimilia</title>
+    <title>4.1数据传输过程及以太网帧结构 | Reimilia</title>
     <link href="http://example.com" rel="prefetch" />
 
     
@@ -218,13 +218,13 @@
         <i class="fa fa-home"></i>
         <a href="http://example.com">Reimilia</a>
         >
-        <span>4.2 PPP协议</span>
+        <span>4.1数据传输过程及以太网帧结构</span>
     </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/2021/04/04/4.2%20PPP%E5%8D%8F%E8%AE%AE/">4.2 PPP协议</a>
+                <a href="/2021/04/04/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E8%BF%87%E7%A8%8B%E5%8F%8A%E4%BB%A5%E5%A4%AA%E7%BD%91%E5%B8%A7%E7%BB%93%E6%9E%84/">4.1数据传输过程及以太网帧结构</a>
             </h1>
         </div>
         <div class="tag-article">
@@ -249,7 +249,7 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/2021/04/04/4.2%20PPP%E5%8D%8F%E8%AE%AE/">4.2 PPP协议</a>
+                    <a href="/2021/04/04/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E8%BF%87%E7%A8%8B%E5%8F%8A%E4%BB%A5%E5%A4%AA%E7%BD%91%E5%B8%A7%E7%BB%93%E6%9E%84/">4.1数据传输过程及以太网帧结构</a>
                 </h4>
             </div>
             <p>
@@ -269,63 +269,58 @@
         </center>
     </div>
     <div class="content-article">
-        <p>PPP(Point-to-Point Protocol, P2P)是目前使用最广泛的点对点数据链路层协议</p>
-<p>PPP主要由以下三部分组成：</p>
+        <p>TCP/IP支持多种不同的数据链路层协议，这取决于网络所使用的硬件。基于不同硬件的网络使用不同形式的帧结构，以太网是当今应用最广泛的局域网技术。</p>
+<span id="more"></span>    
+<p>以太网传输的数据帧有两种格式：Ethernet II帧结构、IEEE 802.3格式</p>
+<p><strong>两种协议的区别是</strong>：    </p>
 <ol>
-<li>对各种协议的数据报的封装方法</li>
-<li>链路控制协议LCP，用于建立、配置以及测试数据链路的连接</li>
-<li>一套网络控制协议NCPs，对每一个协议支持不同的网络协议</li>
+<li>Ethernet II格式包含一个类型类型(Type)字段，标识以太帧处理完成之后将被发送到哪个上层协议及逆行处理</li>
+<li>IEEE 802.3个格式中，同样的位置是长度(Length)字段</li>
 </ol>
-<span id="more"></span>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-<th></th>
-<th>PPP帧的格式</th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1字节</td>
-<td>1字节</td>
-<td>1字节</td>
-<td>2节</td>
-<td>不超过1500字节</td>
-<td>2字节</td>
-<td>1字节</td>
-</tr>
-<tr>
-<td>标志</td>
-<td>地址</td>
-<td>控制</td>
-<td>协议</td>
-<td>数据载荷</td>
-<td>FCS</td>
-<td>标志</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>标志(Flag):PPP帧的定界符，取值为0x7E</p>
-<p>地址(Address)：取值为0xFF,预留</p>
-<p>控制(Control)：取值为0x03，预留</p>
-<p>协议(Protocol)：指明帧的数据部分送交哪个协议处理：</p>
-<ol>
-<li>取值0x0021：帧的数据部分为IP数据报</li>
-<li>取值0xC021：帧的数据部分为LCP分组</li>
-<li>取值0x8021：帧的数据部分为NCP分组</li>
-</ol>
-<p>帧检测序列(FCS, Frame Check Sequence)：CRC计算出的校验码</p>
 <hr>
-<p>PPP协议的工作状态：</p>
-<p><img src="/images/image-20210404111039724.png" alt="image-20210404111039724"></p>
-<p>注意：PAP认证过程是两次握手，而CHAP认证是3次握手，CHAP认证比PAP认证的安全性高</p>
+<p><img src="/images/QQ截图20210405092139.jpg" alt></p>
+<p><strong>如何区分两种协议</strong>：</p>
+<script type="math/tex; mode=display">
+Length/Type \ge 1536(0x0600) \quad Ethernet II \\
+Length/Type \le 1500(0x05DC) \quad IEEE 802.3</script><font size="5">**目前以太网大多数数据帧使用的Ethernet II格式**</font>
+
+<p>以太网在数据链路层通过MAC地址来唯一识别网络设备，并且实现局域网上网络设备之间的通信。</p>
+<p>MAC地址也叫物理地址、硬件地址，大多数网卡厂商把MAC地址烧入网卡的ROM中，网络设备的MAC地址是全球唯一的</p>
+<hr>
+<h2 id="局域网帧的发送方式"><a href="#局域网帧的发送方式" class="headerlink" title="局域网帧的发送方式"></a>局域网帧的发送方式</h2><ol>
+<li>单播：指从单一源端发送到单一的目的端。MAC地址中，<strong>第一字节第八个比特($b_0$)表示地址类型</strong>。对于主机MAC地址，这个比特固定位0</li>
+<li>广播：指帧从单一的源端发送到共享以太网上的所有主机。广播帧的目的MAC地址为16进制的<strong>FF:FF:FF:FF:FF:FF</strong>，所有收到该广播帧的主机都要接受并处理这个帧</li>
+<li>组播：组播转发可以理解为选择性的广播，组播MAC地址通过第一字节第八个比特($b_0$)区分，这个比特为1</li>
+</ol>
+<hr>
+<h3 id="以太网帧标识"><a href="#以太网帧标识" class="headerlink" title="以太网帧标识"></a>以太网帧标识</h3><p><strong>封装成帧</strong>：指数据链路层给上层交付的协议数据单元添加帧头和帧尾使之成为帧</p>
+<ol>
+<li>帧头和帧尾包含有重要的控制信息</li>
+<li>帧头和帧尾的作用之一就是</li>
+</ol>
+<p>以太网通过增加<font color="red"><strong>前同步码</strong></font>和<font color="red"><strong>帧开始定界符</strong></font>来标识一个帧的开始和结束</p>
+<p>在传输媒体上实际传送的要比MAC帧还要多8个字节(由硬件生成)。这8个字节由两个字段构成，第一个字段是7个字节的前同步码(1和0交替码)。第二个字段是帧开始定界符，定义为10101011</p>
+<p>以太网帧校验采用CRC校验</p>
+<p>由于以太网规定了帧间间隔时间96比特的发送时间，因此MAC帧不需要帧结束定界符</p>
+<p><strong>透明传输</strong>：数据链路层对上层交付的传输数据没有任何限制，就好像数据链路层不存在一样1.</p>
+<ol>
+<li>面向字节的物理链路使用字节填充(字符填充)来实现透明传输</li>
+<li>面向比特的物理链路使用比特填充的方法实现透明传输</li>
+</ol>
+<p>在传输数据时，发送方数据链路层收到上层交付的协议数据单元，添加帧头和帧尾使之成为帧。但是如果数据中恰好包含这个特定数值，接收方将无法正确的接收数据。</p>
+<ol>
+<li><p>面向字节：这个时候在发送帧之前，对帧的数据部分进行扫描。每出现一个帧定界符(flag)就在它前面添加一个转义字符(ESC),</p>
+</li>
+<li><p>面向比特：例如帧定界标志为01111110，在发送前对帧的数据部分进行扫描，每连续出现五个1就插入一个0，这样防止数据中出现帧定界标志</p>
+</li>
+</ol>
+<p><strong>转义字符是一种特殊的控制字符，其长度一个字节，十进制值为27</strong></p>
+<p>为了提高帧的传输速率，应当使帧的数据部分长度尽可能的大些</p>
+<p>考虑到差错控制多种因素，每一种数据链路层都规定了帧的数据部分长度上限，也就是最大传输单元MTU</p>
+<hr>
+<h2 id="MAC地址，IP地址和ARP协议"><a href="#MAC地址，IP地址和ARP协议" class="headerlink" title="MAC地址，IP地址和ARP协议"></a>MAC地址，IP地址和ARP协议</h2><p>MAC地址是以太网的MAC子网所使用的地址，位于数据链路层</p>
+<p>IP地址是TCP/IP体系结构的网络层所使用的地址</p>
+<p>ARP协议属于TCP/IP体系结构的网络层。其作用是已知设备所分配的IP地址，使用ARP协议可以通过该IP地址获取到设备的MAC地址</p>
 
     </div>
 </article>
@@ -376,19 +371,37 @@
             
             <li class="list-group-item">
                 <span class="post-title">
+                    <a href="/2021/04/05/IP%E5%9C%B0%E5%9D%80/">IP地址</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2021/04/05/CRC%E5%BE%AA%E7%8E%AF%E5%86%97%E4%BD%99%E7%A0%81/">CRC循环冗余码</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2021/04/05/MAC/">MAC</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
                     <a href="/2021/04/04/IPv4%E9%A6%96%E9%83%A8%E6%A0%BC%E5%BC%8F/">4.3-1 IPv4</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/04/4.1%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E8%BF%87%E7%A8%8B%E5%8F%8A%E4%BB%A5%E5%A4%AA%E7%BD%91%E5%B8%A7%E7%BB%93%E6%9E%84/">4.1数据传输过程及以太网帧结构</a>
+                    <a href="/2021/04/04/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E8%BF%87%E7%A8%8B%E5%8F%8A%E4%BB%A5%E5%A4%AA%E7%BD%91%E5%B8%A7%E7%BB%93%E6%9E%84/">4.1数据传输过程及以太网帧结构</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/04/4.2%20PPP%E5%8D%8F%E8%AE%AE/">4.2 PPP协议</a>
+                    <a href="/2021/04/04/PPP%E5%8D%8F%E8%AE%AE/">4.2 PPP协议</a>
                 </span>
             </li>
             
@@ -416,24 +429,6 @@
                 </span>
             </li>
             
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2021/04/02/%E6%95%B0%E6%8D%AE%E6%A0%A1%E9%AA%8C%E7%A0%81/">数据校验码</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2021/04/02/%E5%AE%9A%E7%82%B9%E6%95%B0%E7%9A%84%E5%8A%A0%E5%87%8F%E6%B3%95/">定点数的加减法</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2021/04/02/2.5%E7%9F%A9%E9%98%B5%E5%9B%A0%E5%BC%8F%E5%88%86%E8%A7%A3/">2.5矩阵因式分解</a>
-                </span>
-            </li>
-            
         </ul>
     </div>
 </aside>
@@ -452,7 +447,7 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/2.5%E7%9F%A9%E9%98%B5%E5%9B%A0%E5%BC%8F%E5%88%86%E8%A7%A3/">2.5矩阵因式分解</a>
+                    <a href="/2021/04/02/2.1%E7%9F%A9%E9%98%B5%E8%BF%90%E7%AE%97/">2.1矩阵运算习题</a>
                 </span>
             </li>
             
@@ -464,49 +459,49 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/04/4.1%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E8%BF%87%E7%A8%8B%E5%8F%8A%E4%BB%A5%E5%A4%AA%E7%BD%91%E5%B8%A7%E7%BB%93%E6%9E%84/">4.1数据传输过程及以太网帧结构</a>
+                    <a href="/2021/04/02/%E4%BC%A0%E8%BE%93%E6%96%B9%E5%BC%8F/">传输方式</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/04/4.2%20PPP%E5%8D%8F%E8%AE%AE/">4.2 PPP协议</a>
+                    <a href="/2021/04/02/%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B/">参考模型</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/04/IPv4%E9%A6%96%E9%83%A8%E6%A0%BC%E5%BC%8F/">4.3-1 IPv4</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2021/04/02/%E4%B9%A0%E9%A2%98/">第三章部分习题</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2021/04/02/%E4%BF%A1%E9%81%93%E6%9E%81%E9%99%90%E5%AE%B9%E9%87%8F/">信道极限容量</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2021/04/02/%E5%BC%A0%E9%87%8FTensor/">张量Tensor</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2021/04/02/%E7%89%A9%E7%90%86%E5%B1%82/">物理层</a>
+                    <a href="/2021/04/02/%E6%95%B0%E5%80%BC%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95/">数值数据的表示方法</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
                     <a href="/2021/04/02/%E7%BC%96%E7%A0%81%E4%B8%8E%E8%B0%83%E5%88%B6/">编码与调制</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2021/04/05/IP%E5%9C%B0%E5%9D%80/">IP地址</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2021/04/05/MAC/">MAC</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2021/04/04/PPP%E5%8D%8F%E8%AE%AE/">4.2 PPP协议</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2021/04/04/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E8%BF%87%E7%A8%8B%E5%8F%8A%E4%BB%A5%E5%A4%AA%E7%BD%91%E5%B8%A7%E7%BB%93%E6%9E%84/">4.1数据传输过程及以太网帧结构</a>
                 </span>
             </li>
             
@@ -521,17 +516,17 @@
 
                 
                 <li>
-                    <a href="/2021/04/04/4.2%20PPP%E5%8D%8F%E8%AE%AE/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/2021/04/04/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E8%BF%87%E7%A8%8B%E5%8F%8A%E4%BB%A5%E5%A4%AA%E7%BD%91%E5%B8%A7%E7%BB%93%E6%9E%84/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/2021/04/04/4.2%20PPP%E5%8D%8F%E8%AE%AE/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/2021/04/04/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E8%BF%87%E7%A8%8B%E5%8F%8A%E4%BB%A5%E5%A4%AA%E7%BD%91%E5%B8%A7%E7%BB%93%E6%9E%84/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/2021/04/04/4.2%20PPP%E5%8D%8F%E8%AE%AE/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/2021/04/04/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E8%BF%87%E7%A8%8B%E5%8F%8A%E4%BB%A5%E5%A4%AA%E7%BD%91%E5%B8%A7%E7%BB%93%E6%9E%84/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
                 
             </ul>
@@ -539,19 +534,19 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/%E7%9F%A9%E9%98%B5%E4%BB%A3%E6%95%B0/" style="font-size: 13.763834090375832px;" class="tag-cloud-link">矩阵代数</a>
+    <a href="/tags/%E7%9F%A9%E9%98%B5%E4%BB%A3%E6%95%B0/" style="font-size: 14.957490052719049px;" class="tag-cloud-link">矩阵代数</a>
     
-    <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 15.114582506089285px;" class="tag-cloud-link">IP网络协议</a>
+    <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 19.263489772639776px;" class="tag-cloud-link">IP网络协议</a>
     
-    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 13.1113684190433px;" class="tag-cloud-link">网络传输、设备与企业网架构</a>
+    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 12.655932945006285px;" class="tag-cloud-link">网络传输、设备与企业网架构</a>
     
-    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 8.302704792775682px;" class="tag-cloud-link">网络体系架构与网络协议</a>
+    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 19.41836315701249px;" class="tag-cloud-link">网络体系架构与网络协议</a>
     
-    <a href="/tags/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" style="font-size: 15.079785804066152px;" class="tag-cloud-link">运算方法和运算器</a>
+    <a href="/tags/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" style="font-size: 14.689264944424451px;" class="tag-cloud-link">运算方法和运算器</a>
     
-    <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 16.551566342296283px;" class="tag-cloud-link">笔记</a>
+    <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 16.25580616241625px;" class="tag-cloud-link">笔记</a>
     
-    <a href="/tags/%E4%B9%A0%E9%A2%98/" style="font-size: 17.798989208920727px;" class="tag-cloud-link">习题</a>
+    <a href="/tags/%E4%B9%A0%E9%A2%98/" style="font-size: 12.176953895141429px;" class="tag-cloud-link">习题</a>
     
 </div>
                 
