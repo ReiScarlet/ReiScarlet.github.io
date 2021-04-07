@@ -288,11 +288,11 @@
 <ol>
 <li><p>sigmoid函数</p>
 <script type="math/tex; mode=display">
-  f(x) = \frac{1}{1+e^{-x}}</script><p>  sigmoid激活函数饱和时梯度值非常小，故网络层数比较深时易出现梯度消失</p>
+ f(x) = \frac{1}{1+e^{-x}}</script><p> sigmoid激活函数饱和时梯度值非常小，故网络层数比较深时易出现梯度消失</p>
 </li>
 <li><p>ReLU函数 </p>
 <script type="math/tex; mode=display">
- f(x) = Max(0,x)</script><p> ReLU激活函数缺点是反向传播过程中有一个非常大的梯度经过时，反向传播更新后可能导致权重分布中心小于零，导致该处的倒数始终为0，反向传播无法更新权重，即进入失活状态</p>
+f(x) = Max(0,x)</script><p>ReLU激活函数缺点是反向传播过程中有一个非常大的梯度经过时，反向传播更新后可能导致权重分布中心小于零，导致该处的倒数始终为0，反向传播无法更新权重，即进入失活状态</p>
 </li>
 <li><p>在卷积操作过程中，矩阵经卷积操作的尺寸由以下几个因素决定</p>
 <ol>
@@ -302,7 +302,8 @@
 <li>padding的像素数p</li>
 </ol>
 </li>
-<li><p>则经卷积后矩阵尺寸大小计算公式为：<font size="5">$N= \frac{W-F+2P}{S+1}$</font></p>
+<li><p>则经卷积后矩阵尺寸大小计算公式为：<font size="5">$N= \frac{W-F+2P}{S}+1$</font></p>
+<p> 怎么理解这个等式？首先，考虑对图片横向的填充，有两个边所以加上2*padding。其次，考虑到卷积核kernel的右边到达图片的右边时候，此时占用了图片kernel_size个像素。因此，在一个方向上，知道起点和终点，还有步长，那么需要几步才能走完一个方向，那可想而知。其中每一步对应于下一个层的一个像素点（神经元）。</p>
 </li>
 </ol>
 </li>
@@ -380,6 +381,7 @@ H = - \frac{1}{N}\sum_{i=1}^N[o_i^{*}logo_i+(1-o_i^{*})log(1-o_i)]</script></li>
 </ol>
 <hr>
 <p><strong>pytorch Tensor的通道排序[batch, channel, height, width]</strong></p>
+<p>每一层卷积有多少channel数，以及一共有多少层卷积，这些暂时没有理论支撑，一般都是靠感觉去设置几组候选值，然后通过实验挑选出其中的最佳值。</p>
 
     </div>
 </article>
@@ -427,6 +429,12 @@ H = - \frac{1}{N}\sum_{i=1}^N[o_i^{*}logo_i+(1-o_i^{*})log(1-o_i)]</script></li>
             <i class="fa fa-chevron-circle-up panel-toggle"></i>
         </div>
         <ul class="list-group list-group-flush">
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2021/04/05/AlexNet%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">AlexNet学习笔记</a>
+                </span>
+            </li>
             
             <li class="list-group-item">
                 <span class="post-title">
@@ -482,12 +490,6 @@ H = - \frac{1}{N}\sum_{i=1}^N[o_i^{*}logo_i+(1-o_i^{*})log(1-o_i)]</script></li>
                 </span>
             </li>
             
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2021/04/02/%E6%95%B0%E5%80%BC%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95/">数值数据的表示方法</a>
-                </span>
-            </li>
-            
         </ul>
     </div>
 </aside>
@@ -506,13 +508,25 @@ H = - \frac{1}{N}\sum_{i=1}^N[o_i^{*}logo_i+(1-o_i^{*})log(1-o_i)]</script></li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/2.1%E7%9F%A9%E9%98%B5%E8%BF%90%E7%AE%97/">2.1矩阵运算习题</a>
+                    <a href="/2021/04/02/2.3%E5%8F%AF%E9%80%86%E7%9F%A9%E9%98%B5%E7%9A%84%E7%89%B9%E5%BE%81/">2.3可逆矩阵的特征</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/2.3%E5%8F%AF%E9%80%86%E7%9F%A9%E9%98%B5%E7%9A%84%E7%89%B9%E5%BE%81/">2.3可逆矩阵的特征</a>
+                    <a href="/2021/04/04/IPv4%E9%A6%96%E9%83%A8%E6%A0%BC%E5%BC%8F/">4.3-1 IPv4</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2021/04/02/hello-world/">Hello World</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2021/04/02/%E4%BC%A0%E8%BE%93%E6%96%B9%E5%BC%8F/">传输方式</a>
                 </span>
             </li>
             
@@ -530,37 +544,25 @@ H = - \frac{1}{N}\sum_{i=1}^N[o_i^{*}logo_i+(1-o_i^{*})log(1-o_i)]</script></li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E6%95%B0%E5%80%BC%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95/">数值数据的表示方法</a>
+                    <a href="/2021/04/02/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">卷积神经网络基础</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E5%AE%9A%E7%82%B9%E6%95%B0%E7%9A%84%E5%8A%A0%E5%87%8F%E6%B3%95/">定点数的加减法</a>
+                    <a href="/2021/04/02/%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B/">参考模型</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E6%95%B0%E6%8D%AE%E6%A0%A1%E9%AA%8C%E7%A0%81/">数据校验码</a>
+                    <a href="/2021/04/02/%E5%BC%A0%E9%87%8FTensor/">张量Tensor</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%E4%B8%8E%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">网络协议与网络体系结构</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2021/04/05/CRC%E5%BE%AA%E7%8E%AF%E5%86%97%E4%BD%99%E7%A0%81/">CRC循环冗余码</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2021/04/05/IP%E5%9C%B0%E5%9D%80/">IP地址</a>
+                    <a href="/2021/04/02/%E7%89%A9%E7%90%86%E5%B1%82/">物理层</a>
                 </span>
             </li>
             
@@ -593,19 +595,19 @@ H = - \frac{1}{N}\sum_{i=1}^N[o_i^{*}logo_i+(1-o_i^{*})log(1-o_i)]</script></li>
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/%E7%9F%A9%E9%98%B5%E4%BB%A3%E6%95%B0/" style="font-size: 8.613823624047889px;" class="tag-cloud-link">矩阵代数</a>
+    <a href="/tags/%E7%9F%A9%E9%98%B5%E4%BB%A3%E6%95%B0/" style="font-size: 10.197192218899353px;" class="tag-cloud-link">矩阵代数</a>
     
-    <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 14.732679875275071px;" class="tag-cloud-link">IP网络协议</a>
+    <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 12.703520846797737px;" class="tag-cloud-link">IP网络协议</a>
     
-    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 17.20929996002288px;" class="tag-cloud-link">网络传输、设备与企业网架构</a>
+    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 9.08296637371016px;" class="tag-cloud-link">网络传输、设备与企业网架构</a>
     
-    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 16.60658643563159px;" class="tag-cloud-link">网络体系架构与网络协议</a>
+    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 14.544856031365171px;" class="tag-cloud-link">网络体系架构与网络协议</a>
     
-    <a href="/tags/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" style="font-size: 13.822271912439307px;" class="tag-cloud-link">运算方法和运算器</a>
+    <a href="/tags/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" style="font-size: 11.532520546676366px;" class="tag-cloud-link">运算方法和运算器</a>
     
-    <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 14.463004005930088px;" class="tag-cloud-link">笔记</a>
+    <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 13.659430581135382px;" class="tag-cloud-link">笔记</a>
     
-    <a href="/tags/%E4%B9%A0%E9%A2%98/" style="font-size: 11.39801512839135px;" class="tag-cloud-link">习题</a>
+    <a href="/tags/%E4%B9%A0%E9%A2%98/" style="font-size: 19.67737931195779px;" class="tag-cloud-link">习题</a>
     
 </div>
                 

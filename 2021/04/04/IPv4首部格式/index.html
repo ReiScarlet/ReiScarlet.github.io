@@ -329,11 +329,14 @@
 <li>E类地址：保留为今后使用，网络号的最高四位固定为1111</li>
 </ol>
 <p>只有A，C，B类地址可分配给主机或路由器的各接口</p>
-<p>A类地址：最大网络号127作为本地唤回测试地址，不指派。最小网络号0，保留不指派。可指派的网络数量是$2^8 - 2 = 126$，则可配分的IP地址位$2^{24} -     2 = 16777214$(减去2是除去主机号全0的网络地址和全1的广播地址)    </p>
+<p>A类地址：<strong>最大网络号127作为本地唤回测试地址，不指派。最小网络号0，保留不指派</strong>。可指派的网络数量是$2^8 - 2 = 126$，则可配分的IP地址位$2^{24} -     2 = 16777214$(减去2是除去主机号全0的网络地址和全1的广播地址)    </p>
 <p>B类地址：最小网络号也是第一个可指派的网络号128.0。最大网络号也是最后一个可指派网络号为191.255。可指派的网络号为$2^{(16-2)} = 16384$，每个网络可指派的IP地址为$2^{16} - 2 = 65534$</p>
 <p>C类地址：最小网络号也是第一个可指派的网络号为192.0.0。最大网络号也是最后一个可指派网络号为223.255.255。可指派的网络号为$2^{(24-3)} = 2097152$。每个网络可指派的IP地址为$2^8 - 2 = 254$</p>
-<p><strong>地址0.0.0.0是一个特殊的IPv4地址，只能作为源地址使用，表示“在本网络上的本主机”，封装有DHCP DIscovery报文的IP分组的源地址使用0.0.0.0，不能作为目的地址</strong></p>
-<p><strong>地址255.255.255.255是一个特殊的IPv4地址，只能作为目的地址使用，表示”在本网络上进行进行广播“，各路油器不转发</strong></p>
+<hr>
+<h3 id="一些特殊的IP地址"><a href="#一些特殊的IP地址" class="headerlink" title="一些特殊的IP地址"></a>一些特殊的IP地址</h3><p><strong>地址0.0.0.0是一个特殊的IPv4地址，只能作为源地址使用，表示“在本网络上的本主机”，封装有DHCP DIscovery报文的IP分组的源地址使用0.0.0.0，不能作为目的地址</strong></p>
+<p><strong>受限广播地址：地址255.255.255.255是一个特殊的IPv4地址，只能作为目的地址使用，表示”在本网络上进行进行广播“，各路油器不转发</strong></p>
+<p><strong>127.X.X.X是环回地址，127.0.0.1 特指本机地址。</strong></p>
+<p><strong>224.0.0.1 组播地址。从224.0.0.0到239.255.255.255都是这样的地址。224.0.0.1特指所有主机，224.0.0.2特指所有路由器。</strong></p>
 <hr>
 <h3 id="划分子网的IPv4地址"><a href="#划分子网的IPv4地址" class="headerlink" title="划分子网的IPv4地址"></a>划分子网的IPv4地址</h3><p>为新增网络申请新的网络号会带来以下弊端：</p>
 <ol>
@@ -423,6 +426,12 @@
             
             <li class="list-group-item">
                 <span class="post-title">
+                    <a href="/2021/04/05/AlexNet%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">AlexNet学习笔记</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
                     <a href="/2021/04/05/IP%E5%9C%B0%E5%9D%80/">IP地址</a>
                 </span>
             </li>
@@ -475,12 +484,6 @@
                 </span>
             </li>
             
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2021/04/02/%E6%95%B0%E5%80%BC%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95/">数值数据的表示方法</a>
-                </span>
-            </li>
-            
         </ul>
     </div>
 </aside>
@@ -499,7 +502,19 @@
             
             <li class="list-group-item">
                 <span class="post-title">
+                    <a href="/2021/04/02/2.1%E7%9F%A9%E9%98%B5%E8%BF%90%E7%AE%97/">2.1矩阵运算习题</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
                     <a href="/2021/04/02/2.5%E7%9F%A9%E9%98%B5%E5%9B%A0%E5%BC%8F%E5%88%86%E8%A7%A3/">2.5矩阵因式分解</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2021/04/02/2.3%E5%8F%AF%E9%80%86%E7%9F%A9%E9%98%B5%E7%9A%84%E7%89%B9%E5%BE%81/">2.3可逆矩阵的特征</a>
                 </span>
             </li>
             
@@ -511,13 +526,19 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E4%BC%A0%E8%BE%93%E6%96%B9%E5%BC%8F/">传输方式</a>
+                    <a href="/2021/04/02/%E4%BC%A0%E8%BE%93%E5%AA%92%E4%BB%8B/">传输媒介</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E5%BC%A0%E9%87%8FTensor/">张量Tensor</a>
+                    <a href="/2021/04/02/%E6%95%B0%E6%8D%AE%E6%A0%A1%E9%AA%8C%E7%A0%81/">数据校验码</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2021/04/02/%E6%B1%A0%E5%8C%96%E5%B1%82/">池化层</a>
                 </span>
             </li>
             
@@ -529,31 +550,13 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87/">网络设备</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
                     <a href="/2021/04/02/%E7%BC%96%E7%A0%81%E4%B8%8E%E8%B0%83%E5%88%B6/">编码与调制</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/05/CRC%E5%BE%AA%E7%8E%AF%E5%86%97%E4%BD%99%E7%A0%81/">CRC循环冗余码</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
                     <a href="/2021/04/04/PPP%E5%8D%8F%E8%AE%AE/">4.2 PPP协议</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2021/04/04/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E8%BF%87%E7%A8%8B%E5%8F%8A%E4%BB%A5%E5%A4%AA%E7%BD%91%E5%B8%A7%E7%BB%93%E6%9E%84/">4.1数据传输过程及以太网帧结构</a>
                 </span>
             </li>
             
@@ -586,19 +589,19 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/%E7%9F%A9%E9%98%B5%E4%BB%A3%E6%95%B0/" style="font-size: 13.39455518497408px;" class="tag-cloud-link">矩阵代数</a>
+    <a href="/tags/%E7%9F%A9%E9%98%B5%E4%BB%A3%E6%95%B0/" style="font-size: 11.69133243853528px;" class="tag-cloud-link">矩阵代数</a>
     
-    <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 17.209747474913417px;" class="tag-cloud-link">IP网络协议</a>
+    <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 15.784604506981758px;" class="tag-cloud-link">IP网络协议</a>
     
-    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 8.004149508531903px;" class="tag-cloud-link">网络传输、设备与企业网架构</a>
+    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 11.184788707801209px;" class="tag-cloud-link">网络传输、设备与企业网架构</a>
     
-    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 19.619169523344027px;" class="tag-cloud-link">网络体系架构与网络协议</a>
+    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 9.153059468477725px;" class="tag-cloud-link">网络体系架构与网络协议</a>
     
-    <a href="/tags/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" style="font-size: 13.51969934745436px;" class="tag-cloud-link">运算方法和运算器</a>
+    <a href="/tags/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" style="font-size: 8.752084676480383px;" class="tag-cloud-link">运算方法和运算器</a>
     
-    <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 16.023171177345734px;" class="tag-cloud-link">笔记</a>
+    <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 14.394056564072127px;" class="tag-cloud-link">笔记</a>
     
-    <a href="/tags/%E4%B9%A0%E9%A2%98/" style="font-size: 11.46132506008335px;" class="tag-cloud-link">习题</a>
+    <a href="/tags/%E4%B9%A0%E9%A2%98/" style="font-size: 9.914382968305137px;" class="tag-cloud-link">习题</a>
     
 </div>
                 
