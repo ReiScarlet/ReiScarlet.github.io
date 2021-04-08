@@ -12,7 +12,7 @@
     
     
     
-    <title>2.2矩阵的逆 | Reimilia</title>
+    <title>矩阵的逆和特性 | Reimilia</title>
     <link href="http://example.com" rel="prefetch" />
 
     
@@ -218,13 +218,13 @@
         <i class="fa fa-home"></i>
         <a href="http://example.com">Reimilia</a>
         >
-        <span>2.2矩阵的逆</span>
+        <span>矩阵的逆和特性</span>
     </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/2021/04/02/2.2%E7%9F%A9%E9%98%B5%E7%9A%84%E9%80%86/">2.2矩阵的逆</a>
+                <a href="/2021/04/02/2.2%E7%9F%A9%E9%98%B5%E7%9A%84%E9%80%86/">矩阵的逆和特性</a>
             </h1>
         </div>
         <div class="tag-article">
@@ -232,9 +232,7 @@
             <span class="label label-gal">
                 <i class="fa fa-tags"></i>
                 
-                <a href="/tags/%E7%9F%A9%E9%98%B5%E4%BB%A3%E6%95%B0/">矩阵代数</a>, 
-                
-                <a href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a>
+                <a href="/tags/%E7%9F%A9%E9%98%B5%E4%BB%A3%E6%95%B0/">矩阵代数</a>
                 
             </span>
             
@@ -249,7 +247,7 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/2021/04/02/2.2%E7%9F%A9%E9%98%B5%E7%9A%84%E9%80%86/">2.2矩阵的逆</a>
+                    <a href="/2021/04/02/2.2%E7%9F%A9%E9%98%B5%E7%9A%84%E9%80%86/">矩阵的逆和特性</a>
                 </h4>
             </div>
             <p>
@@ -259,9 +257,7 @@
                 
                 <i class="fa fa-tags"></i>
                 
-                <a href="/tags/%E7%9F%A9%E9%98%B5%E4%BB%A3%E6%95%B0/">矩阵代数</a>, 
-                
-                <a href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a>
+                <a href="/tags/%E7%9F%A9%E9%98%B5%E4%BB%A3%E6%95%B0/">矩阵代数</a>
                 
                 
                 
@@ -269,9 +265,7 @@
         </center>
     </div>
     <div class="content-article">
-        <p>矩阵A为n阶方阵，若存在n阶矩阵B，使得矩阵A、B的乘积为单位阵，则称A为可逆阵，B为A的逆矩阵。若方阵的逆阵存在，则称为可逆矩阵或非奇异矩阵，且其逆矩阵唯一。相关定理如下</p>
-<span id="more"></span>
-<h3 id="定理4"><a href="#定理4" class="headerlink" title="定理4"></a>定理4</h3><p>设$A = \begin{bmatrix} a &amp; b \\ c &amp; d\end{bmatrix}$,若ad-bc=0，则A可逆且</p>
+        <h1 id="矩阵的逆和特性"><a href="#矩阵的逆和特性" class="headerlink" title="矩阵的逆和特性"></a>矩阵的逆和特性</h1><h3 id="定理4"><a href="#定理4" class="headerlink" title="定理4"></a>定理4</h3><p>设$A = \begin{bmatrix} a &amp; b \\ c &amp; d\end{bmatrix}$,若ad-bc=0，则A可逆且</p>
 <font size="4">$A^{-1} = \frac{1}{ad-bc}\begin{bmatrix} d & -b \\ -c & a \end{bmatrix}$</font>
 
 <p>若ad-bc=0，则A不可逆</p>
@@ -285,7 +279,28 @@
 <p>每个初等矩阵E是可逆的，E的逆是一个同类型的初等矩阵，它把E变回I</p>
 <h3 id="定理7"><a href="#定理7" class="headerlink" title="定理7"></a>定理7</h3><p>n*n的矩阵A是可逆的，当且仅当A行等价于$I_n$</p>
 <h3 id="求-A-1-的算法"><a href="#求-A-1-的算法" class="headerlink" title="求$A^{-1}$的算法"></a>求$A^{-1}$的算法</h3><p>把增广矩阵$\begin{bmatrix} A &amp; I \end{bmatrix}$进行行化简，若A行等价于I，则$\begin{bmatrix} A &amp; I \end{bmatrix}$等价于$\begin{bmatrix}I &amp; A^{-1}\end{bmatrix}$,否则A不可逆</p>
-<h3 id="不可逆矩阵有时称为奇异矩阵，而可逆矩阵有时也称为非奇异矩阵"><a href="#不可逆矩阵有时称为奇异矩阵，而可逆矩阵有时也称为非奇异矩阵" class="headerlink" title="不可逆矩阵有时称为奇异矩阵，而可逆矩阵有时也称为非奇异矩阵"></a>不可逆矩阵有时称为奇异矩阵，而可逆矩阵有时也称为非奇异矩阵</h3><h2 id="习题"><a href="#习题" class="headerlink" title="习题"></a>习题</h2><ol>
+<h3 id="不可逆矩阵有时称为奇异矩阵，而可逆矩阵有时也称为非奇异矩阵"><a href="#不可逆矩阵有时称为奇异矩阵，而可逆矩阵有时也称为非奇异矩阵" class="headerlink" title="不可逆矩阵有时称为奇异矩阵，而可逆矩阵有时也称为非奇异矩阵"></a>不可逆矩阵有时称为奇异矩阵，而可逆矩阵有时也称为非奇异矩阵</h3><hr>
+<h1 id="可逆矩阵的特性"><a href="#可逆矩阵的特性" class="headerlink" title="可逆矩阵的特性"></a>可逆矩阵的特性</h1><h3 id="定理8"><a href="#定理8" class="headerlink" title="定理8"></a>定理8</h3><p>设A为n*n的矩阵，则下列命题是等价的，即对某一特定的A，他们同时为真或同时为假</p>
+<ol>
+<li>A是可逆矩阵</li>
+<li>A行等价于n*n的单位矩阵</li>
+<li>A有n个主元位置</li>
+<li>方程Ax=0仅有平凡解</li>
+<li>A的各列线性无关</li>
+<li>线性变化x-&gt;Ax是一对一的</li>
+<li>对$R^n$中任意b，方程Ax=b至少有一个解</li>
+<li>A的各列生成$R^n$</li>
+<li>线性变化x-&gt;Ax把$R^n$映上到$R^n$</li>
+<li>存在n*n矩阵C使CA=I</li>
+<li>存在n*n矩阵D使AD=I</li>
+<li>$A^T$是可逆矩阵</li>
+</ol>
+<h3 id="可逆线性变化"><a href="#可逆线性变化" class="headerlink" title="可逆线性变化"></a>可逆线性变化</h3><p>$T:R^n \rightarrow R^n$是可逆的，若存在函数$S:R^n \rightarrow R^n$使得</p>
+<p>​    对所有$R^n$中的x，$S(T(x)) = x \qquad (1)$</p>
+<p>​    对所有$R^n$中的x，$T(S(x))=x \qquad (2)$</p>
+<h3 id="定理9"><a href="#定理9" class="headerlink" title="定理9"></a>定理9</h3><p>设$T:R^n \rightarrow R^n$为线性变化，A为T的标准矩阵，则T可逆当且仅当A是可逆矩阵，这时由$S(x)=A^{-1}x$定义得线性变化S满足(1),(2)的唯一函数，我们称S是T的逆</p>
+<hr>
+<h2 id="习题"><a href="#习题" class="headerlink" title="习题"></a>习题</h2><ol>
 <li><p>若n*n矩阵A为可逆，则A的各列线性无关</p>
 <p>解答：</p>
 <script type="math/tex; mode=display">
@@ -445,19 +460,19 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/2.1%E7%9F%A9%E9%98%B5%E8%BF%90%E7%AE%97/">2.1矩阵运算习题</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
                     <a href="/2021/04/02/2.5%E7%9F%A9%E9%98%B5%E5%9B%A0%E5%BC%8F%E5%88%86%E8%A7%A3/">2.5矩阵因式分解</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/hello-world/">Hello World</a>
+                    <a href="/2021/04/02/%E4%B9%A0%E9%A2%98/">第三章部分习题</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2021/04/02/%E4%BF%A1%E9%81%93%E6%9E%81%E9%99%90%E5%AE%B9%E9%87%8F/">信道极限容量</a>
                 </span>
             </li>
             
@@ -469,13 +484,13 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E5%AE%9A%E7%82%B9%E6%95%B0%E7%9A%84%E5%8A%A0%E5%87%8F%E6%B3%95/">定点数的加减法</a>
+                    <a href="/2021/04/02/%E6%95%B0%E5%80%BC%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95/">数值数据的表示方法</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E6%95%B0%E6%8D%AE%E6%A0%A1%E9%AA%8C%E7%A0%81/">数据校验码</a>
+                    <a href="/2021/04/02/%E5%AE%9A%E7%82%B9%E6%95%B0%E7%9A%84%E5%8A%A0%E5%87%8F%E6%B3%95/">定点数的加减法</a>
                 </span>
             </li>
             
@@ -487,19 +502,19 @@
             
             <li class="list-group-item">
                 <span class="post-title">
+                    <a href="/2021/04/02/%E7%BC%96%E7%A0%81%E4%B8%8E%E8%B0%83%E5%88%B6/">编码与调制</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2021/04/05/CRC%E5%BE%AA%E7%8E%AF%E5%86%97%E4%BD%99%E7%A0%81/">CRC循环冗余码</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
                     <a href="/2021/04/05/MAC/">MAC</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2021/04/04/PPP%E5%8D%8F%E8%AE%AE/">4.2 PPP协议</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2021/04/08/2.8R%5En%E7%9A%84%E5%AD%90%E7%A9%BA%E9%97%B4/">子空间,基，秩和维数</a>
                 </span>
             </li>
             
@@ -532,19 +547,19 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/%E7%9F%A9%E9%98%B5%E4%BB%A3%E6%95%B0/" style="font-size: 8.204060324459274px;" class="tag-cloud-link">矩阵代数</a>
+    <a href="/tags/%E7%9F%A9%E9%98%B5%E4%BB%A3%E6%95%B0/" style="font-size: 17.71628035949292px;" class="tag-cloud-link">矩阵代数</a>
     
-    <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 19.224124052127024px;" class="tag-cloud-link">IP网络协议</a>
+    <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 19.75854248641797px;" class="tag-cloud-link">IP网络协议</a>
     
-    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 11.991711724565484px;" class="tag-cloud-link">网络传输、设备与企业网架构</a>
+    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 13.26389923971468px;" class="tag-cloud-link">网络传输、设备与企业网架构</a>
     
-    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 11.823897248805793px;" class="tag-cloud-link">网络体系架构与网络协议</a>
+    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 16.76409891468947px;" class="tag-cloud-link">网络体系架构与网络协议</a>
     
-    <a href="/tags/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" style="font-size: 10.218963868501364px;" class="tag-cloud-link">运算方法和运算器</a>
+    <a href="/tags/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" style="font-size: 13.718127298650781px;" class="tag-cloud-link">运算方法和运算器</a>
     
-    <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 18.299401731172647px;" class="tag-cloud-link">笔记</a>
+    <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 19.972224096137058px;" class="tag-cloud-link">笔记</a>
     
-    <a href="/tags/%E4%B9%A0%E9%A2%98/" style="font-size: 10.439662580726022px;" class="tag-cloud-link">习题</a>
+    <a href="/tags/%E4%B9%A0%E9%A2%98/" style="font-size: 9.597667659675249px;" class="tag-cloud-link">习题</a>
     
 </div>
                 
@@ -600,6 +615,22 @@
 <div id="gal-gotop">
     <i class="fa fa-angle-up"></i>
 </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 <script src="/js/activate-power-mode.js"></script>
