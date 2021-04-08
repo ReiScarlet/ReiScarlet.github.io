@@ -12,7 +12,7 @@
     
     
     
-    <title>2.3可逆矩阵的特征 | Reimilia</title>
+    <title>子空间,基，秩和维数 | Reimilia</title>
     <link href="http://example.com" rel="prefetch" />
 
     
@@ -218,13 +218,13 @@
         <i class="fa fa-home"></i>
         <a href="http://example.com">Reimilia</a>
         >
-        <span>2.3可逆矩阵的特征</span>
+        <span>子空间,基，秩和维数</span>
     </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/2021/04/02/2.3%E5%8F%AF%E9%80%86%E7%9F%A9%E9%98%B5%E7%9A%84%E7%89%B9%E5%BE%81/">2.3可逆矩阵的特征</a>
+                <a href="/2021/04/08/2.8R%5En%E7%9A%84%E5%AD%90%E7%A9%BA%E9%97%B4/">子空间,基，秩和维数</a>
             </h1>
         </div>
         <div class="tag-article">
@@ -232,14 +232,12 @@
             <span class="label label-gal">
                 <i class="fa fa-tags"></i>
                 
-                <a href="/tags/%E7%9F%A9%E9%98%B5%E4%BB%A3%E6%95%B0/">矩阵代数</a>, 
-                
-                <a href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a>
+                <a href="/tags/%E7%9F%A9%E9%98%B5%E4%BB%A3%E6%95%B0/">矩阵代数</a>
                 
             </span>
             
             <span class="label label-gal">
-                <i class="fa fa-calendar"></i> 2021-04-02
+                <i class="fa fa-calendar"></i> 2021-04-08
             </span>
             
         </div>
@@ -249,19 +247,17 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/2021/04/02/2.3%E5%8F%AF%E9%80%86%E7%9F%A9%E9%98%B5%E7%9A%84%E7%89%B9%E5%BE%81/">2.3可逆矩阵的特征</a>
+                    <a href="/2021/04/08/2.8R%5En%E7%9A%84%E5%AD%90%E7%A9%BA%E9%97%B4/">子空间,基，秩和维数</a>
                 </h4>
             </div>
             <p>
-                <i class="fa fa-calendar"></i> 2021-04-02
+                <i class="fa fa-calendar"></i> 2021-04-08
             </p>
             <p>
                 
                 <i class="fa fa-tags"></i>
                 
-                <a href="/tags/%E7%9F%A9%E9%98%B5%E4%BB%A3%E6%95%B0/">矩阵代数</a>, 
-                
-                <a href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a>
+                <a href="/tags/%E7%9F%A9%E9%98%B5%E4%BB%A3%E6%95%B0/">矩阵代数</a>
                 
                 
                 
@@ -269,27 +265,37 @@
         </center>
     </div>
     <div class="content-article">
-        <p>可逆矩阵的相关笔记</p>
-<span id="more"></span>
-<h3 id="定理8"><a href="#定理8" class="headerlink" title="定理8"></a>定理8</h3><p>设A为n*n的矩阵，则下列命题是等价的，即对某一特定的A，他们同时为真或同时为假</p>
+        <hr>
+<h3 id="R-n的子空间"><a href="#R-n的子空间" class="headerlink" title="R^n的子空间"></a>R^n的子空间</h3><p><strong>定义</strong>：R^n的一个子空间是R^n中的集合H，具有以下三个性质：</p>
 <ol>
-<li>A是可逆矩阵</li>
-<li>A行等价于n*n的单位矩阵</li>
-<li>A有n个主元位置</li>
-<li>方程Ax=0仅有平凡解</li>
-<li>A的各列线性无关</li>
-<li>线性变化x-&gt;Ax是一对一的</li>
-<li>对$R^n$中任意b，方程Ax=b至少有一个解</li>
-<li>A的各列生成$R^n$</li>
-<li>线性变化x-&gt;Ax把$R^n$映上到$R^n$</li>
-<li>存在n*n矩阵C使CA=I</li>
-<li>存在n*n矩阵D使AD=I</li>
-<li>$A^T$是可逆矩阵</li>
+<li>零向量属于H</li>
+<li>对H中的任意向量u和v，向量u+v属于H</li>
+<li>对H中的任意向量u和c，向量cu属于H</li>
 </ol>
-<h3 id="可逆线性变化"><a href="#可逆线性变化" class="headerlink" title="可逆线性变化"></a>可逆线性变化</h3><p>$T:R^n \rightarrow R^n$是可逆的，若存在函数$S:R^n \rightarrow R^n$使得</p>
-<p>​    对所有$R^n$中的x，$S(T(x)) = x \qquad (1)$</p>
-<p>​    对所有$R^n$中的x，$T(S(x))=x \qquad (2)$</p>
-<h3 id="定理9"><a href="#定理9" class="headerlink" title="定理9"></a>定理9</h3><p>设$T:R^n \rightarrow R^n$为线性变化，A为T的标准矩阵，则T可逆当且仅当A是可逆矩阵，这时由$S(x)=A^{-1}x$定义得线性变化S满足(1),(2)的唯一函数，我们称S是T的逆</p>
+<p>仅含零向量的集合，称为零子空间</p>
+<p><strong>定义</strong>：矩阵A的<strong>列空间</strong>是A的各列的线性组合的集合，记作Col A</p>
+<p><strong>定义</strong>：矩阵A的<strong>零空间</strong>是齐次方程Ax=0的所有解的集合，记作Nul A</p>
+<p>当线性方程组写成Ax=b的形式时，A的列空间是所有使方程组有解的<strong>向量b的集合</strong></p>
+<p><strong>定理12</strong>：m*n矩阵A的零空间是R^n的子空间</p>
+<hr>
+<h3 id="子空间的基"><a href="#子空间的基" class="headerlink" title="子空间的基"></a>子空间的基</h3><p><strong>定义：</strong>R^n的子空间H的一组基是H中的一个<strong>线性无关集</strong>，它生成H</p>
+<p><strong>定理13</strong>：矩阵A的<strong>主元列</strong>构成A的列空间的基</p>
+<hr>
+<h2 id="维数和秩"><a href="#维数和秩" class="headerlink" title="维数和秩"></a>维数和秩</h2><p><strong>定义</strong>：假设$B={b_1,…,b_p}$是子空间H的一组基，对H中的每一个向量x，相对于基B的坐标是使$x=c_1b_1+…+c_pb_p$成立的权$c_1…c_p$，且$R^p$中向量$[x]_B = \begin{bmatrix} c_1 \\ .\.\.\\c_p \end{bmatrix}$，称为x（相对于B）的坐标向量，或x的B-坐标向量</p>
+<h3 id="子空间的维度"><a href="#子空间的维度" class="headerlink" title="子空间的维度"></a>子空间的维度</h3><p><strong>定义</strong>：非零子空间H的维数dim H是H的任意一个基的向量个数，零子空间{0}的维度定义为零</p>
+<p><strong>定义</strong>：矩阵A的秩rank A是A的列空间的维数</p>
+<p>因为A的主元列形成Col A的一个基，故A的秩为A的主元列的个数</p>
+<p><strong>定理14</strong>：如果一矩阵A有n列，则rank A + dim Nul A = n</p>
+<p><strong>定理15</strong>：设H是R^n的p维子空间，H中的任何恰好由p个元素组成的线性无关集构成H的一个基，并且，H中任何生成H的p个向量集也构成H的一个基</p>
+<h3 id="秩与可逆矩阵定理"><a href="#秩与可逆矩阵定理" class="headerlink" title="秩与可逆矩阵定理"></a>秩与可逆矩阵定理</h3><p>设A是n*n矩阵，则下面的每个命题与A是可逆矩阵的命题等价：</p>
+<ol>
+<li>A的列向量构成R^n的一个基</li>
+<li>Col A = R^n</li>
+<li>dim Col A = n</li>
+<li>rank A = n</li>
+<li>Nul A = {0}</li>
+<li>dim Nul A = 0</li>
+</ol>
 
     </div>
 </article>
@@ -337,6 +343,12 @@
             <i class="fa fa-chevron-circle-up panel-toggle"></i>
         </div>
         <ul class="list-group list-group-flush">
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2021/04/08/2.8R%5En%E7%9A%84%E5%AD%90%E7%A9%BA%E9%97%B4/">子空间,基，秩和维数</a>
+                </span>
+            </li>
             
             <li class="list-group-item">
                 <span class="post-title">
@@ -392,12 +404,6 @@
                 </span>
             </li>
             
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2021/04/02/%E6%B1%A0%E5%8C%96%E5%B1%82/">池化层</a>
-                </span>
-            </li>
-            
         </ul>
     </div>
 </aside>
@@ -416,31 +422,19 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/2.1%E7%9F%A9%E9%98%B5%E8%BF%90%E7%AE%97/">2.1矩阵运算习题</a>
+                    <a href="/2021/04/02/%E4%B9%A0%E9%A2%98/">第三章部分习题</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/2.3%E5%8F%AF%E9%80%86%E7%9F%A9%E9%98%B5%E7%9A%84%E7%89%B9%E5%BE%81/">2.3可逆矩阵的特征</a>
+                    <a href="/2021/04/02/%E5%BC%A0%E9%87%8FTensor/">张量Tensor</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/hello-world/">Hello World</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2021/04/02/%E6%95%B0%E5%80%BC%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95/">数值数据的表示方法</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2021/04/02/%E6%95%B0%E6%8D%AE%E6%A0%A1%E9%AA%8C%E7%A0%81/">数据校验码</a>
+                    <a href="/2021/04/02/%E5%AE%9A%E7%82%B9%E6%95%B0%E7%9A%84%E5%8A%A0%E5%87%8F%E6%B3%95/">定点数的加减法</a>
                 </span>
             </li>
             
@@ -452,13 +446,25 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87/">网络设备</a>
+                    <a href="/2021/04/02/%E7%89%A9%E7%90%86%E5%B1%82/">物理层</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E7%BC%96%E7%A0%81%E4%B8%8E%E8%B0%83%E5%88%B6/">编码与调制</a>
+                    <a href="/2021/04/05/CRC%E5%BE%AA%E7%8E%AF%E5%86%97%E4%BD%99%E7%A0%81/">CRC循环冗余码</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2021/04/05/IP%E5%9C%B0%E5%9D%80/">IP地址</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2021/04/05/MAC/">MAC</a>
                 </span>
             </li>
             
@@ -485,17 +491,17 @@
 
                 
                 <li>
-                    <a href="/2021/04/02/2.3%E5%8F%AF%E9%80%86%E7%9F%A9%E9%98%B5%E7%9A%84%E7%89%B9%E5%BE%81/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/2021/04/08/2.8R%5En%E7%9A%84%E5%AD%90%E7%A9%BA%E9%97%B4/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/2021/04/02/2.3%E5%8F%AF%E9%80%86%E7%9F%A9%E9%98%B5%E7%9A%84%E7%89%B9%E5%BE%81/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/2021/04/08/2.8R%5En%E7%9A%84%E5%AD%90%E7%A9%BA%E9%97%B4/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/2021/04/02/2.3%E5%8F%AF%E9%80%86%E7%9F%A9%E9%98%B5%E7%9A%84%E7%89%B9%E5%BE%81/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/2021/04/08/2.8R%5En%E7%9A%84%E5%AD%90%E7%A9%BA%E9%97%B4/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
                 
             </ul>
@@ -503,19 +509,19 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/%E7%9F%A9%E9%98%B5%E4%BB%A3%E6%95%B0/" style="font-size: 9.545041361346282px;" class="tag-cloud-link">矩阵代数</a>
+    <a href="/tags/%E7%9F%A9%E9%98%B5%E4%BB%A3%E6%95%B0/" style="font-size: 9.821326104817276px;" class="tag-cloud-link">矩阵代数</a>
     
-    <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 9.966195342316158px;" class="tag-cloud-link">IP网络协议</a>
+    <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 16.172579662187196px;" class="tag-cloud-link">IP网络协议</a>
     
-    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 17.467736845781747px;" class="tag-cloud-link">网络传输、设备与企业网架构</a>
+    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 15.25459442800923px;" class="tag-cloud-link">网络传输、设备与企业网架构</a>
     
-    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 17.973543462157824px;" class="tag-cloud-link">网络体系架构与网络协议</a>
+    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 19.593654296205724px;" class="tag-cloud-link">网络体系架构与网络协议</a>
     
-    <a href="/tags/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" style="font-size: 9.518810138166874px;" class="tag-cloud-link">运算方法和运算器</a>
+    <a href="/tags/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" style="font-size: 13.090646749679136px;" class="tag-cloud-link">运算方法和运算器</a>
     
-    <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 12.919326702017552px;" class="tag-cloud-link">笔记</a>
+    <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 10.137694424067183px;" class="tag-cloud-link">笔记</a>
     
-    <a href="/tags/%E4%B9%A0%E9%A2%98/" style="font-size: 19.723438783833934px;" class="tag-cloud-link">习题</a>
+    <a href="/tags/%E4%B9%A0%E9%A2%98/" style="font-size: 13.803563951721788px;" class="tag-cloud-link">习题</a>
     
 </div>
                 
@@ -571,22 +577,6 @@
 <div id="gal-gotop">
     <i class="fa fa-angle-up"></i>
 </div>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 <script src="/js/activate-power-mode.js"></script>
