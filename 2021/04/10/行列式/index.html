@@ -12,7 +12,7 @@
     
     
     
-    <title>tags: IP网络协议 | Reimilia</title>
+    <title>行列式介绍 | Reimilia</title>
     <link href="http://example.com" rel="prefetch" />
 
     
@@ -212,19 +212,36 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 gal-right" id="mainstay">
-                    <article class="article well article-body" id="article-tag">
+                    
+<article class="article well article-body" id="article">
     <div class="breadcrumb">
         <i class="fa fa-home"></i>
         <a href="http://example.com">Reimilia</a>
         >
-        <span>标签</span>
+        <span>行列式介绍</span>
     </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/index.html">IP网络协议</a>
+                <a href="/2021/04/10/%E8%A1%8C%E5%88%97%E5%BC%8F/">行列式介绍</a>
             </h1>
+        </div>
+        <div class="tag-article">
+            
+            <span class="label label-gal">
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a>, 
+                
+                <a href="/tags/%E8%A1%8C%E5%88%97%E5%BC%8F/">行列式</a>
+                
+            </span>
+            
+            <span class="label label-gal">
+                <i class="fa fa-calendar"></i> 2021-04-10
+            </span>
+            
         </div>
     </div>
     <!-- 小型设备详细文章 -->
@@ -232,36 +249,159 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/index.html">IP网络协议</a>
+                    <a href="/2021/04/10/%E8%A1%8C%E5%88%97%E5%BC%8F/">行列式介绍</a>
                 </h4>
             </div>
+            <p>
+                <i class="fa fa-calendar"></i> 2021-04-10
+            </p>
+            <p>
+                
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a>, 
+                
+                <a href="/tags/%E8%A1%8C%E5%88%97%E5%BC%8F/">行列式</a>
+                
+                
+                
+            </p>
         </center>
     </div>
-    <div class="content-article" style="margin-top: 30px;">
-        <div class="alert alert-info" style="font-size: 14px; line-height: 2; font-weight: bold;">
-            
-            <a href="/2021/04/05/IP%E5%9C%B0%E5%9D%80/">IP地址</a>
-            <br>
-            
-            <a href="/2021/04/05/CRC%E5%BE%AA%E7%8E%AF%E5%86%97%E4%BD%99%E7%A0%81/">CRC循环冗余码</a>
-            <br>
-            
-            <a href="/2021/04/05/MAC/">MAC</a>
-            <br>
-            
-            <a href="/2021/04/04/IPv4%E9%A6%96%E9%83%A8%E6%A0%BC%E5%BC%8F/">4.3-1 IPv4</a>
-            <br>
-            
-            <a href="/2021/04/04/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E8%BF%87%E7%A8%8B%E5%8F%8A%E4%BB%A5%E5%A4%AA%E7%BD%91%E5%B8%A7%E7%BB%93%E6%9E%84/">4.1数据传输过程及以太网帧结构</a>
-            <br>
-            
-            <a href="/2021/04/04/PPP%E5%8D%8F%E8%AE%AE/">4.2 PPP协议</a>
-            <br>
-            
-            
-        </div>
+    <div class="content-article">
+        <p>对于一个2*2的矩阵<font size="5">$A = \begin{bmatrix} a&amp;b \\ c&amp;d \end{bmatrix}$</font>，如果它是可逆的，则它的行列式非零，记作<font size="5">$det A = ad-bc \neq 0$</font></p>
+<hr>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>当<font size="5">$n\ge2$</font>，n*n的矩阵<font size="5">$A=[a_{ij}]$</font>的行列式<font size="5">$detA = \sum_{j=1}^n(-1)^{1+j}a_{1j}detA_{1j}$</font></p>
+<p>余因子：给定<font size="5">$A=[a_{ij}],A的(i, j)余因子C_{ij}=(-1)^{i+j}detA_{ij}$</font></p>
+<p>则，<font size="5">$detA = \sum_{j=1}^na_{1j}C_{1j}$</font></p>
+<p><strong>余因子$C_{ij}$就是矩阵A除了$A_{ij}$所在的 i 行和 j 列其他的行列所组成的矩阵行列式的行列式</strong></p>
+<hr>
+<p><strong>定理1</strong>：</p>
+<p>n*n矩阵A的行列式可按任意行或列的余因子展开式来计算，按第i行展开为：</p>
+<font size="5">$detA=\sum_{j=1}^na_{ij}C_{ij}$</font>
+
+<p>按第j列的余因子展开式为：</p>
+<font size="5">$detA=\sum_{i=1}^na_{ij}C_{ij}$</font>
+
+<p><strong>定理2</strong>：若A为三角阵，则detA等于A的主对角线上元素的乘积</p>
+<hr>
+<h2 id="行列式的性质"><a href="#行列式的性质" class="headerlink" title="行列式的性质"></a>行列式的性质</h2><p><strong>定理3：</strong>令A是一个方阵：</p>
+<ol>
+<li>A的某一行的倍数加到另一会得到矩阵B，det B = det A</li>
+<li>A的两行互换得到矩阵B，det B = - det A</li>
+<li>A的某行乘以k得到矩阵B， det B = k * det A</li>
+</ol>
+<p><strong>这样我们就可以将A化简为阶梯形，再利用三角形矩阵的行列式等于对角线上元素之积计算行列式了</strong></p>
+<p><strong>定理4</strong>：方阵A是可逆的当且仅当<font size="5">$det A \neq 0$</font></p>
+<p><strong>推论</strong>：若A的列或行是线性相关的，即是有两行或两列是零行或者是相等的，则<font size="5">$det A = 0$</font></p>
+<p><strong>定理5</strong>：若A为一个n*n的矩阵，则<font size="5">$det A^T = det A$</font></p>
+<p><strong>定理6</strong>：若A和B均为n*n的矩阵，则<font size="5">$det AB = (det A)(det B)$</font></p>
+<p><strong>推论</strong>：<font size="5">$det A^n = (det A)^n$</font></p>
+<p><strong>警告：</strong>一般来说<font size="5">$det (A+B) \neq det A + det B$</font> </p>
+<hr>
+<h2 id="克拉默法则、体积和线性变换"><a href="#克拉默法则、体积和线性变换" class="headerlink" title="克拉默法则、体积和线性变换"></a>克拉默法则、体积和线性变换</h2><p><strong>定理7（克拉默法则）</strong>：设A是一个可逆的n*n矩阵，对R^n中任意向量b，方程Ax=b的唯一解可由下式给出：</p>
+<p>​    <font size="5">$x_i = \frac{detA_i(b)}{det A}, i=1,2,…n $</font></p>
+<p><strong>一个求$A^{-1}$的公式</strong>：</p>
+<p><strong>伴随矩阵</strong>：记作adj A</p>
+<p><strong>解释</strong>：</p>
+<script type="math/tex; mode=display">
+对于矩阵A = 
+\begin{bmatrix}  
+2 & 1 & 3 \\
+1 & -1 & 1 \\
+1 & 4 & -2
+\end{bmatrix}
+\\
+九个余因子为
+\\
+C_{11} = + 
+\left |\begin{array}{cccc}
+-1 & 1 \\
+4 & -2 
+\end{array}\right| = -2,
+C_{12} = -
+\left |\begin{array}{cccc}
+1 & 1 \\
+1 & -2
+\end{array}\right| = 3,
+C_{13} = +
+\left |\begin{array}{cccc}
+1 & -1 \\
+1 & 4
+\end{array}\right| = 5 \\
+C_{21} = -
+\left |\begin{array}{cccc}
+1 & 3 \\
+4 & -2
+\end{array}\right| = 14,
+C_{22} = +
+\left |\begin{array}{cccc}
+2 & 3 \\
+1 & -2
+\end{array}\right| = -7,
+C_{23} = -
+\left |\begin{array}{cccc}
+2 & 1 \\
+1 & 4
+\end{array}\right| = -7 \\
+C_{31} = +
+\left |\begin{array}{cccc}
+1 & 3 \\
+-1 & 1
+\end{array}\right| = 4,
+C_{32} = -
+\left |\begin{array}{cccc}
+2 & 3 \\
+1 & 1
+\end{array}\right| = 1,
+C_{33} = +
+\left |\begin{array}{cccc}
+2 & 1 \\
+1 & -1
+\end{array}\right| = -3\\
+则伴随矩阵adj A = 
+\begin{bmatrix}
+-2 & 14 & 4 \\
+3 & -7 & 1 \\
+5 & -7 & -3
+\end{bmatrix}</script><p><strong>定理8(逆矩阵公式)</strong>：设A是一个可逆的n*n的矩阵，则<font size="5">$A^{-1} = \frac{1}{det A}adj A$</font></p>
+<hr>
+<h2 id="习题"><a href="#习题" class="headerlink" title="习题"></a>习题</h2><ol>
+<li><p>证明：如果A可逆，则<font size="5">$det A^{-1} = \frac{1}{det A}$</font></p>
+<script type="math/tex; mode=display">
+\because A是可逆的 \\
+\therefore det(A^{-1}A) = det E = 1 \\
+\therefore det(A^{-1}A)= (detA^{-1})(detA) \\
+\therefore det A^{-1} = \frac{1}{det A}</script></li>
+<li><p>假设A为方阵，且$det A^3 = 0$，为什么A不可能是可逆的</p>
+<script type="math/tex; mode=display">
+\because detA^3 = det(AAA)= 0 \\
+\therefore det(AAA) = (det A)^3 = 0 \\
+\therefore det A = 0 \\
+\therefore A不可逆</script></li>
+<li><p>若A，P均为方阵，P可逆，证明$det(PAP^{-1}) = det A$</p>
+<script type="math/tex; mode=display">
+\because det(PAP^{-1}) = det(P)det(A)det(P^{-1}) \\
+\therefore det(PAP^{-1}) = det(PP^{-1})det(A) \\
+\therefore det(PAP^{-1}) = det(I) det(A) \\
+\therefore det(PAP^{-1}) = det A</script></li>
+<li><p>若A为一个n*n的矩阵，试找出一个计算det(rA)的公式</p>
+<script type="math/tex; mode=display">
+det(rA) = r^ndet A</script></li>
+<li><p>假设U为方阵，满足$U^TU=I$,证明$det U = \pm1$</p>
+</li>
+</ol>
+<script type="math/tex; mode=display">
+det U^TU = det(U^T)det(U) = (det(U))^2 \\
+\because U^TU = I \\
+\therefore det(U^TU) = det I = 1 \\
+\therefore (det\ U)^2 = 1 \\
+\therefore det U = \pm 1</script><p>6. </p>
+
     </div>
 </article>
+
+
                 </div>
                 <aside class="col-md-4 gal-left" id="sidebar">
     <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
@@ -383,31 +523,19 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/2.1%E7%9F%A9%E9%98%B5%E8%BF%90%E7%AE%97/">2.1矩阵运算习题</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
                     <a href="/2021/04/04/IPv4%E9%A6%96%E9%83%A8%E6%A0%BC%E5%BC%8F/">4.3-1 IPv4</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">卷积神经网络基础</a>
+                    <a href="/2021/04/02/%E4%BC%A0%E8%BE%93%E6%96%B9%E5%BC%8F/">传输方式</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E5%BC%A0%E9%87%8FTensor/">张量Tensor</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2021/04/02/%E6%95%B0%E5%80%BC%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95/">数值数据的表示方法</a>
+                    <a href="/2021/04/02/%E4%BC%A0%E8%BE%93%E5%AA%92%E4%BB%8B/">传输媒介</a>
                 </span>
             </li>
             
@@ -419,13 +547,25 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/05/MAC/">MAC</a>
+                    <a href="/2021/04/02/%E7%89%A9%E7%90%86%E5%B1%82/">物理层</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/04/PPP%E5%8D%8F%E8%AE%AE/">4.2 PPP协议</a>
+                    <a href="/2021/04/05/CRC%E5%BE%AA%E7%8E%AF%E5%86%97%E4%BD%99%E7%A0%81/">CRC循环冗余码</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2021/04/05/IP%E5%9C%B0%E5%9D%80/">IP地址</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2021/04/05/MAC/">MAC</a>
                 </span>
             </li>
             
@@ -452,17 +592,17 @@
 
                 
                 <li>
-                    <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/2021/04/10/%E8%A1%8C%E5%88%97%E5%BC%8F/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/2021/04/10/%E8%A1%8C%E5%88%97%E5%BC%8F/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/2021/04/10/%E8%A1%8C%E5%88%97%E5%BC%8F/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
                 
             </ul>
@@ -470,21 +610,21 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/%E7%9F%A9%E9%98%B5%E4%BB%A3%E6%95%B0/" style="font-size: 19.914285612530424px;" class="tag-cloud-link">矩阵代数</a>
+    <a href="/tags/%E7%9F%A9%E9%98%B5%E4%BB%A3%E6%95%B0/" style="font-size: 11.162412953039759px;" class="tag-cloud-link">矩阵代数</a>
     
-    <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 19.70897746059056px;" class="tag-cloud-link">IP网络协议</a>
+    <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 9.393410787111614px;" class="tag-cloud-link">IP网络协议</a>
     
-    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 13.268605900103232px;" class="tag-cloud-link">网络传输、设备与企业网架构</a>
+    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 14.15886382949228px;" class="tag-cloud-link">网络传输、设备与企业网架构</a>
     
-    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 8.612299706565109px;" class="tag-cloud-link">网络体系架构与网络协议</a>
+    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 13.115394525118951px;" class="tag-cloud-link">网络体系架构与网络协议</a>
     
-    <a href="/tags/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" style="font-size: 8.552964873416588px;" class="tag-cloud-link">运算方法和运算器</a>
+    <a href="/tags/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" style="font-size: 13.053793223063657px;" class="tag-cloud-link">运算方法和运算器</a>
     
-    <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 9.623227322814284px;" class="tag-cloud-link">笔记</a>
+    <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 10.820356697883422px;" class="tag-cloud-link">笔记</a>
     
-    <a href="/tags/%E4%B9%A0%E9%A2%98/" style="font-size: 11.611755932114148px;" class="tag-cloud-link">习题</a>
+    <a href="/tags/%E4%B9%A0%E9%A2%98/" style="font-size: 17.26074872771406px;" class="tag-cloud-link">习题</a>
     
-    <a href="/tags/%E8%A1%8C%E5%88%97%E5%BC%8F/" style="font-size: 13.79933082360089px;" class="tag-cloud-link">行列式</a>
+    <a href="/tags/%E8%A1%8C%E5%88%97%E5%BC%8F/" style="font-size: 10.525125691988716px;" class="tag-cloud-link">行列式</a>
     
 </div>
                 
