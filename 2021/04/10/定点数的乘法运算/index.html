@@ -12,7 +12,7 @@
     
     
     
-    <title>4.3-1 IPv4 | Reimilia</title>
+    <title>定点数的乘、除法运算 | Reimilia</title>
     <link href="http://example.com" rel="prefetch" />
 
     
@@ -222,13 +222,13 @@
         <i class="fa fa-home"></i>
         <a href="http://example.com">Reimilia</a>
         >
-        <span>4.3-1 IPv4</span>
+        <span>定点数的乘、除法运算</span>
     </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/2021/04/04/IPv4%E9%A6%96%E9%83%A8%E6%A0%BC%E5%BC%8F/">4.3-1 IPv4</a>
+                <a href="/2021/04/10/%E5%AE%9A%E7%82%B9%E6%95%B0%E7%9A%84%E4%B9%98%E6%B3%95%E8%BF%90%E7%AE%97/">定点数的乘、除法运算</a>
             </h1>
         </div>
         <div class="tag-article">
@@ -236,14 +236,14 @@
             <span class="label label-gal">
                 <i class="fa fa-tags"></i>
                 
-                <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/">IP网络协议</a>, 
+                <a href="/tags/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/">运算方法和运算器</a>, 
                 
                 <a href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a>
                 
             </span>
             
             <span class="label label-gal">
-                <i class="fa fa-calendar"></i> 2021-04-04
+                <i class="fa fa-calendar"></i> 2021-04-10
             </span>
             
         </div>
@@ -253,17 +253,17 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/2021/04/04/IPv4%E9%A6%96%E9%83%A8%E6%A0%BC%E5%BC%8F/">4.3-1 IPv4</a>
+                    <a href="/2021/04/10/%E5%AE%9A%E7%82%B9%E6%95%B0%E7%9A%84%E4%B9%98%E6%B3%95%E8%BF%90%E7%AE%97/">定点数的乘、除法运算</a>
                 </h4>
             </div>
             <p>
-                <i class="fa fa-calendar"></i> 2021-04-04
+                <i class="fa fa-calendar"></i> 2021-04-10
             </p>
             <p>
                 
                 <i class="fa fa-tags"></i>
                 
-                <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/">IP网络协议</a>, 
+                <a href="/tags/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/">运算方法和运算器</a>, 
                 
                 <a href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a>
                 
@@ -273,115 +273,99 @@
         </center>
     </div>
     <div class="content-article">
-        <p><strong>网际协议版本4</strong>（英语：<strong>I</strong>nternet <strong>P</strong>rotocol <strong>v</strong>ersion <strong>4</strong>，<strong>IPv4</strong>），又称<strong>互联网通信协议第四版</strong>，是<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/网际协议">网际协议</a>开发过程中的第四个修订版本，也是此协议第一个被广泛部署的版本。IPv4是互联网的核心，也是使用最广泛的网际协议版本，其后继版本为<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/IPv6">IPv6</a>，直到2011年，<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/IANA">IANA</a> IPv4位址完全用尽时，IPv6仍处在部署的初期</p>
+        <p>移位分为算术移位，逻辑移位和循环移位三类，它们又可以分为左移和右移</p>
 <span id="more"></span>
-<p><strong>网络层的主要任务是实现网络互连，进而实现数据包在网络之间的传输</strong></p>
-<p>实现网络层的任务，需要解决以下主要问题：</p>
-<ol>
-<li>网络层向运输层提供怎样的服务</li>
-<li>网络层寻址问题</li>
-<li>路由选择问题</li>
-</ol>
 <hr>
-<h4 id="IPV4就是因特网上的每一个主机的每一个接口分配在一个在全世界范围内是唯一的32比特的标识符"><a href="#IPV4就是因特网上的每一个主机的每一个接口分配在一个在全世界范围内是唯一的32比特的标识符" class="headerlink" title="IPV4就是因特网上的每一个主机的每一个接口分配在一个在全世界范围内是唯一的32比特的标识符"></a>IPV4就是因特网上的每一个主机的每一个接口分配在一个在全世界范围内是唯一的32比特的标识符</h4><hr>
-<h3 id="IPV4数据报的首部形式"><a href="#IPV4数据报的首部形式" class="headerlink" title="IPV4数据报的首部形式"></a>IPV4数据报的首部形式</h3><p><img src="/images/image-20210404154103172.png" alt></p>
+<h2 id="算术移位规则"><a href="#算术移位规则" class="headerlink" title="算术移位规则"></a>算术移位规则</h2><p><strong>原码的移位规则：</strong>负数的原码移位后的空出位补0</p>
+<p><strong>补码的移位规则：</strong></p>
 <ol>
-<li>首部长度：占4比特，表示<strong>IP数据报首部</strong>的长度，该字段的取值以4字节为单位。<ol>
-<li>最小十进制取值为5，表示IP数据报首部只有20字节固定部分</li>
-<li>最大十进制取值为15，表示IP数据报首部包含20字节固定部分和40字节的可变部分</li>
+<li>负数的补码左移后的空出位补0</li>
+<li>负数的补码右移后的空出位补1</li>
+</ol>
+<p><strong>移位功能的实现：</strong>通过移位操作由<strong>移位寄存器</strong>来实现，也有在加法器的输出的加一个实现直传、左移一位和右移一位的控制逻辑电路（称为移位器）</p>
+<hr>
+<h2 id="定点乘法运算"><a href="#定点乘法运算" class="headerlink" title="定点乘法运算"></a>定点乘法运算</h2><h3 id="原码一位乘法的规则为："><a href="#原码一位乘法的规则为：" class="headerlink" title="原码一位乘法的规则为："></a>原码一位乘法的规则为：</h3><ol>
+<li>参加运算的操作数取其绝对值</li>
+<li><p>令乘数的最低位为判断位</p>
+<ol>
+<li>若位1，加被乘数</li>
+<li>若为0，不加被乘数</li>
 </ol>
 </li>
-<li>可选字段：长度从1到40字节不等，用来支持排错，测量及安全措施</li>
-<li>填充字段：确保首部长度为4字节的整数倍，使用全0进行填充</li>
-<li>总长度：占16比特，表示IP数据报的总长度(首部+数据载荷)，最大取值65535字节</li>
-<li><p>标识、标志、片偏移：共同用于IP数据报分片，当IP数据报长度超过MUT（首部+数据载荷）时将数据报分成几份</p>
+<li><p>累加后的部分积右移一位（这里是逻辑移位）</p>
+</li>
+<li>重复n次2，3步</li>
+<li>符号位单独处理，同号为正，异号为负</li>
+</ol>
+<p><strong>例题：</strong></p>
+<script type="math/tex; mode=display">
+已知：X=0.1101, Y=-0.1011, 求X*Y \\
+|X| = 00.1101 \rightarrow B, \\
+|Y| = .1011 \rightarrow C, 0 \rightarrow A \\</script><p><img src="/images/image-20210410143014142.png" alt="image-20210410143014142"></p>
+<h3 id="补码一位乘法"><a href="#补码一位乘法" class="headerlink" title="补码一位乘法"></a>补码一位乘法</h3><p><strong>校正法：</strong></p>
 <ol>
-<li>标志：占3比特，各比特含义如下：<ol>
-<li>DF位：1表示不允许分片。0表示允许</li>
-<li>MF位：1表示后面还有分片，0表示这是最后一个分片</li>
-<li>保留位：必须为0</li>
+<li>被乘数任意，乘数为正：同原码乘，但<strong>加和移位按补码规则运算</strong>，乘积的符    号自然形成</li>
+<li>被乘数任意，乘数为负：乘数$[Y]_{补}$，去掉符号位，操作同①，最后加$[-X]_{补}$，校正</li>
 </ol>
-</li>
-<li>标识：占16比特，属于同个数据报的数据报分片应该具有相同的标识。IP软件维持一个计数器，每产生一个数据报，计数器值加1，并将该值赋给标识字段</li>
-<li>片偏移：占13比特，指出分片数据报的数据载荷部分偏移其在原数据报的位置有几个单位</li>
-</ol>
-</li>
-<li><p>生存时间TTL：8比特，路由器转发IP数据报时，将IP数据报首部中的该字段的值减去IP数据报在本路由器所耗费的时间，若不为0就转发，否则就丢弃</p>
-</li>
-<li><p>协议：占8比特，指明IPv4数据报部分是何种协议数据单元，常用的一些协议和相应的协议字段值如下</p>
+<p><strong>Booth算法</strong>：</p>
+<p>以小数为例子：</p>
+<p>设$[X]_补 = X_s.X_1X_2…X_n\quad[Y]_补=Y_S.Y_1Y_2…Y_n$</p>
+<p>$[X*Y]_补 $</p>
+<p>$ = [X]_补(0.Y_1Y_2…Y_n) - [X]_补 * Y_s$</p>
+<p>$=[X]_补(Y_12^{-1}+Y_22^{-2}+…+Y_n2^{-n}) - [X]_补*Y_s$</p>
+<p>$=[X]_补\ (-Y_s + Y_12^{-1} + Y_22^{-2} + … + Y_n2^{-n})$</p>
+<p>$=[X]_补=[-Y_s + (Y_1 - Y_12^{-1}) + (Y_22^{-1} - Y_22^{-2}) + … + (Y_n2^{-(n-1)}-Y_n2^{-n})]$</p>
+<p>$=[X]_补 = [(Y_1-Y_s) + (Y_2 - Y_1)2^{-1} + … + (Y_n - Y_{n-1}2^{-(n-1)}) + (0 - Y_n)2^{-n}]$</p>
+<p><strong>递推公式</strong>：</p>
+<script type="math/tex; mode=display">
+[Z_0]_补 = 0\\
+[Z_1]_补 = 2^{-1}\{[Z_0]_补 + (Y_{n+1}-Y_{n})[X]_补\}\\
+[Z_2]_补 = 2^{-1}\{[Z_1]_补 + (Y_{n}-Y_{n-1})[X]_补\}\\
+...\\
+[Z_n]_补 = 2^{-1}\{[Z_n-1]_补 + (Y_{2}-Y_{1})[X]_补\}\\
+\therefore [X*Y]_补 = [Z_n]_补 + (Y_1 - Y_s)[X]_补</script><p>其中，$[Z_0]_补$为初始部分积，$[Z_1]_补\sim[Z_n]_补$依次为各次求得的累加并右移之后的部分积</p>
+<p><strong>描述</strong>：对于乘数$[Y]_补 = Y_1Y_2…Y_n$,被乘数$[X]_补=X_1X_2….X_n$</p>
 <ol>
-<li>ICMP：1</li>
-<li>IGMP：2</li>
-<li>TCP：6</li>
-<li>UDP：17</li>
-<li>IPv6：41</li>
-<li>OSPF：89</li>
+<li>若乘数当前位为1，下一位为0，则用部分积减去乘数，得到新的部分积</li>
+<li>若乘数当前位为0，下一位为1，则用部分积加上乘数，得到新的部分积</li>
+<li>若乘数当前位与下一位相同，则什么都不做</li>
+<li>上诉操作后按照补码规则右移</li>
 </ol>
-</li>
-<li><p>首部检验和：占16比特，用来检测首部在传输过程中是否出现差错，成为因特网检验和，IPv6中路由器不在计算首部校验和，从而更快的转发IP数据报。由于转发过程中标识等字段可变，所有首部校验和可变</p>
-</li>
+<p>注意事项：</p>
+<ol>
+<li>当被乘数与部分积相加时，产生的进位将被丢弃</li>
+<li>部分积移位时，使用算数移位，最高位补符号位</li>
+<li>乘法开始时，乘数的当前位（n）为其最低位，下一位（n+1）为0</li>
 </ol>
 <hr>
-<h3 id="IPv4地址概述"><a href="#IPv4地址概述" class="headerlink" title="IPv4地址概述"></a>IPv4地址概述</h3><p>因为32比特的IPv4地址不方便阅读、记录以及输入等，因此IPv4地址采用<strong>点分十进制表示</strong>方法以方便用户使用</p>
-<p>将32比特的IPv4按每8位分为一组，写出每组的十进制数，在四个组间加上小数点</p>
-<p>分类编址的IPv4地址：</p>
+<h2 id="定点数的除法运算"><a href="#定点数的除法运算" class="headerlink" title="定点数的除法运算"></a>定点数的除法运算</h2><h3 id="比较法"><a href="#比较法" class="headerlink" title="比较法"></a>比较法</h3><h3 id="原码恢复余数法"><a href="#原码恢复余数法" class="headerlink" title="原码恢复余数法"></a>原码恢复余数法</h3><p><strong>步骤：</strong></p>
 <ol>
-<li>A类地址：8位网络号，24位主机号，网络号的最高位固定位0</li>
-<li>B类地址：16位网络号，16位主机号，网络号的最高两位固定为10</li>
-<li>C类地址：24位网络号，8位主机号，网络号的最高三位固定为110</li>
-<li>D类地址：多播地址. 网络号的最高四位固定为1110</li>
-<li>E类地址：保留为今后使用，网络号的最高四位固定为1111</li>
-</ol>
-<p>只有A，C，B类地址可分配给主机或路由器的各接口</p>
-<p>A类地址：<strong>最大网络号127作为本地唤回测试地址，不指派。最小网络号0，保留不指派</strong>。可指派的网络数量是$2^8 - 2 = 126$，则可配分的IP地址位$2^{24} -     2 = 16777214$(减去2是除去主机号全0的网络地址和全1的广播地址)    </p>
-<p>B类地址：最小网络号也是第一个可指派的网络号128.0。最大网络号也是最后一个可指派网络号为191.255。可指派的网络号为$2^{(16-2)} = 16384$，每个网络可指派的IP地址为$2^{16} - 2 = 65534$</p>
-<p>C类地址：最小网络号也是第一个可指派的网络号为192.0.0。最大网络号也是最后一个可指派网络号为223.255.255。可指派的网络号为$2^{(24-3)} = 2097152$。每个网络可指派的IP地址为$2^8 - 2 = 254$</p>
-<hr>
-<h3 id="一些特殊的IP地址"><a href="#一些特殊的IP地址" class="headerlink" title="一些特殊的IP地址"></a>一些特殊的IP地址</h3><p><strong>地址0.0.0.0是一个特殊的IPv4地址，只能作为源地址使用，表示“在本网络上的本主机”，封装有DHCP DIscovery报文的IP分组的源地址使用0.0.0.0，不能作为目的地址</strong></p>
-<p><strong>受限广播地址：地址255.255.255.255是一个特殊的IPv4地址，只能作为目的地址使用，表示”在本网络上进行进行广播“，各路油器不转发</strong></p>
-<p><strong>127.X.X.X是环回地址，127.0.0.1 特指本机地址。</strong></p>
-<p><strong>224.0.0.1 组播地址。从224.0.0.0到239.255.255.255都是这样的地址。224.0.0.1特指所有主机，224.0.0.2特指所有路由器。</strong></p>
-<p><strong>0.X.X.X。该系列地址仅用来标识主机</strong></p>
-<p><strong>169.256.X.X。该系列地址是本地地址，是由操作系统分配，路由器不转发</strong></p>
-<hr>
-<h3 id="划分子网的IPv4地址"><a href="#划分子网的IPv4地址" class="headerlink" title="划分子网的IPv4地址"></a>划分子网的IPv4地址</h3><p>为新增网络申请新的网络号会带来以下弊端：</p>
+<li>将除数的最高位与被除数的最高位对齐</li>
+<li><p>从部分被除数中减去除数，得到新的部分被除数</p>
 <ol>
-<li>需要等待和花费更多费用</li>
-<li>会增加其他路由器中路由表记录的数量</li>
-<li>浪费原有网络中剩余的大量IP地址</li>
+<li>若新的部分被除数为负，则商左移一位，最低位补0，并用新的部分被除数加上除数，恢复原先的部分被除数</li>
+<li>若新的部分被除数为正，则商左移一位，最低位补1</li>
 </ol>
-<p>所以我们可以从主机号部分借用一部分作为子网号</p>
-<p><strong>计算机如何知道分类地址中主机号有多少比特被用作子网号？</strong></p>
-<p>32比特的子网掩码可以表明分类IP地址的主机号部分被借用了几个比特作为子网号</p>
+</li>
+<li><p>判断除法是否结束。若除数的最低位与部分被除数的最低位对齐，则除法结束。最后的部分被除数就是余数</p>
+</li>
+<li>将除数右移1位，从第②步继续执行</li>
+</ol>
+<p><strong>原码恢复余数法在计算机中一般很少采用</strong></p>
+<h3 id="原码不恢复余数除法"><a href="#原码不恢复余数除法" class="headerlink" title="原码不恢复余数除法"></a>原码不恢复余数除法</h3><p>和原码恢复余数除法的区别是：</p>
 <ol>
-<li>子网掩码使用连续的比特1来对应网络号和子网号</li>
-<li>子网掩码使用连续的比特0来对应主机号</li>
-<li>将划分子网的IPv4地址与相对应的子网掩码进行逻辑与运算就可以得到IPv4地址所在的子网的<strong>网络地址</strong></li>
+<li>若新的部分被除数为正，商左移一位，最低位补1，部分被除数减去除数</li>
+<li>先对除数进行右移再判断新的部分被除数为正为负</li>
 </ol>
-<p><strong>默认子网掩码</strong>：指在未划分子网的情况下使用子网掩码。A类地址未255.0.0.0，B类地址为255.255.0.0，C类地址为255.255.255.0</p>
-<hr>
-<h3 id="无分类编址的IPv4地址"><a href="#无分类编址的IPv4地址" class="headerlink" title="无分类编址的IPv4地址"></a>无分类编址的IPv4地址</h3><p>无分类域间路由选择CIDR。</p>
-<ol>
-<li>CIDR消除了传统A，B ,C类地址以及划分子网的概念</li>
-<li>CIDR可以更有效地分配IPv4的地址空间</li>
-</ol>
-<p>CIDR使用斜线记法，在IPv4地址后面加上斜线”/“，在斜线后面写上网络前缀(网络号)所占的比特数量</p>
-<p>CIDR实际上是将网络前缀都相同的连续IP地址组成一个”CIDR地址块“</p>
-<p>只要知道CIDR地址块的任何一个地址，就可以知道该地址块的全部细节：</p>
-<ol>
-<li>地址块的最小地址</li>
-<li>地址块的最大地址</li>
-<li>地址块的地址数量</li>
-<li>地址块聚合某类网络的数量</li>
-<li>地址掩码</li>
-</ol>
-<p><strong>路由聚合（构造超网）</strong></p>
-<p>如何构造：找出路由表中目的地址的共同前缀，然后将找到的共同前缀的后一个字节写成2进制的形式，找出地址的共同前缀，然后计算共同前缀的比特位，并将共同前缀写成点分十进制的形式。在斜杠后写上刚才计算的比特位，得到<strong>聚合地址块</strong></p>
-<p><strong>网络前缀越长，地址块越小，路由越具体</strong></p>
-<p>若路由器查表转发分组时发现有多条路由可选，则选择网络前缀最长的那条，因为这样的路由更具体</p>
-<hr>
-<h3 id="IPv4的应用规划"><a href="#IPv4的应用规划" class="headerlink" title="IPv4的应用规划"></a>IPv4的应用规划</h3><h4 id="定长子网掩码FLSM"><a href="#定长子网掩码FLSM" class="headerlink" title="定长子网掩码FLSM"></a>定长子网掩码FLSM</h4><h4 id="变长子网掩码VLSM"><a href="#变长子网掩码VLSM" class="headerlink" title="变长子网掩码VLSM"></a>变长子网掩码VLSM</h4><p>在一个网络划分成n个子网时，计算出每个子网所需的主机地址，路由器接口地址，网络地址，广播地址，算出所有需要的主机号数目。得出每个子网所需主机号的位数，计算出每个子网对应的网络前缀位数。    </p>
-<p>分配过程中，每个子块的起点位置不能随意选取，只能选取块大小整数倍地址作为起点，一般先给大的子块分配</p>
+<p><strong>例题：</strong></p>
+<script type="math/tex; mode=display">
+假设X=-0.10101,Y=0.11110,求X\div Y\\
+预先准备:\\
+|X|=00.10101 \rightarrow A \\
+|Y|=00.11110 \rightarrow B \\
+0 \rightarrow C \\
+[|Y|]_{变补} = 11.00010</script><p><img src="/images/image-20210410154001109.png" alt="image-20210410154001109"></p>
+<p><img src="/images/image-20210410154122807.png" alt="image-20210410154122807"></p>
 
     </div>
 </article>
@@ -514,7 +498,7 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/04/IPv4%E9%A6%96%E9%83%A8%E6%A0%BC%E5%BC%8F/">4.3-1 IPv4</a>
+                    <a href="/2021/04/02/%E4%B9%A0%E9%A2%98/">第三章部分习题</a>
                 </span>
             </li>
             
@@ -526,19 +510,19 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E6%95%B0%E5%80%BC%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95/">数值数据的表示方法</a>
+                    <a href="/2021/04/02/%E5%BC%A0%E9%87%8FTensor/">张量Tensor</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E6%B1%A0%E5%8C%96%E5%B1%82/">池化层</a>
+                    <a href="/2021/04/02/%E5%AE%9A%E7%82%B9%E6%95%B0%E7%9A%84%E5%8A%A0%E5%87%8F%E6%B3%95/">定点数的加减法</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%E4%B8%8E%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">网络协议与网络体系结构</a>
+                    <a href="/2021/04/02/%E6%95%B0%E6%8D%AE%E6%A0%A1%E9%AA%8C%E7%A0%81/">数据校验码</a>
                 </span>
             </li>
             
@@ -550,19 +534,19 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E7%BC%96%E7%A0%81%E4%B8%8E%E8%B0%83%E5%88%B6/">编码与调制</a>
+                    <a href="/2021/04/05/IP%E5%9C%B0%E5%9D%80/">IP地址</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/05/AlexNet%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">AlexNet学习笔记</a>
+                    <a href="/2021/04/04/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E8%BF%87%E7%A8%8B%E5%8F%8A%E4%BB%A5%E5%A4%AA%E7%BD%91%E5%B8%A7%E7%BB%93%E6%9E%84/">4.1数据传输过程及以太网帧结构</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/08/2.8R%5En%E7%9A%84%E5%AD%90%E7%A9%BA%E9%97%B4/">子空间,基，秩和维数</a>
+                    <a href="/2021/04/10/%E8%A1%8C%E5%88%97%E5%BC%8F/">行列式介绍</a>
                 </span>
             </li>
             
@@ -577,17 +561,17 @@
 
                 
                 <li>
-                    <a href="/2021/04/04/IPv4%E9%A6%96%E9%83%A8%E6%A0%BC%E5%BC%8F/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/2021/04/10/%E5%AE%9A%E7%82%B9%E6%95%B0%E7%9A%84%E4%B9%98%E6%B3%95%E8%BF%90%E7%AE%97/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/2021/04/04/IPv4%E9%A6%96%E9%83%A8%E6%A0%BC%E5%BC%8F/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/2021/04/10/%E5%AE%9A%E7%82%B9%E6%95%B0%E7%9A%84%E4%B9%98%E6%B3%95%E8%BF%90%E7%AE%97/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/2021/04/04/IPv4%E9%A6%96%E9%83%A8%E6%A0%BC%E5%BC%8F/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/2021/04/10/%E5%AE%9A%E7%82%B9%E6%95%B0%E7%9A%84%E4%B9%98%E6%B3%95%E8%BF%90%E7%AE%97/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
                 
             </ul>
@@ -595,21 +579,21 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/%E7%9F%A9%E9%98%B5%E4%BB%A3%E6%95%B0/" style="font-size: 10.880507646239568px;" class="tag-cloud-link">矩阵代数</a>
+    <a href="/tags/%E7%9F%A9%E9%98%B5%E4%BB%A3%E6%95%B0/" style="font-size: 13.796140174114303px;" class="tag-cloud-link">矩阵代数</a>
     
-    <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 9.17622154374636px;" class="tag-cloud-link">IP网络协议</a>
+    <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 17.867232713288804px;" class="tag-cloud-link">IP网络协议</a>
     
-    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 10.419409885870497px;" class="tag-cloud-link">网络传输、设备与企业网架构</a>
+    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 12.87703955832552px;" class="tag-cloud-link">网络传输、设备与企业网架构</a>
     
-    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 13.9702615766228px;" class="tag-cloud-link">网络体系架构与网络协议</a>
+    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 18.167711330854488px;" class="tag-cloud-link">网络体系架构与网络协议</a>
     
-    <a href="/tags/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" style="font-size: 8.177555525876333px;" class="tag-cloud-link">运算方法和运算器</a>
+    <a href="/tags/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" style="font-size: 8.84919543749529px;" class="tag-cloud-link">运算方法和运算器</a>
     
-    <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 8.131068459009938px;" class="tag-cloud-link">笔记</a>
+    <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 10.013855278553297px;" class="tag-cloud-link">笔记</a>
     
-    <a href="/tags/%E4%B9%A0%E9%A2%98/" style="font-size: 14.387243084157825px;" class="tag-cloud-link">习题</a>
+    <a href="/tags/%E4%B9%A0%E9%A2%98/" style="font-size: 19.426430406932873px;" class="tag-cloud-link">习题</a>
     
-    <a href="/tags/%E8%A1%8C%E5%88%97%E5%BC%8F/" style="font-size: 16.551502091281883px;" class="tag-cloud-link">行列式</a>
+    <a href="/tags/%E8%A1%8C%E5%88%97%E5%BC%8F/" style="font-size: 10.9291494895749px;" class="tag-cloud-link">行列式</a>
     
 </div>
                 
