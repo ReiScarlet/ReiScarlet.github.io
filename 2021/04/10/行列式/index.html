@@ -273,20 +273,18 @@
         </center>
     </div>
     <div class="content-article">
-        <p>对于一个2*2的矩阵<font size="5">$A = \begin{bmatrix} a&amp;b \\ c&amp;d \end{bmatrix}$</font>，如果它是可逆的，则它的行列式非零，记作<font size="5">$det A = ad-bc \neq 0$</font></p>
+        <p>对于一个2*2的矩阵$A = \begin{bmatrix} a&amp;b \\ c&amp;d \end{bmatrix}$，如果它是可逆的，则它的行列式非零，记作$det A = ad-bc \neq 0$</p>
 <hr>
-<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>当<font size="5">$n\ge2$</font>，n*n的矩阵<font size="5">$A=[a_{ij}]$</font>的行列式<font size="5">$detA = \sum_{j=1}^n(-1)^{1+j}a_{1j}detA_{1j}$</font></p>
-<p>余因子：给定<font size="5">$A=[a_{ij}],A的(i, j)余因子C_{ij}=(-1)^{i+j}detA_{ij}$</font></p>
-<p>则，<font size="5">$detA = \sum_{j=1}^na_{1j}C_{1j}$</font></p>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>当$n\ge2$，n*n的矩阵$A=[a_{ij}]$的行列式$detA = \sum_{j=1}^n(-1)^{1+j}a_{1j}detA_{1j}$</p>
+<p>余因子：给定$A=[a_{ij}],A的(i, j)余因子C_{ij}=(-1)^{i+j}detA_{ij}$</p>
+<p>则，$detA = \sum_{j=1}^na_{1j}C_{1j}$</p>
 <p><strong>余因子$C_{ij}$就是矩阵A除了$A_{ij}$所在的 i 行和 j 列其他的行列所组成的矩阵行列式的行列式</strong></p>
 <hr>
 <p><strong>定理1</strong>：</p>
 <p>n*n矩阵A的行列式可按任意行或列的余因子展开式来计算，按第i行展开为：</p>
-<font size="5">$detA=\sum_{j=1}^na_{ij}C_{ij}$</font>
-
+<p>$detA=\sum_{j=1}^na_{ij}C_{ij}$</p>
 <p>按第j列的余因子展开式为：</p>
-<font size="5">$detA=\sum_{i=1}^na_{ij}C_{ij}$</font>
-
+<p>$detA=\sum_{i=1}^na_{ij}C_{ij}$</p>
 <p><strong>定理2</strong>：若A为三角阵，则detA等于A的主对角线上元素的乘积</p>
 <hr>
 <h2 id="行列式的性质"><a href="#行列式的性质" class="headerlink" title="行列式的性质"></a>行列式的性质</h2><p><strong>定理3：</strong>令A是一个方阵：</p>
@@ -296,15 +294,15 @@
 <li>A的某行乘以k得到矩阵B， det B = k * det A</li>
 </ol>
 <p><strong>这样我们就可以将A化简为阶梯形，再利用三角形矩阵的行列式等于对角线上元素之积计算行列式了</strong></p>
-<p><strong>定理4</strong>：方阵A是可逆的当且仅当<font size="5">$det A \neq 0$</font></p>
-<p><strong>推论</strong>：若A的列或行是线性相关的，即是有两行或两列是零行或者是相等的，则<font size="5">$det A = 0$</font></p>
-<p><strong>定理5</strong>：若A为一个n*n的矩阵，则<font size="5">$det A^T = det A$</font></p>
-<p><strong>定理6</strong>：若A和B均为n*n的矩阵，则<font size="5">$det AB = (det A)(det B)$</font></p>
-<p><strong>推论</strong>：<font size="5">$det A^n = (det A)^n$</font></p>
-<p><strong>警告：</strong>一般来说<font size="5">$det (A+B) \neq det A + det B$</font> </p>
+<p><strong>定理4</strong>：方阵A是可逆的当且仅当$det A \neq 0$</p>
+<p><strong>推论</strong>：若A的列或行是线性相关的，即是有两行或两列是零行或者是相等的，则$det A = 0$</p>
+<p><strong>定理5</strong>：若A为一个n*n的矩阵，则$det A^T = det A$</p>
+<p><strong>定理6</strong>：若A和B均为n*n的矩阵，则$det AB = (det A)(det B)$</p>
+<p><strong>推论</strong>：$det A^n = (det A)^n$</p>
+<p><strong>警告：</strong>一般来说$det (A+B) \neq det A + det B$</p>
 <hr>
 <h2 id="克拉默法则、体积和线性变换"><a href="#克拉默法则、体积和线性变换" class="headerlink" title="克拉默法则、体积和线性变换"></a>克拉默法则、体积和线性变换</h2><p><strong>定理7（克拉默法则）</strong>：设A是一个可逆的n*n矩阵，对R^n中任意向量b，方程Ax=b的唯一解可由下式给出：</p>
-<p>​    <font size="5">$x_i = \frac{detA_i(b)}{det A}, i=1,2,…n $</font></p>
+<p>​    $x_i = \frac{detA_i(b)}{det A}, i=1,2,…n $</p>
 <p><strong>一个求$A^{-1}$的公式</strong>：</p>
 <p><strong>伴随矩阵</strong>：记作adj A</p>
 <p><strong>解释</strong>：</p>
@@ -368,7 +366,7 @@ C_{33} = +
 -2 & 14 & 4 \\
 3 & -7 & 1 \\
 5 & -7 & -3
-\end{bmatrix}</script><p><strong>定理8(逆矩阵公式)</strong>：设A是一个可逆的n*n的矩阵，则<font size="5">$A^{-1} = \frac{1}{det A}adj A$</font></p>
+\end{bmatrix}</script><p><strong>定理8(逆矩阵公式)</strong>：设A是一个可逆的n*n的矩阵，则$A^{-1} = \frac{1}{det A}adj A$</p>
 <hr>
 <h2 id="习题"><a href="#习题" class="headerlink" title="习题"></a>习题</h2><ol>
 <li><p>证明：如果A可逆，则<font size="5">$det A^{-1} = \frac{1}{det A}$</font></p>
@@ -532,13 +530,13 @@ det U^TU = det(U^T)det(U) = (det(U))^2 \\
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/2.2%E7%9F%A9%E9%98%B5%E7%9A%84%E9%80%86/">矩阵的逆和特性</a>
+                    <a href="/2021/04/04/IPv4%E9%A6%96%E9%83%A8%E6%A0%BC%E5%BC%8F/">4.3-1 IPv4</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/04/IPv4%E9%A6%96%E9%83%A8%E6%A0%BC%E5%BC%8F/">4.3-1 IPv4</a>
+                    <a href="/2021/04/02/%E4%BC%A0%E8%BE%93%E6%96%B9%E5%BC%8F/">传输方式</a>
                 </span>
             </li>
             
@@ -556,13 +554,13 @@ det U^TU = det(U^T)det(U) = (det(U))^2 \\
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87/">网络设备</a>
+                    <a href="/2021/04/02/%E6%95%B0%E5%80%BC%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95/">数值数据的表示方法</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/05/IP%E5%9C%B0%E5%9D%80/">IP地址</a>
+                    <a href="/2021/04/02/%E5%AE%9A%E7%82%B9%E6%95%B0%E7%9A%84%E5%8A%A0%E5%87%8F%E6%B3%95/">定点数的加减法</a>
                 </span>
             </li>
             
@@ -574,13 +572,13 @@ det U^TU = det(U^T)det(U) = (det(U))^2 \\
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/04/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E8%BF%87%E7%A8%8B%E5%8F%8A%E4%BB%A5%E5%A4%AA%E7%BD%91%E5%B8%A7%E7%BB%93%E6%9E%84/">4.1数据传输过程及以太网帧结构</a>
+                    <a href="/2021/04/05/AlexNet%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">AlexNet学习笔记</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/05/AlexNet%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">AlexNet学习笔记</a>
+                    <a href="/2021/04/10/%E8%A1%8C%E5%88%97%E5%BC%8F/">行列式介绍</a>
                 </span>
             </li>
             
@@ -613,21 +611,21 @@ det U^TU = det(U^T)det(U) = (det(U))^2 \\
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/%E7%9F%A9%E9%98%B5%E4%BB%A3%E6%95%B0/" style="font-size: 16.86025695828556px;" class="tag-cloud-link">矩阵代数</a>
+    <a href="/tags/%E7%9F%A9%E9%98%B5%E4%BB%A3%E6%95%B0/" style="font-size: 11.674443811379186px;" class="tag-cloud-link">矩阵代数</a>
     
-    <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 10.547843038703833px;" class="tag-cloud-link">IP网络协议</a>
+    <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 16.426141214914477px;" class="tag-cloud-link">IP网络协议</a>
     
-    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 16.620389800828242px;" class="tag-cloud-link">网络传输、设备与企业网架构</a>
+    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 17.355858651229283px;" class="tag-cloud-link">网络传输、设备与企业网架构</a>
     
-    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 13.30036107087703px;" class="tag-cloud-link">网络体系架构与网络协议</a>
+    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 19.550011885486256px;" class="tag-cloud-link">网络体系架构与网络协议</a>
     
-    <a href="/tags/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" style="font-size: 9.58633122855308px;" class="tag-cloud-link">运算方法和运算器</a>
+    <a href="/tags/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" style="font-size: 16.072174000214705px;" class="tag-cloud-link">运算方法和运算器</a>
     
-    <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 8.96352567686274px;" class="tag-cloud-link">笔记</a>
+    <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 13.391971342276527px;" class="tag-cloud-link">笔记</a>
     
-    <a href="/tags/%E4%B9%A0%E9%A2%98/" style="font-size: 19.931523985184338px;" class="tag-cloud-link">习题</a>
+    <a href="/tags/%E4%B9%A0%E9%A2%98/" style="font-size: 13.94953818175864px;" class="tag-cloud-link">习题</a>
     
-    <a href="/tags/%E8%A1%8C%E5%88%97%E5%BC%8F/" style="font-size: 14.735057445232961px;" class="tag-cloud-link">行列式</a>
+    <a href="/tags/%E8%A1%8C%E5%88%97%E5%BC%8F/" style="font-size: 12.62659087411377px;" class="tag-cloud-link">行列式</a>
     
 </div>
                 
