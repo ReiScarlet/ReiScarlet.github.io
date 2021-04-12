@@ -12,7 +12,7 @@
     
     
     
-    <title>tags: 行列式 | Reimilia</title>
+    <title>线性无关集、基 | Reimilia</title>
     <link href="https://reiscarlet.github.io" rel="prefetch" />
 
     
@@ -219,19 +219,34 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 gal-right" id="mainstay">
-                    <article class="article well article-body" id="article-tag">
+                    
+<article class="article well article-body" id="article">
     <div class="breadcrumb">
         <i class="fa fa-home"></i>
         <a href="https://reiscarlet.github.io">Reimilia</a>
         >
-        <span>标签</span>
+        <span>线性无关集、基</span>
     </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/tags/%E8%A1%8C%E5%88%97%E5%BC%8F/index.html">行列式</a>
+                <a href="/2021/04/12/%E7%BA%BF%E6%80%A7%E6%97%A0%E5%85%B3%E9%9B%86%E5%92%8C%E5%9F%BA/">线性无关集、基</a>
             </h1>
+        </div>
+        <div class="tag-article">
+            
+            <span class="label label-gal">
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/%E5%90%91%E9%87%8F%E7%A9%BA%E9%97%B4%EF%BC%8C%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">向量空间，读书笔记</a>
+                
+            </span>
+            
+            <span class="label label-gal">
+                <i class="fa fa-calendar"></i> 2021-04-12
+            </span>
+            
         </div>
     </div>
     <!-- 小型设备详细文章 -->
@@ -239,21 +254,58 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/tags/%E8%A1%8C%E5%88%97%E5%BC%8F/index.html">行列式</a>
+                    <a href="/2021/04/12/%E7%BA%BF%E6%80%A7%E6%97%A0%E5%85%B3%E9%9B%86%E5%92%8C%E5%9F%BA/">线性无关集、基</a>
                 </h4>
             </div>
+            <p>
+                <i class="fa fa-calendar"></i> 2021-04-12
+            </p>
+            <p>
+                
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/%E5%90%91%E9%87%8F%E7%A9%BA%E9%97%B4%EF%BC%8C%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">向量空间，读书笔记</a>
+                
+                
+                
+            </p>
         </center>
     </div>
-    <div class="content-article" style="margin-top: 30px;">
-        <div class="alert alert-info" style="font-size: 14px; line-height: 2; font-weight: bold;">
-            
-            <a href="/2021/04/10/%E8%A1%8C%E5%88%97%E5%BC%8F/">行列式介绍</a>
-            <br>
-            
-            
-        </div>
+    <div class="content-article">
+        <h3 id="线性无关和线性相关"><a href="#线性无关和线性相关" class="headerlink" title="线性无关和线性相关"></a>线性无关和线性相关</h3><p><strong>定义：</strong>对于向量空间V</p>
+<p>V中的向量的一个指标集$\{v_1,…,v_p\}$称为<strong>线性无关</strong>的，如果向量方程$c_1v_1+c_2v_2+…+c_pv_p=0$只有平凡解</p>
+<p>V中的向量的一个指标集$\{v_1,…,v_p\}$称为<strong>线性相关</strong>的，如果向量方程$c_1v_1+c_2v_2+…+c_pv_p=0$有一个非平凡解</p>
+<p>即是存在某些权$c_1,…,c_p$不全为零，使得向量方程成立，则成$v_1,…,v_p$之间是一个<strong>线性相关关系</strong></p>
+<p><strong>定理4</strong>：向量集合$\{v_1,…,v_p\}(v_1\neq0)$是线性相关的，当且仅当$v_j(j&gt;1)$是其前面向量$v_1,…,v_{j-1}$的线性组合</p>
+<hr>
+<h2 id="基"><a href="#基" class="headerlink" title="基"></a>基</h2><p><strong>定义：</strong>令H是向量空间V的一个子空间，V中向量的指标集$B=\{b1,…,b_p\}$,称为H的一个基，如果：</p>
+<ol>
+<li>B是一个线性无关集</li>
+<li>由B生成的子空间与H相同，即$H=span\{b_1,…,b_p\}$</li>
+</ol>
+<p>由于任何一个向量空间都是其自身的子空间，所以基的定义适用于H=V</p>
+<p><strong>我的理解</strong>：向量空间的基就是能生成该向量空间需要的向量（这些向量要线性无关），而B是V的一个基，当然的，如果H是V的一个子空间，那么B也是H的一个基</p>
+<hr>
+<h3 id="生成集定理"><a href="#生成集定理" class="headerlink" title="生成集定理"></a>生成集定理</h3><p><strong>定理5</strong>：(生成集定理)，令$S=\{v_1,…,v_p\}$是V中的向量集，$H=span\{v_1,…,v_p\}$</p>
+<ol>
+<li>若S中某个向量是S中其余向量的线性组合，则S中去掉这个向量后形成的集合仍可以生成H</li>
+<li>若$H\neq\{0\}$，则S的某一个自己是H的一个基</li>
+</ol>
+<hr>
+<h3 id="Nul-A-和-Col-A-的基"><a href="#Nul-A-和-Col-A-的基" class="headerlink" title="$Nul\ A$和$Col\ A$的基"></a>$Nul\ A$和$Col\ A$的基</h3><p><strong>定理6</strong>：矩阵A的主元列构成$Col\ A$的一个基</p>
+<h3 id="关于基的两点观察"><a href="#关于基的两点观察" class="headerlink" title="关于基的两点观察"></a>关于基的两点观察</h3><ol>
+<li><p>使用生成集定理时，从生成集中删除向量要在集合变成线性无关时必须停止</p>
+<p>因为如果再多删一个向量，这个向量不是生成集中剩下向量的线性组合，从而这个集合不再生成V，所以基是一个尽可能小的生成集</p>
+</li>
+<li><p>基是尽可能大的线性无关集，也是一个尽可能小的生成集</p>
+<p>若S是V的一个基，在S中再添加一个向量w，则新的集合不再是线性无关，因为w是S中元素的线性组合。所以基还是一个尽可能大的线性无关集</p>
+</li>
+</ol>
+
     </div>
 </article>
+
+
                 </div>
                 <aside class="col-md-4 gal-left" id="sidebar">
     <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
@@ -381,43 +433,37 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/08/2.8R%5En%E7%9A%84%E5%AD%90%E7%A9%BA%E9%97%B4/">子空间,基，秩和维数</a>
+                    <a href="/2021/04/02/2.5%E7%9F%A9%E9%98%B5%E5%9B%A0%E5%BC%8F%E5%88%86%E8%A7%A3/">2.5矩阵因式分解</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/04/PPP%E5%8D%8F%E8%AE%AE/">4.2 PPP协议</a>
+                    <a href="/2021/04/05/CRC%E5%BE%AA%E7%8E%AF%E5%86%97%E4%BD%99%E7%A0%81/">CRC循环冗余码</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/hello-world/">Hello World</a>
+                    <a href="/2021/04/02/%E4%B9%A0%E9%A2%98/">第三章部分习题</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E4%BC%A0%E8%BE%93%E6%96%B9%E5%BC%8F/">传输方式</a>
+                    <a href="/2021/04/02/%E7%89%A9%E7%90%86%E5%B1%82/">物理层</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">卷积神经网络基础</a>
+                    <a href="/2021/04/02/%E7%BC%96%E7%A0%81%E4%B8%8E%E8%B0%83%E5%88%B6/">编码与调制</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/10/%E5%AE%9A%E7%82%B9%E6%95%B0%E7%9A%84%E4%B9%98%E6%B3%95%E8%BF%90%E7%AE%97/">定点数的乘、除法运算</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2021/04/02/%E5%BC%A0%E9%87%8FTensor/">张量Tensor</a>
+                    <a href="/2021/04/02/%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87/">网络设备</a>
                 </span>
             </li>
             
@@ -433,6 +479,12 @@
                 </span>
             </li>
             
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2021/04/12/%E7%BA%BF%E6%80%A7%E6%97%A0%E5%85%B3%E9%9B%86%E5%92%8C%E5%9F%BA/">线性无关集、基</a>
+                </span>
+            </li>
+            
         </ul>
     </div>
 </aside>
@@ -444,17 +496,17 @@
 
                 
                 <li>
-                    <a href="/tags/%E8%A1%8C%E5%88%97%E5%BC%8F/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/2021/04/12/%E7%BA%BF%E6%80%A7%E6%97%A0%E5%85%B3%E9%9B%86%E5%92%8C%E5%9F%BA/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/tags/%E8%A1%8C%E5%88%97%E5%BC%8F/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/2021/04/12/%E7%BA%BF%E6%80%A7%E6%97%A0%E5%85%B3%E9%9B%86%E5%92%8C%E5%9F%BA/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/tags/%E8%A1%8C%E5%88%97%E5%BC%8F/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/2021/04/12/%E7%BA%BF%E6%80%A7%E6%97%A0%E5%85%B3%E9%9B%86%E5%92%8C%E5%9F%BA/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
                 
             </ul>
@@ -462,27 +514,27 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/%E7%9F%A9%E9%98%B5%E4%BB%A3%E6%95%B0/" style="font-size: 8.887504296934516px;" class="tag-cloud-link">矩阵代数</a>
+    <a href="/tags/%E7%9F%A9%E9%98%B5%E4%BB%A3%E6%95%B0/" style="font-size: 11.427687453213924px;" class="tag-cloud-link">矩阵代数</a>
     
-    <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 18.63886473558555px;" class="tag-cloud-link">笔记</a>
+    <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 8.934441177129777px;" class="tag-cloud-link">笔记</a>
     
-    <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 12.079108695216414px;" class="tag-cloud-link">IP网络协议</a>
+    <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 14.17206734717309px;" class="tag-cloud-link">IP网络协议</a>
     
-    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 10.998676117763548px;" class="tag-cloud-link">网络传输、设备与企业网架构</a>
+    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 10.169038403809587px;" class="tag-cloud-link">网络传输、设备与企业网架构</a>
     
-    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 17.87440833274934px;" class="tag-cloud-link">网络体系架构与网络协议</a>
+    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 17.615016048446094px;" class="tag-cloud-link">网络体系架构与网络协议</a>
     
-    <a href="/tags/%E4%B9%A0%E9%A2%98/" style="font-size: 14.929567090485307px;" class="tag-cloud-link">习题</a>
+    <a href="/tags/%E4%B9%A0%E9%A2%98/" style="font-size: 18.18970665089816px;" class="tag-cloud-link">习题</a>
     
-    <a href="/tags/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" style="font-size: 10.843355405276434px;" class="tag-cloud-link">运算方法和运算器</a>
+    <a href="/tags/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" style="font-size: 16.196961968946805px;" class="tag-cloud-link">运算方法和运算器</a>
     
-    <a href="/tags/%E8%A1%8C%E5%88%97%E5%BC%8F/" style="font-size: 12.181778376683866px;" class="tag-cloud-link">行列式</a>
+    <a href="/tags/%E8%A1%8C%E5%88%97%E5%BC%8F/" style="font-size: 9.012071681157197px;" class="tag-cloud-link">行列式</a>
     
-    <a href="/tags/%E5%90%91%E9%87%8F%E7%A9%BA%E9%97%B4/" style="font-size: 17.09372230831984px;" class="tag-cloud-link">向量空间</a>
+    <a href="/tags/%E5%90%91%E9%87%8F%E7%A9%BA%E9%97%B4/" style="font-size: 13.68141473730761px;" class="tag-cloud-link">向量空间</a>
     
-    <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 8.37103408094502px;" class="tag-cloud-link">读书笔记</a>
+    <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 11.553104621006007px;" class="tag-cloud-link">读书笔记</a>
     
-    <a href="/tags/%E5%90%91%E9%87%8F%E7%A9%BA%E9%97%B4%EF%BC%8C%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 9.41546513226957px;" class="tag-cloud-link">向量空间，读书笔记</a>
+    <a href="/tags/%E5%90%91%E9%87%8F%E7%A9%BA%E9%97%B4%EF%BC%8C%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 15.467318075007707px;" class="tag-cloud-link">向量空间，读书笔记</a>
     
 </div>
                 
