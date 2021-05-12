@@ -12,7 +12,7 @@
     
     
     
-    <title>4.3-1 IPv4 | Reimilia</title>
+    <title>指令系统 | Reimilia</title>
     <link href="https://reiscarlet.github.io" rel="prefetch" />
 
     
@@ -221,13 +221,13 @@
         <i class="fa fa-home"></i>
         <a href="https://reiscarlet.github.io">Reimilia</a>
         >
-        <span>4.3-1 IPv4</span>
+        <span>指令系统</span>
     </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/2021/04/04/IPv4%E9%A6%96%E9%83%A8%E6%A0%BC%E5%BC%8F/">4.3-1 IPv4</a>
+                <a href="/2021/05/12/%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/">指令系统</a>
             </h1>
         </div>
         <div class="tag-article">
@@ -235,14 +235,12 @@
             <span class="label label-gal">
                 <i class="fa fa-tags"></i>
                 
-                <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/">IP网络协议</a>, 
-                
-                <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+                <a href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a>
                 
             </span>
             
             <span class="label label-gal">
-                <i class="fa fa-calendar"></i> 2021-04-04
+                <i class="fa fa-calendar"></i> 2021-05-12
             </span>
             
         </div>
@@ -252,19 +250,17 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/2021/04/04/IPv4%E9%A6%96%E9%83%A8%E6%A0%BC%E5%BC%8F/">4.3-1 IPv4</a>
+                    <a href="/2021/05/12/%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/">指令系统</a>
                 </h4>
             </div>
             <p>
-                <i class="fa fa-calendar"></i> 2021-04-04
+                <i class="fa fa-calendar"></i> 2021-05-12
             </p>
             <p>
                 
                 <i class="fa fa-tags"></i>
                 
-                <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/">IP网络协议</a>, 
-                
-                <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+                <a href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a>
                 
                 
                 
@@ -272,115 +268,140 @@
         </center>
     </div>
     <div class="content-article">
-        <p><strong>网际协议版本4</strong>（英语：<strong>I</strong>nternet <strong>P</strong>rotocol <strong>v</strong>ersion <strong>4</strong>，<strong>IPv4</strong>），又称<strong>互联网通信协议第四版</strong>，是<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/网际协议">网际协议</a>开发过程中的第四个修订版本，也是此协议第一个被广泛部署的版本。IPv4是互联网的核心，也是使用最广泛的网际协议版本，其后继版本为<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/IPv6">IPv6</a>，直到2011年，<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/IANA">IANA</a> IPv4位址完全用尽时，IPv6仍处在部署的初期</p>
-<span id="more"></span>
-<p><strong>网络层的主要任务是实现网络互连，进而实现数据包在网络之间的传输</strong></p>
-<p>实现网络层的任务，需要解决以下主要问题：</p>
+        <hr>
+<h2 id="一-指令系统的发展与性能要求"><a href="#一-指令系统的发展与性能要求" class="headerlink" title="一.指令系统的发展与性能要求"></a>一.指令系统的发展与性能要求</h2><p><strong>一个好的指令系统一般满足以下几个要求：</strong></p>
 <ol>
-<li>网络层向运输层提供怎样的服务</li>
-<li>网络层寻址问题</li>
-<li>路由选择问题</li>
+<li>完备性</li>
+<li>规整性</li>
+<li>高效率</li>
+<li>兼容性</li>
+</ol>
+<p><strong>一条指令一般提供两方面的信息</strong></p>
+<ol>
+<li>指明操作的性质及功能</li>
+<li>给出与操作数有关的信息，如直接给出操作数本身或是指明操作数的来源，运算结果存放在何处，以及下一条指令从何处取得等。</li>
 </ol>
 <hr>
-<h4 id="IPV4就是因特网上的每一个主机的每一个接口分配在一个在全世界范围内是唯一的32比特的标识符"><a href="#IPV4就是因特网上的每一个主机的每一个接口分配在一个在全世界范围内是唯一的32比特的标识符" class="headerlink" title="IPV4就是因特网上的每一个主机的每一个接口分配在一个在全世界范围内是唯一的32比特的标识符"></a>IPV4就是因特网上的每一个主机的每一个接口分配在一个在全世界范围内是唯一的32比特的标识符</h4><hr>
-<h3 id="IPV4数据报的首部形式"><a href="#IPV4数据报的首部形式" class="headerlink" title="IPV4数据报的首部形式"></a>IPV4数据报的首部形式</h3><p><img src="/images/image-20210404154103172.png" alt></p>
+<h2 id="二-指令格式"><a href="#二-指令格式" class="headerlink" title="二.指令格式"></a>二.指令格式</h2><h3 id="2-1-指令字长"><a href="#2-1-指令字长" class="headerlink" title="2.1 指令字长"></a>2.1 指令字长</h3><p><strong>在设计指令格式时需要考虑以下一些问题：</strong></p>
 <ol>
-<li>首部长度：占4比特，表示<strong>IP数据报首部</strong>的长度，该字段的取值以4字节为单位。<ol>
-<li>最小十进制取值为5，表示IP数据报首部只有20字节固定部分</li>
-<li>最大十进制取值为15，表示IP数据报首部包含20字节固定部分和40字节的可变部分</li>
+<li>指令字长需要多少位，是<strong>定子长</strong>还是<strong>变字长</strong></li>
+<li>操作码结果需要多少位，位数与位置<strong>固定</strong>还是<strong>可拓展</strong>；是一段操作码还是由若干段组成</li>
+<li>地址结构——一条指令的执行涉及那些地址，在指令中给出了哪些地址，哪些地址是隐含约定的</li>
+<li>寻址方式——如何获得操作数地址，是直接给出还是间接给出，还是经过变址计算所得等</li>
 </ol>
-</li>
-<li>可选字段：长度从1到40字节不等，用来支持排错，测量及安全措施</li>
-<li>填充字段：确保首部长度为4字节的整数倍，使用全0进行填充</li>
-<li>总长度：占16比特，表示IP数据报的总长度(首部+数据载荷)，最大取值65535字节</li>
-<li><p>标识、标志、片偏移：共同用于IP数据报分片，当IP数据报长度超过MUT（首部+数据载荷）时将数据报分成几份</p>
+<p><strong>机器字长</strong>：计算机能直接处理的二进制数据的位数，机器字长一般等于内部寄存器的大小，它决定了计算机的运算精度。</p>
+<p><strong>指令字长</strong>：一个指令中包含二进制代码的位数。</p>
+<p><strong>存储字长</strong>：一个存储单元存储二进制代码的长度，必须是字节的整数倍</p>
+<p><strong>指令字长的选择</strong>：</p>
 <ol>
-<li>标志：占3比特，各比特含义如下：<ol>
-<li>DF位：1表示不允许分片。0表示允许</li>
-<li>MF位：1表示后面还有分片，0表示这是最后一个分片</li>
-<li>保留位：必须为0</li>
+<li>指令字长尽可能短</li>
+<li>指令字长应等于字节的整数倍，以免浪费存储空间</li>
 </ol>
-</li>
-<li>标识：占16比特，属于同个数据报的数据报分片应该具有相同的标识。IP软件维持一个计数器，每产生一个数据报，计数器值加1，并将该值赋给标识字段</li>
-<li>片偏移：占13比特，指出分片数据报的数据载荷部分偏移其在原数据报的位置有几个单位</li>
-</ol>
-</li>
-<li><p>生存时间TTL：8比特，路由器转发IP数据报时，将IP数据报首部中的该字段的值减去IP数据报在本路由器所耗费的时间，若不为0就转发，否则就丢弃</p>
-</li>
-<li><p>协议：占8比特，指明IPv4数据报部分是何种协议数据单元，常用的一些协议和相应的协议字段值如下</p>
+<p><strong>指令字长一般都取存储字长的整数倍，如果指令字长等于存储字长的2倍，就需要2次访存来取出一条指令，因此取指周期是机器周期的2倍，若指令周期等于存储字长，则取指周期等于机器周期。</strong></p>
+<h3 id="2-2-指令的操作码"><a href="#2-2-指令的操作码" class="headerlink" title="2.2 指令的操作码"></a>2.2 指令的操作码</h3><p>指令操作码的编码可以分为<strong>规整型</strong>和<strong>非规整型</strong></p>
+<p><strong>规整型</strong>：</p>
+<p>​    当指令字长较长时，允许有足够的操作码位数，可以采取定长编码方式。</p>
+<p>​    定长编码对于简化硬件设计，减少指令译码的时间是非常有利的，通常在指令字长较长的大型、中型计算机就及超级小型计算机上广泛采用</p>
+<p><strong>非规整型</strong>：</p>
+<p>​    <strong>拓展操作码法</strong>：操作码位数不采用单一固定不变的位数，而是随地址码个数的变化而变化，操作码采取可变长度的类型</p>
+<p>​    拓展操作码的<strong>注意点</strong>：</p>
+<pre><code>   不允许短码是长码的前缀
+   各条指令的操作码一定不能重复雷同
+   各类指令的格式安排应统一规整
+</code></pre><h3 id="2-3-地址码的结构"><a href="#2-3-地址码的结构" class="headerlink" title="2.3 地址码的结构"></a>2.3 地址码的结构</h3><p><strong>显地址</strong>：在指令中明显给出地址，如写明存储单元号或寄存器号</p>
+<p><strong>隐地址</strong>：以隐含的方式约定，如事先隐含约定操作数在某个寄存器中，或是在堆栈中</p>
 <ol>
-<li>ICMP：1</li>
-<li>IGMP：2</li>
-<li>TCP：6</li>
-<li>UDP：17</li>
-<li>IPv6：41</li>
-<li>OSPF：89</li>
-</ol>
+<li><p>四地址指令</p>
+<p>$(A_1) OP(A_2)\rightarrow A_3 \\ A_4 = 下一条执行指令的地址$</p>
 </li>
-<li><p>首部检验和：占16比特，用来检测首部在传输过程中是否出现差错，成为因特网检验和，IPv6中路由器不在计算首部校验和，从而更快的转发IP数据报。由于转发过程中标识等字段可变，所有首部校验和可变</p>
+<li><p>三地址指令</p>
+<p>$(A_1)OP(A_2)\rightarrow A_3 \\ (PC)+1\rightarrow PC(隐含)$</p>
+<p>执行一条三地址的双操作数运算指令，<strong>至少需要访问4次主存储器**</strong>。第一次取指令本身，第二次取第一操作数，第三次取第二操作数，第四次保存运算结果</p>
+</li>
+<li><p>二地址指令</p>
+<p>$(A_1)OP(A_2)\rightarrow A_1 \\ (PC)+1\rightarrow PC(隐含)$</p>
+<p>同样需要<strong>至少访问四次主存储器</strong></p>
+</li>
+<li><p>一地址指令</p>
+<p>$(AC)OP(A_1)\rightarrow AC \\ (PC)+1\rightarrow PC(隐含)$</p>
+<p>AC为累加寄存器</p>
+<p>执行一条一地址的双操作数运算指令，<strong>只需要访问2次主存储器</strong>。第一次取指令本身，第二次取第一操作数。第二操作数和运算结果都放在AC中，所以读取和存入都不需要访问主存储器</p>
+</li>
+<li><p>零地址指令</p>
+<p>零地址的算数逻辑类指令用在<strong>堆栈计算机</strong>中的，堆栈计算机没有一般计算机中必备的<strong>通用寄存器</strong>，因此堆栈成为提供操作数和保存结果的<strong>唯一场所</strong></p>
 </li>
 </ol>
+<p><strong>指令格式类型：</strong></p>
+<ol>
+<li>存储器——存储器(SS)型指令</li>
+<li>寄存器——寄存器(RR)型指令</li>
+<li>寄存器——存储器(SR)型指令</li>
+</ol>
+<p>通常一个指令系统中<strong>指令字的长度</strong>和<strong>指令中的地址结构</strong>并不是单一的，往往采用<strong>多种格式混合</strong>使用，这样可以<strong>增强指令的功能</strong></p>
 <hr>
-<h3 id="IPv4地址概述"><a href="#IPv4地址概述" class="headerlink" title="IPv4地址概述"></a>IPv4地址概述</h3><p>因为32比特的IPv4地址不方便阅读、记录以及输入等，因此IPv4地址采用<strong>点分十进制表示</strong>方法以方便用户使用</p>
-<p>将32比特的IPv4按每8位分为一组，写出每组的十进制数，在四个组间加上小数点</p>
-<p>分类编址的IPv4地址：</p>
+<h2 id="三-寻址技术"><a href="#三-寻址技术" class="headerlink" title="三.寻址技术"></a>三.寻址技术</h2><h3 id="3-1-编制方式"><a href="#3-1-编制方式" class="headerlink" title="3.1 编制方式"></a>3.1 编制方式</h3><p><strong>编制方式</strong>：对各种存储设备进行编码的方法</p>
+<p><strong>常用的编制单位</strong>：字编址，字节编址，位编址等</p>
+<p><strong>字编址</strong></p>
 <ol>
-<li>A类地址：8位网络号，24位主机号，网络号的最高位固定位0</li>
-<li>B类地址：16位网络号，16位主机号，网络号的最高两位固定为10</li>
-<li>C类地址：24位网络号，8位主机号，网络号的最高三位固定为110</li>
-<li>D类地址：多播地址. 网络号的最高四位固定为1110</li>
-<li>E类地址：保留为今后使用，网络号的最高四位固定为1111</li>
+<li>控制方式实现简单，地址信息，存储容量等没有任何浪费</li>
+<li>缺点是没有对非数值计算提供支持，而<strong>非数值计算应用要求按字节编码，因为它的基本寻址单位是字节</strong></li>
 </ol>
-<p>只有A，C，B类地址可分配给主机或路由器的各接口</p>
-<p>A类地址：<strong>最大网络号127作为本地唤回测试地址，不指派。最小网络号0，保留不指派</strong>。可指派的网络数量是$2^8 - 2 = 126$，则可配分的IP地址位$2^{24} -     2 = 16777214$(减去2是除去主机号全0的网络地址和全1的广播地址)    </p>
-<p>B类地址：最小网络号也是第一个可指派的网络号128.0。最大网络号也是最后一个可指派网络号为191.255。可指派的网络号为$2^{(16-2)} = 16384$，每个网络可指派的IP地址为$2^{16} - 2 = 65534$</p>
-<p>C类地址：最小网络号也是第一个可指派的网络号为192.0.0。最大网络号也是最后一个可指派网络号为223.255.255。可指派的网络号为$2^{(24-3)} = 2097152$。每个网络可指派的IP地址为$2^8 - 2 = 254$</p>
-<hr>
-<h3 id="一些特殊的IP地址"><a href="#一些特殊的IP地址" class="headerlink" title="一些特殊的IP地址"></a>一些特殊的IP地址</h3><p><strong>地址0.0.0.0是一个特殊的IPv4地址，只能作为源地址使用，表示“在本网络上的本主机”，封装有DHCP DIscovery报文的IP分组的源地址使用0.0.0.0，不能作为目的地址</strong></p>
-<p><strong>受限广播地址：地址255.255.255.255是一个特殊的IPv4地址，只能作为目的地址使用，表示”在本网络上进行进行广播“，各路油器不转发</strong></p>
-<p><strong>127.X.X.X是环回地址，127.0.0.1 特指本机地址。</strong></p>
-<p><strong>224.0.0.1 组播地址。从224.0.0.0到239.255.255.255都是这样的地址。224.0.0.1特指所有主机，224.0.0.2特指所有路由器。</strong></p>
-<p><strong>0.X.X.X。该系列地址仅用来标识主机</strong></p>
-<p><strong>169.256.X.X。该系列地址是本地地址，是由操作系统分配，路由器不转发</strong></p>
-<hr>
-<h3 id="划分子网的IPv4地址"><a href="#划分子网的IPv4地址" class="headerlink" title="划分子网的IPv4地址"></a>划分子网的IPv4地址</h3><p>为新增网络申请新的网络号会带来以下弊端：</p>
+<p><strong>字节编址</strong></p>
 <ol>
-<li>需要等待和花费更多费用</li>
-<li>会增加其他路由器中路由表记录的数量</li>
-<li>浪费原有网络中剩余的大量IP地址</li>
+<li>最大优点：能使编制单位与信息的基本单位（字节）相一致</li>
+<li>存在着地址信息的浪费</li>
 </ol>
-<p>所以我们可以从主机号部分借用一部分作为子网号</p>
-<p><strong>计算机如何知道分类地址中主机号有多少比特被用作子网号？</strong></p>
-<p>32比特的子网掩码可以表明分类IP地址的主机号部分被借用了几个比特作为子网号</p>
+<h3 id="3-2-指令的寻址方式"><a href="#3-2-指令的寻址方式" class="headerlink" title="3.2 指令的寻址方式"></a>3.2 指令的寻址方式</h3><p>在存储器中，操作数或指令字写入或读出的方式可分为：<strong>地址指定方式</strong>，<strong>相联存储方式</strong>和<strong>堆栈存取方式</strong></p>
+<p>寻址方式分为两类：<strong>指令寻址方式</strong>和<strong>数据寻址方式</strong></p>
+<p>寻找下一条将要执行的指令的地址成为指令寻址，又可以细分为<strong>顺序寻址</strong>和<strong>跳跃寻址</strong></p>
+<p><strong>顺序寻址方式</strong>：通过程序计算器PC加1，自动形成下一条指令的地址</p>
+<p><strong>跳跃寻址方式</strong>：所谓跳跃指的是下条指令的地址吗不是由程序计数器PC给出，而是由本条指令给出的</p>
+<h3 id="3-3-操作数的寻址方式"><a href="#3-3-操作数的寻址方式" class="headerlink" title="3.3 操作数的寻址方式"></a>3.3 操作数的寻址方式</h3><p><strong>操作数寻址方式</strong>：形成<strong>操作数的有效地址</strong>的方式</p>
+<p><strong>有效地址</strong>：是操作数<strong>在主存的地址</strong>或<strong>寄存器地址</strong>，是操作数真正的地址</p>
+<p><strong>形式地址</strong>：指令字中给定的地址量。</p>
+<p>寻址方式<strong>特征位</strong>，通常由<strong>间址位</strong>和<strong>变址位</strong>组成，如果这条指令无间址和变址的要求，那么形式地址就是操作数的有效地址</p>
+<font color="red">**寻址过程就是把操作数的形式地址变化为操作数的有效地址的过程**</font>
+
+<p><strong>数据寻址方式</strong>：</p>
 <ol>
-<li>子网掩码使用连续的比特1来对应网络号和子网号</li>
-<li>子网掩码使用连续的比特0来对应主机号</li>
-<li>将划分子网的IPv4地址与相对应的子网掩码进行逻辑与运算就可以得到IPv4地址所在的子网的<strong>网络地址</strong></li>
-</ol>
-<p><strong>默认子网掩码</strong>：指在未划分子网的情况下使用子网掩码。A类地址未255.0.0.0，B类地址为255.255.0.0，C类地址为255.255.255.0</p>
-<hr>
-<h3 id="无分类编址的IPv4地址"><a href="#无分类编址的IPv4地址" class="headerlink" title="无分类编址的IPv4地址"></a>无分类编址的IPv4地址</h3><p>无分类域间路由选择CIDR。</p>
+<li><p>立即数寻址方式</p>
+<p>指令的地址码字段指出的不是操作数的地址，而是操作数本身</p>
+<p>例如：<strong>IF I &gt; 25 THEN J = K + 12</strong>,这里<strong>常量</strong>12和25均由立即数寻址指定</p>
+</li>
+<li><p>直接寻址方式</p>
 <ol>
-<li>CIDR消除了传统A，B ,C类地址以及划分子网的概念</li>
-<li>CIDR可以更有效地分配IPv4的地址空间</li>
+<li>直接寻址方式： 操作数在主存储器中，指令中直接给出操作数所在主存储器单元的有效地址</li>
+<li>寄存器（直接）寻址方式：操作数在指定的寄存器中</li>
 </ol>
-<p>CIDR使用斜线记法，在IPv4地址后面加上斜线”/“，在斜线后面写上网络前缀(网络号)所占的比特数量</p>
-<p>CIDR实际上是将网络前缀都相同的连续IP地址组成一个”CIDR地址块“</p>
-<p>只要知道CIDR地址块的任何一个地址，就可以知道该地址块的全部细节：</p>
+<p>例如：<strong>ADD P, Q, R</strong>，表示将存储单元Q的内容与R的内容相加，并将结果保存在存储单元P中（ARM中的寻址可能不太一样）</p>
+</li>
+<li><p>间接寻址方式</p>
 <ol>
-<li>地址块的最小地址</li>
-<li>地址块的最大地址</li>
-<li>地址块的地址数量</li>
-<li>地址块聚合某类网络的数量</li>
-<li>地址掩码</li>
+<li>间址方式：指令中给出的地址是存放操作数<strong>地址的</strong>主存储器单元的<strong>地址</strong>，可以有多级间址</li>
+<li>寄存器间接寻址方式：地址字段指的是存储位置还是寄存器</li>
 </ol>
-<p><strong>路由聚合（构造超网）</strong></p>
-<p>如何构造：找出路由表中目的地址的共同前缀，然后将找到的共同前缀的后一个字节写成2进制的形式，找出地址的共同前缀，然后计算共同前缀的比特位，并将共同前缀写成点分十进制的形式。在斜杠后写上刚才计算的比特位，得到<strong>聚合地址块</strong></p>
-<p><strong>网络前缀越长，地址块越小，路由越具体</strong></p>
-<p>若路由器查表转发分组时发现有多条路由可选，则选择网络前缀最长的那条，因为这样的路由更具体</p>
-<hr>
-<h3 id="IPv4的应用规划"><a href="#IPv4的应用规划" class="headerlink" title="IPv4的应用规划"></a>IPv4的应用规划</h3><h4 id="定长子网掩码FLSM"><a href="#定长子网掩码FLSM" class="headerlink" title="定长子网掩码FLSM"></a>定长子网掩码FLSM</h4><h4 id="变长子网掩码VLSM"><a href="#变长子网掩码VLSM" class="headerlink" title="变长子网掩码VLSM"></a>变长子网掩码VLSM</h4><p>在一个网络划分成n个子网时，计算出每个子网所需的主机地址，路由器接口地址，网络地址，广播地址，算出所有需要的主机号数目。得出每个子网所需主机号的位数，计算出每个子网对应的网络前缀位数。    </p>
-<p>分配过程中，每个子块的起点位置不能随意选取，只能选取块大小整数倍地址作为起点，一般先给大的子块分配</p>
+<p><strong>指令地址字段中的形式地址A不是操作数的真正地址，而是操作数地址的指示器</strong></p>
+<p>获得一个操作数需要3次访问：读<strong>指令</strong>，读<strong>含有操作数地址的寄存器</strong>，以及最后读出<strong>实际的操作数</strong></p>
+</li>
+<li><p>相对寻址方式</p>
+<p>把程序计数器PC中的内容加上指令格式中的形式地址（偏移量）D形成操作数的有效地址。即是EA=(PC)+D</p>
+</li>
+<li><p>基址寻址方式</p>
+<p>同相对地址，不过EA = [$R_i$]+D，其中Ri是基址寄存器，里面存放的是基准地址</p>
+<p>优点：扩大寻址能力，因为基址寄存器的位数可以设置得很长从而在较大得存储空间中寻址</p>
+</li>
+<li><p>变址寻址方式</p>
+<p>通过将变址寄存器$R_x$的内容与形式地址相加来形成操作数的有效地址，即EA=($R_x$)+A</p>
+<p>变址寻址和基址寻址的区别：基址寄存器提供的基准值是固定的，而变址寄存器提供的修改量是可变的</p>
+</li>
+<li><p>堆栈寻址</p>
+<p>在软堆栈中，堆栈的长度（堆栈中元素的数目）是可变的</p>
+<p>在一般的计算机中，堆栈从高地址向低地址扩展，即栈底的地址总是大于或等于栈顶的地址（也有反过来的）</p>
+</li>
+<li><p>隐含寻址方式</p>
+<p>不明显给出操作数的地址，而是在指令中隐含着操作数的地址，例如AC（累加寄存器）</p>
+</li>
+</ol>
 
     </div>
 </article>
@@ -519,19 +540,13 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/05/IP%E5%9C%B0%E5%9D%80/">IP地址</a>
+                    <a href="/2021/04/05/MAC/">MAC</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E4%BC%A0%E8%BE%93%E6%96%B9%E5%BC%8F/">传输方式</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2021/04/02/%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B/">参考模型</a>
+                    <a href="/2021/04/10/%E5%AE%9A%E7%82%B9%E6%95%B0%E7%9A%84%E4%B9%98%E6%B3%95%E8%BF%90%E7%AE%97/">定点数的乘、除法运算</a>
                 </span>
             </li>
             
@@ -543,7 +558,13 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E6%95%B0%E6%8D%AE%E6%A0%A1%E9%AA%8C%E7%A0%81/">数据校验码</a>
+                    <a href="/2021/04/02/%E5%AE%9A%E7%82%B9%E6%95%B0%E7%9A%84%E5%8A%A0%E5%87%8F%E6%B3%95/">定点数的加减法</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2021/04/02/%E7%89%A9%E7%90%86%E5%B1%82/">物理层</a>
                 </span>
             </li>
             
@@ -555,13 +576,13 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/11/ICMP/">ICMP</a>
+                    <a href="/2021/04/02/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%E4%B8%8E%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">网络协议与网络体系结构</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/11/VPN%E5%92%8CNAT/">VPN，NAT</a>
+                    <a href="/2021/04/11/ICMP/">ICMP</a>
                 </span>
             </li>
             
@@ -576,17 +597,17 @@
 
                 
                 <li>
-                    <a href="/2021/04/04/IPv4%E9%A6%96%E9%83%A8%E6%A0%BC%E5%BC%8F/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/2021/05/12/%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/2021/04/04/IPv4%E9%A6%96%E9%83%A8%E6%A0%BC%E5%BC%8F/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/2021/05/12/%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/2021/04/04/IPv4%E9%A6%96%E9%83%A8%E6%A0%BC%E5%BC%8F/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/2021/05/12/%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
                 
             </ul>
@@ -594,19 +615,19 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 12.57087059902088px;" class="tag-cloud-link">笔记</a>
+    <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 15.317234422329719px;" class="tag-cloud-link">笔记</a>
     
-    <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 14.625171255607839px;" class="tag-cloud-link">IP网络协议</a>
+    <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 10.950023583548706px;" class="tag-cloud-link">IP网络协议</a>
     
-    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 12.421242757806766px;" class="tag-cloud-link">网络传输、设备与企业网架构</a>
+    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 16.38132676612601px;" class="tag-cloud-link">网络传输、设备与企业网架构</a>
     
-    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 16.336802558226076px;" class="tag-cloud-link">网络体系架构与网络协议</a>
+    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 14.95322574936095px;" class="tag-cloud-link">网络体系架构与网络协议</a>
     
-    <a href="/tags/%E4%B9%A0%E9%A2%98/" style="font-size: 15.96647731104293px;" class="tag-cloud-link">习题</a>
+    <a href="/tags/%E4%B9%A0%E9%A2%98/" style="font-size: 15.570270344070346px;" class="tag-cloud-link">习题</a>
     
-    <a href="/tags/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" style="font-size: 16.162423674194805px;" class="tag-cloud-link">运算方法和运算器</a>
+    <a href="/tags/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" style="font-size: 10.558574220610083px;" class="tag-cloud-link">运算方法和运算器</a>
     
-    <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 17.00031010709594px;" class="tag-cloud-link">读书笔记</a>
+    <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 16.988673434546907px;" class="tag-cloud-link">读书笔记</a>
     
 </div>
                 
