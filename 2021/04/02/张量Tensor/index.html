@@ -10,7 +10,7 @@
     
     
     
-    <title>about | Reimilia</title>
+    <title>张量Tensor | Reimilia</title>
     <link href="https://reiscarlet.github.io" rel="prefetch" />
 
     
@@ -198,7 +198,7 @@
                 
                 
                 
-                <li class="current">
+                <li class="">
                     <a href="/about">
                         <i class="fa fa-user"></i>关于我
                     </a>
@@ -213,21 +213,34 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 gal-right" id="mainstay">
-                    <!-- 搜索页面(尽可能接近ZanBlog搜索功能) -->
-
-
+                    
 <article class="article well article-body" id="article">
+    <div class="breadcrumb">
+        <i class="fa fa-home"></i>
+        <a href="https://reiscarlet.github.io">Reimilia</a>
+        >
+        <span>张量Tensor</span>
+    </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/about/index.html">about</a>
+                <a href="/2021/04/02/%E5%BC%A0%E9%87%8FTensor/">张量Tensor</a>
             </h1>
         </div>
         <div class="tag-article">
+            
             <span class="label label-gal">
-                <i class="fa fa-calendar"></i> 2018-12-12
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a>
+                
             </span>
+            
+            <span class="label label-gal">
+                <i class="fa fa-calendar"></i> 2021-04-02
+            </span>
+            
         </div>
     </div>
     <!-- 小型设备详细文章 -->
@@ -235,19 +248,39 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/about/index.html">about</a>
+                    <a href="/2021/04/02/%E5%BC%A0%E9%87%8FTensor/">张量Tensor</a>
                 </h4>
             </div>
             <p>
-                <i class="fa fa-calendar"></i> 2018-12-12
+                <i class="fa fa-calendar"></i> 2021-04-02
+            </p>
+            <p>
+                
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a>
+                
+                
+                
             </p>
         </center>
     </div>
     <div class="content-article">
-        
+        <h2 id="张量是什么"><a href="#张量是什么" class="headerlink" title="张量是什么"></a>张量是什么</h2><p>一方面，日常直觉和物理研究告诉人们，同一物理量的值，在不同的坐标系往往是不同的，物理学家希望自己研究的对象，如果去除坐标系变换的影响，应该是同一个量，于是把这些符合某种坐标变换法则的物理量称为<strong>张量</strong></p>
+<hr>
+<span id="more"></span>
+
+<p>想象一个平整的纸张是二维空间，上面的点A用一个长度和方向来表示（XY坐标轴表示：A（x1，y1）），将纸弯曲，这个二维空间上A点的表示方法不变，但是以更高维的空间来看，这个点和之前平整纸张的A点却不是同一位置的点了，但是都用A（x1,y1）描述,说明用一个长度和方向已经不能表示这个点了，所以在欧式几何中就用三维坐标来表示这个点A（x2，y2，z2），但是就损失了它所在二维空间的信息，所以我们继续在原空间对它加以表示，由于用长度和方向不能唯一确定这个点了，而是要加上空间的弯曲这个量，所以再加一个方向来表示这个弯曲就可以了(长度，方向，弯曲方向)</p>
+<p>用类似于向量的方式表示就是二维向量组也就是2*2二维矩阵，它包含两个向量(一个表示点A在纸平面空间的方向，另一个表示点A所在位置的弯曲).这个二维矩阵就是张量。</p>
+<hr>
+<h2 id="什么是阶"><a href="#什么是阶" class="headerlink" title="什么是阶"></a>什么是阶</h2><p>张量的维数来被描述为阶.但是张量的阶和矩阵的阶并不是同一个概念.张量的阶（有时是关于如顺序或度数或者是n维）是张量维数的一个数量描述.比如，下面的张量（使用Python中list定义的）就是2阶.</p>
+<pre><code>t = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+</code></pre>
+<p>你可以认为一个二阶张量就是我们平常所说的矩阵，一阶张量可以认为是一个向量.对于一个二阶张量你可以用语句t[i, j]来访问其中的任何元素.而对于三阶张量你可以用’t[i, j, k]’来访问其中的任何元素.</p>
+<hr>
+
     </div>
 </article>
-
 
 
                 </div>
@@ -376,37 +409,37 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/05/IP%E5%9C%B0%E5%9D%80/">IP地址</a>
+                    <a href="/2021/04/04/IPv4%E9%A6%96%E9%83%A8%E6%A0%BC%E5%BC%8F/">4.3-1 IPv4</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/11/VPN%E5%92%8CNAT/">VPN，NAT</a>
+                    <a href="/2021/04/05/MAC/">MAC</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/hello-world/">Hello World</a>
+                    <a href="/2021/04/02/%E4%BC%A0%E8%BE%93%E6%96%B9%E5%BC%8F/">传输方式</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E4%BC%A0%E8%BE%93%E5%AA%92%E4%BB%8B/">传输媒介</a>
+                    <a href="/2021/04/10/%E5%AE%9A%E7%82%B9%E6%95%B0%E7%9A%84%E4%B9%98%E6%B3%95%E8%BF%90%E7%AE%97/">定点数的乘、除法运算</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">卷积神经网络基础</a>
+                    <a href="/2021/04/02/%E5%AE%9A%E7%82%B9%E6%95%B0%E7%9A%84%E5%8A%A0%E5%87%8F%E6%B3%95/">定点数的加减法</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E5%BC%A0%E9%87%8FTensor/">张量Tensor</a>
+                    <a href="/2021/04/02/%E6%95%B0%E5%80%BC%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95/">数值数据的表示方法</a>
                 </span>
             </li>
             
@@ -424,7 +457,7 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87/">网络设备</a>
+                    <a href="/2021/04/02/%E6%B1%A0%E5%8C%96%E5%B1%82/">池化层</a>
                 </span>
             </li>
             
@@ -439,17 +472,17 @@
 
                 
                 <li>
-                    <a href="/about/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/2021/04/02/%E5%BC%A0%E9%87%8FTensor/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/about/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/2021/04/02/%E5%BC%A0%E9%87%8FTensor/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/about/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/2021/04/02/%E5%BC%A0%E9%87%8FTensor/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
                 
             </ul>
@@ -457,19 +490,19 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 16.672593502145364px;" class="tag-cloud-link">笔记</a>
+    <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 14.811389854133504px;" class="tag-cloud-link">笔记</a>
     
-    <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 13.857285710427057px;" class="tag-cloud-link">IP网络协议</a>
+    <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 12.930172543442549px;" class="tag-cloud-link">IP网络协议</a>
     
-    <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 18.272899323040516px;" class="tag-cloud-link">读书笔记</a>
+    <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 10.324286158950112px;" class="tag-cloud-link">读书笔记</a>
     
-    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 9.551061429671968px;" class="tag-cloud-link">网络传输、设备与企业网架构</a>
+    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 18.045379960688827px;" class="tag-cloud-link">网络传输、设备与企业网架构</a>
     
-    <a href="/tags/%E4%B9%A0%E9%A2%98/" style="font-size: 13.677283066366538px;" class="tag-cloud-link">习题</a>
+    <a href="/tags/%E4%B9%A0%E9%A2%98/" style="font-size: 10.097042266606316px;" class="tag-cloud-link">习题</a>
     
-    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 12.252758994875313px;" class="tag-cloud-link">网络体系架构与网络协议</a>
+    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 9.968191849351598px;" class="tag-cloud-link">网络体系架构与网络协议</a>
     
-    <a href="/tags/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" style="font-size: 18.962516962415634px;" class="tag-cloud-link">运算方法和运算器</a>
+    <a href="/tags/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" style="font-size: 13.132333861137422px;" class="tag-cloud-link">运算方法和运算器</a>
     
 </div>
                 
