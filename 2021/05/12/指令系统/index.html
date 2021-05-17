@@ -306,23 +306,22 @@
 <pre><code>   不允许短码是长码的前缀
    各条指令的操作码一定不能重复雷同
    各类指令的格式安排应统一规整
-</code></pre>
-<h3 id="2-3-地址码的结构"><a href="#2-3-地址码的结构" class="headerlink" title="2.3 地址码的结构"></a>2.3 地址码的结构</h3><p><strong>显地址</strong>：在指令中明显给出地址，如写明存储单元号或寄存器号</p>
+</code></pre><h3 id="2-3-地址码的结构"><a href="#2-3-地址码的结构" class="headerlink" title="2.3 地址码的结构"></a>2.3 地址码的结构</h3><p><strong>显地址</strong>：在指令中明显给出地址，如写明存储单元号或寄存器号</p>
 <p><strong>隐地址</strong>：以隐含的方式约定，如事先隐含约定操作数在某个寄存器中，或是在堆栈中</p>
 <ol>
 <li><p>四地址指令</p>
-<p>$(A_1) OP(A_2)\rightarrow A_3 \ A_4 = 下一条执行指令的地址$</p>
+<p>$(A_1) OP(A_2)\rightarrow A_3 \\ A_4 = 下一条执行指令的地址$</p>
 </li>
 <li><p>三地址指令</p>
-<p>$(A_1)OP(A_2)\rightarrow A_3 \ (PC)+1\rightarrow PC(隐含)$</p>
-<p>执行一条三地址的双操作数运算指令，*<em>至少需要访问4次主存储器</em>***。第一次取指令本身，第二次取第一操作数，第三次取第二操作数，第四次保存运算结果</p>
+<p>$(A_1)OP(A_2)\rightarrow A_3 \\ (PC)+1\rightarrow PC(隐含)$</p>
+<p>执行一条三地址的双操作数运算指令，<strong>至少需要访问4次主存储器**</strong>。第一次取指令本身，第二次取第一操作数，第三次取第二操作数，第四次保存运算结果</p>
 </li>
 <li><p>二地址指令</p>
-<p>$(A_1)OP(A_2)\rightarrow A_1 \ (PC)+1\rightarrow PC(隐含)$</p>
+<p>$(A_1)OP(A_2)\rightarrow A_1 \\ (PC)+1\rightarrow PC(隐含)$</p>
 <p>同样需要<strong>至少访问四次主存储器</strong></p>
 </li>
 <li><p>一地址指令</p>
-<p>$(AC)OP(A_1)\rightarrow AC \ (PC)+1\rightarrow PC(隐含)$</p>
+<p>$(AC)OP(A_1)\rightarrow AC \\ (PC)+1\rightarrow PC(隐含)$</p>
 <p>AC为累加寄存器</p>
 <p>执行一条一地址的双操作数运算指令，<strong>只需要访问2次主存储器</strong>。第一次取指令本身，第二次取第一操作数。第二操作数和运算结果都放在AC中，所以读取和存入都不需要访问主存储器</p>
 </li>
@@ -359,7 +358,8 @@
 <p><strong>有效地址</strong>：是操作数<strong>在主存的地址</strong>或<strong>寄存器地址</strong>，是操作数真正的地址</p>
 <p><strong>形式地址</strong>：指令字中给定的地址量。</p>
 <p>寻址方式<strong>特征位</strong>，通常由<strong>间址位</strong>和<strong>变址位</strong>组成，如果这条指令无间址和变址的要求，那么形式地址就是操作数的有效地址</p>
-<p><font color="red"><strong>寻址过程就是把操作数的形式地址变化为操作数的有效地址的过程</strong></font></p>
+<font color="red">**寻址过程就是把操作数的形式地址变化为操作数的有效地址的过程**</font>
+
 <p><strong>数据寻址方式</strong>：</p>
 <ol>
 <li><p>立即数寻址方式</p>
@@ -525,37 +525,13 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/05/AlexNet%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">AlexNet学习笔记</a>
+                    <a href="/2021/04/04/PPP%E5%8D%8F%E8%AE%AE/">4.2 PPP协议</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/05/CRC%E5%BE%AA%E7%8E%AF%E5%86%97%E4%BD%99%E7%A0%81/">CRC循环冗余码</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2021/04/05/MAC/">MAC</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2021/04/04/IPv4%E9%A6%96%E9%83%A8%E6%A0%BC%E5%BC%8F/">4.3-1 IPv4</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2021/04/05/IP%E5%9C%B0%E5%9D%80/">IP地址</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2021/04/02/%E4%BF%A1%E9%81%93%E6%9E%81%E9%99%90%E5%AE%B9%E9%87%8F/">信道极限容量</a>
+                    <a href="/2021/04/02/%E4%B9%A0%E9%A2%98/">第三章部分习题</a>
                 </span>
             </li>
             
@@ -567,19 +543,43 @@
             
             <li class="list-group-item">
                 <span class="post-title">
+                    <a href="/2021/04/02/%E4%BC%A0%E8%BE%93%E5%AA%92%E4%BB%8B/">传输媒介</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
                     <a href="/2021/04/02/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">卷积神经网络基础</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E7%BC%96%E7%A0%81%E4%B8%8E%E8%B0%83%E5%88%B6/">编码与调制</a>
+                    <a href="/2021/04/02/%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B/">参考模型</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%E4%B8%8E%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">网络协议与网络体系结构</a>
+                    <a href="/2021/04/02/%E5%BC%A0%E9%87%8FTensor/">张量Tensor</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2021/05/12/%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/">指令系统</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2021/04/04/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E8%BF%87%E7%A8%8B%E5%8F%8A%E4%BB%A5%E5%A4%AA%E7%BD%91%E5%B8%A7%E7%BB%93%E6%9E%84/">4.1数据传输过程及以太网帧结构</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2021/04/02/%E7%89%A9%E7%90%86%E5%B1%82/">物理层</a>
                 </span>
             </li>
             
@@ -612,19 +612,19 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 11.027500883599519px;" class="tag-cloud-link">笔记</a>
+    <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 16.22985172438836px;" class="tag-cloud-link">笔记</a>
     
-    <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 12.414496894299873px;" class="tag-cloud-link">IP网络协议</a>
+    <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 15.62265555622842px;" class="tag-cloud-link">IP网络协议</a>
     
-    <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 18.872437916431487px;" class="tag-cloud-link">读书笔记</a>
+    <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 16.125101508670436px;" class="tag-cloud-link">读书笔记</a>
     
-    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 16.9657106768844px;" class="tag-cloud-link">网络传输、设备与企业网架构</a>
+    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 13.481765005130562px;" class="tag-cloud-link">网络传输、设备与企业网架构</a>
     
-    <a href="/tags/%E4%B9%A0%E9%A2%98/" style="font-size: 13.254436243412883px;" class="tag-cloud-link">习题</a>
+    <a href="/tags/%E4%B9%A0%E9%A2%98/" style="font-size: 9.915524878394585px;" class="tag-cloud-link">习题</a>
     
-    <a href="/tags/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" style="font-size: 18.135504376501537px;" class="tag-cloud-link">运算方法和运算器</a>
+    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 18.459681766436294px;" class="tag-cloud-link">网络体系架构与网络协议</a>
     
-    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 11.520907718177021px;" class="tag-cloud-link">网络体系架构与网络协议</a>
+    <a href="/tags/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" style="font-size: 11.822550750050741px;" class="tag-cloud-link">运算方法和运算器</a>
     
 </div>
                 
@@ -680,6 +680,23 @@
 <div id="gal-gotop">
     <i class="fa fa-angle-up"></i>
 </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 </body>
 
 <script src="/js/activate-power-mode.js"></script>

@@ -266,9 +266,8 @@
         </center>
     </div>
     <div class="content-article">
-        <p>卷积神经网络（Convolutional Neural Networks, CNN）是一类包含<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%8D%B7%E7%A7%AF/9411006">卷积</a>计算且具有深度结构的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%89%8D%E9%A6%88%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/7580523">前馈神经网络</a>（Feedforward Neural Networks），是<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/3729729">深度学习</a>（deep learning）的代表算法之一 [1-2] 。卷积神经网络具有<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%A1%A8%E5%BE%81%E5%AD%A6%E4%B9%A0/2140515">表征学习</a>（representation learning）能力，能够按其阶层结构对输入信息进行平移不变分类（shift-invariant classification），因此也被称为“平移不变人工神经网络（Shift-Invariant Artificial Neural Networks, SIANN）</p>
+        <p>卷积神经网络（Convolutional Neural Networks, CNN）是一类包含<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/卷积/9411006">卷积</a>计算且具有深度结构的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/前馈神经网络/7580523">前馈神经网络</a>（Feedforward Neural Networks），是<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/深度学习/3729729">深度学习</a>（deep learning）的代表算法之一 [1-2] 。卷积神经网络具有<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/表征学习/2140515">表征学习</a>（representation learning）能力，能够按其阶层结构对输入信息进行平移不变分类（shift-invariant classification），因此也被称为“平移不变人工神经网络（Shift-Invariant Artificial Neural Networks, SIANN）</p>
 <span id="more"></span>
-
 <h3 id="全连接层"><a href="#全连接层" class="headerlink" title="全连接层"></a>全连接层</h3><p>​    有许许多多的神经元共同连接的来的</p>
 <ol>
 <li>神经元常见模型：<img src="/images/564295-20181201210447071-1962186350.png" alt="Image"></li>
@@ -285,23 +284,29 @@
 </li>
 <li>引入非线性因素，使其具备解决非线性问题的能力 </li>
 </ol>
-</li>
+<ol>
 <li><p><strong>常用的激活函数有</strong></p>
 <ol>
-<li><p>sigmoid函数<br>  $$<br>  f(x) = \frac{1}{1+e^{-x}}<br>  $$<br>  sigmoid激活函数饱和时梯度值非常小，故网络层数比较深时易出现梯度消失</p>
+<li><p>sigmoid函数</p>
+<script type="math/tex; mode=display">
+ f(x) = \frac{1}{1+e^{-x}}</script><p> sigmoid激活函数饱和时梯度值非常小，故网络层数比较深时易出现梯度消失</p>
 </li>
-<li><p>ReLU函数<br> $$<br> f(x) = Max(0,x)<br> $$<br> ReLU激活函数缺点是反向传播过程中有一个非常大的梯度经过时，反向传播更新后可能导致权重分布中心小于零，导致该处的倒数始终为0，反向传播无法更新权重，即进入失活状态</p>
+<li><p>ReLU函数 </p>
+<script type="math/tex; mode=display">
+f(x) = Max(0,x)</script><p>ReLU激活函数缺点是反向传播过程中有一个非常大的梯度经过时，反向传播更新后可能导致权重分布中心小于零，导致该处的倒数始终为0，反向传播无法更新权重，即进入失活状态</p>
 </li>
 <li><p>在卷积操作过程中，矩阵经卷积操作的尺寸由以下几个因素决定</p>
 <ol>
 <li>输入图片大小W*W</li>
 <li>卷积核Filter大小 F * F</li>
 <li>步长S</li>
-<li> padding的像素数p</li>
+<li>padding的像素数p</li>
 </ol>
 </li>
 <li><p>则经卷积后矩阵尺寸大小计算公式为：<font size = 5>$N= \frac{W-F+2P}{S}+1$</font></p>
-<p>  怎么理解这个等式？首先，考虑对图片横向的填充，有两个边所以加上2*padding。其次，考虑到卷积核kernel的右边到达图片的右边时候，此时占用了图片kernel_size个像素。因此，在一个方向上，知道起点和终点，还有步长，那么需要几步才能走完一个方向，那可想而知。其中每一步对应于下一个层的一个像素点（神经元）。</p>
+<p> 怎么理解这个等式？首先，考虑对图片横向的填充，有两个边所以加上2*padding。其次，考虑到卷积核kernel的右边到达图片的右边时候，此时占用了图片kernel_size个像素。因此，在一个方向上，知道起点和终点，还有步长，那么需要几步才能走完一个方向，那可想而知。其中每一步对应于下一个层的一个像素点（神经元）。</p>
+</li>
+</ol>
 </li>
 </ol>
 </li>
@@ -309,8 +314,10 @@
 <ol>
 <li>目的：对特征图进行稀疏处理，减少数据运算量</li>
 <li>MaxPooling下采样层</li>
-<li>AveragePooling下采样层<ol>
-<li>特点<ol>
+<li><p>AveragePooling下采样层</p>
+<ol>
+<li><p>特点</p>
+<ol>
 <li><p>没有训练参数</p>
 </li>
 <li><p>只改变特征矩阵的w和h，不改变channel</p>
@@ -325,32 +332,48 @@
 </li>
 </ol>
 <hr>
-<h3 id="误差的计算"><a href="#误差的计算" class="headerlink" title="误差的计算"></a>误差的计算</h3><p>   针对一个神经网络<img src="C:\Users\REIMIL~1\AppData\Local\Temp\Image.png" alt="Image"><br>   softmax函数表达式为：<br>$$<br>o_i = \frac{e^{y_i}}{\sum_{i}e^{y_i}}<br>$$<br>   经过softmax处理后所有节点概率和为1</p>
+<h3 id="误差的计算"><a href="#误差的计算" class="headerlink" title="误差的计算"></a>误差的计算</h3><p>   针对一个神经网络<img src="C:\Users\REIMIL~1\AppData\Local\Temp\Image.png" alt="Image"><br>   softmax函数表达式为：</p>
+<script type="math/tex; mode=display">
+o_i = \frac{e^{y_i}}{\sum_{i}e^{y_i}}</script><p>   经过softmax处理后所有节点概率和为1</p>
 <h3 id="Corss-Entropy-Loss交叉熵损失"><a href="#Corss-Entropy-Loss交叉熵损失" class="headerlink" title="Corss Entropy Loss交叉熵损失"></a>Corss Entropy Loss交叉熵损失</h3><ol>
-<li>针对多分类问题（softmax输出）<br>$$<br>H = - \sum_{i}o_i^{*}log(o_i)<br>$$</li>
-<li>针对二分类问题（sigmoid输出）<br>$$<br>H = - \frac{1}{N}\sum_{i=1}^N[o_i^{<em>}logo_i+(1-o_i^{</em>})log(1-o_i)]<br>$$</li>
-<li>误差的反向传播</li>
+<li><p>针对多分类问题（softmax输出）    </p>
+<script type="math/tex; mode=display">
+H = - \sum_{i}o_i^{*}log(o_i)</script></li>
+<li><p>针对二分类问题（sigmoid输出）</p>
+<script type="math/tex; mode=display">
+H = - \frac{1}{N}\sum_{i=1}^N[o_i^{*}logo_i+(1-o_i^{*})log(1-o_i)]</script></li>
+<li><p>误差的反向传播</p>
+</li>
 </ol>
 <hr>
 <h3 id="权重的更新"><a href="#权重的更新" class="headerlink" title="权重的更新"></a>权重的更新</h3><ol>
-<li>优化器<ol>
-<li><p>目的：为了网络更快的收敛</p>
-</li>
+<li><p>优化器</p>
+<ol>
+<li>目的：为了网络更快的收敛</li>
+</ol>
+<ol>
 <li><p>SGD优化器</p>
 <ol>
-<li>更新公式：<br>  $$<br>  W_{t+1} = W_{t} - \alpha{g(W_{t})}<br>  $$</li>
-<li>α是学习率，$g(w_t)$为t时刻对参数$w_t$的损失梯度</li>
-<li>缺点：<ol>
+<li><p>更新公式：</p>
+<script type="math/tex; mode=display">
+  W_{t+1} = W_{t} - \alpha{g(W_{t})}</script></li>
+<li><p>α是学习率，$g(w_t)$为t时刻对参数$w_t$的损失梯度</p>
+</li>
+<li><p>缺点：</p>
+<ol>
 <li>易受样本噪声影响</li>
 <li>可能陷入局部最优解</li>
 </ol>
 </li>
 </ol>
-</li>
+<ol>
 <li><p>SGD+Momentum优化器</p>
 <ol>
-<li><p>公式：<br> $$<br> V_{t} = \eta{V_{t-1}} + \alpha{g(W_{t})}<br> $$</p>
-<p> $$<br> W_{t+1} = W_{t} - V_{t}<br> $$</p>
+<li><p>公式：</p>
+<script type="math/tex; mode=display">
+ V_{t} = \eta{V_{t-1}} + \alpha{g(W_{t})}</script><script type="math/tex; mode=display">
+ W_{t+1} = W_{t} - V_{t}</script></li>
+</ol>
 </li>
 </ol>
 </li>
@@ -485,18 +508,6 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/05/AlexNet%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">AlexNet学习笔记</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2021/04/05/CRC%E5%BE%AA%E7%8E%AF%E5%86%97%E4%BD%99%E7%A0%81/">CRC循环冗余码</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
                     <a href="/2021/04/04/PPP%E5%8D%8F%E8%AE%AE/">4.2 PPP协议</a>
                 </span>
             </li>
@@ -509,25 +520,31 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/10/%E5%AE%9A%E7%82%B9%E6%95%B0%E7%9A%84%E4%B9%98%E6%B3%95%E8%BF%90%E7%AE%97/">定点数的乘、除法运算</a>
+                    <a href="/2021/04/02/%E4%BC%A0%E8%BE%93%E5%AA%92%E4%BB%8B/">传输媒介</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E5%BC%A0%E9%87%8FTensor/">张量Tensor</a>
+                    <a href="/2021/04/02/%E4%BF%A1%E9%81%93%E6%9E%81%E9%99%90%E5%AE%B9%E9%87%8F/">信道极限容量</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E5%AE%9A%E7%82%B9%E6%95%B0%E7%9A%84%E5%8A%A0%E5%87%8F%E6%B3%95/">定点数的加减法</a>
+                    <a href="/2021/04/02/%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B/">参考模型</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/05/12/%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/">指令系统</a>
+                    <a href="/2021/04/02/%E6%95%B0%E5%80%BC%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95/">数值数据的表示方法</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2021/04/04/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E8%BF%87%E7%A8%8B%E5%8F%8A%E4%BB%A5%E5%A4%AA%E7%BD%91%E5%B8%A7%E7%BB%93%E6%9E%84/">4.1数据传输过程及以太网帧结构</a>
                 </span>
             </li>
             
@@ -540,6 +557,12 @@
             <li class="list-group-item">
                 <span class="post-title">
                     <a href="/2021/04/02/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%E4%B8%8E%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">网络协议与网络体系结构</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2021/04/02/%E7%BC%96%E7%A0%81%E4%B8%8E%E8%B0%83%E5%88%B6/">编码与调制</a>
                 </span>
             </li>
             
@@ -572,19 +595,19 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 18.88415828517143px;" class="tag-cloud-link">笔记</a>
+    <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 18.78526599292993px;" class="tag-cloud-link">笔记</a>
     
-    <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 13.89033183165552px;" class="tag-cloud-link">IP网络协议</a>
+    <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 18.758631244014715px;" class="tag-cloud-link">IP网络协议</a>
     
-    <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 8.656834518138943px;" class="tag-cloud-link">读书笔记</a>
+    <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 12.290291801599878px;" class="tag-cloud-link">读书笔记</a>
     
-    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 9.695665848583346px;" class="tag-cloud-link">网络传输、设备与企业网架构</a>
+    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 11.286924794936763px;" class="tag-cloud-link">网络传输、设备与企业网架构</a>
     
-    <a href="/tags/%E4%B9%A0%E9%A2%98/" style="font-size: 19.33910492687822px;" class="tag-cloud-link">习题</a>
+    <a href="/tags/%E4%B9%A0%E9%A2%98/" style="font-size: 11.787937596486671px;" class="tag-cloud-link">习题</a>
     
-    <a href="/tags/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" style="font-size: 17.58885159309414px;" class="tag-cloud-link">运算方法和运算器</a>
+    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 9.647488895557654px;" class="tag-cloud-link">网络体系架构与网络协议</a>
     
-    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 10.065575697319542px;" class="tag-cloud-link">网络体系架构与网络协议</a>
+    <a href="/tags/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" style="font-size: 9.165894630593684px;" class="tag-cloud-link">运算方法和运算器</a>
     
 </div>
                 
@@ -640,6 +663,23 @@
 <div id="gal-gotop">
     <i class="fa fa-angle-up"></i>
 </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 </body>
 
 <script src="/js/activate-power-mode.js"></script>

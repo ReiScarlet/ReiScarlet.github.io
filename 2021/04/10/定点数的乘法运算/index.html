@@ -272,7 +272,6 @@
     <div class="content-article">
         <p>移位分为算术移位，逻辑移位和循环移位三类，它们又可以分为左移和右移</p>
 <span id="more"></span>
-
 <hr>
 <h2 id="算术移位规则"><a href="#算术移位规则" class="headerlink" title="算术移位规则"></a>算术移位规则</h2><p><strong>原码的移位规则：</strong>负数的原码移位后的空出位补0</p>
 <p><strong>补码的移位规则：</strong></p>
@@ -283,8 +282,7 @@
 <p><strong>移位功能的实现：</strong>通过移位操作由<strong>移位寄存器</strong>来实现，也有在加法器的输出的加一个实现直传、左移一位和右移一位的控制逻辑电路（称为移位器）</p>
 <hr>
 <h2 id="定点乘法运算"><a href="#定点乘法运算" class="headerlink" title="定点乘法运算"></a>定点乘法运算</h2><h3 id="原码一位乘法的规则为："><a href="#原码一位乘法的规则为：" class="headerlink" title="原码一位乘法的规则为："></a>原码一位乘法的规则为：</h3><ol>
-<li><p>参加运算的操作数取其绝对值</p>
-</li>
+<li>参加运算的操作数取其绝对值</li>
 <li><p>令乘数的最低位为判断位</p>
 <ol>
 <li>若位1，加被乘数</li>
@@ -293,16 +291,18 @@
 </li>
 <li><p>累加后的部分积右移一位（这里是逻辑移位）</p>
 </li>
-<li><p>重复n次2，3步</p>
-</li>
-<li><p>符号位单独处理，同号为正，异号为负</p>
-</li>
+<li>重复n次2，3步</li>
+<li>符号位单独处理，同号为正，异号为负</li>
 </ol>
-<p><strong>例题：</strong><br>$$<br>已知：X=0.1101, Y=-0.1011, 求X*Y \<br>|X| = 00.1101 \rightarrow B, \<br>|Y| = .1011 \rightarrow C, 0 \rightarrow A \<br>$$<br><img src="/images/image-20210410143014142.png" alt="image-20210410143014142"></p>
+<p><strong>例题：</strong></p>
+<script type="math/tex; mode=display">
+已知：X=0.1101, Y=-0.1011, 求X*Y \\
+|X| = 00.1101 \rightarrow B, \\
+|Y| = .1011 \rightarrow C, 0 \rightarrow A \\</script><p><img src="/images/image-20210410143014142.png" alt="image-20210410143014142"></p>
 <h3 id="补码一位乘法"><a href="#补码一位乘法" class="headerlink" title="补码一位乘法"></a>补码一位乘法</h3><p><strong>校正法：</strong></p>
 <ol>
 <li>被乘数任意，乘数为正：同原码乘，但<strong>加和移位按补码规则运算</strong>，乘积的符    号自然形成</li>
-<li>被乘数任意，乘数为负：乘数$[Y]<em>{补}$，去掉符号位，操作同①，最后加$[-X]</em>{补}$，校正</li>
+<li>被乘数任意，乘数为负：乘数$[Y]_{补}$，去掉符号位，操作同①，最后加$[-X]_{补}$，校正</li>
 </ol>
 <p><strong>Booth算法</strong>：</p>
 <p>以小数为例子：</p>
@@ -312,8 +312,15 @@
 <p>$=[X]_补(Y_12^{-1}+Y_22^{-2}+…+Y_n2^{-n}) - [X]_补*Y_s$</p>
 <p>$=[X]_补\ (-Y_s + Y_12^{-1} + Y_22^{-2} + … + Y_n2^{-n})$</p>
 <p>$=[X]_补=[-Y_s + (Y_1 - Y_12^{-1}) + (Y_22^{-1} - Y_22^{-2}) + … + (Y_n2^{-(n-1)}-Y_n2^{-n})]$</p>
-<p>$=[X]<em>补 = [(Y_1-Y_s) + (Y_2 - Y_1)2^{-1} + … + (Y_n - Y</em>{n-1}2^{-(n-1)}) + (0 - Y_n)2^{-n}]$</p>
-<p><strong>递推公式</strong>：<br>$$<br>[Z_0]_补 = 0\<br>[Z_1]<em>补 = 2^{-1}{[Z_0]<em>补 + (Y</em>{n+1}-Y</em>{n})[X]_补}\<br>[Z_2]<em>补 = 2^{-1}{[Z_1]<em>补 + (Y</em>{n}-Y</em>{n-1})[X]_补}\<br>…\<br>[Z_n]<em>补 = 2^{-1}{[Z_n-1]<em>补 + (Y</em>{2}-Y</em>{1})[X]_补}\<br>\therefore [X*Y]_补 = [Z_n]_补 + (Y_1 - Y_s)[X]_补<br>$$<br>其中，$[Z_0]_补$为初始部分积，$[Z_1]_补\sim[Z_n]_补$依次为各次求得的累加并右移之后的部分积</p>
+<p>$=[X]_补 = [(Y_1-Y_s) + (Y_2 - Y_1)2^{-1} + … + (Y_n - Y_{n-1}2^{-(n-1)}) + (0 - Y_n)2^{-n}]$</p>
+<p><strong>递推公式</strong>：</p>
+<script type="math/tex; mode=display">
+[Z_0]_补 = 0\\
+[Z_1]_补 = 2^{-1}\{[Z_0]_补 + (Y_{n+1}-Y_{n})[X]_补\}\\
+[Z_2]_补 = 2^{-1}\{[Z_1]_补 + (Y_{n}-Y_{n-1})[X]_补\}\\
+...\\
+[Z_n]_补 = 2^{-1}\{[Z_n-1]_补 + (Y_{2}-Y_{1})[X]_补\}\\
+\therefore [X*Y]_补 = [Z_n]_补 + (Y_1 - Y_s)[X]_补</script><p>其中，$[Z_0]_补$为初始部分积，$[Z_1]_补\sim[Z_n]_补$依次为各次求得的累加并右移之后的部分积</p>
 <p><strong>描述</strong>：对于乘数$[Y]_补 = Y_1Y_2…Y_n$,被乘数$[X]_补=X_1X_2….X_n$</p>
 <ol>
 <li>若乘数当前位为1，下一位为0，则用部分积减去乘数，得到新的部分积</li>
@@ -330,8 +337,7 @@
 <hr>
 <h2 id="定点数的除法运算"><a href="#定点数的除法运算" class="headerlink" title="定点数的除法运算"></a>定点数的除法运算</h2><h3 id="比较法"><a href="#比较法" class="headerlink" title="比较法"></a>比较法</h3><h3 id="原码恢复余数法"><a href="#原码恢复余数法" class="headerlink" title="原码恢复余数法"></a>原码恢复余数法</h3><p><strong>步骤：</strong></p>
 <ol>
-<li><p>将除数的最高位与被除数的最高位对齐</p>
-</li>
+<li>将除数的最高位与被除数的最高位对齐</li>
 <li><p>从部分被除数中减去除数，得到新的部分被除数</p>
 <ol>
 <li>若新的部分被除数为负，则商左移一位，最低位补0，并用新的部分被除数加上除数，恢复原先的部分被除数</li>
@@ -340,8 +346,7 @@
 </li>
 <li><p>判断除法是否结束。若除数的最低位与部分被除数的最低位对齐，则除法结束。最后的部分被除数就是余数</p>
 </li>
-<li><p>将除数右移1位，从第②步继续执行</p>
-</li>
+<li>将除数右移1位，从第②步继续执行</li>
 </ol>
 <p><strong>原码恢复余数法在计算机中一般很少采用</strong></p>
 <h3 id="原码不恢复余数除法"><a href="#原码不恢复余数除法" class="headerlink" title="原码不恢复余数除法"></a>原码不恢复余数除法</h3><p>和原码恢复余数除法的区别是：</p>
@@ -349,7 +354,14 @@
 <li>若新的部分被除数为正，商左移一位，最低位补1，部分被除数减去除数</li>
 <li>先对除数进行右移再判断新的部分被除数为正为负</li>
 </ol>
-<p><strong>例题：</strong><br>$$<br>假设X=-0.10101,Y=0.11110,求X\div Y\<br>预先准备:\<br>|X|=00.10101 \rightarrow A \<br>|Y|=00.11110 \rightarrow B \<br>0 \rightarrow C \<br>[|Y|]_{变补} = 11.00010<br>$$<br><img src="/images/image-20210410154001109.png" alt="image-20210410154001109"></p>
+<p><strong>例题：</strong></p>
+<script type="math/tex; mode=display">
+假设X=-0.10101,Y=0.11110,求X\div Y\\
+预先准备:\\
+|X|=00.10101 \rightarrow A \\
+|Y|=00.11110 \rightarrow B \\
+0 \rightarrow C \\
+[|Y|]_{变补} = 11.00010</script><p><img src="/images/image-20210410154001109.png" alt="image-20210410154001109"></p>
 <p><img src="/images/image-20210410154122807.png" alt="image-20210410154122807"></p>
 
     </div>
@@ -476,19 +488,7 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/05/CRC%E5%BE%AA%E7%8E%AF%E5%86%97%E4%BD%99%E7%A0%81/">CRC循环冗余码</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
                     <a href="/2021/04/11/ICMP/">ICMP</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2021/04/05/MAC/">MAC</a>
                 </span>
             </li>
             
@@ -500,19 +500,19 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">卷积神经网络基础</a>
+                    <a href="/2021/04/05/IP%E5%9C%B0%E5%9D%80/">IP地址</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B/">参考模型</a>
+                    <a href="/2021/04/04/PPP%E5%8D%8F%E8%AE%AE/">4.2 PPP协议</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/04/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E8%BF%87%E7%A8%8B%E5%8F%8A%E4%BB%A5%E5%A4%AA%E7%BD%91%E5%B8%A7%E7%BB%93%E6%9E%84/">4.1数据传输过程及以太网帧结构</a>
+                    <a href="/2021/04/11/VPN%E5%92%8CNAT/">VPN，NAT</a>
                 </span>
             </li>
             
@@ -524,13 +524,25 @@
             
             <li class="list-group-item">
                 <span class="post-title">
+                    <a href="/2021/04/04/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E8%BF%87%E7%A8%8B%E5%8F%8A%E4%BB%A5%E5%A4%AA%E7%BD%91%E5%B8%A7%E7%BB%93%E6%9E%84/">4.1数据传输过程及以太网帧结构</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
                     <a href="/2021/04/02/%E6%95%B0%E6%8D%AE%E6%A0%A1%E9%AA%8C%E7%A0%81/">数据校验码</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87/">网络设备</a>
+                    <a href="/2021/04/02/%E6%B1%A0%E5%8C%96%E5%B1%82/">池化层</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2021/04/02/%E7%89%A9%E7%90%86%E5%B1%82/">物理层</a>
                 </span>
             </li>
             
@@ -563,19 +575,19 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 11.250161988183903px;" class="tag-cloud-link">笔记</a>
+    <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 15.367468071538065px;" class="tag-cloud-link">笔记</a>
     
-    <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 9.9063093691968px;" class="tag-cloud-link">IP网络协议</a>
+    <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 12.466516752051714px;" class="tag-cloud-link">IP网络协议</a>
     
-    <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 19.45099916518532px;" class="tag-cloud-link">读书笔记</a>
+    <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 12.140324500653318px;" class="tag-cloud-link">读书笔记</a>
     
-    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 8.230256334180073px;" class="tag-cloud-link">网络传输、设备与企业网架构</a>
+    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 9.790130800554543px;" class="tag-cloud-link">网络传输、设备与企业网架构</a>
     
-    <a href="/tags/%E4%B9%A0%E9%A2%98/" style="font-size: 16.15019230634787px;" class="tag-cloud-link">习题</a>
+    <a href="/tags/%E4%B9%A0%E9%A2%98/" style="font-size: 14.87489927998998px;" class="tag-cloud-link">习题</a>
     
-    <a href="/tags/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" style="font-size: 9.217477832765113px;" class="tag-cloud-link">运算方法和运算器</a>
+    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 19.24573901731832px;" class="tag-cloud-link">网络体系架构与网络协议</a>
     
-    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 8.231164489620824px;" class="tag-cloud-link">网络体系架构与网络协议</a>
+    <a href="/tags/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" style="font-size: 19.87848448846713px;" class="tag-cloud-link">运算方法和运算器</a>
     
 </div>
                 
@@ -631,6 +643,23 @@
 <div id="gal-gotop">
     <i class="fa fa-angle-up"></i>
 </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 </body>
 
 <script src="/js/activate-power-mode.js"></script>

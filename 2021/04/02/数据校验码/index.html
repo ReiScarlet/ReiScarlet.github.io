@@ -270,10 +270,10 @@
         </center>
     </div>
     <div class="content-article">
-        <p>数据校验是为保证数据的完整性进行的一种验证操作。通常用一种指定的算法对<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%8E%9F%E5%A7%8B%E6%95%B0%E6%8D%AE/10119290">原始数据</a>计算出的一个校验值，接收方用同样的算法计算一次校验值，如果两次计算得到的检验值相同，则说明数据是完整的</p>
+        <p>数据校验是为保证数据的完整性进行的一种验证操作。通常用一种指定的算法对<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/原始数据/10119290">原始数据</a>计算出的一个校验值，接收方用同样的算法计算一次校验值，如果两次计算得到的检验值相同，则说明数据是完整的</p>
 <span id="more"></span>
+<h2 id="1-什么是错误"><a href="#1-什么是错误" class="headerlink" title="1.什么是错误"></a>1.什么是错误</h2><font size = 5 color = red>$1$变成$0$，$0$变成$1$</font>
 
-<h2 id="1-什么是错误"><a href="#1-什么是错误" class="headerlink" title="1.什么是错误"></a>1.什么是错误</h2><p><font size = 5 color = red>$1$变成$0$，$0$变成$1$</font></p>
 <h2 id="2-什么样的编码具有检错纠错能力"><a href="#2-什么样的编码具有检错纠错能力" class="headerlink" title="2.什么样的编码具有检错纠错能力"></a>2.什么样的编码具有检错纠错能力</h2><p><strong>码距</strong>：任意两个码字之间最少变化的二进制位数</p>
 <p>具有检错纠错能力的数据校验码的实现原理是：在编码中，除去合法的码字，再加进一些非法的码字，当某个合法的码字出现错误时，就变成非法码字</p>
 <p><strong>对于码距≥2的数据校验码，开始具有检错能力，码距越大，检、纠错能力就越强，而且检错能力总大于或等于纠错能力</strong></p>
@@ -283,7 +283,7 @@
 <li>偶校验——使得整个校验码中”1”的个数为<strong>偶数</strong></li>
 <li><strong>交叉奇偶校验：传送数据块时，不仅每个字节有一个奇偶校验做横向校验，而且全部字节的同一位也设置一个奇偶校验做纵向校验</strong></li>
 </ol>
-<h2 id="4-如何确定错误的位置"><a href="#4-如何确定错误的位置" class="headerlink" title="4. 如何确定错误的位置"></a>4. 如何确定错误的位置</h2><h3 id="海明校验码"><a href="#海明校验码" class="headerlink" title="海明校验码"></a>海明校验码</h3><p>校验位K，信息位N，则<font size = 5>$2^{K+1} \ge N+K+1 $</font></p>
+<h2 id="4-如何确定错误的位置"><a href="#4-如何确定错误的位置" class="headerlink" title="4. 如何确定错误的位置"></a>4. 如何确定错误的位置</h2><h3 id="海明校验码"><a href="#海明校验码" class="headerlink" title="海明校验码"></a>海明校验码</h3><p>校验位K，信息位N，则<font size = 5>$2^{K+1} \ge N+K+1 $</font></p>
 <p>(1)编码</p>
 <p>一个字节由8位二进制位组成，此时N=8， K=5，故海明码总位数为N+K=13，表示为：$H_{13}\ H_{12}…H_{2}\ H_{1}$</p>
 <p>五个校验位$P_5~P_1$对应的海明码位为:$H_{13}、H_{8}、H_{4}、H_{2}、H_{1}$,除$P_5$外其余四位满足$P_i中i等于2^{i-1}$的关系，而$P_5$只能放在$H_{13}$</p>
@@ -292,7 +292,7 @@
 <p>则$P_1=D_1\oplus D_2\oplus D_4\oplus D_5\oplus D_7$，用同样的方法将其他$P_i$求出</p>
 <p>(2)校验</p>
 <p>将接收到的海明码按如下关系进行偶校验：</p>
-<p>如右所示：$S_1=P_1\oplus D_1\oplus D_2\oplus D_4\oplus D_5\oplus D_7$ ，即将$P_1$和对应的$D_i$进行异或算出结国</p>
+<p>如右所示：$S_1=P_1\oplus D_1\oplus D_2\oplus D_4\oplus D_5\oplus D_7$ ，即将$P_1$和对应的$D_i$进行异或算出结国</p>
 <p>然后依次求出$S_2\ S_3\ S_4\ S_5$</p>
 <p><strong>① 如果$S_5 \sim S_1为00000$时，表明无错</strong></p>
 <p>② 如果$S_5 \sim S_1$仅有一位不为$0$，表明是某一位校验位出错或三位海明码同时出错</p>
@@ -423,19 +423,25 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/05/MAC/">MAC</a>
+                    <a href="/2021/04/05/CRC%E5%BE%AA%E7%8E%AF%E5%86%97%E4%BD%99%E7%A0%81/">CRC循环冗余码</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/05/IP%E5%9C%B0%E5%9D%80/">IP地址</a>
+                    <a href="/2021/04/11/ICMP/">ICMP</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/04/PPP%E5%8D%8F%E8%AE%AE/">4.2 PPP协议</a>
+                    <a href="/2021/04/04/IPv4%E9%A6%96%E9%83%A8%E6%A0%BC%E5%BC%8F/">4.3-1 IPv4</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2021/04/11/VPN%E5%92%8CNAT/">VPN，NAT</a>
                 </span>
             </li>
             
@@ -447,7 +453,7 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">卷积神经网络基础</a>
+                    <a href="/2021/04/10/%E5%AE%9A%E7%82%B9%E6%95%B0%E7%9A%84%E4%B9%98%E6%B3%95%E8%BF%90%E7%AE%97/">定点数的乘、除法运算</a>
                 </span>
             </li>
             
@@ -459,13 +465,7 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E6%95%B0%E5%80%BC%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95/">数值数据的表示方法</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2021/04/04/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E8%BF%87%E7%A8%8B%E5%8F%8A%E4%BB%A5%E5%A4%AA%E7%BD%91%E5%B8%A7%E7%BB%93%E6%9E%84/">4.1数据传输过程及以太网帧结构</a>
+                    <a href="/2021/05/12/%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/">指令系统</a>
                 </span>
             </li>
             
@@ -477,7 +477,7 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E7%89%A9%E7%90%86%E5%B1%82/">物理层</a>
+                    <a href="/2021/04/02/%E6%B1%A0%E5%8C%96%E5%B1%82/">池化层</a>
                 </span>
             </li>
             
@@ -510,19 +510,19 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 13.107061817242585px;" class="tag-cloud-link">笔记</a>
+    <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 12.085085629477739px;" class="tag-cloud-link">笔记</a>
     
-    <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 17.61990932980384px;" class="tag-cloud-link">IP网络协议</a>
+    <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 14.92741462625846px;" class="tag-cloud-link">IP网络协议</a>
     
-    <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 16.370964158518724px;" class="tag-cloud-link">读书笔记</a>
+    <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 17.201687816384123px;" class="tag-cloud-link">读书笔记</a>
     
-    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 11.13979993762942px;" class="tag-cloud-link">网络传输、设备与企业网架构</a>
+    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 18.807573830937983px;" class="tag-cloud-link">网络传输、设备与企业网架构</a>
     
-    <a href="/tags/%E4%B9%A0%E9%A2%98/" style="font-size: 9.183934084223239px;" class="tag-cloud-link">习题</a>
+    <a href="/tags/%E4%B9%A0%E9%A2%98/" style="font-size: 17.460477235155842px;" class="tag-cloud-link">习题</a>
     
-    <a href="/tags/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" style="font-size: 15.679028468683853px;" class="tag-cloud-link">运算方法和运算器</a>
+    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 17.774826525824736px;" class="tag-cloud-link">网络体系架构与网络协议</a>
     
-    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 19.891387383895488px;" class="tag-cloud-link">网络体系架构与网络协议</a>
+    <a href="/tags/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" style="font-size: 12.608805390237215px;" class="tag-cloud-link">运算方法和运算器</a>
     
 </div>
                 
@@ -578,6 +578,23 @@
 <div id="gal-gotop">
     <i class="fa fa-angle-up"></i>
 </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 </body>
 
 <script src="/js/activate-power-mode.js"></script>
