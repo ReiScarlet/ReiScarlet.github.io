@@ -10,7 +10,7 @@
     
     
     
-    <title>AlexNet学习笔记 | Reimilia</title>
+    <title>tags: 计算机网络概述 | Reimilia</title>
     <link href="https://reiscarlet.github.io" rel="prefetch" />
 
     
@@ -149,10 +149,6 @@
                         </li>
                         
                         <li>
-                            <a href="/categories/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">卷积神经网络</a>
-                        </li>
-                        
-                        <li>
                             <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a>
                         </li>
                         
@@ -179,11 +175,11 @@
                         </li>
                         
                         <li>
-                            <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+                            <a href="/tags/%E9%93%BE%E8%B7%AF%E5%B1%82/">链路层</a>
                         </li>
                         
                         <li>
-                            <a href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a>
+                            <a href="/tags/%E7%BD%91%E7%BB%9C%E5%B1%82/">网络层</a>
                         </li>
                         
                         
@@ -213,34 +209,19 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 gal-right" id="mainstay">
-                    
-<article class="article well article-body" id="article">
+                    <article class="article well article-body" id="article-tag">
     <div class="breadcrumb">
         <i class="fa fa-home"></i>
         <a href="https://reiscarlet.github.io">Reimilia</a>
         >
-        <span>AlexNet学习笔记</span>
+        <span>标签</span>
     </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/2021/04/05/AlexNet%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">AlexNet学习笔记</a>
+                <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%BF%B0/index.html">计算机网络概述</a>
             </h1>
-        </div>
-        <div class="tag-article">
-            
-            <span class="label label-gal">
-                <i class="fa fa-tags"></i>
-                
-                <a href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a>
-                
-            </span>
-            
-            <span class="label label-gal">
-                <i class="fa fa-calendar"></i> 2021-04-05
-            </span>
-            
         </div>
     </div>
     <!-- 小型设备详细文章 -->
@@ -248,102 +229,24 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/2021/04/05/AlexNet%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">AlexNet学习笔记</a>
+                    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%BF%B0/index.html">计算机网络概述</a>
                 </h4>
             </div>
-            <p>
-                <i class="fa fa-calendar"></i> 2021-04-05
-            </p>
-            <p>
-                
-                <i class="fa fa-tags"></i>
-                
-                <a href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a>
-                
-                
-                
-            </p>
         </center>
     </div>
-    <div class="content-article">
-        <h3 id="AlexNet的亮点："><a href="#AlexNet的亮点：" class="headerlink" title="AlexNet的亮点："></a>AlexNet的亮点：</h3><ol>
-<li>首次使用了GPU进行网络加速训练</li>
-<li>使用ReLU激活函数，而不是传统的Sigmoid或者Tanh激活函数</li>
-<li>使用了LRN局部响应归一化</li>
-<li>在全连接的前两层中使用Dropout随机失活神经元操作，避免过拟合</li>
-</ol>
-<hr>
-<h3 id="过拟合"><a href="#过拟合" class="headerlink" title="过拟合"></a>过拟合</h3><p>特征维度过多，模型假设过于复杂，参数过多，训练数据过少，噪声过多等导致拟合的函数完美的预测训练集，但对新数据的测试集预测效果差。</p>
-<p>过度拟合了训练数据而没有考虑泛化能力</p>
-<hr>
-<h2 id="AlexNet详解"><a href="#AlexNet详解" class="headerlink" title="AlexNet详解"></a>AlexNet详解</h2><h3 id="Conv1："><a href="#Conv1：" class="headerlink" title="Conv1："></a>Conv1：</h3><ol>
-<li>kernels：48 * 2 = 96</li>
-<li>kernel_size ：11</li>
-<li>padding : [1, 2]</li>
-<li>stride = 4</li>
-<li>input_size = [224, 224, 3]</li>
-<li>output_size = [55, 55, 96]</li>
-</ol>
-<h3 id="MaxPool1"><a href="#MaxPool1" class="headerlink" title="MaxPool1:"></a>MaxPool1:</h3><ol>
-<li>kernel_size = 3</li>
-<li>padding = 0</li>
-<li>stride = 2</li>
-<li>input_size = [55, 55, 96]</li>
-<li>output_size = [27, 27, 96]</li>
-</ol>
-<h3 id="Conv2："><a href="#Conv2：" class="headerlink" title="Conv2："></a>Conv2：</h3><ol>
-<li>kernels = 128 * 2 = 256</li>
-<li>kernel_size = 5</li>
-<li>padding = [2, 2]</li>
-<li>stride = 1</li>
-<li>input_size = [27, 27, 96]</li>
-<li>output_size = [27, 27, 256]</li>
-</ol>
-<h3 id="MaxPool2"><a href="#MaxPool2" class="headerlink" title="MaxPool2"></a>MaxPool2</h3><ol>
-<li>kernel_size = 3</li>
-<li>padding = 0</li>
-<li>stride = 2</li>
-<li>input_size = [27, 27, 256]</li>
-<li>output_size = [13, 13, 256]</li>
-</ol>
-<h3 id="Conv3"><a href="#Conv3" class="headerlink" title="Conv3"></a>Conv3</h3><ol>
-<li>kernels : 192 * 2 = 384</li>
-<li>kernel_size : 3</li>
-<li>padding = [1, 1]</li>
-<li>stride = 1</li>
-<li>input_size = [13, 13, 256]</li>
-<li>output_size = [13, 13, 384] </li>
-</ol>
-<h3 id="Conv4"><a href="#Conv4" class="headerlink" title="Conv4"></a>Conv4</h3><ol>
-<li>kernels = 192 * 2 = 384</li>
-<li>kernel_size = 3</li>
-<li>padding = [1, 1]</li>
-<li>stride = 1</li>
-<li>input_size = [13, 13, 384]</li>
-<li>output_size = [13, 13, 384] </li>
-</ol>
-<h3 id="Conv5"><a href="#Conv5" class="headerlink" title="Conv5"></a>Conv5</h3><ol>
-<li>kernels = 128 * 2 = 256</li>
-<li>kernel_size = 3</li>
-<li>padding = [1, 1]</li>
-<li>stride = 1</li>
-<li>input_size = [13, 13, 384]</li>
-<li>output_size = [13, 13, 256]</li>
-</ol>
-<h3 id="MaxPool3"><a href="#MaxPool3" class="headerlink" title="MaxPool3"></a>MaxPool3</h3><ol>
-<li>kernel_size = 3</li>
-<li>padding = 0</li>
-<li>stride = 2</li>
-<li>input_size = [13, 13, 256]</li>
-<li>output_size = [6, 6, 256]</li>
-</ol>
-<hr>
-<p>注意最后一层，输出的结点为分类的类数目</p>
-
+    <div class="content-article" style="margin-top: 30px;">
+        <div class="alert alert-info" style="font-size: 14px; line-height: 2; font-weight: bold;">
+            
+            <a href="/2021/04/02/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%E4%B8%8E%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">网络协议与网络体系结构</a>
+            <br>
+            
+            <a href="/2021/04/02/%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B/">参考模型</a>
+            <br>
+            
+            
+        </div>
     </div>
 </article>
-
-
                 </div>
                 <aside class="col-md-4 gal-left" id="sidebar">
     <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
@@ -388,6 +291,18 @@
             
             <li class="list-group-item">
                 <span class="post-title">
+                    <a href="/2021/05/19/TCP/">TCP</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2021/05/19/IPv6/">IPv6</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
                     <a href="/2021/05/12/%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/">指令系统</a>
                 </span>
             </li>
@@ -407,12 +322,6 @@
             <li class="list-group-item">
                 <span class="post-title">
                     <a href="/2021/04/10/%E5%AE%9A%E7%82%B9%E6%95%B0%E7%9A%84%E4%B9%98%E6%B3%95%E8%BF%90%E7%AE%97/">定点数的乘、除法运算</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2021/04/05/AlexNet%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">AlexNet学习笔记</a>
                 </span>
             </li>
             
@@ -440,12 +349,6 @@
                 </span>
             </li>
             
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2021/04/04/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E8%BF%87%E7%A8%8B%E5%8F%8A%E4%BB%A5%E5%A4%AA%E7%BD%91%E5%B8%A7%E7%BB%93%E6%9E%84/">4.1数据传输过程及以太网帧结构</a>
-                </span>
-            </li>
-            
         </ul>
     </div>
 </aside>
@@ -464,13 +367,19 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/04/IPv4%E9%A6%96%E9%83%A8%E6%A0%BC%E5%BC%8F/">4.3-1 IPv4</a>
+                    <a href="/2021/04/05/IP%E5%9C%B0%E5%9D%80/">IP地址</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/05/IP%E5%9C%B0%E5%9D%80/">IP地址</a>
+                    <a href="/2021/04/05/MAC/">MAC</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2021/05/19/TCP/">TCP</a>
                 </span>
             </li>
             
@@ -482,19 +391,13 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E4%BC%A0%E8%BE%93%E6%96%B9%E5%BC%8F/">传输方式</a>
+                    <a href="/2021/04/02/%E4%B9%A0%E9%A2%98/">第三章部分习题</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B/">参考模型</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2021/04/02/%E5%AE%9A%E7%82%B9%E6%95%B0%E7%9A%84%E5%8A%A0%E5%87%8F%E6%B3%95/">定点数的加减法</a>
+                    <a href="/2021/04/10/%E5%AE%9A%E7%82%B9%E6%95%B0%E7%9A%84%E4%B9%98%E6%B3%95%E8%BF%90%E7%AE%97/">定点数的乘、除法运算</a>
                 </span>
             </li>
             
@@ -506,19 +409,19 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E6%95%B0%E6%8D%AE%E6%A0%A1%E9%AA%8C%E7%A0%81/">数据校验码</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2021/04/02/%E7%89%A9%E7%90%86%E5%B1%82/">物理层</a>
+                    <a href="/2021/04/02/%E7%BC%96%E7%A0%81%E4%B8%8E%E8%B0%83%E5%88%B6/">编码与调制</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
                     <a href="/2021/04/02/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%E4%B8%8E%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">网络协议与网络体系结构</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2021/04/02/%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87/">网络设备</a>
                 </span>
             </li>
             
@@ -533,17 +436,17 @@
 
                 
                 <li>
-                    <a href="/2021/04/05/AlexNet%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%BF%B0/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/2021/04/05/AlexNet%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%BF%B0/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/2021/04/05/AlexNet%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%BF%B0/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
                 
             </ul>
@@ -551,19 +454,29 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 16.13723727826438px;" class="tag-cloud-link">IP网络协议</a>
+    <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 10.903329638402187px;" class="tag-cloud-link">IP网络协议</a>
     
-    <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 13.164808101130252px;" class="tag-cloud-link">读书笔记</a>
+    <a href="/tags/%E9%93%BE%E8%B7%AF%E5%B1%82/" style="font-size: 15.56775875227886px;" class="tag-cloud-link">链路层</a>
     
-    <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 11.776709902023786px;" class="tag-cloud-link">笔记</a>
+    <a href="/tags/%E7%BD%91%E7%BB%9C%E5%B1%82/" style="font-size: 16.740558365127015px;" class="tag-cloud-link">网络层</a>
     
-    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 9.831449652148873px;" class="tag-cloud-link">网络传输、设备与企业网架构</a>
+    <a href="/tags/%E8%BF%90%E8%BE%93%E5%B1%82/" style="font-size: 16.54465199986957px;" class="tag-cloud-link">运输层</a>
     
-    <a href="/tags/%E4%B9%A0%E9%A2%98/" style="font-size: 11.1927202248329px;" class="tag-cloud-link">习题</a>
+    <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 19.941130085855157px;" class="tag-cloud-link">读书笔记</a>
     
-    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 9.133400651469445px;" class="tag-cloud-link">网络体系架构与网络协议</a>
+    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 13.051767069076053px;" class="tag-cloud-link">网络传输、设备与企业网架构</a>
     
-    <a href="/tags/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" style="font-size: 12.450434734939805px;" class="tag-cloud-link">运算方法和运算器</a>
+    <a href="/tags/%E4%B9%A0%E9%A2%98/" style="font-size: 14.487725908568951px;" class="tag-cloud-link">习题</a>
+    
+    <a href="/tags/%E7%89%A9%E7%90%86%E5%B1%82/" style="font-size: 10.623005634224722px;" class="tag-cloud-link">物理层</a>
+    
+    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 12.582819262548604px;" class="tag-cloud-link">网络体系架构与网络协议</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%BF%B0/" style="font-size: 13.750461827650039px;" class="tag-cloud-link">计算机网络概述</a>
+    
+    <a href="/tags/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" style="font-size: 15.232919937787127px;" class="tag-cloud-link">运算方法和运算器</a>
+    
+    <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 18.988538324167713px;" class="tag-cloud-link">笔记</a>
     
 </div>
                 

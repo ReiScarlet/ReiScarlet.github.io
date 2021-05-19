@@ -149,10 +149,6 @@
                         </li>
                         
                         <li>
-                            <a href="/categories/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">卷积神经网络</a>
-                        </li>
-                        
-                        <li>
                             <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a>
                         </li>
                         
@@ -179,11 +175,11 @@
                         </li>
                         
                         <li>
-                            <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+                            <a href="/tags/%E9%93%BE%E8%B7%AF%E5%B1%82/">链路层</a>
                         </li>
                         
                         <li>
-                            <a href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a>
+                            <a href="/tags/%E7%BD%91%E7%BB%9C%E5%B1%82/">网络层</a>
                         </li>
                         
                         
@@ -235,7 +231,7 @@
                 
                 <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/">IP网络协议</a>, 
                 
-                <a href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a>
+                <a href="/tags/%E7%BD%91%E7%BB%9C%E5%B1%82/">网络层</a>
                 
             </span>
             
@@ -262,7 +258,7 @@
                 
                 <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/">IP网络协议</a>, 
                 
-                <a href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a>
+                <a href="/tags/%E7%BD%91%E7%BB%9C%E5%B1%82/">网络层</a>
                 
                 
                 
@@ -272,13 +268,13 @@
     <div class="content-article">
         <p>TCP/IP支持多种不同的数据链路层协议，这取决于网络所使用的硬件。基于不同硬件的网络使用不同形式的帧结构，以太网是当今应用最广泛的局域网技术。</p>
 <span id="more"></span>    
+<p>[TOC]</p>
 <p>以太网传输的数据帧有两种格式：Ethernet II帧结构、IEEE 802.3格式</p>
 <p><strong>两种协议的区别是</strong>：    </p>
 <ol>
 <li>Ethernet II格式包含一个类型类型(Type)字段，标识以太帧处理完成之后将被发送到哪个上层协议及逆行处理</li>
 <li>IEEE 802.3个格式中，同样的位置是长度(Length)字段</li>
 </ol>
-<hr>
 <p><img src="/images/QQ截图20210405092139.jpg" alt=""></p>
 <p><strong>如何区分两种协议</strong>：</p>
 <script type="math/tex; mode=display">
@@ -287,14 +283,12 @@ Length/Type \le 1500(0x05DC) \quad IEEE 802.3</script><font size = 5>**目前以
 
 <p>以太网在数据链路层通过MAC地址来唯一识别网络设备，并且实现局域网上网络设备之间的通信。</p>
 <p>MAC地址也叫物理地址、硬件地址，大多数网卡厂商把MAC地址烧入网卡的ROM中，网络设备的MAC地址是全球唯一的</p>
-<hr>
 <h2 id="局域网帧的发送方式"><a href="#局域网帧的发送方式" class="headerlink" title="局域网帧的发送方式"></a>局域网帧的发送方式</h2><ol>
 <li>单播：指从单一源端发送到单一的目的端。MAC地址中，<strong>第一字节第八个比特($b_0$)表示地址类型</strong>。对于主机MAC地址，这个比特固定位0</li>
 <li>广播：指帧从单一的源端发送到共享以太网上的所有主机。广播帧的目的MAC地址为16进制的<strong>FF:FF:FF:FF:FF:FF</strong>，所有收到该广播帧的主机都要接受并处理这个帧</li>
 <li>组播：组播转发可以理解为选择性的广播，组播MAC地址通过第一字节第八个比特($b_0$)区分，这个比特为1</li>
 </ol>
-<hr>
-<h3 id="以太网帧标识"><a href="#以太网帧标识" class="headerlink" title="以太网帧标识"></a>以太网帧标识</h3><p><strong>封装成帧</strong>：指数据链路层给上层交付的协议数据单元添加帧头和帧尾使之成为帧</p>
+<h2 id="以太网帧标识"><a href="#以太网帧标识" class="headerlink" title="以太网帧标识"></a>以太网帧标识</h2><p><strong>封装成帧</strong>：指数据链路层给上层交付的协议数据单元添加帧头和帧尾使之成为帧</p>
 <ol>
 <li>帧头和帧尾包含有重要的控制信息</li>
 <li>帧头和帧尾的作用之一就是</li>
@@ -318,7 +312,6 @@ Length/Type \le 1500(0x05DC) \quad IEEE 802.3</script><font size = 5>**目前以
 <p><strong>转义字符是一种特殊的控制字符，其长度一个字节，十进制值为27</strong></p>
 <p>为了提高帧的传输速率，应当使帧的数据部分长度尽可能的大些</p>
 <p>考虑到差错控制多种因素，每一种数据链路层都规定了帧的数据部分长度上限，也就是最大传输单元MTU</p>
-<hr>
 <h2 id="MAC地址，IP地址和ARP协议"><a href="#MAC地址，IP地址和ARP协议" class="headerlink" title="MAC地址，IP地址和ARP协议"></a>MAC地址，IP地址和ARP协议</h2><p>MAC地址是以太网的MAC子网所使用的地址，位于数据链路层</p>
 <p>IP地址是TCP/IP体系结构的网络层所使用的地址</p>
 <p>ARP协议属于TCP/IP体系结构的网络层。其作用是已知设备所分配的IP地址，使用ARP协议可以通过该IP地址获取到设备的MAC地址</p>
@@ -371,6 +364,18 @@ Length/Type \le 1500(0x05DC) \quad IEEE 802.3</script><font size = 5>**目前以
             
             <li class="list-group-item">
                 <span class="post-title">
+                    <a href="/2021/05/19/TCP/">TCP</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2021/05/19/IPv6/">IPv6</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
                     <a href="/2021/05/12/%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/">指令系统</a>
                 </span>
             </li>
@@ -390,12 +395,6 @@ Length/Type \le 1500(0x05DC) \quad IEEE 802.3</script><font size = 5>**目前以
             <li class="list-group-item">
                 <span class="post-title">
                     <a href="/2021/04/10/%E5%AE%9A%E7%82%B9%E6%95%B0%E7%9A%84%E4%B9%98%E6%B3%95%E8%BF%90%E7%AE%97/">定点数的乘、除法运算</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2021/04/05/AlexNet%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">AlexNet学习笔记</a>
                 </span>
             </li>
             
@@ -423,12 +422,6 @@ Length/Type \le 1500(0x05DC) \quad IEEE 802.3</script><font size = 5>**目前以
                 </span>
             </li>
             
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2021/04/04/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E8%BF%87%E7%A8%8B%E5%8F%8A%E4%BB%A5%E5%A4%AA%E7%BD%91%E5%B8%A7%E7%BB%93%E6%9E%84/">4.1数据传输过程及以太网帧结构</a>
-                </span>
-            </li>
-            
         </ul>
     </div>
 </aside>
@@ -453,7 +446,13 @@ Length/Type \le 1500(0x05DC) \quad IEEE 802.3</script><font size = 5>**目前以
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/05/IP%E5%9C%B0%E5%9D%80/">IP地址</a>
+                    <a href="/2021/04/11/ICMP/">ICMP</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2021/05/19/IPv6/">IPv6</a>
                 </span>
             </li>
             
@@ -465,25 +464,13 @@ Length/Type \le 1500(0x05DC) \quad IEEE 802.3</script><font size = 5>**目前以
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/11/VPN%E5%92%8CNAT/">VPN，NAT</a>
+                    <a href="/2021/05/19/TCP/">TCP</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/hello-world/">Hello World</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2021/04/02/%E4%BC%A0%E8%BE%93%E5%AA%92%E4%BB%8B/">传输媒介</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2021/04/02/%E4%BC%A0%E8%BE%93%E6%96%B9%E5%BC%8F/">传输方式</a>
+                    <a href="/2021/04/02/%E5%AE%9A%E7%82%B9%E6%95%B0%E7%9A%84%E5%8A%A0%E5%87%8F%E6%B3%95/">定点数的加减法</a>
                 </span>
             </li>
             
@@ -501,7 +488,13 @@ Length/Type \le 1500(0x05DC) \quad IEEE 802.3</script><font size = 5>**目前以
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E7%89%A9%E7%90%86%E5%B1%82/">物理层</a>
+                    <a href="/2021/04/02/%E6%95%B0%E6%8D%AE%E6%A0%A1%E9%AA%8C%E7%A0%81/">数据校验码</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2021/04/02/%E7%89%A9%E7%90%86%E5%B1%82/">物理层概述</a>
                 </span>
             </li>
             
@@ -534,19 +527,29 @@ Length/Type \le 1500(0x05DC) \quad IEEE 802.3</script><font size = 5>**目前以
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 14.668553744178983px;" class="tag-cloud-link">IP网络协议</a>
+    <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 13.579032342596838px;" class="tag-cloud-link">IP网络协议</a>
     
-    <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 14.677907753381179px;" class="tag-cloud-link">读书笔记</a>
+    <a href="/tags/%E9%93%BE%E8%B7%AF%E5%B1%82/" style="font-size: 17.26387098307431px;" class="tag-cloud-link">链路层</a>
     
-    <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 12.622652605132654px;" class="tag-cloud-link">笔记</a>
+    <a href="/tags/%E7%BD%91%E7%BB%9C%E5%B1%82/" style="font-size: 16.485011620361693px;" class="tag-cloud-link">网络层</a>
     
-    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 12.130625782301234px;" class="tag-cloud-link">网络传输、设备与企业网架构</a>
+    <a href="/tags/%E8%BF%90%E8%BE%93%E5%B1%82/" style="font-size: 18.95930805111633px;" class="tag-cloud-link">运输层</a>
     
-    <a href="/tags/%E4%B9%A0%E9%A2%98/" style="font-size: 18.49412617103205px;" class="tag-cloud-link">习题</a>
+    <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 11.093627139120542px;" class="tag-cloud-link">读书笔记</a>
     
-    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 15.553368308866698px;" class="tag-cloud-link">网络体系架构与网络协议</a>
+    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 12.85262796122867px;" class="tag-cloud-link">网络传输、设备与企业网架构</a>
     
-    <a href="/tags/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" style="font-size: 12.227865424765689px;" class="tag-cloud-link">运算方法和运算器</a>
+    <a href="/tags/%E4%B9%A0%E9%A2%98/" style="font-size: 15.953801958809969px;" class="tag-cloud-link">习题</a>
+    
+    <a href="/tags/%E7%89%A9%E7%90%86%E5%B1%82/" style="font-size: 16.022167293536434px;" class="tag-cloud-link">物理层</a>
+    
+    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 16.583873809719407px;" class="tag-cloud-link">网络体系架构与网络协议</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%BF%B0/" style="font-size: 14.158852037261113px;" class="tag-cloud-link">计算机网络概述</a>
+    
+    <a href="/tags/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" style="font-size: 16.89086005923282px;" class="tag-cloud-link">运算方法和运算器</a>
+    
+    <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 10.549488418857091px;" class="tag-cloud-link">笔记</a>
     
 </div>
                 

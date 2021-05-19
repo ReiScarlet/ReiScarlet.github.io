@@ -10,7 +10,7 @@
     
     
     
-    <title>池化层 | Reimilia</title>
+    <title>tags: 物理层 | Reimilia</title>
     <link href="https://reiscarlet.github.io" rel="prefetch" />
 
     
@@ -149,10 +149,6 @@
                         </li>
                         
                         <li>
-                            <a href="/categories/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">卷积神经网络</a>
-                        </li>
-                        
-                        <li>
                             <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a>
                         </li>
                         
@@ -179,11 +175,11 @@
                         </li>
                         
                         <li>
-                            <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+                            <a href="/tags/%E9%93%BE%E8%B7%AF%E5%B1%82/">链路层</a>
                         </li>
                         
                         <li>
-                            <a href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a>
+                            <a href="/tags/%E7%BD%91%E7%BB%9C%E5%B1%82/">网络层</a>
                         </li>
                         
                         
@@ -213,34 +209,19 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 gal-right" id="mainstay">
-                    
-<article class="article well article-body" id="article">
+                    <article class="article well article-body" id="article-tag">
     <div class="breadcrumb">
         <i class="fa fa-home"></i>
         <a href="https://reiscarlet.github.io">Reimilia</a>
         >
-        <span>池化层</span>
+        <span>标签</span>
     </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/2021/04/02/%E6%B1%A0%E5%8C%96%E5%B1%82/">池化层</a>
+                <a href="/tags/%E7%89%A9%E7%90%86%E5%B1%82/index.html">物理层</a>
             </h1>
-        </div>
-        <div class="tag-article">
-            
-            <span class="label label-gal">
-                <i class="fa fa-tags"></i>
-                
-                <a href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a>
-                
-            </span>
-            
-            <span class="label label-gal">
-                <i class="fa fa-calendar"></i> 2021-04-02
-            </span>
-            
         </div>
     </div>
     <!-- 小型设备详细文章 -->
@@ -248,60 +229,33 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/2021/04/02/%E6%B1%A0%E5%8C%96%E5%B1%82/">池化层</a>
+                    <a href="/tags/%E7%89%A9%E7%90%86%E5%B1%82/index.html">物理层</a>
                 </h4>
             </div>
-            <p>
-                <i class="fa fa-calendar"></i> 2021-04-02
-            </p>
-            <p>
-                
-                <i class="fa fa-tags"></i>
-                
-                <a href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a>
-                
-                
-                
-            </p>
         </center>
     </div>
-    <div class="content-article">
-        <p>​        <font size = 5>池化过程在一般卷积过程后。池化（pooling） 的本质，其实就是采样。Pooling 对于输入的 Feature Map，选择某种方式对其进行降维压缩，以加快运算速度。</font></p>
-<hr>
-<span id="more"></span>
-<h2 id="种类"><a href="#种类" class="headerlink" title="种类"></a><strong>种类</strong></h2><p>目前主要有两种</p>
-<ol>
-<li>最大法：MaxPooling</li>
-<li>平均法：AvgPooling</li>
-</ol>
-<hr>
-<h2 id="形态"><a href="#形态" class="headerlink" title="形态"></a>形态</h2><ul>
-<li>1D 用于一维数据</li>
-<li>2D 一般用于二维图像数据</li>
-<li>3D 带时间序列数据的图像数据</li>
-</ul>
-<hr>
-<h2 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h2><ul>
-<li><p>pool_size 池化的大小</p>
-</li>
-<li><p>strides 步长</p>
-</li>
-<li><p>padding</p>
-</li>
-<li><p>data_format</p>
-<p>重点讲pool_size，对图像进行池化，选择2D的形态，则池化中的poolsize参数应该为(2,  2)，是一个包含两个元素的元组，若此时输入进去的图像为100 <em> 100的尺寸，则经过池化得到的是50 </em> 50的的图像尺寸，因为可以知道这里的pool_size也可以说是是缩小的比例因子</p>
-</li>
-</ul>
-<hr>
-<h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p><strong>池化的作用：</strong></p>
-<p>（1）保留主要特征的同时减少参数和计算量，防止过拟合。</p>
-<p>（2）invariance(不变性)，这种不变性包括translation(平移)，rotation(旋转)，scale(尺度)。</p>
-<p>Pooling 层是一个特征选择，信息过滤的过程。也就是说我们损失了一部分信息，这是一个和计算性能的一个妥协</p>
-
+    <div class="content-article" style="margin-top: 30px;">
+        <div class="alert alert-info" style="font-size: 14px; line-height: 2; font-weight: bold;">
+            
+            <a href="/2021/04/02/%E4%BF%A1%E9%81%93%E6%9E%81%E9%99%90%E5%AE%B9%E9%87%8F/">信道极限容量</a>
+            <br>
+            
+            <a href="/2021/04/02/%E4%BC%A0%E8%BE%93%E6%96%B9%E5%BC%8F/">传输方式与传输媒介</a>
+            <br>
+            
+            <a href="/2021/04/02/%E7%89%A9%E7%90%86%E5%B1%82/">物理层概述</a>
+            <br>
+            
+            <a href="/2021/04/02/%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87/">网络设备</a>
+            <br>
+            
+            <a href="/2021/04/02/%E7%BC%96%E7%A0%81%E4%B8%8E%E8%B0%83%E5%88%B6/">编码与调制</a>
+            <br>
+            
+            
+        </div>
     </div>
 </article>
-
-
                 </div>
                 <aside class="col-md-4 gal-left" id="sidebar">
     <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
@@ -346,6 +300,18 @@
             
             <li class="list-group-item">
                 <span class="post-title">
+                    <a href="/2021/05/19/TCP/">TCP</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2021/05/19/IPv6/">IPv6</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
                     <a href="/2021/05/12/%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/">指令系统</a>
                 </span>
             </li>
@@ -365,12 +331,6 @@
             <li class="list-group-item">
                 <span class="post-title">
                     <a href="/2021/04/10/%E5%AE%9A%E7%82%B9%E6%95%B0%E7%9A%84%E4%B9%98%E6%B3%95%E8%BF%90%E7%AE%97/">定点数的乘、除法运算</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2021/04/05/AlexNet%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">AlexNet学习笔记</a>
                 </span>
             </li>
             
@@ -398,12 +358,6 @@
                 </span>
             </li>
             
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2021/04/04/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E8%BF%87%E7%A8%8B%E5%8F%8A%E4%BB%A5%E5%A4%AA%E7%BD%91%E5%B8%A7%E7%BB%93%E6%9E%84/">4.1数据传输过程及以太网帧结构</a>
-                </span>
-            </li>
-            
         </ul>
     </div>
 </aside>
@@ -422,37 +376,37 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/05/AlexNet%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">AlexNet学习笔记</a>
+                    <a href="/2021/04/04/IPv4%E9%A6%96%E9%83%A8%E6%A0%BC%E5%BC%8F/">4.3-1 IPv4</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/11/ICMP/">ICMP</a>
+                    <a href="/2021/05/19/IPv6/">IPv6</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/05/IP%E5%9C%B0%E5%9D%80/">IP地址</a>
+                    <a href="/2021/04/04/PPP%E5%8D%8F%E8%AE%AE/">4.2 PPP协议</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/05/MAC/">MAC</a>
+                    <a href="/2021/05/19/TCP/">TCP</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/hello-world/">Hello World</a>
+                    <a href="/2021/04/11/VPN%E5%92%8CNAT/">VPN，NAT</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">卷积神经网络基础</a>
+                    <a href="/2021/04/02/%E4%BC%A0%E8%BE%93%E6%96%B9%E5%BC%8F/">传输方式与传输媒介</a>
                 </span>
             </li>
             
@@ -464,19 +418,19 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E5%AE%9A%E7%82%B9%E6%95%B0%E7%9A%84%E5%8A%A0%E5%87%8F%E6%B3%95/">定点数的加减法</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2021/04/02/%E5%BC%A0%E9%87%8FTensor/">张量Tensor</a>
+                    <a href="/2021/04/02/%E6%95%B0%E5%80%BC%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95/">数值数据的表示方法</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
                     <a href="/2021/04/04/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E8%BF%87%E7%A8%8B%E5%8F%8A%E4%BB%A5%E5%A4%AA%E7%BD%91%E5%B8%A7%E7%BB%93%E6%9E%84/">4.1数据传输过程及以太网帧结构</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2021/04/02/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%E4%B8%8E%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">网络协议与网络体系结构</a>
                 </span>
             </li>
             
@@ -491,17 +445,17 @@
 
                 
                 <li>
-                    <a href="/2021/04/02/%E6%B1%A0%E5%8C%96%E5%B1%82/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/tags/%E7%89%A9%E7%90%86%E5%B1%82/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/2021/04/02/%E6%B1%A0%E5%8C%96%E5%B1%82/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/tags/%E7%89%A9%E7%90%86%E5%B1%82/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/2021/04/02/%E6%B1%A0%E5%8C%96%E5%B1%82/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/tags/%E7%89%A9%E7%90%86%E5%B1%82/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
                 
             </ul>
@@ -509,19 +463,29 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 9.878882730154157px;" class="tag-cloud-link">IP网络协议</a>
+    <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 19.76599772282011px;" class="tag-cloud-link">IP网络协议</a>
     
-    <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 11.678668749215067px;" class="tag-cloud-link">读书笔记</a>
+    <a href="/tags/%E9%93%BE%E8%B7%AF%E5%B1%82/" style="font-size: 18.489809900880125px;" class="tag-cloud-link">链路层</a>
     
-    <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 18.90788539608791px;" class="tag-cloud-link">笔记</a>
+    <a href="/tags/%E7%BD%91%E7%BB%9C%E5%B1%82/" style="font-size: 12.145142298051937px;" class="tag-cloud-link">网络层</a>
     
-    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 8.168602436695775px;" class="tag-cloud-link">网络传输、设备与企业网架构</a>
+    <a href="/tags/%E8%BF%90%E8%BE%93%E5%B1%82/" style="font-size: 18.629737943699702px;" class="tag-cloud-link">运输层</a>
     
-    <a href="/tags/%E4%B9%A0%E9%A2%98/" style="font-size: 11.88779934789011px;" class="tag-cloud-link">习题</a>
+    <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 11.753023982389937px;" class="tag-cloud-link">读书笔记</a>
     
-    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 10.43385989880531px;" class="tag-cloud-link">网络体系架构与网络协议</a>
+    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 15.903126863598258px;" class="tag-cloud-link">网络传输、设备与企业网架构</a>
     
-    <a href="/tags/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" style="font-size: 18.617996474338625px;" class="tag-cloud-link">运算方法和运算器</a>
+    <a href="/tags/%E4%B9%A0%E9%A2%98/" style="font-size: 13.835281638189187px;" class="tag-cloud-link">习题</a>
+    
+    <a href="/tags/%E7%89%A9%E7%90%86%E5%B1%82/" style="font-size: 16.3389898222729px;" class="tag-cloud-link">物理层</a>
+    
+    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 14.571071991919577px;" class="tag-cloud-link">网络体系架构与网络协议</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%BF%B0/" style="font-size: 16.20888649025565px;" class="tag-cloud-link">计算机网络概述</a>
+    
+    <a href="/tags/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" style="font-size: 18.77813259627097px;" class="tag-cloud-link">运算方法和运算器</a>
+    
+    <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 8.417063128641367px;" class="tag-cloud-link">笔记</a>
     
 </div>
                 

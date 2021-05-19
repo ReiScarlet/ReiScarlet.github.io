@@ -10,7 +10,7 @@
     
     
     
-    <title>卷积神经网络基础 | Reimilia</title>
+    <title>tags: 链路层 | Reimilia</title>
     <link href="https://reiscarlet.github.io" rel="prefetch" />
 
     
@@ -149,10 +149,6 @@
                         </li>
                         
                         <li>
-                            <a href="/categories/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">卷积神经网络</a>
-                        </li>
-                        
-                        <li>
                             <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a>
                         </li>
                         
@@ -179,11 +175,11 @@
                         </li>
                         
                         <li>
-                            <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+                            <a href="/tags/%E9%93%BE%E8%B7%AF%E5%B1%82/">链路层</a>
                         </li>
                         
                         <li>
-                            <a href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a>
+                            <a href="/tags/%E7%BD%91%E7%BB%9C%E5%B1%82/">网络层</a>
                         </li>
                         
                         
@@ -213,34 +209,19 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 gal-right" id="mainstay">
-                    
-<article class="article well article-body" id="article">
+                    <article class="article well article-body" id="article-tag">
     <div class="breadcrumb">
         <i class="fa fa-home"></i>
         <a href="https://reiscarlet.github.io">Reimilia</a>
         >
-        <span>卷积神经网络基础</span>
+        <span>标签</span>
     </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/2021/04/02/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">卷积神经网络基础</a>
+                <a href="/tags/%E9%93%BE%E8%B7%AF%E5%B1%82/index.html">链路层</a>
             </h1>
-        </div>
-        <div class="tag-article">
-            
-            <span class="label label-gal">
-                <i class="fa fa-tags"></i>
-                
-                <a href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a>
-                
-            </span>
-            
-            <span class="label label-gal">
-                <i class="fa fa-calendar"></i> 2021-04-02
-            </span>
-            
         </div>
     </div>
     <!-- 小型设备详细文章 -->
@@ -248,146 +229,27 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/2021/04/02/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">卷积神经网络基础</a>
+                    <a href="/tags/%E9%93%BE%E8%B7%AF%E5%B1%82/index.html">链路层</a>
                 </h4>
             </div>
-            <p>
-                <i class="fa fa-calendar"></i> 2021-04-02
-            </p>
-            <p>
-                
-                <i class="fa fa-tags"></i>
-                
-                <a href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a>
-                
-                
-                
-            </p>
         </center>
     </div>
-    <div class="content-article">
-        <p>卷积神经网络（Convolutional Neural Networks, CNN）是一类包含<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/卷积/9411006">卷积</a>计算且具有深度结构的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/前馈神经网络/7580523">前馈神经网络</a>（Feedforward Neural Networks），是<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/深度学习/3729729">深度学习</a>（deep learning）的代表算法之一 [1-2] 。卷积神经网络具有<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/表征学习/2140515">表征学习</a>（representation learning）能力，能够按其阶层结构对输入信息进行平移不变分类（shift-invariant classification），因此也被称为“平移不变人工神经网络（Shift-Invariant Artificial Neural Networks, SIANN）</p>
-<span id="more"></span>
-<h3 id="全连接层"><a href="#全连接层" class="headerlink" title="全连接层"></a>全连接层</h3><p>​    有许许多多的神经元共同连接的来的</p>
-<ol>
-<li>神经元常见模型：<img src="/images/564295-20181201210447071-1962186350.png" alt="Image"></li>
-<li>BP算法包括信号的前向传播和误差的反向传播两个过程</li>
-</ol>
-<hr>
-<h3 id="CNN中独特的网络结构——卷积层"><a href="#CNN中独特的网络结构——卷积层" class="headerlink" title="CNN中独特的网络结构——卷积层"></a>CNN中独特的网络结构——卷积层</h3><ol>
-<li><p><strong>目的：进行图像特征提取</strong></p>
-<ol>
-<li>特性：<ol>
-<li>拥有局部感知机制</li>
-<li>权值共享</li>
-</ol>
-</li>
-<li>引入非线性因素，使其具备解决非线性问题的能力 </li>
-</ol>
-<ol>
-<li><p><strong>常用的激活函数有</strong></p>
-<ol>
-<li><p>sigmoid函数</p>
-<script type="math/tex; mode=display">
- f(x) = \frac{1}{1+e^{-x}}</script><p> sigmoid激活函数饱和时梯度值非常小，故网络层数比较深时易出现梯度消失</p>
-</li>
-<li><p>ReLU函数 </p>
-<script type="math/tex; mode=display">
-f(x) = Max(0,x)</script><p>ReLU激活函数缺点是反向传播过程中有一个非常大的梯度经过时，反向传播更新后可能导致权重分布中心小于零，导致该处的倒数始终为0，反向传播无法更新权重，即进入失活状态</p>
-</li>
-<li><p>在卷积操作过程中，矩阵经卷积操作的尺寸由以下几个因素决定</p>
-<ol>
-<li>输入图片大小W*W</li>
-<li>卷积核Filter大小 F * F</li>
-<li>步长S</li>
-<li>padding的像素数p</li>
-</ol>
-</li>
-<li><p>则经卷积后矩阵尺寸大小计算公式为：<font size = 5>$N= \frac{W-F+2P}{S}+1$</font></p>
-<p> 怎么理解这个等式？首先，考虑对图片横向的填充，有两个边所以加上2*padding。其次，考虑到卷积核kernel的右边到达图片的右边时候，此时占用了图片kernel_size个像素。因此，在一个方向上，知道起点和终点，还有步长，那么需要几步才能走完一个方向，那可想而知。其中每一步对应于下一个层的一个像素点（神经元）。</p>
-</li>
-</ol>
-</li>
-</ol>
-</li>
-<li><p><strong>池化层</strong></p>
-<ol>
-<li>目的：对特征图进行稀疏处理，减少数据运算量</li>
-<li>MaxPooling下采样层</li>
-<li><p>AveragePooling下采样层</p>
-<ol>
-<li><p>特点</p>
-<ol>
-<li><p>没有训练参数</p>
-</li>
-<li><p>只改变特征矩阵的w和h，不改变channel</p>
-</li>
-<li><p>一般poolsize和stride相同</p>
-</li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-<hr>
-<h3 id="误差的计算"><a href="#误差的计算" class="headerlink" title="误差的计算"></a>误差的计算</h3><p>   针对一个神经网络<img src="C:\Users\REIMIL~1\AppData\Local\Temp\Image.png" alt="Image"><br>   softmax函数表达式为：</p>
-<script type="math/tex; mode=display">
-o_i = \frac{e^{y_i}}{\sum_{i}e^{y_i}}</script><p>   经过softmax处理后所有节点概率和为1</p>
-<h3 id="Corss-Entropy-Loss交叉熵损失"><a href="#Corss-Entropy-Loss交叉熵损失" class="headerlink" title="Corss Entropy Loss交叉熵损失"></a>Corss Entropy Loss交叉熵损失</h3><ol>
-<li><p>针对多分类问题（softmax输出）    </p>
-<script type="math/tex; mode=display">
-H = - \sum_{i}o_i^{*}log(o_i)</script></li>
-<li><p>针对二分类问题（sigmoid输出）</p>
-<script type="math/tex; mode=display">
-H = - \frac{1}{N}\sum_{i=1}^N[o_i^{*}logo_i+(1-o_i^{*})log(1-o_i)]</script></li>
-<li><p>误差的反向传播</p>
-</li>
-</ol>
-<hr>
-<h3 id="权重的更新"><a href="#权重的更新" class="headerlink" title="权重的更新"></a>权重的更新</h3><ol>
-<li><p>优化器</p>
-<ol>
-<li>目的：为了网络更快的收敛</li>
-</ol>
-<ol>
-<li><p>SGD优化器</p>
-<ol>
-<li><p>更新公式：</p>
-<script type="math/tex; mode=display">
-  W_{t+1} = W_{t} - \alpha{g(W_{t})}</script></li>
-<li><p>α是学习率，$g(w_t)$为t时刻对参数$w_t$的损失梯度</p>
-</li>
-<li><p>缺点：</p>
-<ol>
-<li>易受样本噪声影响</li>
-<li>可能陷入局部最优解</li>
-</ol>
-</li>
-</ol>
-<ol>
-<li><p>SGD+Momentum优化器</p>
-<ol>
-<li><p>公式：</p>
-<script type="math/tex; mode=display">
- V_{t} = \eta{V_{t-1}} + \alpha{g(W_{t})}</script><script type="math/tex; mode=display">
- W_{t+1} = W_{t} - V_{t}</script></li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-<hr>
-<p><strong>pytorch Tensor的通道排序[batch, channel, height, width]</strong></p>
-<p>每一层卷积有多少channel数，以及一共有多少层卷积，这些暂时没有理论支撑，一般都是靠感觉去设置几组候选值，然后通过实验挑选出其中的最佳值。</p>
-
+    <div class="content-article" style="margin-top: 30px;">
+        <div class="alert alert-info" style="font-size: 14px; line-height: 2; font-weight: bold;">
+            
+            <a href="/2021/04/05/CRC%E5%BE%AA%E7%8E%AF%E5%86%97%E4%BD%99%E7%A0%81/">CRC循环冗余码</a>
+            <br>
+            
+            <a href="/2021/04/05/MAC/">MAC</a>
+            <br>
+            
+            <a href="/2021/04/04/PPP%E5%8D%8F%E8%AE%AE/">4.2 PPP协议</a>
+            <br>
+            
+            
+        </div>
     </div>
 </article>
-
-
                 </div>
                 <aside class="col-md-4 gal-left" id="sidebar">
     <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
@@ -432,6 +294,18 @@ H = - \frac{1}{N}\sum_{i=1}^N[o_i^{*}logo_i+(1-o_i^{*})log(1-o_i)]</script></li>
             
             <li class="list-group-item">
                 <span class="post-title">
+                    <a href="/2021/05/19/TCP/">TCP</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2021/05/19/IPv6/">IPv6</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
                     <a href="/2021/05/12/%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/">指令系统</a>
                 </span>
             </li>
@@ -451,12 +325,6 @@ H = - \frac{1}{N}\sum_{i=1}^N[o_i^{*}logo_i+(1-o_i^{*})log(1-o_i)]</script></li>
             <li class="list-group-item">
                 <span class="post-title">
                     <a href="/2021/04/10/%E5%AE%9A%E7%82%B9%E6%95%B0%E7%9A%84%E4%B9%98%E6%B3%95%E8%BF%90%E7%AE%97/">定点数的乘、除法运算</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2021/04/05/AlexNet%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">AlexNet学习笔记</a>
                 </span>
             </li>
             
@@ -484,12 +352,6 @@ H = - \frac{1}{N}\sum_{i=1}^N[o_i^{*}logo_i+(1-o_i^{*})log(1-o_i)]</script></li>
                 </span>
             </li>
             
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2021/04/04/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E8%BF%87%E7%A8%8B%E5%8F%8A%E4%BB%A5%E5%A4%AA%E7%BD%91%E5%B8%A7%E7%BB%93%E6%9E%84/">4.1数据传输过程及以太网帧结构</a>
-                </span>
-            </li>
-            
         </ul>
     </div>
 </aside>
@@ -508,13 +370,25 @@ H = - \frac{1}{N}\sum_{i=1}^N[o_i^{*}logo_i+(1-o_i^{*})log(1-o_i)]</script></li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/05/MAC/">MAC</a>
+                    <a href="/2021/04/11/ICMP/">ICMP</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/11/VPN%E5%92%8CNAT/">VPN，NAT</a>
+                    <a href="/2021/04/05/IP%E5%9C%B0%E5%9D%80/">IP地址</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2021/04/04/PPP%E5%8D%8F%E8%AE%AE/">4.2 PPP协议</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2021/05/19/TCP/">TCP</a>
                 </span>
             </li>
             
@@ -526,19 +400,7 @@ H = - \frac{1}{N}\sum_{i=1}^N[o_i^{*}logo_i+(1-o_i^{*})log(1-o_i)]</script></li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">卷积神经网络基础</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2021/04/02/%E4%BF%A1%E9%81%93%E6%9E%81%E9%99%90%E5%AE%B9%E9%87%8F/">信道极限容量</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2021/04/02/%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B/">参考模型</a>
+                    <a href="/2021/04/02/%E4%BC%A0%E8%BE%93%E6%96%B9%E5%BC%8F/">传输方式与传输媒介</a>
                 </span>
             </li>
             
@@ -550,19 +412,19 @@ H = - \frac{1}{N}\sum_{i=1}^N[o_i^{*}logo_i+(1-o_i^{*})log(1-o_i)]</script></li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E5%BC%A0%E9%87%8FTensor/">张量Tensor</a>
+                    <a href="/2021/04/10/%E5%AE%9A%E7%82%B9%E6%95%B0%E7%9A%84%E4%B9%98%E6%B3%95%E8%BF%90%E7%AE%97/">定点数的乘、除法运算</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/04/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E8%BF%87%E7%A8%8B%E5%8F%8A%E4%BB%A5%E5%A4%AA%E7%BD%91%E5%B8%A7%E7%BB%93%E6%9E%84/">4.1数据传输过程及以太网帧结构</a>
+                    <a href="/2021/04/02/%E6%95%B0%E6%8D%AE%E6%A0%A1%E9%AA%8C%E7%A0%81/">数据校验码</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2021/04/02/%E7%BC%96%E7%A0%81%E4%B8%8E%E8%B0%83%E5%88%B6/">编码与调制</a>
+                    <a href="/2021/04/02/%E7%89%A9%E7%90%86%E5%B1%82/">物理层概述</a>
                 </span>
             </li>
             
@@ -577,17 +439,17 @@ H = - \frac{1}{N}\sum_{i=1}^N[o_i^{*}logo_i+(1-o_i^{*})log(1-o_i)]</script></li>
 
                 
                 <li>
-                    <a href="/2021/04/02/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/tags/%E9%93%BE%E8%B7%AF%E5%B1%82/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/2021/04/02/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/tags/%E9%93%BE%E8%B7%AF%E5%B1%82/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/2021/04/02/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/tags/%E9%93%BE%E8%B7%AF%E5%B1%82/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
                 
             </ul>
@@ -595,19 +457,29 @@ H = - \frac{1}{N}\sum_{i=1}^N[o_i^{*}logo_i+(1-o_i^{*})log(1-o_i)]</script></li>
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 13.585268247242169px;" class="tag-cloud-link">IP网络协议</a>
+    <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 10.081103744065121px;" class="tag-cloud-link">IP网络协议</a>
     
-    <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 16.890496835216357px;" class="tag-cloud-link">读书笔记</a>
+    <a href="/tags/%E9%93%BE%E8%B7%AF%E5%B1%82/" style="font-size: 19.71648308044023px;" class="tag-cloud-link">链路层</a>
     
-    <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 14.554189093557547px;" class="tag-cloud-link">笔记</a>
+    <a href="/tags/%E7%BD%91%E7%BB%9C%E5%B1%82/" style="font-size: 18.425526173628164px;" class="tag-cloud-link">网络层</a>
     
-    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 9.004745679416882px;" class="tag-cloud-link">网络传输、设备与企业网架构</a>
+    <a href="/tags/%E8%BF%90%E8%BE%93%E5%B1%82/" style="font-size: 19.607955576791596px;" class="tag-cloud-link">运输层</a>
     
-    <a href="/tags/%E4%B9%A0%E9%A2%98/" style="font-size: 17.765129530435644px;" class="tag-cloud-link">习题</a>
+    <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 8.754218901668299px;" class="tag-cloud-link">读书笔记</a>
     
-    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 8.086615708988685px;" class="tag-cloud-link">网络体系架构与网络协议</a>
+    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 12.066915073242814px;" class="tag-cloud-link">网络传输、设备与企业网架构</a>
     
-    <a href="/tags/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" style="font-size: 19.107850418348136px;" class="tag-cloud-link">运算方法和运算器</a>
+    <a href="/tags/%E4%B9%A0%E9%A2%98/" style="font-size: 19.358772809789542px;" class="tag-cloud-link">习题</a>
+    
+    <a href="/tags/%E7%89%A9%E7%90%86%E5%B1%82/" style="font-size: 10.772068916085509px;" class="tag-cloud-link">物理层</a>
+    
+    <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 14.410987744351505px;" class="tag-cloud-link">网络体系架构与网络协议</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%BF%B0/" style="font-size: 8.244597026034711px;" class="tag-cloud-link">计算机网络概述</a>
+    
+    <a href="/tags/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" style="font-size: 11.029163554813284px;" class="tag-cloud-link">运算方法和运算器</a>
+    
+    <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 15.663098194565006px;" class="tag-cloud-link">笔记</a>
     
 </div>
                 
