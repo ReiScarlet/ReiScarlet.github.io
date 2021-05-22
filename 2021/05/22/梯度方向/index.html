@@ -4,7 +4,7 @@
   <!-- 元数据 -->
   <meta charset="utf-8">
   <link rel="icon" href="">
-  <title>经典局域网的交换技术 | Reimilia</title>
+  <title>梯度方向 | Reimilia</title>
   <meta name="author" content="Reimilia" />
   <meta http-equiv="Cache-Control" content="no-transform" />
   <meta http-equiv="Cache-Control" content="no-siteapp" />
@@ -15,16 +15,16 @@
   
     <meta name="keywords" content="" />
   
-  <meta name="description" content="媒体接入的基本概念媒体接入控制MAC（Medium Access Control）：协调多个发送核接收站点对一个共享传输媒体的占用 媒体接入控制：  静态划分信道：预先固定好信道，非常不灵活，对于突发性传输信道利用率很低，通常在无线网络的物理层使用，而不是在数据链路层中使用，分为频分多址，时分多址，码分多址 动态接入信道 受控接入：已被淘汰 集中控制 分散控制   随机接入：所有站点通过竞争随机的">
+  <meta name="description" content="[TOC] 一元函数的导数首先我们要明确，导数除了代表函数在某点的切线的斜率外，还表示函数在该点的变化率 $\Large f(x_0)’ &#x3D; lim_{\Delta x\rightarrow 0}\frac{\Delta y}{\Delta x} &#x3D; lim_{\Delta x\rightarrow 0}\frac{f(x_0+\Delta x)-f(x_0)}{\Delta x}$ 即反应了函数">
 <meta property="og:type" content="article">
-<meta property="og:title" content="经典局域网的交换技术">
-<meta property="og:url" content="https://reiscarlet.github.io/2021/05/22/%E5%AA%92%E4%BD%93%E6%8E%A5%E5%85%A5%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/index.html">
+<meta property="og:title" content="梯度方向">
+<meta property="og:url" content="https://reiscarlet.github.io/2021/05/22/%E6%A2%AF%E5%BA%A6%E6%96%B9%E5%90%91/index.html">
 <meta property="og:site_name" content="Reimilia">
-<meta property="og:description" content="媒体接入的基本概念媒体接入控制MAC（Medium Access Control）：协调多个发送核接收站点对一个共享传输媒体的占用 媒体接入控制：  静态划分信道：预先固定好信道，非常不灵活，对于突发性传输信道利用率很低，通常在无线网络的物理层使用，而不是在数据链路层中使用，分为频分多址，时分多址，码分多址 动态接入信道 受控接入：已被淘汰 集中控制 分散控制   随机接入：所有站点通过竞争随机的">
+<meta property="og:description" content="[TOC] 一元函数的导数首先我们要明确，导数除了代表函数在某点的切线的斜率外，还表示函数在该点的变化率 $\Large f(x_0)’ &#x3D; lim_{\Delta x\rightarrow 0}\frac{\Delta y}{\Delta x} &#x3D; lim_{\Delta x\rightarrow 0}\frac{f(x_0+\Delta x)-f(x_0)}{\Delta x}$ 即反应了函数">
 <meta property="og:locale">
 <meta property="og:image" content="https://reiscarlet.github.io/null">
-<meta property="article:published_time" content="2021-05-22T08:39:16.797Z">
-<meta property="article:modified_time" content="2021-05-22T08:45:33.688Z">
+<meta property="article:published_time" content="2021-05-22T14:57:19.642Z">
+<meta property="article:modified_time" content="2021-05-22T14:55:31.826Z">
 <meta property="article:author" content="Reimilia">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://reiscarlet.github.io/null">
@@ -139,7 +139,7 @@
         <div class="kratos-hentry kratos-post-inner clearfix">
             <header class="kratos-entry-header">
                 
-                    <h1 class="kratos-entry-title text-center">经典局域网的交换技术</h1>
+                    <h1 class="kratos-entry-title text-center">梯度方向</h1>
                 
                 
                 <ul class="kratos-post-meta text-center">
@@ -149,7 +149,7 @@
                         <i class="fa fa-edit"></i> 
                         
                         
-                            ~1.87K
+                            ~2.84K
                         
                         字
                     </li>
@@ -158,58 +158,56 @@
             </header>
             <div class="kratos-post-content">
                 <div id="expire-alert" class="alert alert-warning hidden" role="alert">
-                    本文最后编辑于 <time datetime="1621673133688"></time> 前，其中的内容可能需要更新。
+                    本文最后编辑于 <time datetime="1621695331826"></time> 前，其中的内容可能需要更新。
                 </div>
                 
                 <hr />
-                <h1 id="媒体接入的基本概念"><a href="#媒体接入的基本概念" class="headerlink" title="媒体接入的基本概念"></a>媒体接入的基本概念</h1><p>媒体接入控制MAC（Medium Access Control）：协调多个发送核接收站点对一个共享传输媒体的占用</p>
-<p>媒体接入控制：</p>
-<ol>
-<li>静态划分信道：预先固定好信道，非常不灵活，对于突发性传输信道利用率很低，通常在无线网络的物理层使用，而不是在数据链路层中使用，分为<strong>频分多址</strong>，<strong>时分多址</strong>，<strong>码分多址</strong></li>
-<li>动态接入信道<ol>
-<li>受控接入：<strong>已被淘汰</strong><ol>
-<li>集中控制</li>
-<li>分散控制</li>
-</ol>
-</li>
-<li>随机接入：所有站点通过竞争随机的在信道发送数据，如果恰巧有两个或更多的站点在同一时刻发送数据，则信号在共享媒体上就要发生碰撞，即发生了冲突使得这些站点的发送都失败。因此，这类协议要解决关键问题：如何避免冲突，以及冲突后如何尽快的恢复通信</li>
-</ol>
-</li>
-</ol>
-<p>现在，<strong>点对点链路</strong>和<strong>链路层交换式局域网</strong>在<strong>有线领域</strong>已<strong>完全取代了共享式局域网</strong>，但由于无线通信的<strong>广播</strong>天性，<strong>无线局域网</strong>仍然使用<strong>共享媒体技术</strong></p>
-<h1 id="CSMA-CD协议"><a href="#CSMA-CD协议" class="headerlink" title="CSMA/CD协议"></a>CSMA/CD协议</h1><p>载波监听多址接入/碰撞检测 CSMA/CD（Carrier Sense Multiple Access/Collision Detection）</p>
-<p><strong>多址接入MA</strong>：多个站连接在一条总线，竞争使用总线</p>
-<p><strong>载波监听CS</strong>：每个站在发送帧之前先检测一下总线上是否有其他站点在发送帧，即“先听后说”；若检测到总线空闲96比特时间，则发送这个帧</p>
-<p><strong>碰撞检测CD：</strong>每一个正在发送帧在站边发送边检测碰撞，即是“边说边听”；一旦发现总线上发生碰撞立刻停止发送，一段时间后再次发送</p>
-<p>CSMA/CD协议不适用于无线网络。对于无线网络，可以使用CSMA/CA协议</p>
-<h2 id="CSMA-CD协议——争用期"><a href="#CSMA-CD协议——争用期" class="headerlink" title="CSMA/CD协议——争用期"></a>CSMA/CD协议——争用期</h2><p><img src="/images/image-20210522151725976.png" alt="image-20210522151725976"></p>
-<ol>
-<li>主机最多经过<strong>2α</strong>就检测到碰撞（A-&gt;D-&gt;A），所以以太网的端到端往返传播时延2α为<strong>争用期</strong>或<strong>碰撞窗口</strong></li>
-<li>显然，在以太网中发生帧的主机越多，端到端的传播时延越大，发生碰撞的概率就越大。因此，<strong>共享式以太网不能连接太多的主机，使用的总线也不能太长</strong></li>
-<li>经过争用期还没有检测到碰撞，才能肯定这次发送不会发生碰撞</li>
-</ol>
-<h2 id="CSMA-CD协议——最小帧长"><a href="#CSMA-CD协议——最小帧长" class="headerlink" title="CSMA/CD协议——最小帧长"></a>CSMA/CD协议——最小帧长</h2><p><strong>产生问题</strong>：如果主机A发送了一个很小的帧，发送完后主机A就不再检测碰撞了。然后主机C发送帧，由于主机A发送的帧很小，所以主机C因为判断总线空闲96比特时间，所以发送帧。但是总线实际并不空闲。这样子就必然发生碰撞。这样接收方就会收到A发送的并遭遇碰撞的帧，所以接收方会丢弃有差错的帧。但是A不知道发送的帧遭遇了碰撞，所以不会重发该帧。</p>
-<p><strong>所以以太网的帧长不能太短</strong></p>
-<p><strong>以太网规定最小帧长为64字节</strong>，即是512比特（512比特即为争用期）；如果发送的帧没有64比特，就必须加入<strong>填充字节</strong>。</p>
-<p>如果争用期内检测到碰撞，就立即中止发送，此时发送的数据一定小于64字节。因为凡是小于64字节的帧都是由于碰撞而异常终止的无效帧<em>**</em></p>
-<p><strong>最小帧长=争用期*数据传输速率</strong></p>
-<h2 id="CSMA-CD协议——最大帧长"><a href="#CSMA-CD协议——最大帧长" class="headerlink" title="CSMA/CD协议——最大帧长"></a>CSMA/CD协议——最大帧长</h2><p><strong>产生问题</strong>：如果主机A给D发送一个很长的帧。那么发送过程中有可能该帧长期占据了总线的资源，导致其他主机检测到总线空闲没有96比特时间而长时间<strong>无法发送帧</strong>。同时接收方可能因为帧过于长导致<strong>缓冲区满了</strong>而溢出。</p>
-<p>所以<strong>以太网V2的MAC帧最大长度设为1518字节，其中46~1500字节为数据载荷部分</strong></p>
-<p>插入VLAN标记后的<strong>802.1Q帧设最大长度为1522字节。其中数据载荷部分42~1500字节</strong></p>
-<h2 id="CSMA-CD协议——截断二进制指数退避算法"><a href="#CSMA-CD协议——截断二进制指数退避算法" class="headerlink" title="CSMA/CD协议——截断二进制指数退避算法"></a>CSMA/CD协议——截断二进制指数退避算法</h2><p>退避时间=基本退避时间*随机数r</p>
-<p>其中基本退避时间为争用期，随机数r从离10散的整数集合{0，1，….，$（2^k-1）$}中随机选出一个数.k=Min{重传次数，10}</p>
-<p>若连续多次发生碰撞，就表明有较多的主机参与竞争信道。但使用上述退避算法可<strong>使重传需要推迟的平均时间随重传次数而增大</strong>，因为<strong>减少发生碰撞的概率</strong>，有利于整个系统的稳定</p>
-<p><strong>当重传次数16仍不成功</strong>，表明同时打算发送帧的主机太多，以至于连续发生碰撞，则<strong>丢弃该帧</strong>，并向高层报告</p>
-<h2 id="CSMA-CD协议——信道利用率"><a href="#CSMA-CD协议——信道利用率" class="headerlink" title="CSMA/CD协议——信道利用率"></a>CSMA/CD协议——信道利用率</h2><p>理想情况下：</p>
-<ol>
-<li>各个主机发送帧不会发生碰撞</li>
-<li>总线一旦空闲就有某个主机立即发送帧</li>
-<li>发送一帧占用总线的时间为$T_0 + α$，而帧本身的发送时间为$T_0$，α是传送时延</li>
-</ol>
-<p>极限的信道利用率<font size =5>$S_{max}=\frac{T_0}{T_0+\alpha} = \frac{1}{1+\frac{\alpha}{T_0}}$</font></p>
-<p>设β=α/T_0。则β应该尽量小，以提高信道利用率；以太网端到端的距离应该收到限制，减少α的值；以太网帧的长度应该尽量长些；</p>
-<h2 id="CSMA-CD协议——帧发送过程"><a href="#CSMA-CD协议——帧发送过程" class="headerlink" title="CSMA/CD协议——帧发送过程"></a>CSMA/CD协议——帧发送过程</h2><p><img src="/images/image-20210522161426440.png" alt="image-20210522161426440"></p>
-<h2 id="CSMA-CD协议——帧接收流程"><a href="#CSMA-CD协议——帧接收流程" class="headerlink" title="CSMA/CD协议——帧接收流程"></a>CSMA/CD协议——帧接收流程</h2><p><img src="/images/image-20210522162555608.png" alt="image-20210522162555608"></p>
+                <p>[TOC]</p>
+<h1 id="一元函数的导数"><a href="#一元函数的导数" class="headerlink" title="一元函数的导数"></a>一元函数的导数</h1><p>首先我们要明确，导数除了代表函数在某点的切线的斜率外，还表示函数在该点的变化率</p>
+<p>$\Large f(x_0)’ = lim_{\Delta x\rightarrow 0}\frac{\Delta y}{\Delta x} = lim_{\Delta x\rightarrow 0}\frac{f(x_0+\Delta x)-f(x_0)}{\Delta x}$</p>
+<p>即反应了函数值沿着x轴的方向变化率。</p>
+<h1 id="多元函数的偏导数"><a href="#多元函数的偏导数" class="headerlink" title="多元函数的偏导数"></a>多元函数的偏导数</h1><p>拥有多个变量时的函数为多元函数，以二元函数为例子</p>
+<p><strong>对于二元函数的偏导数：</strong></p>
+<p>$\large f_x(x,y)$指的是函数在y方向不变，函数值沿着x轴方向的变化率，即</p>
+<script type="math/tex; mode=display">
+\large f_x(x_0,y_0)=lim_{\Delta x\rightarrow 0}\frac{f(x_0+\Delta x,y_0)-f(x_0,y_0)}{\Delta x}</script><p>$\large f_y(x,y)$指的是函数在x方向不变，函数值沿着y轴方向的变化率</p>
+<script type="math/tex; mode=display">
+\large f_y(x_0,y_0)=lim_{\Delta x\rightarrow 0}\frac{f(x_0,y_0+\Delta y)-f(x_0,y_0)}{\Delta y}</script><p>二元函数的图像是一个曲面，偏导数就是多元函数沿着某一个坐标轴的变化率，如果我们要考虑任意方向的变化率，是无法求解了，这就引出了<strong>方向导数</strong></p>
+<h1 id="方向导数"><a href="#方向导数" class="headerlink" title="方向导数"></a>方向导数</h1><p>方向导数就是沿着每个方向的函数值的变化率</p>
+<p>以二元函数为例子：    </p>
+<p><strong>单位向量的方向：</strong></p>
+<p>对于某个点OP的坐标$\large(x,y,z)$，设该向量和$\large x,y,z$轴正方向的夹角为$\large\alpha,\beta,\gamma$，则由$\large x，y，z$轴的单位向量，则</p>
+<script type="math/tex; mode=display">
+\large cos\alpha = \frac{(x,y,z)·(1,0,0)}{\sqrt{x^2+y^2+z^2}} = \frac{x}{\sqrt{x^2+y^2+z^2}}\\
+\large cos\beta = \frac{(x,y,z)·(0,1,0)}{\sqrt{x^2+y^2+z^2}} = \frac{y}{\sqrt{x^2+y^2+z^2}}\\
+\large cos\gamma = \frac{(x,y,z)·(0,0,1)}{\sqrt{x^2+y^2+z^2}} = \frac{z}{\sqrt{x^2+y^2+z^2}}\\
+\large (cos\alpha,cos\beta,cos\gamma)=\frac{1}{\sqrt{x^2+y^2+z^2}}(x,y,z)</script><p>所以$\large (cos\alpha,cos\beta, cos\gamma)$是OP的同向的单位向量</p>
+<p>所以对二元函数，单位向量为$\large (cos\alpha, cos\beta)$</p>
+<p><strong>求参数方程</strong>：</p>
+<p>设两点$\large \vec{P}=(x,y), \vec{P_0}=(x_0,y_0)$</p>
+<p>直线l=$\large \vec{P_0P}=(x-x_0,y-y_0)$与向量$\large e_l=(cos\alpha,cos\beta)$平行，且方向相同</p>
+<p>所以 </p>
+<script type="math/tex; mode=display">
+\large \vec{P_0P} || e_l \rightarrow \vec{P_0P}=t\cdot e_l \\
+\therefore \large(x-x_0, y-y_0)=t\cdot (cos\alpha, cos\beta)\\
+\therefore \large x = x_0 + tcos\alpha, y = y_0 + tcos\beta \\
+\therefore \large P = (x,y) = (x_0 + tcos\alpha,  y_0 + tcos\beta)</script><p>所以沿着指向l的方向导数为 $\Large \frac{\partial f}{\partial l}|_{(x_0,y_0)} = lim_{t\rightarrow 0}\LARGE\frac{f(x_0+tcos\alpha, y_0+tcos\beta)-f(x_0,y_0)}{t}$</p>
+<p>即是函数在指向l的方向上的方向导数$\Large \frac{\partial f}{\partial l}|_{(x_0,y_0)}$</p>
+<h1 id="梯度"><a href="#梯度" class="headerlink" title="梯度"></a>梯度</h1><p>如果函数$\large z = f(x,y)$可微分，那么函数沿着该点任意方向的方向导数必然存在</p>
+<p>因为可微分，所以</p>
+<script type="math/tex; mode=display">
+{\large f(x_0+\Delta x, y_0+\Delta y)-f(x_0,y_0)\\
+=\large f(x_0+\Delta x, y_0+\Delta y)-f(x_0+\Delta x, y_0) + f(x_0+\Delta x, y_0)-f(x_0,y_0)\\
+= \large f_x(x_0,y_0)\Delta x + f_y(x_0,y_0)\Delta y + o(\sqrt{(\Delta x)^2 + (\Delta y)^2}) \\
+\large 根据方向导数的定义，令\Delta x = tcos\alpha,\Delta y = tcos\beta\ 有\\
+\large f_x(x_0,y_0)tcos\alpha + f_y(x_0,y_0)tcos\beta + o(\sqrt{(tcos\alpha)^2 + (tcos\beta)^2}) \\
+=\large f_x(x_0,y_0)tcos\alpha + f_y(x_0,y_0)tcos\beta \\
+\large \therefore  \frac{\partial f}{\partial l}|_{(x_0,y_0)}=lim_{t\rightarrow 0}\frac{f_x(x_0,y_0)tcos\alpha + f_y(x_0,y_0)tcos\beta}{t} \\
+\large = f_x(x_0,y_0)cos\alpha + f_y(x_0,y_0)cos\beta \\
+\large = (f_x(x_0,y_0),f_y(x_0,y_0))\cdot (cos\alpha,cos\beta)
+}</script><p>令梯度为$\large grad f = (f_x(x_0,y_0),f_y(x_0,y_0))$</p>
+<p>所以梯度与方向的内积为：$\large |f_x(x_0,y_0),f_y(x_0,y_0)|\cdot |cos\alpha,cos\beta|cos\alpha$，其中α是夹角，所以当$\large cos\alpha = 1即\alpha = 0$时取得最大，即两个方向平行时取得。</p>
+<p>所以当方向为梯度的方向时，函数值上升最快。反方向是下降最快</p>
 
             </div>
             
@@ -263,7 +261,7 @@
     <script type="text/javascript">
         $(()=>{
             new QRCode("wechat-qr", {
-                text: "https://reiscarlet.github.io/2021/05/22/%E5%AA%92%E4%BD%93%E6%8E%A5%E5%85%A5%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/",
+                text: "https://reiscarlet.github.io/2021/05/22/%E6%A2%AF%E5%BA%A6%E6%96%B9%E5%90%91/",
                 width: 150,
                 height: 150,
                 correctLevel : QRCode.CorrectLevel.H
@@ -275,12 +273,11 @@
             const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
             const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
             const twitterBase   = "https://twitter.com/intent/tweet?";
-            const hostUrl       = "https://reiscarlet.github.io/2021/05/22/%E5%AA%92%E4%BD%93%E6%8E%A5%E5%85%A5%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/";
-            const title         = "「经典局域网的交换技术」";
-            const excerpt       = `媒体接入的基本概念媒体接入控制MAC（Medium Access Control）：协调多个发送核接收站点对一个共享传输媒体的占用
-媒体接入控制：
-
-静态划分信道：预先固定好信道，非常不灵活，对于突发性传输信道利用率很低，通常在无线网...`;
+            const hostUrl       = "https://reiscarlet.github.io/2021/05/22/%E6%A2%AF%E5%BA%A6%E6%96%B9%E5%90%91/";
+            const title         = "「梯度方向」";
+            const excerpt       = `[TOC]
+一元函数的导数首先我们要明确，导数除了代表函数在某点的切线的斜率外，还表示函数在该点的变化率
+$\Large f(x_0)’ = lim_{\Delta x\rightarrow 0}\frac{\Delta y}{\De...`;
             let _URL;
             switch (dest) {
                 case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
@@ -311,13 +308,9 @@
             <nav class="navigation post-navigation clearfix" role="navigation">
                 
                 <div class="nav-previous clearfix">
-                    <a title=" VPN，NAT" href="/2021/05/21/VPN和NAT/">&lt; 上一篇</a>
+                    <a title=" 经典局域网的交换技术" href="/2021/05/22/媒体接入的基本概念/">&lt; 上一篇</a>
                 </div>
                 
-                
-                <div class="nav-next clearfix">
-                    <a title=" 梯度方向" href="/2021/05/22/梯度方向/">下一篇 &gt;</a>
-                </div>
                 
             </nav>
         
