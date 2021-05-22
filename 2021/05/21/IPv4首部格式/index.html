@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+  <!-- 元数据 -->
+  <meta charset="utf-8">
+  <link rel="icon" href="">
+  <title>IPv4 | Reimilia</title>
+  <meta name="author" content="Reimilia" />
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="robots" content="index,follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="format-detection" content="telphone=no, email=no" />
+  
+    <meta name="keywords" content="网络层" />
+  
+  <meta name="description" content="网际协议版本4（英语：Internet Protocol version 4，IPv4），又称互联网通信协议第四版，是网际协议开发过程中的第四个修订版本，也是此协议第一个被广泛部署的版本。IPv4是互联网的核心，也是使用最广泛的网际协议版本，其后继版本为IPv6，直到2011年，IANA IPv4位址完全用尽时，IPv6仍处在部署的初期">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IPv4">
+<meta property="og:url" content="https://reiscarlet.github.io/2021/05/21/IPv4%E9%A6%96%E9%83%A8%E6%A0%BC%E5%BC%8F/index.html">
+<meta property="og:site_name" content="Reimilia">
+<meta property="og:description" content="网际协议版本4（英语：Internet Protocol version 4，IPv4），又称互联网通信协议第四版，是网际协议开发过程中的第四个修订版本，也是此协议第一个被广泛部署的版本。IPv4是互联网的核心，也是使用最广泛的网际协议版本，其后继版本为IPv6，直到2011年，IANA IPv4位址完全用尽时，IPv6仍处在部署的初期">
+<meta property="og:locale">
+<meta property="og:image" content="https://reiscarlet.github.io/null">
+<meta property="article:published_time" content="2021-05-21T01:19:22.218Z">
+<meta property="article:modified_time" content="2021-05-22T05:32:31.512Z">
+<meta property="article:author" content="Reimilia">
+<meta property="article:tag" content="网络层">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://reiscarlet.github.io/null">
+<meta name="twitter:site" content="@null">
+  
+  <!-- 站点验证相关 -->
+  
+    
+    
+    
+  
+  <!-- 样式表文件 -->
+  <link rel="stylesheet" id="kratos-css" href="/css/kratosr.min.css" type="text/css" media="all">
+  
+    <link rel="stylesheet" id="highlight-css" href="/css/highlight/night-eighties.min.css" type="text/css" media="all">
+  
+  
+  <link rel="stylesheet" id="fontawe-css" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" type="text/css" media="all">
+  <link rel="stylesheet" id="nprogress-css" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" type="text/css" media="all">
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  
+    <link rel="stylesheet" id="darkmode-css" href="/css/kr-dark.min.css" type="text/css" media="all">
+  
+  <!-- 不得不预先加载的一些JS文件 -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  
+    <script src="https://cdn.jsdelivr.net/npm/qrcode_js@1.0.0/qrcode.min.js"></script>
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+    <body class="custom-background">
+        <div id="kratos-wrapper">
+    <div id="kratos-page">
+        <div id="kratos-header">
+            <header id="kratos-desktop-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="nav-header">
+                        <nav id="kratos-menu-wrap">
+                            <ul id="kratos-primary-menu" class="sf-menu">
+                                
+                                    
+                                        <li><a href="/"><i class="fa fa-home"></i>首页</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/archives/"><i class="fa fa-file"></i>档案馆</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/friends/"><i class="fa fa-paw"></i>好伙伴</a></li>
+                                    
+                                
+                                    
+                                        <li>
+                                            <a><i class="fa fa-link"></i>链接</a>
+                                            <ul class="sub-menu">
+                                                
+                                                    
+                                                
+                                                    
+                                                        <li><a target="_blank" rel="noopener" href="https://candinya.com">作者博客</a></li>
+                                                    
+                                                
+                                                    
+                                                        <li><a target="_blank" rel="noopener" href="https://github.com/Candinya/Kratos-Rebirth">项目链接</a></li>
+                                                    
+                                                
+                                            </ul>
+                                        </li>
+                                    
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+            <header id="kratos-mobile-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="color-logo"><a href="/">Reimilia</a></div>
+                    <div class="nav-toggle">
+                        <a class="kratos-nav-toggle js-kratos-nav-toggle">
+                            <i></i>
+                        </a>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="kratos-start kratos-hero-2">
+            <!-- <div class="kratos-overlay"></div> -->
+            <div class="kratos-cover kratos-cover-2 text-center">
+                <div class="desc desc2 animate-box">
+                    <a href="/">
+                        <h2>Reimilia</h2> <br />
+                        <span></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="kratos-blog-post">
+            <div class="container">
+                <div id="main" class="row">
+                    
+
+        <section class="col-md-8">
+    <article>
+        <div class="kratos-hentry kratos-post-inner clearfix">
+            <header class="kratos-entry-header">
+                
+                    <h1 class="kratos-entry-title text-center">IPv4</h1>
+                
+                
+                <ul class="kratos-post-meta text-center">
+                    <li><i class="fa fa-calendar"></i> 2021-05-21</li>
+                    <li><i class="fa fa-user"></i> 作者 Reimilia</li>
+                    <li>
+                        <i class="fa fa-edit"></i> 
+                        
+                        
+                            ~3.01K
+                        
+                        字
+                    </li>
+                    
+                </ul>
+            </header>
+            <div class="kratos-post-content">
+                <div id="expire-alert" class="alert alert-warning hidden" role="alert">
+                    本文最后编辑于 <time datetime="1621661551512"></time> 前，其中的内容可能需要更新。
+                </div>
+                
+                <hr />
+                <p><strong>网际协议版本4</strong>（英语：<strong>I</strong>nternet <strong>P</strong>rotocol <strong>v</strong>ersion <strong>4</strong>，<strong>IPv4</strong>），又称<strong>互联网通信协议第四版</strong>，是<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/网际协议">网际协议</a>开发过程中的第四个修订版本，也是此协议第一个被广泛部署的版本。IPv4是互联网的核心，也是使用最广泛的网际协议版本，其后继版本为<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/IPv6">IPv6</a>，直到2011年，<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/IANA">IANA</a> IPv4位址完全用尽时，IPv6仍处在部署的初期</p>
+<span id="more"></span>
+<p><strong>网络层的主要任务是实现网络互连，进而实现数据包在网络之间的传输</strong></p>
+<p>实现网络层的任务，需要解决以下主要问题：</p>
+<ol>
+<li>网络层向运输层提供怎样的服务</li>
+<li>网络层寻址问题</li>
+<li>路由选择问题</li>
+</ol>
+<hr>
+<h4 id="IPV4就是因特网上的每一个主机的每一个接口分配在一个在全世界范围内是唯一的32比特的标识符"><a href="#IPV4就是因特网上的每一个主机的每一个接口分配在一个在全世界范围内是唯一的32比特的标识符" class="headerlink" title="IPV4就是因特网上的每一个主机的每一个接口分配在一个在全世界范围内是唯一的32比特的标识符"></a>IPV4就是因特网上的每一个主机的每一个接口分配在一个在全世界范围内是唯一的32比特的标识符</h4><hr>
+<h3 id="IPV4数据报的首部形式"><a href="#IPV4数据报的首部形式" class="headerlink" title="IPV4数据报的首部形式"></a>IPV4数据报的首部形式</h3><p><img src="/images/image-20210404154103172.png" alt=""></p>
+<ol>
+<li>首部长度：占4比特，表示<strong>IP数据报首部</strong>的长度，该字段的取值以4字节为单位。<ol>
+<li>最小十进制取值为5，表示IP数据报首部只有20字节固定部分</li>
+<li>最大十进制取值为15，表示IP数据报首部包含20字节固定部分和40字节的可变部分</li>
+</ol>
+</li>
+<li>可选字段：长度从1到40字节不等，用来支持排错，测量及安全措施</li>
+<li>填充字段：确保首部长度为4字节的整数倍，使用全0进行填充</li>
+<li>总长度：占16比特，表示IP数据报的总长度(首部+数据载荷)，最大取值65535字节</li>
+<li><p>标识、标志、片偏移：共同用于IP数据报分片，当IP数据报长度超过MUT（首部+数据载荷）时将数据报分成几份</p>
+<ol>
+<li>标志：占3比特，各比特含义如下：<ol>
+<li>DF位：1表示不允许分片。0表示允许</li>
+<li>MF位：1表示后面还有分片，0表示这是最后一个分片</li>
+<li>保留位：必须为0</li>
+</ol>
+</li>
+<li>标识：占16比特，属于同个数据报的数据报分片应该具有相同的标识。IP软件维持一个计数器，每产生一个数据报，计数器值加1，并将该值赋给标识字段</li>
+<li>片偏移：占13比特，指出分片数据报的数据载荷部分偏移其在原数据报的位置有几个单位</li>
+</ol>
+</li>
+<li><p>生存时间TTL：8比特，路由器转发IP数据报时，将IP数据报首部中的该字段的值减去IP数据报在本路由器所耗费的时间，若不为0就转发，否则就丢弃</p>
+</li>
+<li><p>协议：占8比特，指明IPv4数据报部分是何种协议数据单元，常用的一些协议和相应的协议字段值如下</p>
+<ol>
+<li>ICMP：1</li>
+<li>IGMP：2</li>
+<li>TCP：6</li>
+<li>UDP：17</li>
+<li>IPv6：41</li>
+<li>OSPF：89</li>
+</ol>
+</li>
+<li><p>首部检验和：占16比特，用来检测首部在传输过程中是否出现差错，成为因特网检验和，IPv6中路由器不在计算首部校验和，从而更快的转发IP数据报。由于转发过程中标识等字段可变，所有首部校验和可变</p>
+</li>
+</ol>
+<hr>
+<h3 id="IPv4地址概述"><a href="#IPv4地址概述" class="headerlink" title="IPv4地址概述"></a>IPv4地址概述</h3><p>因为32比特的IPv4地址不方便阅读、记录以及输入等，因此IPv4地址采用<strong>点分十进制表示</strong>方法以方便用户使用</p>
+<p>将32比特的IPv4按每8位分为一组，写出每组的十进制数，在四个组间加上小数点</p>
+<p>分类编址的IPv4地址：</p>
+<ol>
+<li>A类地址：8位网络号，24位主机号，网络号的最高位固定位0</li>
+<li>B类地址：16位网络号，16位主机号，网络号的最高两位固定为10</li>
+<li>C类地址：24位网络号，8位主机号，网络号的最高三位固定为110</li>
+<li>D类地址：多播地址. 网络号的最高四位固定为1110</li>
+<li>E类地址：保留为今后使用，网络号的最高四位固定为1111</li>
+</ol>
+<p>只有A，C，B类地址可分配给主机或路由器的各接口</p>
+<p>A类地址：<strong>最大网络号127作为本地唤回测试地址，不指派。最小网络号0，保留不指派</strong>。可指派的网络数量是$2^8 - 2 = 126$，则可配分的IP地址位$2^{24} -     2 = 16777214$(减去2是除去主机号全0的网络地址和全1的广播地址)    </p>
+<p>B类地址：最小网络号也是第一个可指派的网络号128.0。最大网络号也是最后一个可指派网络号为191.255。可指派的网络号为$2^{(16-2)} = 16384$，每个网络可指派的IP地址为$2^{16} - 2 = 65534$</p>
+<p>C类地址：最小网络号也是第一个可指派的网络号为192.0.0。最大网络号也是最后一个可指派网络号为223.255.255。可指派的网络号为$2^{(24-3)} = 2097152$。每个网络可指派的IP地址为$2^8 - 2 = 254$</p>
+<hr>
+<h3 id="一些特殊的IP地址"><a href="#一些特殊的IP地址" class="headerlink" title="一些特殊的IP地址"></a>一些特殊的IP地址</h3><p><strong>地址0.0.0.0是一个特殊的IPv4地址，只能作为源地址使用，表示“在本网络上的本主机”，封装有DHCP DIscovery报文的IP分组的源地址使用0.0.0.0，不能作为目的地址</strong></p>
+<p><strong>受限广播地址：地址255.255.255.255是一个特殊的IPv4地址，只能作为目的地址使用，表示”在本网络上进行进行广播“，各路油器不转发</strong></p>
+<p><strong>127.X.X.X是环回地址，127.0.0.1 特指本机地址。</strong></p>
+<p><strong>224.0.0.1 组播地址。从224.0.0.0到239.255.255.255都是这样的地址。224.0.0.1特指所有主机，224.0.0.2特指所有路由器。</strong></p>
+<p><strong>0.X.X.X。该系列地址仅用来标识主机</strong></p>
+<p><strong>169.256.X.X。该系列地址是本地地址，是由操作系统分配，路由器不转发</strong></p>
+<hr>
+<h3 id="划分子网的IPv4地址"><a href="#划分子网的IPv4地址" class="headerlink" title="划分子网的IPv4地址"></a>划分子网的IPv4地址</h3><p>为新增网络申请新的网络号会带来以下弊端：</p>
+<ol>
+<li>需要等待和花费更多费用</li>
+<li>会增加其他路由器中路由表记录的数量</li>
+<li>浪费原有网络中剩余的大量IP地址</li>
+</ol>
+<p>所以我们可以从主机号部分借用一部分作为子网号</p>
+<p><strong>计算机如何知道分类地址中主机号有多少比特被用作子网号？</strong></p>
+<p>32比特的子网掩码可以表明分类IP地址的主机号部分被借用了几个比特作为子网号</p>
+<ol>
+<li>子网掩码使用连续的比特1来对应网络号和子网号</li>
+<li>子网掩码使用连续的比特0来对应主机号</li>
+<li>将划分子网的IPv4地址与相对应的子网掩码进行逻辑与运算就可以得到IPv4地址所在的子网的<strong>网络地址</strong></li>
+</ol>
+<p><strong>默认子网掩码</strong>：指在未划分子网的情况下使用子网掩码。A类地址未255.0.0.0，B类地址为255.255.0.0，C类地址为255.255.255.0</p>
+<hr>
+<h3 id="无分类编址的IPv4地址"><a href="#无分类编址的IPv4地址" class="headerlink" title="无分类编址的IPv4地址"></a>无分类编址的IPv4地址</h3><p>无分类域间路由选择CIDR。</p>
+<ol>
+<li>CIDR消除了传统A，B ,C类地址以及划分子网的概念</li>
+<li>CIDR可以更有效地分配IPv4的地址空间</li>
+</ol>
+<p>CIDR使用斜线记法，在IPv4地址后面加上斜线”/“，在斜线后面写上网络前缀(网络号)所占的比特数量</p>
+<p>CIDR实际上是将网络前缀都相同的连续IP地址组成一个”CIDR地址块“</p>
+<p>只要知道CIDR地址块的任何一个地址，就可以知道该地址块的全部细节：</p>
+<ol>
+<li>地址块的最小地址</li>
+<li>地址块的最大地址</li>
+<li>地址块的地址数量</li>
+<li>地址块聚合某类网络的数量</li>
+<li>地址掩码</li>
+</ol>
+<p><strong>路由聚合（构造超网）</strong></p>
+<p>如何构造：找出路由表中目的地址的共同前缀，然后将找到的共同前缀的后一个字节写成2进制的形式，找出地址的共同前缀，然后计算共同前缀的比特位，并将共同前缀写成点分十进制的形式。在斜杠后写上刚才计算的比特位，得到<strong>聚合地址块</strong></p>
+<p><strong>网络前缀越长，地址块越小，路由越具体</strong></p>
+<p>若路由器查表转发分组时发现有多条路由可选，则选择网络前缀最长的那条，因为这样的路由更具体</p>
+<hr>
+<h3 id="IPv4的应用规划"><a href="#IPv4的应用规划" class="headerlink" title="IPv4的应用规划"></a>IPv4的应用规划</h3><h4 id="定长子网掩码FLSM"><a href="#定长子网掩码FLSM" class="headerlink" title="定长子网掩码FLSM"></a>定长子网掩码FLSM</h4><h4 id="变长子网掩码VLSM"><a href="#变长子网掩码VLSM" class="headerlink" title="变长子网掩码VLSM"></a>变长子网掩码VLSM</h4><p>在一个网络划分成n个子网时，计算出每个子网所需的主机地址，路由器接口地址，网络地址，广播地址，算出所有需要的主机号数目。得出每个子网所需主机号的位数，计算出每个子网对应的网络前缀位数。    </p>
+<p>分配过程中，每个子块的起点位置不能随意选取，只能选取块大小整数倍地址作为起点，一般先给大的子块分配</p>
+
+            </div>
+            
+                <div class="kratos-copyright text-center clearfix">
+                    <h5>本作品采用 <a rel="license nofollow" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可</h5>
+                </div>
+            
+            <footer class="kratos-entry-footer clearfix">
+                
+                    <div class="post-like-donate text-center clearfix" id="post-like-donate">
+                    
+                    
+                        <a class="share" href="javascript:;"><i class="fa fa-share-alt"></i> 分享</a>
+                        <div class="share-wrap" style="display: none;">
+    <div class="share-group">
+        <a href="javascript:;" class="share-plain qq" onclick="share('qq');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-qq"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain qzone" onclick="share('qzone');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-star"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weixin pop style-plain" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weixin"></i>
+            </div>
+            <div class="share-int">
+                <div class="qrcode" id="wechat-qr"></div>
+                <p>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</p>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weibo" onclick="share('weibo');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weibo"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain facebook style-plain" onclick="share('facebook');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-facebook"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain twitter style-plain" onclick="share('twitter');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-twitter"></i>
+            </div>
+        </a>
+    </div>
+    <script type="text/javascript">
+        $(()=>{
+            new QRCode("wechat-qr", {
+                text: "https://reiscarlet.github.io/2021/05/21/IPv4%E9%A6%96%E9%83%A8%E6%A0%BC%E5%BC%8F/",
+                width: 150,
+                height: 150,
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        });
+        function share(dest) {
+            const qqBase        = "https://connect.qq.com/widget/shareqq/index.html?";
+            const weiboBase     = "https://service.weibo.com/share/share.php?";
+            const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
+            const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
+            const twitterBase   = "https://twitter.com/intent/tweet?";
+            const hostUrl       = "https://reiscarlet.github.io/2021/05/21/IPv4%E9%A6%96%E9%83%A8%E6%A0%BC%E5%BC%8F/";
+            const title         = "「IPv4」";
+            const excerpt       = `网际协议版本4（英语：Internet Protocol version 4，IPv4），又称互联网通信协议第四版，是网际协议开发过程中的第四个修订版本，也是此协议第一个被广泛部署的版本。IPv4是互联网的核心，也是使用最广泛的网际协议版本，其后继版本为IPv6，直到2011年，IANA IPv4位址完全用尽时，IPv6仍处在部署的初期`;
+            let _URL;
+            switch (dest) {
+                case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
+                case "weibo"    : _URL = weiboBase+"url="+hostUrl+"&title="+title+excerpt;                                 break;
+                case "qzone"    : _URL = qzoneBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";  break;
+                case "facebook" : _URL = facebookBase+"u="+hostUrl;                                                        break;
+                case "twitter"  : _URL = twitterBase+"text="+title+excerpt+"&url="+hostUrl;                                break;
+            }
+            window.open(_URL);
+        };
+    </script>
+</div>
+                    
+                    </div>
+                
+                <div class="footer-tag clearfix">
+                    <div class="pull-left">
+                    <i class="fa fa-tags"></i>
+                        <a class="tag-none-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%B1%82/" rel="tag">网络层</a>
+                    </div>
+                    <div class="pull-date">
+                    <span>最后编辑：2021-05-22</span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        
+            <nav class="navigation post-navigation clearfix" role="navigation">
+                
+                <div class="nav-previous clearfix">
+                    <a title=" Hello World" href="/2021/05/21/hello-world/">&lt; 上一篇</a>
+                </div>
+                
+                
+                <div class="nav-next clearfix">
+                    <a title=" ICMP" href="/2021/05/21/ICMP/">下一篇 &gt;</a>
+                </div>
+                
+            </nav>
+        
+        
+    </article>
+</section>
+
+                
+            
+
+<section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
+    <!-- 文章和页面根据splitter来分割，没有的话就从头开始设置为sticky -->
+    
+    
+                <aside id="krw-about" class="widget widget-kratos-about clearfix">
+    <div class="photo-background"></div>
+    <div class="photo-wrapper clearfix">
+        <div class="photo-wrapper-tip text-center">
+            <img class="about-photo" src="/images/avatar.webp" />
+        </div>
+    </div>
+    <div class="textwidget">
+        <p class="text-center"></p>
+    </div>
+</aside>
+            
+                    <div class="sticky-area">
+                
+                
+  <aside id="krw-categories" class="widget widget-kratos-categories clearfix">
+    <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/">指令系统</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/">运算方法和运算器</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a><span class="category-list-count">18</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/">IP网络协议</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/">网络传输、设备与企业网架构</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/">网络体系架构与网络协议</a><span class="category-list-count">2</span></li></ul></li></ul>
+  </aside>
+
+
+            
+                
+  <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
+    <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
+      <div class="tag-clouds">
+        <a href="/tags/%E4%B9%A0%E9%A2%98/" style="font-size: 0.6em;">习题</a> <a href="/tags/%E7%89%A9%E7%90%86%E5%B1%82/" style="font-size: 0.8em;">物理层</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 0.6em;">网络传输、设备与企业网架构</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%B1%82/" style="font-size: 0.8em;">网络层</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%BF%B0/" style="font-size: 0.67em;">计算机网络概述</a> <a href="/tags/%E8%BF%90%E8%BE%93%E5%B1%82/" style="font-size: 0.6em;">运输层</a> <a href="/tags/%E9%93%BE%E8%B7%AF%E5%B1%82/" style="font-size: 0.73em;">链路层</a>
+      </div>
+  </aside>
+
+            
+                
+  <aside id="krw-posts" class="widget widget-kratos-posts">
+  <h4 class="widget-title"><i class="fa fa-file"></i>最新文章</h4>
+  <div class="tab-content">
+      <ul class="list-group">
+        
+        
+          
+          
+            <a class="list-group-item" href="/2021/05/21/VPN%E5%92%8CNAT/"><i class="fa  fa-book"></i> VPN，NAT</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2021/05/21/%E4%B9%A0%E9%A2%98/"><i class="fa  fa-book"></i> 第三章部分习题</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2021/05/21/%E4%BF%A1%E9%81%93%E6%9E%81%E9%99%90%E5%AE%B9%E9%87%8F/"><i class="fa  fa-book"></i> 信道极限容量</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2021/05/21/%E5%AE%9A%E7%82%B9%E6%95%B0%E7%9A%84%E4%B9%98%E6%B3%95%E8%BF%90%E7%AE%97/"><i class="fa  fa-book"></i> 定点数的乘、除法运算</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2021/05/21/%E5%AE%9A%E7%82%B9%E6%95%B0%E7%9A%84%E5%8A%A0%E5%87%8F%E6%B3%95/"><i class="fa  fa-book"></i> 定点数的加减法</a>
+            
+          
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+      </ul>
+  </div>
+  </aside>
+
+            
+    </div>
+</section>
+        
+        </div>
+    </div>
+</div>
+<footer>
+    <div id="footer"  class="ap-lrc"  >
+        <div class="kr-tool text-center">
+            <div class="tool">
+                
+                    <div class="box search-box">
+                        <a href="/search/">
+                            <span class="fa fa-search"></span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="box theme-box" id="darkmode-switch">
+                        <span class="fa fa-adjust"></span>
+                    </div>
+                
+                
+            </div>
+            <div class="box gotop-box">
+                <span class="fa fa-chevron-up"></span>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 footer-list text-center">
+                    <ul class="kratos-social-icons">
+                        
+                        
+                        <li><a target="_blank" rel="nofollow" href="https://t.me/CandyUnion"><i class="fa fa-telegram"></i></a></li>
+                        
+                        
+                        
+                        <li><a target="_blank" rel="me" href="https://nya.one/@Candinya"><i class="fa fa fa-share-alt-square"></i></a></li>
+                        <li><a target="_blank" rel="nofollow" href="https://github.com/Candinya"><i class="fa fa-github"></i></a></li>
+                        
+                    </ul>
+                    <ul class="kratos-copyright">
+                        <div>
+                            <li>&copy; 2021 Reimilia 版权所有.</li>
+                            <li>本站已运行<span id="span_dt">Loading...</span></li>
+                        </div>
+                        <div>
+                            <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
+                            <li>Site built with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by Reimilia.</li>
+                        </div>
+                        <div>
+                            <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></li>
+                            <li>Hosted on <a href="https://github.io" target="_blank">Github Pages</a></li>
+                        </div>
+                        <div>
+                            
+                            
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+</div>
+
+        <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+<script>const notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));</script>
+
+<script async src="/js/candy.min.js"></script>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+    <meting-js
+        server="netease"
+        type="playlist"
+        id="3204190542"
+        order="random"
+        fixed="true"
+    >
+    </meting-js>
+
+
+
+    <script defer src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
+<script defer src="/js/kratosr.min.js"></script>
+<script defer src="/js/pjax.min.js"></script>
+
+
+    <script defer src="/js/kr-dark.min.js"></script>
+
+
+
+<!-- Extra support for third-party plguins  -->
+
+
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>
