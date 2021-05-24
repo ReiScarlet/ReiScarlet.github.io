@@ -13,7 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <meta name="format-detection" content="telphone=no, email=no" />
   
-    <meta name="keywords" content="数学" />
+    <meta name="keywords" content="" />
   
   <meta name="description" content="[TOC] 无约束优化问题——求导首先我们复习下： 给定一个目标函数$f&#x3D;R^n\rightarrow R^n$,求出目标函数的最小值，记为：  \large{ min f(x)\\ s.t\ x \in X }找出最小值的办法很简单，就是单纯的对$f(x)$求导，令导数等于0，得到的解$x^*$就是目标函数的极小值点了 等式约束优化问题——拉格朗日乘子法首先，梯度方向是函数值增长最快的方向。 给">
 <meta property="og:type" content="article">
@@ -24,9 +24,8 @@
 <meta property="og:locale">
 <meta property="og:image" content="https://reiscarlet.github.io/null">
 <meta property="article:published_time" content="2021-05-24T13:09:06.639Z">
-<meta property="article:modified_time" content="2021-05-24T13:09:55.093Z">
+<meta property="article:modified_time" content="2021-05-24T13:23:49.036Z">
 <meta property="article:author" content="Reimilia">
-<meta property="article:tag" content="数学">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://reiscarlet.github.io/null">
 <meta name="twitter:site" content="@null">
@@ -150,7 +149,7 @@
                         <i class="fa fa-edit"></i> 
                         
                         
-                            ~2.56K
+                            ~2.63K
                         
                         字
                     </li>
@@ -159,7 +158,7 @@
             </header>
             <div class="kratos-post-content">
                 <div id="expire-alert" class="alert alert-warning hidden" role="alert">
-                    本文最后编辑于 <time datetime="1621861795093"></time> 前，其中的内容可能需要更新。
+                    本文最后编辑于 <time datetime="1621862629036"></time> 前，其中的内容可能需要更新。
                 </div>
                 
                 <hr />
@@ -213,7 +212,7 @@ s.t \quad \lambda \ge 0
 <p>a等于0，$\lambda$不等于0，得到g(x)=0，所以$\lambda&gt;0$。g(x)起到了约束作用</p>
 <p>综上，可以发现</p>
 <ol>
-<li><p>$\large{\lambda\geq0}\quad(4)$</p>
+<li><p>$\large{\lambda\geq0}\quad(4)$。乘子大于等于0从目标函数就可以看出，不等式约束小于0，目标函数又是最小化，乘子肯定大于等于0。</p>
 </li>
 <li><p>$\large{\lambda g(x) = 0}$，因为$\large g(x)和\lambda$总有一个为0</p>
 </li>
@@ -245,6 +244,7 @@ s.t \quad \lambda \ge 0
 & \nabla f(x) + \sum_{j=1}^{m}\mu_j\nabla{g_j(x)} + \sum_{k=1}^{l}\lambda_k\nabla{h_k(x)}=0,(i=1,2,...,n)\\
 & h_k(x) = 0(k=1,2,...,l) \\
 & \mu_j{g_j(x)} = 0(j=1,2,...,m)\\
+& g_j(x) < 0(j=1,2,...,m)\\
 & \mu_j \geq 0(j=1,2,...,m)
 \end{align}
 \right.
@@ -341,7 +341,7 @@ s.t\ x \in X
                 <div class="footer-tag clearfix">
                     <div class="pull-left">
                     <i class="fa fa-tags"></i>
-                        <a class="tag-none-link" href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag">数学</a>
+                        
                     </div>
                     <div class="pull-date">
                     <span>最后编辑：2021-05-24</span>
@@ -396,7 +396,7 @@ s.t\ x \in X
   <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
     <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
       <div class="tag-clouds">
-        <a href="/tags/%E4%B9%A0%E9%A2%98/" style="font-size: 0.6em;">习题</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 0.6em;">数学</a> <a href="/tags/%E7%89%A9%E7%90%86%E5%B1%82/" style="font-size: 0.8em;">物理层</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 0.6em;">网络传输、设备与企业网架构</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%B1%82/" style="font-size: 0.8em;">网络层</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%BF%B0/" style="font-size: 0.67em;">计算机网络概述</a> <a href="/tags/%E8%BF%90%E8%BE%93%E5%B1%82/" style="font-size: 0.6em;">运输层</a> <a href="/tags/%E9%93%BE%E8%B7%AF%E5%B1%82/" style="font-size: 0.73em;">链路层</a>
+        <a href="/tags/%E4%B9%A0%E9%A2%98/" style="font-size: 0.6em;">习题</a> <a href="/tags/%E7%89%A9%E7%90%86%E5%B1%82/" style="font-size: 0.8em;">物理层</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 0.6em;">网络传输、设备与企业网架构</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%B1%82/" style="font-size: 0.8em;">网络层</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%BF%B0/" style="font-size: 0.67em;">计算机网络概述</a> <a href="/tags/%E8%BF%90%E8%BE%93%E5%B1%82/" style="font-size: 0.6em;">运输层</a> <a href="/tags/%E9%93%BE%E8%B7%AF%E5%B1%82/" style="font-size: 0.73em;">链路层</a>
       </div>
   </aside>
 
