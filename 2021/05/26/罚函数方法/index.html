@@ -15,16 +15,16 @@
   
     <meta name="keywords" content="" />
   
-  <meta name="description" content="[toc] 罚函数罚函数法定义：将约束最优化问题转化为无约束最优化问题去求解 等式约束问题对于约束问题  \large{ \begin{align} min\ &amp; f(x)\\ s.t.\ &amp; g_i(x) &#x3D;  0 \end{align} }定义罚函数为  \large{\begin{align} min\ F(x,\sigma) &amp;&#x3D; f(x)+\sigma{P(x)}\\ P(x) &amp;&#x3D; g">
+  <meta name="description" content="[toc] 罚函数罚函数法定义：将约束最优化问题转化为无约束最优化问题去求解 等式约束问题对于约束问题   \begin{align} min\ &amp; f(x)\\ s.t.\ &amp; g_i(x) &#x3D;  0 \end{align}定义罚函数为  \begin{align} min\ F(x,\sigma) &amp;&#x3D; f(x)+\sigma{P(x)}\\ P(x) &amp;&#x3D; g_i(x)^Tg_i(x) \e">
 <meta property="og:type" content="article">
 <meta property="og:title" content="罚函数、增广拉格朗日函数">
 <meta property="og:url" content="https://reiscarlet.github.io/2021/05/26/%E7%BD%9A%E5%87%BD%E6%95%B0%E6%96%B9%E6%B3%95/index.html">
 <meta property="og:site_name" content="Reimilia">
-<meta property="og:description" content="[toc] 罚函数罚函数法定义：将约束最优化问题转化为无约束最优化问题去求解 等式约束问题对于约束问题  \large{ \begin{align} min\ &amp; f(x)\\ s.t.\ &amp; g_i(x) &#x3D;  0 \end{align} }定义罚函数为  \large{\begin{align} min\ F(x,\sigma) &amp;&#x3D; f(x)+\sigma{P(x)}\\ P(x) &amp;&#x3D; g">
+<meta property="og:description" content="[toc] 罚函数罚函数法定义：将约束最优化问题转化为无约束最优化问题去求解 等式约束问题对于约束问题   \begin{align} min\ &amp; f(x)\\ s.t.\ &amp; g_i(x) &#x3D;  0 \end{align}定义罚函数为  \begin{align} min\ F(x,\sigma) &amp;&#x3D; f(x)+\sigma{P(x)}\\ P(x) &amp;&#x3D; g_i(x)^Tg_i(x) \e">
 <meta property="og:locale">
 <meta property="og:image" content="https://reiscarlet.github.io/null">
 <meta property="article:published_time" content="2021-05-26T01:10:04.175Z">
-<meta property="article:modified_time" content="2021-05-26T01:18:18.142Z">
+<meta property="article:modified_time" content="2021-05-26T01:28:03.429Z">
 <meta property="article:author" content="Reimilia">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://reiscarlet.github.io/null">
@@ -149,7 +149,7 @@
                         <i class="fa fa-edit"></i> 
                         
                         
-                            ~3.42K
+                            ~3.27K
                         
                         字
                     </li>
@@ -158,7 +158,7 @@
             </header>
             <div class="kratos-post-content">
                 <div id="expire-alert" class="alert alert-warning hidden" role="alert">
-                    本文最后编辑于 <time datetime="1621991898142"></time> 前，其中的内容可能需要更新。
+                    本文最后编辑于 <time datetime="1621992483429"></time> 前，其中的内容可能需要更新。
                 </div>
                 
                 <hr />
@@ -166,109 +166,106 @@
 <h1 id="罚函数"><a href="#罚函数" class="headerlink" title="罚函数"></a>罚函数</h1><p><strong>罚函数法定义</strong>：将约束最优化问题转化为无约束最优化问题去求解</p>
 <h2 id="等式约束问题"><a href="#等式约束问题" class="headerlink" title="等式约束问题"></a>等式约束问题</h2><p>对于约束问题</p>
 <script type="math/tex; mode=display">
-\large{
+
 \begin{align}
 min\ & f(x)\\
 s.t.\ & g_i(x) =  0
-\end{align}
-}</script><p>定义罚函数为</p>
+\end{align}</script><p>定义罚函数为</p>
 <script type="math/tex; mode=display">
-\large{\begin{align}
+\begin{align}
 min\ F(x,\sigma) &= f(x)+\sigma{P(x)}\\
 P(x) &= g_i(x)^Tg_i(x)
-\end{align}}</script><p>其中$\large{\sigma}$是惩罚因子，$\large{F(x,\sigma)}$是罚函数，$\large{\sigma{P(x)}}$是惩罚项</p>
+\end{align}</script><p>其中$\large{\sigma}$是惩罚因子，$\large{F(x,\sigma)}$是罚函数，$\large{\sigma{P(x)}}$是惩罚项</p>
 <p><strong>该罚函数的特点</strong>：对非可行点，当$\large\sigma$变大时，惩罚项在罚函数的比重加大，对罚函数求极小相当于使极小值点向可行域靠近。简单的说就是只要你没得到可行解，惩罚项就会越来越大，对罚函数求极小就会迫使所求的x点向极小值点靠近来让惩罚项下降</p>
 <h2 id="不等式约束问题"><a href="#不等式约束问题" class="headerlink" title="不等式约束问题"></a>不等式约束问题</h2><p>对于约束问题</p>
 <script type="math/tex; mode=display">
-\large{\begin{align}
+\begin{align}
 min\ & f(x) \\
 s.t.\ &h_i(x) \geq 0
-\end{align}}</script><p>当$\large h_i(x)\geq0$时，惩罚项为0；当x不在可行域时，$\large h_i(x)&lt;0$，所以我们用$\large{min\{h_i(x),0\}}$来分辨x是否在可行域。如果不在，我们还需要加大惩罚因子</p>
-<p>所以我们定义惩罚项为$\large P(x)=\sigma{\sum_{i\in{I}}[min\{h_i(x),0\}]}^2$, </p>
+\end{align}</script><p>当$\large h_i(x)\geq0$时，惩罚项为0；当x不在可行域时，$\large h_i(x)&lt;0$，所以我们用$\large{min\{h_i(x),0\}}$来分辨x是否在可行域。如果不在，我们还需要加大惩罚因子</p>
+<p>所以我们定义惩罚项为$ P(x)=\sigma{\sum_{i\in{I}}[min\{h_i(x),0\}]}^2$, </p>
 <h2 id="一般形式约束问题"><a href="#一般形式约束问题" class="headerlink" title="一般形式约束问题"></a>一般形式约束问题</h2><p>对于约束问题</p>
 <script type="math/tex; mode=display">
-\large{\begin{align}
+\begin{align}
 min\ & f(x)\\
 s.t.\ & g_i(x)=0\\
 & h_j(x)\ge 0
-\end{align}}</script><p>则罚函数为$\large{P(x)=\sum_i[g_i(x)]^2 + \sum_j[min\{0,h_j(x)\}]^2}$</p>
+\end{align}</script><p>则罚函数为$P(x)=\sum_i[g_i(x)]^2 + \sum_j[min\{0,h_j(x)\}]^2$</p>
 <p><strong>特别注意：惩罚因子是充分大的数，拉格朗日乘子是一个确定的参数，意义不一样</strong></p>
 <h1 id="增广拉格朗日"><a href="#增广拉格朗日" class="headerlink" title="增广拉格朗日"></a>增广拉格朗日</h1><p><strong>定义</strong>：增广拉格朗日就是在拉格朗日函数上增加一个惩罚项</p>
 <h2 id="等式约束"><a href="#等式约束" class="headerlink" title="等式约束"></a>等式约束</h2><script type="math/tex; mode=display">
-\large{\begin{align}
+\begin{align}
 min\ & f(x)\\
 s.t.\ & g_i(x)=0
-\end{align}}</script><p>其增广拉格朗日函数为：$\large{\phi(x,\lambda,\sigma)=f(x)+\lambda^T{g(x)}+\frac{1}{2}\sigma{g^T(x)g(x)}}$，其中惩罚因子前的1/2只是为了求导方便</p>
+\end{align}</script><p>其增广拉格朗日函数为：$\phi(x,\lambda,\sigma)=f(x)+\lambda^T{g(x)}+\frac{1}{2}\sigma{g^T(x)g(x)}$，其中惩罚因子前的1/2只是为了求导方便</p>
 <p>令$\large{\nabla_x\phi(x_k,\lambda_k,\sigma_k)}=0    $</p>
 <p>得到</p>
 <script type="math/tex; mode=display">
-\large{\begin{align}
+\begin{align}
 &\nabla_xf(x_k)+\lambda_k\nabla_xg^T(x_k)+\sigma_k\nabla_kg^T(x_k)g(x_k)\\
 =&\nabla_kf(x_k)+\nabla_xg^T(x_k)(\lambda_k+\sigma_kg(x_k)) \\
 =& 0
-\end{align}}</script><p>其中对惩罚项的导数为</p>
+\end{align}</script><p>其中对惩罚项的导数为</p>
 <script type="math/tex; mode=display">
-\large{\begin{align}
+\begin{align}
 原式&= \frac{\partial\frac{1}{2}\sigma{g^T(x)g(x)}}{\partial{x}} \\
 &= \frac{1}{2}\sigma*\frac{\partial{g^T(x)g(x)}}{\partial{g(x)}} * \frac{\partial{g(x)}}{\partial{x}}\\
 &= \frac{1}{2}\sigma*2g(x)*\nabla_xg(x)\\
 &= \sigma{g(x)*\nabla_xg(x)} \\
 &= \sigma{g(x)^T\nabla_xg(x)} \\
 &= \sigma{\nabla_xg^T(x)g(x)}
-\end{align}}</script><p>令$\large{\lambda_{k+1}=\lambda_k+\sigma_kg(x_k)}$，得到$\large{\nabla_xf(x_k)+\lambda_{k+1}\nabla_x{g^T(x_k)}=0}$</p>
+\end{align}</script><p>令$\lambda_{k+1}=\lambda_k+\sigma_kg(x_k)$，得到$\nabla_xf(x_k)+\lambda_{k+1}\nabla_x{g^T(x_k)}=0$</p>
 <h2 id="不等式约束"><a href="#不等式约束" class="headerlink" title="不等式约束"></a>不等式约束</h2><script type="math/tex; mode=display">
-\large{\begin{align}
+\begin{align}
 min\ & f(x) \\
 s.t.\ & h_i(x)\ge0 
-\end{align}}</script><p>引入松弛变量a，使得$\large{h_i(x)-a=0}(a\ge0)$</p>
+\end{align}</script><p>引入松弛变量a，使得$\large{h_i(x)-a=0}(a\ge0)$</p>
 <p>则原问题化为</p>
 <script type="math/tex; mode=display">
-\large{\begin{align}
-min\ \phi(x,\lambda,\sigma)&=f(x)+\lambda^T(h_i(x)-a)+\frac{1}{2}\sigma{(h_i(x)-a)^T(h_i(x)-a)} (1)
-\end{align}}</script><p>消除松弛变量a，得到</p>
+\begin{align}
+min\ \phi(x,\lambda,\sigma)&=f(x)+\lambda^T(h_i(x)-a)+\frac{1}{2}\sigma{(h_i(x)-a)^T(h_i(x)-a)}(1)
+\end{align}</script><p>消除松弛变量a，得到</p>
 <script type="math/tex; mode=display">
-\large{\begin{align}
+\begin{align}
 min\ \phi(x,\lambda,\sigma,a)&= f(x) + \frac{\sigma}{2}(\frac{2}{\sigma}\lambda^T(h_i(x)-a)+||(h_i(x)-a)||^2)\\
 &= f(x) + \frac{\sigma}{2}((h_i(x)-a+\frac{\lambda}{\sigma})^2-(\frac{\lambda}{\sigma})^2)(2)\\
-\end{align}}</script><p>当x确定时，求a的最小值，此时与a无关的因为不会影响可以忽略掉</p>
+\end{align}</script><p>当x确定时，求a的最小值，此时与a无关的因为不会影响可以忽略掉</p>
 <script type="math/tex; mode=display">
-\large{\begin{align}
+\begin{align}
 min_a\ \phi(x,\lambda,\sigma) &= (h_i(x)-a+\frac{\lambda}{\sigma})^2\\
 s.t. a&\ge0 \\
 \therefore a_i &= \frac{1}{\sigma}max\{0,\sigma{h_i(x)}+\lambda\}
-\end{align}}</script><p>当$\large{\sigma{h_i(x)}+\lambda\ge0}$时，也就是$\large{a={h_i(x)}+\frac{\lambda}{\sigma}}$，带入(2)式得到</p>
+\end{align}</script><p>当$\large{\sigma{h_i(x)}+\lambda\ge0}$时，也就是$\large{a={h_i(x)}+\frac{\lambda}{\sigma}}$，带入(2)式得到</p>
 <script type="math/tex; mode=display">
-\large{\begin{align}
+\begin{align}
 \phi(x,\lambda,\sigma) &= f(x)-\frac{\sigma}{2}(\frac{\lambda}{\sigma})^2\\
 &=f(x) - \frac{\lambda^2}{2\sigma}\\
 \therefore\nabla_x\phi(x,\lambda,\sigma)&=\nabla_xf(x)
-\end{align}}</script><p>当$\large{\sigma{h_i(x)}+\lambda&lt;0}$时，$\large{a=0}$,带入(2)式，得到</p>
+\end{align}</script><p>当$\large{\sigma{h_i(x)}+\lambda&lt;0}$时，$\large{a=0}$,带入(2)式，得到</p>
 <script type="math/tex; mode=display">
-\large{\begin{align}
+\begin{align}
 \phi(x,\lambda,\sigma)&=f(x)+\frac{\sigma}{2}(h_i(x)+\frac{\lambda}{\sigma})^2-\frac{\sigma}{2}(\frac{\lambda}{\sigma})^2\\
 &=f(x)-\frac{\lambda^2}{2\sigma} + \frac{1}{2\sigma}(\sigma{h_i(x)}+\lambda)^2\\
 \therefore \nabla_x\phi(x,\lambda,\sigma) &= \nabla_xf(x) + (\sigma{h_i(x)}+\lambda)\nabla_xh_i(x)
-\end{align}}</script><p>综上所述：</p>
+\end{align}</script><p>综上所述：</p>
 <script type="math/tex; mode=display">
-\large{
 \nabla_x\phi(x,\lambda,\sigma) = \left\{\begin{align}
 &\nabla_xf(x),&\sigma{h_i(x)}+\lambda\ge0 \\
 &\nabla_xf(x) + (\sigma{h_i(x)}+\lambda)\nabla_xh_i(x),&\sigma{h_i(x)}+\lambda<0
-\end{align}\right.}</script><p>最后令梯度为0就能求得最优解</p>
+\end{align}\right.</script><p>最后令梯度为0就能求得最优解</p>
 <h2 id="一般约束问题"><a href="#一般约束问题" class="headerlink" title="一般约束问题"></a>一般约束问题</h2><script type="math/tex; mode=display">
-\large{\begin{align}
+\begin{align}
 min\ & f(x) \\
 s.t.\ & h_i(x)\ge0\\
 &g_i(x)=0
-\end{align}}</script><p>则</p>
+\end{align}</script><p>则</p>
 <script type="math/tex; mode=display">
-\large{
 \left\{\begin{align}
 &\nabla_xf(x_k)+\lambda_{k+1}\nabla_x{g^T(x_k)} = 0\\
 &\nabla_xf(x)=0,&\sigma_k{h_i(x)}+\lambda\ge0 \\
 &\nabla_xf(x) + (\sigma{h_i(x)}+\lambda)\nabla_xh_i(x)=0,&\sigma_k{h_i(x)}+\lambda<0\\
 &\lambda_{k+1}=\lambda_k+\sigma_kg(x_k)
-\end{align}\right.}</script>
+\end{align}\right.</script>
             </div>
             
                 <div class="kratos-copyright text-center clearfix">
@@ -339,11 +336,11 @@ s.t.\ & h_i(x)\ge0\\
 罚函数罚函数法定义：将约束最优化问题转化为无约束最优化问题去求解
 等式约束问题对于约束问题
 
-\large{
+
 \begin{align}
 min\ & f(x)\\
 s.t.\ & g_i(x) =  0
-\end{ali...`;
+\end{align}定义罚函...`;
             let _URL;
             switch (dest) {
                 case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
