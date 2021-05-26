@@ -4,7 +4,7 @@
   <!-- 元数据 -->
   <meta charset="utf-8">
   <link rel="icon" href="">
-  <title>数据校验码 | Reimilia</title>
+  <title>罚函数、增广拉格朗日函数 | Reimilia</title>
   <meta name="author" content="Reimilia" />
   <meta http-equiv="Cache-Control" content="no-transform" />
   <meta http-equiv="Cache-Control" content="no-siteapp" />
@@ -15,16 +15,16 @@
   
     <meta name="keywords" content="" />
   
-  <meta name="description" content="数据校验是为保证数据的完整性进行的一种验证操作。通常用一种指定的算法对原始数据计算出的一个校验值，接收方用同样的算法计算一次校验值，如果两次计算得到的检验值相同，则说明数据是完整的">
+  <meta name="description" content="[toc] 罚函数罚函数法定义：将约束最优化问题转化为无约束最优化问题去求解 等式约束问题对于约束问题  \large{ \begin{align} min\ &amp; f(x)\\ s.t.\ &amp; g_i(x) &#x3D;  0 \end{align} }定义罚函数为  \large{\begin{align} min\ F(x,\sigma) &amp;&#x3D; f(x)+\sigma{P(x)}\\ P(x) &amp;&#x3D; g">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据校验码">
-<meta property="og:url" content="https://reiscarlet.github.io/2021/05/21/%E6%95%B0%E6%8D%AE%E6%A0%A1%E9%AA%8C%E7%A0%81/index.html">
+<meta property="og:title" content="罚函数、增广拉格朗日函数">
+<meta property="og:url" content="https://reiscarlet.github.io/2021/05/26/%E7%BD%9A%E5%87%BD%E6%95%B0%E6%96%B9%E6%B3%95/index.html">
 <meta property="og:site_name" content="Reimilia">
-<meta property="og:description" content="数据校验是为保证数据的完整性进行的一种验证操作。通常用一种指定的算法对原始数据计算出的一个校验值，接收方用同样的算法计算一次校验值，如果两次计算得到的检验值相同，则说明数据是完整的">
+<meta property="og:description" content="[toc] 罚函数罚函数法定义：将约束最优化问题转化为无约束最优化问题去求解 等式约束问题对于约束问题  \large{ \begin{align} min\ &amp; f(x)\\ s.t.\ &amp; g_i(x) &#x3D;  0 \end{align} }定义罚函数为  \large{\begin{align} min\ F(x,\sigma) &amp;&#x3D; f(x)+\sigma{P(x)}\\ P(x) &amp;&#x3D; g">
 <meta property="og:locale">
 <meta property="og:image" content="https://reiscarlet.github.io/null">
-<meta property="article:published_time" content="2021-05-21T01:19:22.222Z">
-<meta property="article:modified_time" content="2021-05-22T05:34:47.006Z">
+<meta property="article:published_time" content="2021-05-26T01:10:04.175Z">
+<meta property="article:modified_time" content="2021-05-26T01:11:25.961Z">
 <meta property="article:author" content="Reimilia">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://reiscarlet.github.io/null">
@@ -139,17 +139,17 @@
         <div class="kratos-hentry kratos-post-inner clearfix">
             <header class="kratos-entry-header">
                 
-                    <h1 class="kratos-entry-title text-center">数据校验码</h1>
+                    <h1 class="kratos-entry-title text-center">罚函数、增广拉格朗日函数</h1>
                 
                 
                 <ul class="kratos-post-meta text-center">
-                    <li><i class="fa fa-calendar"></i> 2021-05-21</li>
+                    <li><i class="fa fa-calendar"></i> 2021-05-26</li>
                     <li><i class="fa fa-user"></i> 作者 Reimilia</li>
                     <li>
                         <i class="fa fa-edit"></i> 
                         
                         
-                            1260
+                            ~3.42K
                         
                         字
                     </li>
@@ -158,39 +158,116 @@
             </header>
             <div class="kratos-post-content">
                 <div id="expire-alert" class="alert alert-warning hidden" role="alert">
-                    本文最后编辑于 <time datetime="1621661687006"></time> 前，其中的内容可能需要更新。
+                    本文最后编辑于 <time datetime="1621991485961"></time> 前，其中的内容可能需要更新。
                 </div>
                 
                 <hr />
-                <p>数据校验是为保证数据的完整性进行的一种验证操作。通常用一种指定的算法对<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/原始数据/10119290">原始数据</a>计算出的一个校验值，接收方用同样的算法计算一次校验值，如果两次计算得到的检验值相同，则说明数据是完整的</p>
-<span id="more"></span>
-<h2 id="1-什么是错误"><a href="#1-什么是错误" class="headerlink" title="1.什么是错误"></a>1.什么是错误</h2><font size = 5 color = red>$1$变成$0$，$0$变成$1$</font>
-
-<h2 id="2-什么样的编码具有检错纠错能力"><a href="#2-什么样的编码具有检错纠错能力" class="headerlink" title="2.什么样的编码具有检错纠错能力"></a>2.什么样的编码具有检错纠错能力</h2><p><strong>码距</strong>：任意两个码字之间最少变化的二进制位数</p>
-<p>具有检错纠错能力的数据校验码的实现原理是：在编码中，除去合法的码字，再加进一些非法的码字，当某个合法的码字出现错误时，就变成非法码字</p>
-<p><strong>对于码距≥2的数据校验码，开始具有检错能力，码距越大，检、纠错能力就越强，而且检错能力总大于或等于纠错能力</strong></p>
-<h2 id="3-如何发现错误"><a href="#3-如何发现错误" class="headerlink" title="3.如何发现错误"></a>3.如何发现错误</h2><h3 id="奇偶校验码"><a href="#奇偶校验码" class="headerlink" title="奇偶校验码"></a>奇偶校验码</h3><p>校验位的取值（0或1）将使得整个校验码中”1”的个数为奇数或偶数：</p>
-<ol>
-<li>奇校验——使得整个校验码中”1”的个数为<strong>奇数</strong></li>
-<li>偶校验——使得整个校验码中”1”的个数为<strong>偶数</strong></li>
-<li><strong>交叉奇偶校验：传送数据块时，不仅每个字节有一个奇偶校验做横向校验，而且全部字节的同一位也设置一个奇偶校验做纵向校验</strong></li>
-</ol>
-<h2 id="4-如何确定错误的位置"><a href="#4-如何确定错误的位置" class="headerlink" title="4. 如何确定错误的位置"></a>4. 如何确定错误的位置</h2><h3 id="海明校验码"><a href="#海明校验码" class="headerlink" title="海明校验码"></a>海明校验码</h3><p>校验位K，信息位N，则<font size = 5>$2^{K+1} \ge N+K+1 $</font></p>
-<p>(1)编码</p>
-<p>一个字节由8位二进制位组成，此时N=8， K=5，故海明码总位数为N+K=13，表示为：$H_{13}\ H_{12}…H_{2}\ H_{1}$</p>
-<p>五个校验位$P_5~P_1$对应的海明码位为:$H_{13}、H_{8}、H_{4}、H_{2}、H_{1}$,除$P_5$外其余四位满足$P_i中i等于2^{i-1}$的关系，而$P_5$只能放在$H_{13}$</p>
-<p><img src="/images/image-20210331153752666.png" alt="image-20210331153752666"></p>
-<p>P_1校验的是$D_1、D_2、D_4、D_5、D_7$，对应的海明码为$H_1(1),H_5(4+1),H_7(4+2+1),H_9(8+1),H_{11}(8+2+1)$,化位二进制就会发现，都有一个$XXXXXXX1$的形式，也就是说$P_i$校验的是二进制中权值为i的位数值为1的那些位数$(D_{位数})$,P2,P3,P4,P5同理</p>
-<p>则$P_1=D_1\oplus D_2\oplus D_4\oplus D_5\oplus D_7$，用同样的方法将其他$P_i$求出</p>
-<p>(2)校验</p>
-<p>将接收到的海明码按如下关系进行偶校验：</p>
-<p>如右所示：$S_1=P_1\oplus D_1\oplus D_2\oplus D_4\oplus D_5\oplus D_7$ ，即将$P_1$和对应的$D_i$进行异或算出结国</p>
-<p>然后依次求出$S_2\ S_3\ S_4\ S_5$</p>
-<p><strong>① 如果$S_5 \sim S_1为00000$时，表明无错</strong></p>
-<p>② 如果$S_5 \sim S_1$仅有一位不为$0$，表明是某一位校验位出错或三位海明码同时出错</p>
-<p>③ 如果$S_5 \sim S_1 $有两位不为$0$，表明是两位海明码同时出错，但无法确定出错位置</p>
-<p><strong>④ 如果$S_5 \sim S_1$有三位不为$0$，表明是一位信息位出错或三位校验位同时出错，出错位置由$S_4 \sim S_1 $四位编码指明</strong></p>
-
+                <p>[toc]</p>
+<h1 id="罚函数"><a href="#罚函数" class="headerlink" title="罚函数"></a>罚函数</h1><p><strong>罚函数法定义</strong>：将约束最优化问题转化为无约束最优化问题去求解</p>
+<h2 id="等式约束问题"><a href="#等式约束问题" class="headerlink" title="等式约束问题"></a>等式约束问题</h2><p>对于约束问题</p>
+<script type="math/tex; mode=display">
+\large{
+\begin{align}
+min\ & f(x)\\
+s.t.\ & g_i(x) =  0
+\end{align}
+}</script><p>定义罚函数为</p>
+<script type="math/tex; mode=display">
+\large{\begin{align}
+min\ F(x,\sigma) &= f(x)+\sigma{P(x)}\\
+P(x) &= g_i(x)^Tg_i(x)
+\end{align}}</script><p>其中$\large{\sigma}$是惩罚因子，$\large{F(x,\sigma)}$是罚函数，$\large{\sigma{P(x)}}$是惩罚项</p>
+<p><strong>该罚函数的特点</strong>：对非可行点，当$\large\sigma$变大时，惩罚项在罚函数的比重加大，对罚函数求极小相当于使极小值点向可行域靠近。简单的说就是只要你没得到可行解，惩罚项就会越来越大，对罚函数求极小就会迫使所求的x点向极小值点靠近来让惩罚项下降</p>
+<h2 id="不等式约束问题"><a href="#不等式约束问题" class="headerlink" title="不等式约束问题"></a>不等式约束问题</h2><p>对于约束问题</p>
+<script type="math/tex; mode=display">
+\large{\begin{align}
+min\ & f(x) \\
+s.t.\ &h_i(x) \geq 0
+\end{align}}</script><p>当$\large h_i(x)\geq0$时，惩罚项为0；当x不在可行域时，$\large h_i(x)&lt;0$，所以我们用$\large{min\{h_i(x),0\}}$来分辨x是否在可行域。如果不在，我们还需要加大惩罚因子</p>
+<p>所以我们定义惩罚项为$\large P(x)=\sigma{\sum_{i\in{I}}[min\{h_i(x),0\}]}^2$, </p>
+<h2 id="一般形式约束问题"><a href="#一般形式约束问题" class="headerlink" title="一般形式约束问题"></a>一般形式约束问题</h2><p>对于约束问题</p>
+<script type="math/tex; mode=display">
+\large{\begin{align}
+min\ & f(x)\\
+s.t.\ & g_i(x)=0\\
+& h_j(x)\ge 0
+\end{align}}</script><p>则罚函数为$\large{P(x)=\sum_i[g_i(x)]^2 + \sum_j[min\{0,h_j(x)\}]^2}$</p>
+<p><strong>特别注意：惩罚因子是充分大的数，拉格朗日乘子是一个确定的参数，意义不一样</strong></p>
+<h1 id="增广拉格朗日"><a href="#增广拉格朗日" class="headerlink" title="增广拉格朗日"></a>增广拉格朗日</h1><p><strong>定义</strong>：增广拉格朗日就是在拉格朗日函数上增加一个惩罚项</p>
+<h2 id="等式约束"><a href="#等式约束" class="headerlink" title="等式约束"></a>等式约束</h2><script type="math/tex; mode=display">
+\large{\begin{align}
+min\ & f(x)\\
+s.t.\ & g_i(x)=0
+\end{align}}</script><p>其增广拉格朗日函数为：$\large{\phi(x,\lambda,\sigma)=f(x)+\lambda^T{g(x)}+\frac{1}{2}\sigma{g^T(x)g(x)}}$，其中惩罚因子前的1/2只是为了求导方便</p>
+<p>令$\large{\nabla_x\phi(x_k,\lambda_k,\sigma_k)}=0    $</p>
+<p>得到</p>
+<script type="math/tex; mode=display">
+\large{\begin{align}
+&\nabla_xf(x_k)+\lambda_k\nabla_xg^T(x_k)+\sigma_k\nabla_kg^T(x_k)g(x_k)\\
+=&\nabla_kf(x_k)+\nabla_xg^T(x_k)(\lambda_k+\sigma_kg(x_k)) \\
+=& 0
+\end{align}}</script><p>其中对惩罚项的导数为</p>
+<script type="math/tex; mode=display">
+\large{\begin{align}
+原式&= \frac{\partial\frac{1}{2}\sigma{g^T(x)g(x)}}{\partial{x}} \\
+&= \frac{1}{2}\sigma*\frac{\partial{g^T(x)g(x)}}{\partial{g(x)}} * \frac{\partial{g(x)}}{\partia{x}}\\
+&= \frac{1}{2}\sigma*2g(x)*\nabla_xg(x)\\
+&= \sigma{g(x)*\nabla_xg(x)} \\
+&= \sigma{g(x)^T\nabla_xg(x)} \\
+&= \sigma{\nabla_xg^T(x)g(x)}
+\end{align}}</script><p>令$\large{\lambda_{k+1}=\lambda_k+\sigma_kg(x_k)}$，得到$\large{\nabla_xf(x_k)+\lambda_{k+1}\nabla_x{g^T(x_k)}=0}$</p>
+<h2 id="不等式约束"><a href="#不等式约束" class="headerlink" title="不等式约束"></a>不等式约束</h2><script type="math/tex; mode=display">
+\large{\begin{align}
+min\ & f(x) \\
+s.t.\ & h_i(x)\ge0 
+\end{align}}</script><p>引入松弛变量a，使得$\large{h_i(x)-a=0}(a\ge0)$</p>
+<p>则原问题化为</p>
+<script type="math/tex; mode=display">
+\large{\begin{align}
+min\ \phi(x,\lambda,\sigma)&=f(x)+\lambda^T(h_i(x)-a)+\frac{1}{2}\sigma{(h_i(x)-a)^T(h_i(x)-a)} (1)
+\end{align}}</script><p>消除松弛变量a，得到</p>
+<script type="math/tex; mode=display">
+\large{\begin{align}
+min\ \phi(x,\lambda,\sigma,a)&= f(x) + \frac{\sigma}{2}(\frac{2}{\sigma}\lambda^T(h_i(x)-a)+||(h_i(x)-a)||^2)\\
+&= f(x) + \frac{\sigma}{2}((h_i(x)-a+\frac{\lambda}{\sigma})^2-(\frac{\lambda}{\sigma})^2)(2)\\
+\end{align}}</script><p>当x确定时，求a的最小值，此时与a无关的因为不会影响可以忽略掉</p>
+<script type="math/tex; mode=display">
+\large{\begin{align}
+min_a\ \phi(x,\lambda,\sigma) &= (h_i(x)-a+\frac{\lambda}{\sigma})^2\\
+s.t. a&\ge0 \\
+\therefore a_i &= \frac{1}{\sigma}max\{0,\sigma{h_i(x)}+\lambda\}
+\end{align}}</script><p>当$\large{\sigma{h_i(x)}+\lambda\ge0}$时，也就是$\large{a={h_i(x)}+\frac{\lambda}{\sigma}}$，带入(2)式得到</p>
+<script type="math/tex; mode=display">
+\large{\begin{align}
+\phi(x,\lambda,\sigma) &= f(x)-\frac{\sigma}{2}(\frac{\lambda}{\sigma})^2\\
+&=f(x) - \frac{\lambda^2}{2\sigma}\\
+\therefore\nabla_x\phi(x,\lambda,\sigma)&=\nabla_xf(x)
+\end{align}}</script><p>当$\large{\sigma{h_i(x)}+\lambda&lt;0}$时，$\large{a=0}$,带入(2)式，得到</p>
+<script type="math/tex; mode=display">
+\large{\begin{align}
+\phi(x,\lambda,\sigma)&=f(x)+\frac{\sigma}{2}(h_i(x)+\frac{\lambda}{\sigma})^2-\frac{\sigma}{2}(\frac{\lambda}{\sigma})^2\\
+&=f(x)-\frac{\lambda^2}{2\sigma} + \frac{1}{2\sigma}(\sigma{h_i(x)}+\lambda)^2\\
+\therefore \nabla_x\phi(x,\lambda,\sigma) &= \nabla_xf(x) + (\sigma{h_i(x)}+\lambda)\nabla_xh_i(x)
+\end{align}}</script><p>综上所述：</p>
+<script type="math/tex; mode=display">
+\large{
+\nabla_x\phi(x,\lambda,\sigma) = \left\{\begin{align}
+&\nabla_xf(x),&\sigma{h_i(x)}+\lambda\ge0 \\
+&\nabla_xf(x) + (\sigma{h_i(x)}+\lambda)\nabla_xh_i(x),&\sigma{h_i(x)}+\lambda<0
+\end{align}\right.}</script><p>最后令梯度为0就能求得最优解</p>
+<h2 id="一般约束问题"><a href="#一般约束问题" class="headerlink" title="一般约束问题"></a>一般约束问题</h2><script type="math/tex; mode=display">
+\large{\begin{align}
+min\ & f(x) \\
+s.t.\ & h_i(x)\ge0\\
+&g_i(x)=0
+\end{align}}</script><p>则</p>
+<script type="math/tex; mode=display">
+\large{
+\left\{\begin{align}
+&\nabla_xf(x_k)+\lambda_{k+1}\nabla_x{g^T(x_k)} = 0\\
+&\nabla_xf(x)=0,&\sigma{h_i(x)}+\lambda\ge0 \\
+&\nabla_xf(x) + (\sigma{h_i(x)}+\lambda)\nabla_xh_i(x)=0,&\sigma{h_i(x)}+\lambda<0
+\end{align}\right.}</script>
             </div>
             
                 <div class="kratos-copyright text-center clearfix">
@@ -243,7 +320,7 @@
     <script type="text/javascript">
         $(()=>{
             new QRCode("wechat-qr", {
-                text: "https://reiscarlet.github.io/2021/05/21/%E6%95%B0%E6%8D%AE%E6%A0%A1%E9%AA%8C%E7%A0%81/",
+                text: "https://reiscarlet.github.io/2021/05/26/%E7%BD%9A%E5%87%BD%E6%95%B0%E6%96%B9%E6%B3%95/",
                 width: 150,
                 height: 150,
                 correctLevel : QRCode.CorrectLevel.H
@@ -255,9 +332,17 @@
             const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
             const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
             const twitterBase   = "https://twitter.com/intent/tweet?";
-            const hostUrl       = "https://reiscarlet.github.io/2021/05/21/%E6%95%B0%E6%8D%AE%E6%A0%A1%E9%AA%8C%E7%A0%81/";
-            const title         = "「数据校验码」";
-            const excerpt       = `数据校验是为保证数据的完整性进行的一种验证操作。通常用一种指定的算法对原始数据计算出的一个校验值，接收方用同样的算法计算一次校验值，如果两次计算得到的检验值相同，则说明数据是完整的`;
+            const hostUrl       = "https://reiscarlet.github.io/2021/05/26/%E7%BD%9A%E5%87%BD%E6%95%B0%E6%96%B9%E6%B3%95/";
+            const title         = "「罚函数、增广拉格朗日函数」";
+            const excerpt       = `[toc]
+罚函数罚函数法定义：将约束最优化问题转化为无约束最优化问题去求解
+等式约束问题对于约束问题
+
+\large{
+\begin{align}
+min\ & f(x)\\
+s.t.\ & g_i(x) =  0
+\end{ali...`;
             let _URL;
             switch (dest) {
                 case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
@@ -279,7 +364,7 @@
                         
                     </div>
                     <div class="pull-date">
-                    <span>最后编辑：2021-05-22</span>
+                    <span>最后编辑：2021-05-26</span>
                     </div>
                 </div>
             </footer>
@@ -288,13 +373,9 @@
             <nav class="navigation post-navigation clearfix" role="navigation">
                 
                 <div class="nav-previous clearfix">
-                    <a title=" 编码与调制" href="/2021/05/21/编码与调制/">&lt; 上一篇</a>
+                    <a title=" KKT条件" href="/2021/05/24/KKT条件/">&lt; 上一篇</a>
                 </div>
                 
-                
-                <div class="nav-next clearfix">
-                    <a title=" 数据传输过程及以太网帧结构" href="/2021/05/21/数据传输过程及以太网帧结构/">下一篇 &gt;</a>
-                </div>
                 
             </nav>
         
