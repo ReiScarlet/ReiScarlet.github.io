@@ -4,7 +4,7 @@
   <!-- 元数据 -->
   <meta charset="utf-8">
   <link rel="icon" href="">
-  <title>MAC | Reimilia</title>
+  <title>二次规划 | Reimilia</title>
   <meta name="author" content="Reimilia" />
   <meta http-equiv="Cache-Control" content="no-transform" />
   <meta http-equiv="Cache-Control" content="no-siteapp" />
@@ -13,20 +13,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <meta name="format-detection" content="telphone=no, email=no" />
   
-    <meta name="keywords" content="链路层" />
+    <meta name="keywords" content="数学" />
   
-  <meta name="description" content="MACMAC地址(物理地址、硬件地址·)一般被固化在网卡的电可擦可编程只读存储器EEPROM中 严格来说：MAC地址是对网络上各接口的唯一标识而不是网络上各设备的唯一标识 MAC地址包含两部分：前24比特是组织唯一标识符(OUI)，由IEEE统一分配给设备制造商；后24位序列号是厂商分配给每个产品的唯一数值，由各个厂商自行分配 标准表示法：每4个比特写成一个16进制的字符，两个字符一组共六组，组">
+  <meta name="description" content="[toc] 二次规划二次规划问题（Quadratic Programming，QP）一般描述为：  \begin{align} min\ q(x)&amp;&#x3D;\frac{1}{2}x^TGx+h^Tx,\\ s.t.\ a_i^Tx &amp;&#x3D; b_i, i\in I\\ a_i^Tx &amp;\ge b_i, i\in J \end{align}分类：  凸二次规划问题：G半正定，问题有全局解 严格凸二次规划问题：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MAC">
-<meta property="og:url" content="https://reiscarlet.github.io/2021/05/21/MAC/index.html">
+<meta property="og:title" content="二次规划">
+<meta property="og:url" content="https://reiscarlet.github.io/2021/05/31/%E4%BA%8C%E6%AC%A1%E8%A7%84%E5%88%92/index.html">
 <meta property="og:site_name" content="Reimilia">
-<meta property="og:description" content="MACMAC地址(物理地址、硬件地址·)一般被固化在网卡的电可擦可编程只读存储器EEPROM中 严格来说：MAC地址是对网络上各接口的唯一标识而不是网络上各设备的唯一标识 MAC地址包含两部分：前24比特是组织唯一标识符(OUI)，由IEEE统一分配给设备制造商；后24位序列号是厂商分配给每个产品的唯一数值，由各个厂商自行分配 标准表示法：每4个比特写成一个16进制的字符，两个字符一组共六组，组">
+<meta property="og:description" content="[toc] 二次规划二次规划问题（Quadratic Programming，QP）一般描述为：  \begin{align} min\ q(x)&amp;&#x3D;\frac{1}{2}x^TGx+h^Tx,\\ s.t.\ a_i^Tx &amp;&#x3D; b_i, i\in I\\ a_i^Tx &amp;\ge b_i, i\in J \end{align}分类：  凸二次规划问题：G半正定，问题有全局解 严格凸二次规划问题：">
 <meta property="og:locale">
 <meta property="og:image" content="https://reiscarlet.github.io/null">
-<meta property="article:published_time" content="2021-05-21T01:19:22.220Z">
-<meta property="article:modified_time" content="2021-05-22T05:32:57.035Z">
+<meta property="article:published_time" content="2021-05-31T07:33:23.032Z">
+<meta property="article:modified_time" content="2021-05-31T05:22:57.079Z">
 <meta property="article:author" content="Reimilia">
-<meta property="article:tag" content="链路层">
+<meta property="article:tag" content="数学">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://reiscarlet.github.io/null">
 <meta name="twitter:site" content="@null">
@@ -140,17 +140,17 @@
         <div class="kratos-hentry kratos-post-inner clearfix">
             <header class="kratos-entry-header">
                 
-                    <h1 class="kratos-entry-title text-center">MAC</h1>
+                    <h1 class="kratos-entry-title text-center">二次规划</h1>
                 
                 
                 <ul class="kratos-post-meta text-center">
-                    <li><i class="fa fa-calendar"></i> 2021-05-21</li>
+                    <li><i class="fa fa-calendar"></i> 2021-05-31</li>
                     <li><i class="fa fa-user"></i> 作者 Reimilia</li>
                     <li>
                         <i class="fa fa-edit"></i> 
                         
                         
-                            364
+                            ~6.98K
                         
                         字
                     </li>
@@ -159,19 +159,199 @@
             </header>
             <div class="kratos-post-content">
                 <div id="expire-alert" class="alert alert-warning hidden" role="alert">
-                    本文最后编辑于 <time datetime="1621661577035"></time> 前，其中的内容可能需要更新。
+                    本文最后编辑于 <time datetime="1622438577079"></time> 前，其中的内容可能需要更新。
                 </div>
                 
                 <hr />
-                <span id="more"></span>
-<h2 id="MAC"><a href="#MAC" class="headerlink" title="MAC"></a>MAC</h2><p>MAC地址(物理地址、硬件地址·)一般被固化在网卡的电可擦可编程只读存储器EEPROM中</p>
-<p><strong>严格来说：MAC地址是对网络上各接口的唯一标识而不是网络上各设备的唯一标识</strong></p>
-<p>MAC地址包含两部分：前24比特是组织唯一标识符(OUI)，由IEEE统一分配给设备制造商；后24位序列号是厂商分配给每个产品的唯一数值，由各个厂商自行分配</p>
-<p>标准表示法：每4个比特写成一个16进制的字符，两个字符一组共六组，组之间用‘-’或‘：’连接，例如XX-XX-XX-XX-XX-XX</p>
-<p>MAC地址中，第一字节的第7个比特取0表示<strong>全球管理</strong>，取1表示<strong>本地管理</strong></p>
-<p>IEEE802.3：MAC地址中，一个字节是$b_7b_6b_5b_4b_3b_2b_1b_0$，比特发送顺序是$b_0\rightarrow b_7$。字节发送顺序是第一字节到第六字节</p>
-<p><img src="/images/QQ截图20210405092607.jpg" alt=""></p>
+                <p>[toc]</p>
+<h1 id="二次规划"><a href="#二次规划" class="headerlink" title="二次规划"></a>二次规划</h1><p>二次规划问题（Quadratic Programming，QP）一般描述为：</p>
+<script type="math/tex; mode=display">
+\begin{align}
+min\ q(x)&=\frac{1}{2}x^TGx+h^Tx,\\
+s.t.\ a_i^Tx &= b_i, i\in I\\
+a_i^Tx &\ge b_i, i\in J
+\end{align}</script><p>分类：</p>
+<ol>
+<li>凸二次规划问题：G半正定，问题有<strong>全局解</strong></li>
+<li>严格凸二次规划问题：G正定，问题有<strong>唯一全局解</strong></li>
+<li>一般二次规划问题：G不定，问题有<strong>稳定点</strong>或<strong>局部解</strong></li>
+</ol>
+<h2 id="等式约束二次规划问题"><a href="#等式约束二次规划问题" class="headerlink" title="等式约束二次规划问题"></a>等式约束二次规划问题</h2><p>等式而约束二次规划问题形式为：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+min\ f(x) &= \frac{1}{2}x^TGx+g^Tx\\
+s.t.\ A^Tx &= b
+\end{aligned}</script><h3 id="变量消去方法"><a href="#变量消去方法" class="headerlink" title="变量消去方法"></a>变量消去方法</h3><ol>
+<li>通过将x的分量分成基本变量$\large{x_B}$与非基本变量$\large{x_N}$两部分，通过等式约束将基本变量用非基本变量表示出；</li>
+<li>再将基本变量带入目标函数，从而消去基本变量，把问题化为一个关于非基本变量的无约束最优化问题；</li>
+<li>最后求解无约束最优化问题的方法解之</li>
+</ol>
+<p>例如，对X分块，A、G、g对应的也分块，得到</p>
+<script type="math/tex; mode=display">
+\begin{align}
+&x=\begin{bmatrix}x_B\\x_N\end{bmatrix},
+&A=\begin{bmatrix}A_B\\A_N\end{bmatrix}\\
+&G=\begin{bmatrix}G_{BB}&G_{BN}\\G_{NB}&G_{NN}\end{bmatrix},
+&g=\begin{bmatrix}g_B\\g_N\end{bmatrix}
+\end{align}</script><p>则等式约束化为$A^Tx=b\rightarrow A_B^Tx_B+A_N^Tx_N = b$</p>
+<p>所以基本变量为$x_B=A^{-T}_B(b-A^T_Nx_N)$</p>
+<p>带入目标函数得到</p>
+<script type="math/tex; mode=display">
+\begin{align}
+min\ f(x) &= \frac{1}{2}x^TGx+g^Tx\\
+&=\frac{1}{2}
+\begin{bmatrix}x_B&x_N\end{bmatrix}
+\begin{bmatrix}G_{BB}&G_{BN}\\G_{NB}&G_{NN}\end{bmatrix}
+\begin{bmatrix}x_B\\x_N\end{bmatrix}+
+\begin{bmatrix}g_B&g_N\end{bmatrix}
+\begin{bmatrix}x_B\\x_N\end{bmatrix}
+\\
+&=\frac{1}{2}
+\begin{bmatrix}A_B^{-T}(b-A^T_Nx_N)&x_N\end{bmatrix}
+\begin{bmatrix}G_{BB}&G_{BN}\\G_{NB}&G_{NN}\end{bmatrix}
+\begin{bmatrix}A_B^{-T}(b-A^T_Nx_N)\\x_N\end{bmatrix}
+\\&\quad+\begin{bmatrix}g_B&g_N\end{bmatrix}
+\begin{bmatrix}A_B^{-T}(b-A^T_Nx_N)\\x_N\end{bmatrix}
+\\
+&=\frac{1}{2}\{(A_B^{-T}(b-A_N^Tx_N)G_{BB}+x_NG_{NB})A_B^{-T}(b-A^T_Nx_N)
+\\&\quad+(A_B^{-T}(b-A^T_Nx_N)G_{BN}+x_NG_{NN})x_N\}
+\\&\quad+g_BA_B^{-T}(b-A_N^Tx_N)+g_Nx_N
+\\
+&=\frac{1}{2}((A_B^{-T}bG_{BB}-A_B^{-T}A_N^Tx_NG_{BB}+x_NG_{NB})A_B^{-T}(b-A_N^Tx_N)\\&\quad+
+(A_B^{-T}bG_{BN}-A_B^{-T}A_N^Tx_NG_{BN}+x_NG_{NN})x_N)\\&\quad+
+g_BA_B^{-T}b-g_BA_B^{-T}A_N^Tx_N+g_Nx_N\\
+&=\frac{1}{2}(A_B^{-T}bG_{BB}A_B^{-T}b - A_B^{-T}A_N^Tx_NG_{BB}A_B^{-T}b + x_NG_{NB}A_B^{-T}b \\&\quad - A_B^{-T}bG_{BB}A_B^{-T}A_N^Tx_N + A_B^{-T}A_N^Tx_NG_{BB}A_B^{-T}A_N^Tx_N - x_NG_{NB}A_B^{-T}A_N^Tx_N\\&\quad+
+A_B^{-T}bG_{BN}x_N-A_B^{-T}A_N^Tx_NG_{BN}x_N+x_NG_{NN}x_N)\\&\quad+
+g_BA_B^{-T}b-g_BA_B^{-T}A_N^Tx_N+g_Nx_N\\
+\end{align}</script><p>因为现在问题化为一个关于非基本变量的无约束最优化问题，所以我们只需要找出与$x_N$有关的项，其他均为常数项，最优化问题中不影响结果</p>
+<p>找出所有$x_N^TAx_N$形式的项，得到$G_N = G_{NN}+A_NA_B^{-1}G_{BB}A_B^{-T}A_N^T-G_{NB}A_B^{-T}A_N^T - A_NA_B^{-1}G_{BN}$ </p>
+<p>找出所有$Ax_N$形式的项，得到$g_N =g_N - A_NA_B^{-1}g_B + (G_{NB}-A_NA_B^{-1}G_{BB})A_B^{-T}b$</p>
+<p>所以关于非基本变量的无约束最优化问题形式为$q(x_N) = \frac{1}{2}x_N^TG_Nx_N + g_N^Tx_N$</p>
+<p><strong>求解该无约束最优化问题$min\ f(x_N)$</strong></p>
+<p>若$G_N$正定，则存在唯一解，$x_N^*=-G_N^{-1}g_N$</p>
+<p><strong>求$x^*$</strong>处的拉格朗日因子$\nabla{f(x^*)=\lambda{A}}$，即</p>
+<script type="math/tex; mode=display">
+\begin{align}
+&\begin{bmatrix}G_{BB}&G_{BN}\\G_{NB}&G_{NN} \end{bmatrix}
+\begin{bmatrix}x^*_B\\x^*_N\end{bmatrix}
++\begin{bmatrix}g_B\\g_N\end{bmatrix}
+=\begin{bmatrix}A_B\\A_N\end{bmatrix}\lambda^*\\
+&\begin{bmatrix}G_{BB}x^*_B+G_{BN}x^*_N \\ G_{NB}x^*_B+G_{NN}x^*_N \end{bmatrix}
++\begin{bmatrix}g_B\\g_N\end{bmatrix}
+=\begin{bmatrix}A_B\\A_N\end{bmatrix}\lambda^*\\
+&\begin{bmatrix}G_{BB}x^*_B+G_{BN}x^*_N+g_B \\ G_{NB}x^*_B+G_{NN}x^*_N+g_N \end{bmatrix}
+=\begin{bmatrix}A_B\\A_N\end{bmatrix}\lambda^*\\
+\end{align}</script><p>取第一式$A_B^{-1}(G_{BB}x^<em>_B+G_{BN}x_N^</em>+g_B)=\lambda^*$</p>
+<p><strong>变量消除法的缺点</strong>：当$A_B$接近奇异矩阵时，求解过程的数值不稳定</p>
+<h3 id="零空间方法"><a href="#零空间方法" class="headerlink" title="零空间方法"></a>零空间方法</h3><p>零空间方法又称为广义变量消去法</p>
+<p>像空间R(A)是矩阵的列向量张成的空间，核空间又称为矩阵的零空间N(A^T)</p>
+<p>假定A是满秩，则将A分为两个互补的子空间，$R^n=R(A)+N(A^T)$，设$Y=[y_1,..,y_m]$是$R(A)$的一组线性无关向量，$Z=[z_1,…,z_{n-m}]$是$N(A^T)$的一组线性无关向量，我们可以选择$A,Z$使得$[Y\quad{Z}]$非奇异</p>
+<p>并满足$A^TY=I,A^TZ=0$</p>
+<p>令$x=Yx_y+Zx_z$，则$A^Tx=b$化为$A^TYx_y+A^TZx_z=b$</p>
+<p>所以$x_y=b$,则$x=Yb+Zx_z$，带入目标函数，得</p>
+<script type="math/tex; mode=display">
+\begin{align}
+令f(x)&= min\ \frac{1}{2}x^TGx+g^Tx\\
+&= \frac{1}{2}(Yb+Zx_z)^TG(Yb+Zx_z)+g^T(Yb+Zx_z)\\
+&= \frac{1}{2}x_z^TZ^TGZx_z+ (g+GYb)^TZx_z +\frac{1}{2}(2g+GYb)^TYb\\
+\end{align}</script><p>其中$Z^TGZ$为<strong>简约Hesse矩阵</strong>，若$Z^TGZ$正定，该问题的唯一解满足</p>
+<script type="math/tex; mode=display">
+\begin{align}
+\nabla{f(x)} &= Z^TGZx_z + (g+GYb)^TZ=0
+\end{align}</script><p>得到$(Z^TGZ)x_z=-((g+GYb)^TZ)^T = -Z^T(g+GYb)$</p>
+<p>最优解$x^<em>=Yb+Zx^</em>_z$,对应的$\lambda^<em>$满足$A\lambda^</em>=Gx^*+g$</p>
+<p>两边同左乘$Y^T$得到，$(A^TY)^T\lambda^<em>=Y^T(Gx^</em>+g)$，则$\lambda^<em>=Y^T(Gx^</em>+g)$</p>
+<p>零空间法适合解n-m较小的问题</p>
 <hr>
+<p>如何选取满足条件的Y和Z：</p>
+<ol>
+<li><p>用QR分解的方法：</p>
+<p>$A=Q\begin{bmatrix}R\\0\end{bmatrix}=\begin{bmatrix}Q_1&amp;Q_2\end{bmatrix}\begin{bmatrix}R\\0\end{bmatrix}=Q_1R$</p>
+<p>取$Y=Q_1R^{-T},\quad Z=Q_2$，则Y和Z满足条件</p>
+</li>
+<li><p>一般选取方法：</p>
+<p>任意选择满足$\begin{bmatrix}A&amp;V\end{bmatrix}$非奇异的$V\in{R^{n<em>(n-m)}}$,设$\begin{bmatrix}A&amp;V\end{bmatrix}^{-1}=\begin{bmatrix}Y^T\\Z^T\end{bmatrix}$,其中$Y\in{\mathbb{R^{n</em>m}}},Z\in{\mathbb{R^{n*(n-m)}}}$，则Y和Z满足条件    </p>
+</li>
+</ol>
+<h3 id="Lagrange方法"><a href="#Lagrange方法" class="headerlink" title="Lagrange方法"></a>Lagrange方法</h3><p>等式约束二次规划的Lagrange函数为：</p>
+<script type="math/tex; mode=display">
+L(x,\lambda) = \frac{1}{2}x^TGx+g^Tx-\lambda(A^Tx-b)</script><p>其KKT条件为：</p>
+<script type="math/tex; mode=display">
+\left\{\begin{align}
+& Gx+g-\lambda{A} = 0\\
+& A^Tx-b=0
+\end{align}\right.</script><p>表示为KKT方程组为：</p>
+<script type="math/tex; mode=display">
+\begin{bmatrix}G&-A\\-A^T&0\end{bmatrix}
+\begin{bmatrix}x\\\lambda\end{bmatrix}=
+\begin{bmatrix}-g\\-b\end{bmatrix}</script><p>其中$\begin{bmatrix}G&amp;-A\-A^T&amp;0\end{bmatrix}$为KKT矩阵</p>
+<p>设A满秩，$Z$满足$AZ=0$，也即$Z$的列组成了A的零空间，那么$Z^TGZ$是正定，则KKT矩阵非奇异且有唯一解，证明如下</p>
+<p>如果我们有$\begin{bmatrix}G&amp;-A\-A^T&amp;0\end{bmatrix}<br>\begin{bmatrix}u\\v\end{bmatrix}=0$</p>
+<p>得到$A^Tu=0$</p>
+<p>则$\begin{bmatrix}u^T&amp;v^T\end{bmatrix}\begin{bmatrix}G&amp;-A\-A^T&amp;0\end{bmatrix}<br>\begin{bmatrix}u\\v\end{bmatrix}=u^TGu=0$</p>
+<p>则对简约Hesse矩阵$Z^TGZ$，$u^TGu=u^TZ^TGZu=0$，因为$Z^TGZ&gt;0$，所以$u=0$</p>
+<p>根据$Gu-Av=0$，得到$Av=0\rightarrow v=0$</p>
+<hr>
+<p>设A行满秩，$Z^TGZ$正定，那么$x^*$是二次规划的唯一全局解</p>
+<p>对KKT矩阵准三角化</p>
+<script type="math/tex; mode=display">
+\begin{bmatrix}G&-A\\-A^T&0\end{bmatrix}
+\begin{bmatrix}I&G^{-1}A\\0&I\end{bmatrix}
+=\begin{bmatrix}G&0\\-A^T&-A^TG^{-1}A\end{bmatrix}</script><p>其中</p>
+<script type="math/tex; mode=display">
+\begin{bmatrix}I&G^{-1}A\\0&I\end{bmatrix}^{-1}
+=\begin{bmatrix}I&-G^{-1}A\\0&I\end{bmatrix}</script><p>所以</p>
+<script type="math/tex; mode=display">
+\begin{bmatrix}G&-A\\-A^T&0\end{bmatrix}
+=\begin{bmatrix}G&0\\-A^T&-A^TG^{-1}A\end{bmatrix}
+\begin{bmatrix}I&-G^{-1}A\\0&I\end{bmatrix}</script><p>带入KKT矩阵，得到</p>
+<script type="math/tex; mode=display">
+\begin{bmatrix}G&0\\-A^T&-A^TG^{-1}A\end{bmatrix}
+\begin{bmatrix}I&-G^{-1}A\\0&I\end{bmatrix}
+\begin{bmatrix}x\\\lambda\end{bmatrix}
+=-\begin{bmatrix}g\\b\end{bmatrix}</script><p>令</p>
+<script type="math/tex; mode=display">
+\begin{bmatrix}w\\\lambda\end{bmatrix}
+=\begin{bmatrix}I&-G^{-1}A\\0&I\end{bmatrix}
+\begin{bmatrix}x\\\lambda\end{bmatrix}\\
+
+\begin{bmatrix}w\\\lambda\end{bmatrix}
+=\begin{bmatrix}x-G^{-1}A\lambda\\\lambda\end{bmatrix}</script><p>则</p>
+<script type="math/tex; mode=display">
+\begin{bmatrix}G&0\\-A^T&-A^TG^{-1}A\end{bmatrix}
+\begin{bmatrix}w\\\lambda\end{bmatrix}
+=-\begin{bmatrix}g\\b\end{bmatrix}
+\\
+\begin{bmatrix}Gw\\-A^Tw-A^TG^{-1}A\lambda\end{bmatrix}
+=-\begin{bmatrix}g\\b\end{bmatrix}</script><p>所以得到</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&Gw=-g\\
+&A^TG^{-1}A\lambda=-A^Tw+b\\
+&Gx=A\lambda-g
+\end{aligned}</script><p>我们通过Cholesky分解的方法求解这三个方程，算法分为两部分：第一部分对矩阵G和$A^TG^{-1}A$的分解，第二部分为回代、求解。具体步骤如下：</p>
+<ol>
+<li><p>对矩阵G作Cholesky分解，求下三角阵L，得到$G=LL^T$</p>
+</li>
+<li><p>计算$V=A^TG^{-1}A$，求解三角矩阵方程$LY=A$得到Y，则$V=Y^TY$</p>
+<p>在这里，$V=A^TG^{-1}A=A^T(LL^T)^{-1}A=A^TL^{-T}L^{-1}A=(L^{-1}A)^T(L^{-1}A)$</p>
+<p>令$L^{-1}A=Y$，得到$LY=A$，求解后得到$Y$，带入就是$V=Y^TY$</p>
+</li>
+<li><p>对$V=A^TG^{-1}A$作Cholesky分解，使得$V=\tilde{L}\tilde{L}^T$</p>
+</li>
+<li><p>解方程：$Lu=-g,\quad L^Tw=u$，得到$w$，计算$\tilde{b}=-A^Tw+b$</p>
+<p>由于$G=LL^T$，带入$Gw=-g$得到$LL^Tw=-g$</p>
+<p>令$u=L^Tw$，则$Lu=-g$，解得$w$，令$\tilde b = -A^Tw+b$</p>
+</li>
+<li><p>解方程：$\tilde{L}v=\tilde{b},\quad \tilde{L}^T\lambda=v$,得到$\lambda^<em>$，再计算$\tilde{g}=A\lambda^</em>-g$</p>
+<p>由于$V=\tilde L\tilde L^T$，带入得$\tilde L\tilde L^T\lambda=\tilde b$</p>
+<p>令$v=\tilde L^T\lambda$,则$\tilde Lv=\tilde b$，解得$\lambda$。令$\tilde g = A\lambda^*-g$</p>
+</li>
+<li><p>解方程:$Ly=\tilde{g},\quad L^Tx=y$得到$x^*$</p>
+<p>将$G=LL^T$带入$Gx=\tilde g$，得到$LL^Tx=\tilde g$</p>
+<p>令$y=L^Tx$,则$Ly=\tilde g$,解出$x^*$</p>
+</li>
+</ol>
 
             </div>
             
@@ -225,7 +405,7 @@
     <script type="text/javascript">
         $(()=>{
             new QRCode("wechat-qr", {
-                text: "https://reiscarlet.github.io/2021/05/21/MAC/",
+                text: "https://reiscarlet.github.io/2021/05/31/%E4%BA%8C%E6%AC%A1%E8%A7%84%E5%88%92/",
                 width: 150,
                 height: 150,
                 correctLevel : QRCode.CorrectLevel.H
@@ -237,12 +417,14 @@
             const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
             const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
             const twitterBase   = "https://twitter.com/intent/tweet?";
-            const hostUrl       = "https://reiscarlet.github.io/2021/05/21/MAC/";
-            const title         = "「MAC」";
-            const excerpt       = `
-MACMAC地址(物理地址、硬件地址·)一般被固化在网卡的电可擦可编程只读存储器EEPROM中
-严格来说：MAC地址是对网络上各接口的唯一标识而不是网络上各设备的唯一标识
-MAC地址包含两部分：前24比特是组织唯一标识符(OUI)，...`;
+            const hostUrl       = "https://reiscarlet.github.io/2021/05/31/%E4%BA%8C%E6%AC%A1%E8%A7%84%E5%88%92/";
+            const title         = "「二次规划」";
+            const excerpt       = `[toc]
+二次规划二次规划问题（Quadratic Programming，QP）一般描述为：
+
+\begin{align}
+min\ q(x)&=\frac{1}{2}x^TGx+h^Tx,\\
+s.t.\ a_i^Tx &= b...`;
             let _URL;
             switch (dest) {
                 case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
@@ -261,10 +443,10 @@ MAC地址包含两部分：前24比特是组织唯一标识符(OUI)，...`;
                 <div class="footer-tag clearfix">
                     <div class="pull-left">
                     <i class="fa fa-tags"></i>
-                        <a class="tag-none-link" href="/tags/%E9%93%BE%E8%B7%AF%E5%B1%82/" rel="tag">链路层</a>
+                        <a class="tag-none-link" href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag">数学</a>
                     </div>
                     <div class="pull-date">
-                    <span>最后编辑：2021-05-22</span>
+                    <span>最后编辑：2021-05-31</span>
                     </div>
                 </div>
             </footer>
@@ -273,13 +455,9 @@ MAC地址包含两部分：前24比特是组织唯一标识符(OUI)，...`;
             <nav class="navigation post-navigation clearfix" role="navigation">
                 
                 <div class="nav-previous clearfix">
-                    <a title=" PPP协议" href="/2021/05/21/PPP协议/">&lt; 上一篇</a>
+                    <a title=" 序列二次规划" href="/2021/05/31/序列二次规划/">&lt; 上一篇</a>
                 </div>
                 
-                
-                <div class="nav-next clearfix">
-                    <a title=" TCP" href="/2021/05/21/TCP/">下一篇 &gt;</a>
-                </div>
                 
             </nav>
         

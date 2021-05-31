@@ -4,7 +4,7 @@
   <!-- 元数据 -->
   <meta charset="utf-8">
   <link rel="icon" href="">
-  <title>MAC | Reimilia</title>
+  <title>路由协议概述 | Reimilia</title>
   <meta name="author" content="Reimilia" />
   <meta http-equiv="Cache-Control" content="no-transform" />
   <meta http-equiv="Cache-Control" content="no-siteapp" />
@@ -13,20 +13,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <meta name="format-detection" content="telphone=no, email=no" />
   
-    <meta name="keywords" content="链路层" />
+    <meta name="keywords" content="网络层" />
   
-  <meta name="description" content="MACMAC地址(物理地址、硬件地址·)一般被固化在网卡的电可擦可编程只读存储器EEPROM中 严格来说：MAC地址是对网络上各接口的唯一标识而不是网络上各设备的唯一标识 MAC地址包含两部分：前24比特是组织唯一标识符(OUI)，由IEEE统一分配给设备制造商；后24位序列号是厂商分配给每个产品的唯一数值，由各个厂商自行分配 标准表示法：每4个比特写成一个16进制的字符，两个字符一组共六组，组">
+  <meta name="description" content="网络层提供的两种服务面向连接的虚电路服务 其思想是可靠通信通过网络来保证，在网络层进行建立连接，建立完后通信双方沿着建立的虚电路发送分组，每个分组使用短的虚电路号标记（构成虚电路的每一段链路都有一个虚电路编号），属于同一条虚电路的分组均按照同一路由进行转发，因为整个过程虚电路只有一条，分组总是顺序到达终点。如果通信方式再使用可靠数据传输的网络协议，就能使方式的分组最终正确到达接收方。通信结束后需要">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MAC">
-<meta property="og:url" content="https://reiscarlet.github.io/2021/05/21/MAC/index.html">
+<meta property="og:title" content="路由协议概述">
+<meta property="og:url" content="https://reiscarlet.github.io/2021/05/29/%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E6%A6%82%E8%BF%B0/index.html">
 <meta property="og:site_name" content="Reimilia">
-<meta property="og:description" content="MACMAC地址(物理地址、硬件地址·)一般被固化在网卡的电可擦可编程只读存储器EEPROM中 严格来说：MAC地址是对网络上各接口的唯一标识而不是网络上各设备的唯一标识 MAC地址包含两部分：前24比特是组织唯一标识符(OUI)，由IEEE统一分配给设备制造商；后24位序列号是厂商分配给每个产品的唯一数值，由各个厂商自行分配 标准表示法：每4个比特写成一个16进制的字符，两个字符一组共六组，组">
+<meta property="og:description" content="网络层提供的两种服务面向连接的虚电路服务 其思想是可靠通信通过网络来保证，在网络层进行建立连接，建立完后通信双方沿着建立的虚电路发送分组，每个分组使用短的虚电路号标记（构成虚电路的每一段链路都有一个虚电路编号），属于同一条虚电路的分组均按照同一路由进行转发，因为整个过程虚电路只有一条，分组总是顺序到达终点。如果通信方式再使用可靠数据传输的网络协议，就能使方式的分组最终正确到达接收方。通信结束后需要">
 <meta property="og:locale">
 <meta property="og:image" content="https://reiscarlet.github.io/null">
-<meta property="article:published_time" content="2021-05-21T01:19:22.220Z">
-<meta property="article:modified_time" content="2021-05-22T05:32:57.035Z">
+<meta property="article:published_time" content="2021-05-29T02:04:19.939Z">
+<meta property="article:modified_time" content="2021-05-29T02:06:23.383Z">
 <meta property="article:author" content="Reimilia">
-<meta property="article:tag" content="链路层">
+<meta property="article:tag" content="网络层">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://reiscarlet.github.io/null">
 <meta name="twitter:site" content="@null">
@@ -140,17 +140,17 @@
         <div class="kratos-hentry kratos-post-inner clearfix">
             <header class="kratos-entry-header">
                 
-                    <h1 class="kratos-entry-title text-center">MAC</h1>
+                    <h1 class="kratos-entry-title text-center">路由协议概述</h1>
                 
                 
                 <ul class="kratos-post-meta text-center">
-                    <li><i class="fa fa-calendar"></i> 2021-05-21</li>
+                    <li><i class="fa fa-calendar"></i> 2021-05-29</li>
                     <li><i class="fa fa-user"></i> 作者 Reimilia</li>
                     <li>
                         <i class="fa fa-edit"></i> 
                         
                         
-                            364
+                            ~2.42K
                         
                         字
                     </li>
@@ -159,19 +159,65 @@
             </header>
             <div class="kratos-post-content">
                 <div id="expire-alert" class="alert alert-warning hidden" role="alert">
-                    本文最后编辑于 <time datetime="1621661577035"></time> 前，其中的内容可能需要更新。
+                    本文最后编辑于 <time datetime="1622253983383"></time> 前，其中的内容可能需要更新。
                 </div>
                 
                 <hr />
-                <span id="more"></span>
-<h2 id="MAC"><a href="#MAC" class="headerlink" title="MAC"></a>MAC</h2><p>MAC地址(物理地址、硬件地址·)一般被固化在网卡的电可擦可编程只读存储器EEPROM中</p>
-<p><strong>严格来说：MAC地址是对网络上各接口的唯一标识而不是网络上各设备的唯一标识</strong></p>
-<p>MAC地址包含两部分：前24比特是组织唯一标识符(OUI)，由IEEE统一分配给设备制造商；后24位序列号是厂商分配给每个产品的唯一数值，由各个厂商自行分配</p>
-<p>标准表示法：每4个比特写成一个16进制的字符，两个字符一组共六组，组之间用‘-’或‘：’连接，例如XX-XX-XX-XX-XX-XX</p>
-<p>MAC地址中，第一字节的第7个比特取0表示<strong>全球管理</strong>，取1表示<strong>本地管理</strong></p>
-<p>IEEE802.3：MAC地址中，一个字节是$b_7b_6b_5b_4b_3b_2b_1b_0$，比特发送顺序是$b_0\rightarrow b_7$。字节发送顺序是第一字节到第六字节</p>
-<p><img src="/images/QQ截图20210405092607.jpg" alt=""></p>
-<hr>
+                <h1 id="网络层提供的两种服务"><a href="#网络层提供的两种服务" class="headerlink" title="网络层提供的两种服务"></a>网络层提供的两种服务</h1><p><strong>面向连接的虚电路服务</strong></p>
+<p>其思想是<strong>可靠通信通过网络来保证</strong>，<strong>在网络层进行建立连接</strong>，建立完后通信双方<strong>沿着建立的虚电路发送分组</strong>，每个分组使用短的虚电路号标记（构成虚电路的每一段链路都有一个虚电路编号），属于同一条虚电路的分组均按照同一路由进行转发，因为整个过程虚电路只有一条，<strong>分组总是顺序到达终点</strong>。如果通信方式再使用可靠数据传输的网络协议，就能使方式的分组最终正确到达接收方。通信结束后需要释放建立的虚电路</p>
+<p><strong>无连接的数据报服务</strong></p>
+<p>其思想是，可靠通信通过用户主机来保证。因为是无连接的，每个分组都有终点的完整地址，且每个分组可走不同的路由，分组也不一定个按序到达目的主机。在这个过程中很难去实现可靠数据传输，所以服务质量的保证很难去实现</p>
+<h1 id="路由选择协议概述"><a href="#路由选择协议概述" class="headerlink" title="路由选择协议概述"></a>路由选择协议概述</h1><p><strong>静态路由选择</strong>：</p>
+<p>由人工配置的网络路由、默认路由、特定主机路由、黑洞路由等。这种配置方式简单、开销小但是不能及时适应网络状态的变化，一般只在小规模网络中</p>
+<p>动态路由选择：通过路由选择协议<strong>自动获取路由信息</strong>，能较好的适应网络状态的变化</p>
+<p><strong>特点</strong>：</p>
+<ol>
+<li>自适应：动态路由选择，能较好的适应网络状态的变化</li>
+<li>分布式：路由之间交换路由信息</li>
+<li>分层次：将整个网络划分为许多较小的自治系统AS(Autonomous System)</li>
+</ol>
+<p><strong>自治系统</strong>：</p>
+<p>自治系统内的路由选择为域内路由选择，自治系统间的路由选择为<strong>域间路由选择</strong>，域间路由选择使用<strong>外部网关协议EGP</strong>这个类别的路由选择协议，而域内路由选择使用<strong>内部网关协议IGP</strong>这个类别的路由选择协议。因为早期因特网没有路由器，使用的是网关，所以是只是路由选择的分类名称。现在具体为<strong>外部路由协议ERP</strong>；一个自治系统内使用的内部网关协议与其他的自治系统无关，例如一个AS使用的内部网关协议为路由信息协议RIP，另一个AS可以是开放式最短路径优先OSPF协议。自治系统间使用的外部网关协议为<strong>边界网关协议BGP</strong>。</p>
+<p><strong>常见的路由选择协议：</strong></p>
+<ol>
+<li>内部网关协议IGP：<ol>
+<li>路由信息协议RIP：基于距离向量，在因特网中最早使用</li>
+<li>内部网关路由协议IGRP</li>
+<li>增强型内部网关路由协议EIGRP</li>
+<li>开放式最短路径优先OSPF：基于链路状态，在各种网络中广泛使用，集化成IS-IS是ISP骨干网上最常用的IGP协议</li>
+<li>中间系统到中间系统IS-IS</li>
+</ol>
+</li>
+<li>外部网关协议EGP：<ol>
+<li>边界网关协议BGP</li>
+</ol>
+</li>
+</ol>
+<p>转发表是从路由表得出，路由表形式（目的网络，吓一跳，路由条目类型）</p>
+<h1 id="路由选择标准"><a href="#路由选择标准" class="headerlink" title="路由选择标准"></a>路由选择标准</h1><ol>
+<li>跳数：经过节点数量的多少，越小越好</li>
+<li>地理距离：越小越好</li>
+<li>带宽：传输速度，越大越好</li>
+<li>负载：传输数据的量，越小越好</li>
+<li>通信成本：越小越好</li>
+<li>延迟：通信需要的时间，越小越好</li>
+</ol>
+<h1 id="静态路由配置"><a href="#静态路由配置" class="headerlink" title="静态路由配置"></a>静态路由配置</h1><p><strong>直连路由</strong>：接口与目的网络直连，下一跳不是路由器地址而是接口，（目的网络，接口，直连）</p>
+<p>静态路由的配置：如果路由器R1向R2的所连的目的网络转发IP数据报，R1的下一跳应该转发给R2，但是R1的路由表中无法自动计算出该目的网络的路由条目，所以需要我们手动配置到达该目的网络的路由条目，也就是（目的网络，接口0的网络地址，静态），其中R1的接口1向R2的接口0进行转发，该路由条目类型是<strong>静态路由</strong></p>
+<p><strong>默认路由</strong>：对于路由器中相同下一跳的不同目的网络，用默认路由替代，目的网络为0.0.0.0/0，下一跳为转发到该目的网络所连接的路由器的接口的网络地址（0.0.0.0/0，接口0的网络地址，静态），其中R1的接口1向R2的接口0进行转发</p>
+<p><strong>特定主机路由</strong>：路由器R1向R2中的某个特定主机的路由条目，R1接口1与R2接口0连接，形式为（特定主机的网络地址，接口0的网络地址，静态）</p>
+<h1 id="路由环路问题"><a href="#路由环路问题" class="headerlink" title="路由环路问题"></a>路由环路问题</h1><p>产生原因：</p>
+<ol>
+<li><strong>路由条目的下一条错误配置成其他路由的接口</strong>；例如有路由器R1-R2-R3连接着；R2向R1的某个目的地址转发数据报，在R2的路由表根据目的地址找出下一跳，但是R2的路由条目的错误配置成R3的接口，则R2向R3转发，R3在自己的路由表查到要转发到R1的目的地址，首先要将数据报转发给R2，这样数据报又回到了R2，R2又转发给R3，如此便形成了R2-&gt;R3-&gt;R2的环路</li>
+<li>聚合了不存在的网络：假如路由器R1-R2相连，R1连着多个网络，R2的路由条目中目的地址对R1的网络进行路由聚合，如果R2的目的地址聚合了不存在的路由，如果R2要转发IP数据报给不存在的网络时，在R2的路由表中找到了聚合路由对应路由器R1的接口为下一跳，这样R2就会向R1转发给数据报，数据报到达R1后，R1进行查表转发，但是数据报的目的地址并不存在，所以R1会向默认路由转发数据报，R1的默认路由为R2，R2收到该数据报后，又转发给R1，所以形成了R2-&gt;R1-&gt;R2的环路</li>
+<li><strong>网络故障导致的路由环路问题</strong>：假如路由器R1-R2相连，如果R1某个接口所直连的网络出现故障而不可达，R1的路由表会自动删除到达该目的地址的路由条目，之后R2向R1的该故障网络转发数据报，数据报到达R1后，由于找不到该目的网络，所以向默认路由也就是R2转发数据报，R2收到数据报后，又会向R1转发，这样就形成了R2-&gt;R1-&gt;R2的环路</li>
+</ol>
+<p>解决方法：</p>
+<ol>
+<li>对于问题1，只需要在IP数据报设置TTL字段，每次进入路由器TTL-1，只要TTL=0，如果还没到达目的网络，丢弃</li>
+<li>对于问题2，添加对于聚合了不存在的网络的黑洞路由，即下一条为null0，null0为路由器的虚拟接口，目的地址为被聚合的不存在的目的地址时，查表向null0转发数据报，也就是丢弃了该数据报，因为最长匹配原则，查表转发不会匹配到聚合路由的地址，而是匹配到黑洞路由的地址</li>
+<li>对于问题3，在R1的路由表中，添加该故障网络的黑洞路由，R1收到该数据报后会匹配到黑洞路由，则该数据报会进入黑洞，即被丢弃，如果故障网络好了，配置的黑洞路由自动失效，路由器重新自动算出新的直连路由条目，如果又故障了，之前配置的黑洞路由又自动生效</li>
+</ol>
 
             </div>
             
@@ -225,7 +271,7 @@
     <script type="text/javascript">
         $(()=>{
             new QRCode("wechat-qr", {
-                text: "https://reiscarlet.github.io/2021/05/21/MAC/",
+                text: "https://reiscarlet.github.io/2021/05/29/%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E6%A6%82%E8%BF%B0/",
                 width: 150,
                 height: 150,
                 correctLevel : QRCode.CorrectLevel.H
@@ -237,12 +283,10 @@
             const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
             const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
             const twitterBase   = "https://twitter.com/intent/tweet?";
-            const hostUrl       = "https://reiscarlet.github.io/2021/05/21/MAC/";
-            const title         = "「MAC」";
-            const excerpt       = `
-MACMAC地址(物理地址、硬件地址·)一般被固化在网卡的电可擦可编程只读存储器EEPROM中
-严格来说：MAC地址是对网络上各接口的唯一标识而不是网络上各设备的唯一标识
-MAC地址包含两部分：前24比特是组织唯一标识符(OUI)，...`;
+            const hostUrl       = "https://reiscarlet.github.io/2021/05/29/%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E6%A6%82%E8%BF%B0/";
+            const title         = "「路由协议概述」";
+            const excerpt       = `网络层提供的两种服务面向连接的虚电路服务
+其思想是可靠通信通过网络来保证，在网络层进行建立连接，建立完后通信双方沿着建立的虚电路发送分组，每个分组使用短的虚电路号标记（构成虚电路的每一段链路都有一个虚电路编号），属于同一条虚电路的分组...`;
             let _URL;
             switch (dest) {
                 case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
@@ -261,10 +305,10 @@ MAC地址包含两部分：前24比特是组织唯一标识符(OUI)，...`;
                 <div class="footer-tag clearfix">
                     <div class="pull-left">
                     <i class="fa fa-tags"></i>
-                        <a class="tag-none-link" href="/tags/%E9%93%BE%E8%B7%AF%E5%B1%82/" rel="tag">链路层</a>
+                        <a class="tag-none-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%B1%82/" rel="tag">网络层</a>
                     </div>
                     <div class="pull-date">
-                    <span>最后编辑：2021-05-22</span>
+                    <span>最后编辑：2021-05-29</span>
                     </div>
                 </div>
             </footer>
@@ -273,12 +317,12 @@ MAC地址包含两部分：前24比特是组织唯一标识符(OUI)，...`;
             <nav class="navigation post-navigation clearfix" role="navigation">
                 
                 <div class="nav-previous clearfix">
-                    <a title=" PPP协议" href="/2021/05/21/PPP协议/">&lt; 上一篇</a>
+                    <a title=" 罚函数、增广拉格朗日函数" href="/2021/05/26/罚函数方法/">&lt; 上一篇</a>
                 </div>
                 
                 
                 <div class="nav-next clearfix">
-                    <a title=" TCP" href="/2021/05/21/TCP/">下一篇 &gt;</a>
+                    <a title=" 序列二次规划" href="/2021/05/31/序列二次规划/">下一篇 &gt;</a>
                 </div>
                 
             </nav>
