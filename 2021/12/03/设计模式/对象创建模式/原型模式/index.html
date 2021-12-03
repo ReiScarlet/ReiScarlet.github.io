@@ -4,7 +4,7 @@
   <!-- 元数据 -->
   <meta charset="utf-8">
   <link rel="icon" href="">
-  <title>Reimilia</title>
+  <title>原型模式Prototype | Reimilia</title>
   <meta name="author" content="Reimilia" />
   <meta http-equiv="Cache-Control" content="no-transform" />
   <meta http-equiv="Cache-Control" content="no-siteapp" />
@@ -13,19 +13,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <meta name="format-detection" content="telphone=no, email=no" />
   
-    <meta name="keywords" content="" />
+    <meta name="keywords" content="编程" />
   
-  <meta name="description" content="原型模式Prototype1.1 动机在软件系统中，经常面临着”某些结构复杂的对象“的创建工作；由于需求的变化，这些对象经常面临着剧烈的变化，但是它们却拥有稳定一致的接口 如何应对这种变化？如何向”客户程序(使用这些对象的程序)”隔离出”这些易变对象”，从而使得这些易变对象的客户程序”不需要随着需求改变而改变” 1.2 讲解1234567891011121314151617181920212223">
+  <meta name="description" content="1.1 动机在软件系统中，经常面临着”某些结构复杂的对象“的创建工作；由于需求的变化，这些对象经常面临着剧烈的变化，但是它们却拥有稳定一致的接口 如何应对这种变化？如何向”客户程序(使用这些对象的程序)”隔离出”这些易变对象”，从而使得这些易变对象的客户程序”不需要随着需求改变而改变” 1.2 讲解12345678910111213141516171819202122232425262728293">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Reimilia">
+<meta property="og:title" content="原型模式Prototype">
 <meta property="og:url" content="https://reiscarlet.github.io/2021/12/03/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA%E6%A8%A1%E5%BC%8F/%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F/index.html">
 <meta property="og:site_name" content="Reimilia">
-<meta property="og:description" content="原型模式Prototype1.1 动机在软件系统中，经常面临着”某些结构复杂的对象“的创建工作；由于需求的变化，这些对象经常面临着剧烈的变化，但是它们却拥有稳定一致的接口 如何应对这种变化？如何向”客户程序(使用这些对象的程序)”隔离出”这些易变对象”，从而使得这些易变对象的客户程序”不需要随着需求改变而改变” 1.2 讲解1234567891011121314151617181920212223">
+<meta property="og:description" content="1.1 动机在软件系统中，经常面临着”某些结构复杂的对象“的创建工作；由于需求的变化，这些对象经常面临着剧烈的变化，但是它们却拥有稳定一致的接口 如何应对这种变化？如何向”客户程序(使用这些对象的程序)”隔离出”这些易变对象”，从而使得这些易变对象的客户程序”不需要随着需求改变而改变” 1.2 讲解12345678910111213141516171819202122232425262728293">
 <meta property="og:locale">
 <meta property="og:image" content="https://reiscarlet.github.io/null">
 <meta property="article:published_time" content="2021-12-03T06:10:53.086Z">
-<meta property="article:modified_time" content="2021-12-02T13:18:13.765Z">
+<meta property="article:modified_time" content="2021-12-03T06:14:21.423Z">
 <meta property="article:author" content="Reimilia">
+<meta property="article:tag" content="编程">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://reiscarlet.github.io/null">
 <meta name="twitter:site" content="@null">
@@ -139,6 +140,8 @@
         <div class="kratos-hentry kratos-post-inner clearfix">
             <header class="kratos-entry-header">
                 
+                    <h1 class="kratos-entry-title text-center">原型模式Prototype</h1>
+                
                 
                 <ul class="kratos-post-meta text-center">
                     <li><i class="fa fa-calendar"></i> 2021-12-03</li>
@@ -147,7 +150,7 @@
                         <i class="fa fa-edit"></i> 
                         
                         
-                            ~3.22K
+                            ~3.21K
                         
                         字
                     </li>
@@ -156,11 +159,11 @@
             </header>
             <div class="kratos-post-content">
                 <div id="expire-alert" class="alert alert-warning hidden" role="alert">
-                    本文最后编辑于 <time datetime="1638451093765"></time> 前，其中的内容可能需要更新。
+                    本文最后编辑于 <time datetime="1638512061423"></time> 前，其中的内容可能需要更新。
                 </div>
                 
                 <hr />
-                <h1 id="原型模式Prototype"><a href="#原型模式Prototype" class="headerlink" title="原型模式Prototype"></a>原型模式Prototype</h1><h2 id="1-1-动机"><a href="#1-1-动机" class="headerlink" title="1.1 动机"></a>1.1 动机</h2><p>在软件系统中，经常面临着”<strong>某些结构复杂的对象</strong>“的创建工作；由于需求的变化，这些对象经常面临着剧烈的变化，但是它们却拥有<strong>稳定一致的接口</strong></p>
+                <h2 id="1-1-动机"><a href="#1-1-动机" class="headerlink" title="1.1 动机"></a>1.1 动机</h2><p>在软件系统中，经常面临着”<strong>某些结构复杂的对象</strong>“的创建工作；由于需求的变化，这些对象经常面临着剧烈的变化，但是它们却拥有<strong>稳定一致的接口</strong></p>
 <p>如何应对这种变化？如何向”客户程序(使用这些对象的程序)”隔离出”这些易变对象”，从而使得这些易变对象的客户程序”不需要随着需求改变而改变”</p>
 <h2 id="1-2-讲解"><a href="#1-2-讲解" class="headerlink" title="1.2 讲解"></a>1.2 讲解</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 工厂的抽象</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SplitterFactory</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> ISplitter* <span class="title">CreateSplitter</span><span class="params">()</span></span>=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">SplitterFactory</span>()&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 抽象类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ISplitter</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">split</span><span class="params">()</span></span>=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">ISplitter</span>()&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 具体工厂</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BinarySplitterFacotry</span> :</span> <span class="keyword">public</span> SplitterFactory&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> ISplitter* <span class="title">CreateSplitter</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">BinarySplitter</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TxtSplitterFacotry</span> :</span> <span class="keyword">public</span> SplitterFactory&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> ISplitter* <span class="title">CreateSplitter</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">TxtSplitter</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">VideoSplitterFacotry</span> :</span> <span class="keyword">public</span> SplitterFactory&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> ISplitter* <span class="title">CreateSplitter</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">VideoSplitter</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PictureSplitterFacotry</span> :</span> <span class="keyword">public</span> SplitterFactory&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> ISplitter* <span class="title">CreateSplitter</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">PictureSplitter</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//具体类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BinarySplitter</span> :</span> <span class="keyword">public</span> ISplitter&#123;&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TxtSplitter</span> :</span> <span class="keyword">public</span> ISplitter&#123;&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PitureSplitter</span> :</span> <span class="keyword">public</span> ISplitter&#123;&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">VideoSplitter</span> :</span> <span class="keyword">public</span> ISplitter&#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 客户程序</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainForm</span> :</span> <span class="keyword">public</span> Form&#123;</span><br><span class="line">	SplitterFactory* factory;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="built_in">MainForm</span>(SplitterFactory* factory)&#123;</span><br><span class="line">		<span class="keyword">this</span>-&gt;factory = factory;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Button1_click</span><span class="params">()</span></span>&#123;</span><br><span class="line">        ISplitter* splitter = factory-&gt;<span class="built_in">CreateSplitter</span>();<span class="comment">//多态new</span></span><br><span class="line">        splitter-&gt;<span class="built_in">split</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>我们可以对抽象类进行一些改变</p>
@@ -240,9 +243,9 @@
             const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
             const twitterBase   = "https://twitter.com/intent/tweet?";
             const hostUrl       = "https://reiscarlet.github.io/2021/12/03/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA%E6%A8%A1%E5%BC%8F/%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F/";
-            const title         = "「」";
-            const excerpt       = `原型模式Prototype1.1 动机在软件系统中，经常面临着”某些结构复杂的对象“的创建工作；由于需求的变化，这些对象经常面临着剧烈的变化，但是它们却拥有稳定一致的接口
-如何应对这种变化？如何向”客户程序(使用这些对象的程序)”隔离...`;
+            const title         = "「原型模式Prototype」";
+            const excerpt       = `1.1 动机在软件系统中，经常面临着”某些结构复杂的对象“的创建工作；由于需求的变化，这些对象经常面临着剧烈的变化，但是它们却拥有稳定一致的接口
+如何应对这种变化？如何向”客户程序(使用这些对象的程序)”隔离出”这些易变对象”，从而使...`;
             let _URL;
             switch (dest) {
                 case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
@@ -261,10 +264,10 @@
                 <div class="footer-tag clearfix">
                     <div class="pull-left">
                     <i class="fa fa-tags"></i>
-                        
+                        <a class="tag-none-link" href="/tags/%E7%BC%96%E7%A8%8B/" rel="tag">编程</a>
                     </div>
                     <div class="pull-date">
-                    <span>最后编辑：2021-12-02</span>
+                    <span>最后编辑：2021-12-03</span>
                     </div>
                 </div>
             </footer>
@@ -278,7 +281,7 @@
                 
                 
                 <div class="nav-next clearfix">
-                    <a title=" (无标题)" href="/2021/12/03/设计模式/对象创建模式/工厂模式/">下一篇 &gt;</a>
+                    <a title=" 工厂模式Factory  Method" href="/2021/12/03/设计模式/对象创建模式/工厂模式/">下一篇 &gt;</a>
                 </div>
                 
             </nav>
@@ -311,7 +314,7 @@
                 
   <aside id="krw-categories" class="widget widget-kratos-categories clearfix">
     <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E5%80%BC%E6%9C%80%E4%BC%98%E5%8C%96/">数值最优化</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E5%AD%A6/">数学</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a><span class="category-list-count">12</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E4%B8%AD%E5%A4%AE%E5%A4%84%E7%90%86%E5%99%A8/">中央处理器</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/">存储系统</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/">指令系统</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/">计算机系统概论</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%B3%BB%E7%BB%9F/">输入输出系统</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/">运算方法和运算器</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a><span class="category-list-count">24</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/">IP网络协议</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E4%BA%A4%E6%8D%A2%E6%8A%80%E6%9C%AF/">交换技术</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/">网络传输、设备与企业网架构</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/">网络体系架构与网络协议</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%B7%AF%E7%94%B1%E6%8A%80%E6%9C%AF/">路由技术</a><span class="category-list-count">3</span></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E5%80%BC%E6%9C%80%E4%BC%98%E5%8C%96/">数值最优化</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E5%AD%A6/">数学</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a><span class="category-list-count">11</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/">存储系统</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E7%AC%AC%E4%BA%8C%E7%AB%A0/">第二章</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/">计算机系统概论</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86-%E4%B8%AD%E5%A4%AE%E5%A4%84%E7%90%86%E5%99%A8/">计算机组成原理 - 中央处理器</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%B3%BB%E7%BB%9F/">计算机组成原理 - 输入输出系统</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a><span class="category-list-count">28</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E4%BA%A4%E6%8D%A2%E6%8A%80%E6%9C%AF/">交换技术</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E5%85%B8%E5%9E%8B%E5%BA%94%E7%94%A8%E5%B1%82%E5%8D%8F%E8%AE%AE/">典型应用层协议</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E5%85%B8%E5%9E%8B%E7%9A%84%E5%BA%94%E7%94%A8%E5%B1%82%E5%8D%8F%E8%AE%AE/">典型的应用层协议</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%AC%AC%E5%9B%9B%E7%AB%A0/">第四章</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%B7%AF%E7%94%B1%E6%8A%80%E6%9C%AF/">路由技术</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA%E6%A8%A1%E5%BC%8F/">对象创建模式</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%AF%B9%E8%B1%A1%E6%80%A7%E8%83%BD%E6%A8%A1%E5%BC%8F/">对象性能模式</a><span class="category-list-count">1</span></li></ul></li></ul>
   </aside>
 
 
@@ -320,7 +323,7 @@
   <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
     <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
       <div class="tag-clouds">
-        <a href="/tags/%E4%B9%A0%E9%A2%98/" style="font-size: 0.6em;">习题</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 0.6em;">数学</a> <a href="/tags/%E6%95%B0%E5%AD%A6%E8%AF%81%E6%98%8E/" style="font-size: 0.68em;">数学证明</a> <a href="/tags/%E7%89%A9%E7%90%86%E5%B1%82/" style="font-size: 0.72em;">物理层</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 0.76em;">笔记</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 0.6em;">网络传输、设备与企业网架构</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%B1%82/" style="font-size: 0.8em;">网络层</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%BF%B0/" style="font-size: 0.64em;">计算机网络概述</a> <a href="/tags/%E8%BF%90%E8%BE%93%E5%B1%82/" style="font-size: 0.6em;">运输层</a> <a href="/tags/%E9%93%BE%E8%B7%AF%E5%B1%82/" style="font-size: 0.68em;">链路层</a>
+        <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 0.77em;">IP网络协议</a> <a href="/tags/%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/" style="font-size: 0.63em;">存储系统</a> <a href="/tags/%E5%BA%94%E7%94%A8%E5%B1%82/" style="font-size: 0.74em;">应用层</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 0.6em;">数学</a> <a href="/tags/%E6%95%B0%E5%AD%A6%E8%AF%81%E6%98%8E/" style="font-size: 0.66em;">数学证明</a> <a href="/tags/%E7%89%A9%E7%90%86%E5%B1%82/" style="font-size: 0.71em;">物理层</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 0.8em;">笔记</a> <a href="/tags/%E7%BC%96%E7%A8%8B/" style="font-size: 0.71em;">编程</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 0.71em;">网络传输、设备与企业网架构</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%B1%82/" style="font-size: 0.74em;">网络层</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%BF%B0/" style="font-size: 0.63em;">计算机网络概述</a> <a href="/tags/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" style="font-size: 0.69em;">运算方法和运算器</a> <a href="/tags/%E8%BF%90%E8%BE%93%E5%B1%82/" style="font-size: 0.6em;">运输层</a> <a href="/tags/%E9%93%BE%E8%B7%AF%E5%B1%82/" style="font-size: 0.6em;">链路层</a>
       </div>
   </aside>
 
@@ -334,67 +337,76 @@
         
           
           
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-            <a class="list-group-item" href="/2021/08/28/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/"><i class="fa  fa-book"></i> 计算机系统概论</a>
+            <a class="list-group-item" href="/2021/12/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/%E9%AB%98%E9%80%9F%E7%BC%93%E5%86%B2%E5%AD%98%E5%82%A8%E5%99%A8/"><i class="fa  fa-book"></i> Cache</a>
             
           
         
           
           
-            <a class="list-group-item" href="/2021/08/28/%E9%80%9A%E9%81%93%E6%96%B9%E5%BC%8F/"><i class="fa  fa-book"></i> 通道方式</a>
+            <a class="list-group-item" href="/2021/12/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/%E9%9A%8F%E6%9C%BA%E8%AF%BB%E5%86%99%E5%AD%98%E5%82%A8%E5%99%A8/"><i class="fa  fa-book"></i> 随机读写存储器</a>
             
           
         
           
           
-            <a class="list-group-item" href="/2021/08/28/%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%8E%A5%E5%8F%A3/"><i class="fa  fa-book"></i> 输入输出接口</a>
+            <a class="list-group-item" href="/2021/12/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/%E5%AD%98%E5%82%A8%E5%99%A8%E7%9A%84%E7%BB%84%E6%88%90/"><i class="fa  fa-book"></i> 存储器的组成</a>
             
           
         
           
           
-            <a class="list-group-item" href="/2021/08/28/%E7%A8%8B%E5%BA%8F%E4%B8%AD%E6%96%AD%E6%96%B9%E5%BC%8F/"><i class="fa  fa-book"></i> 程序中断方式</a>
+            <a class="list-group-item" href="/2021/12/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/%E4%B8%BB%E5%AD%98%E5%82%A8%E5%99%A8%E7%9A%84%E8%BF%9E%E6%8E%A5%E4%B8%8E%E6%8E%A7%E5%88%B6/"><i class="fa  fa-book"></i> 主存储器的连接与控制</a>
             
           
         
           
           
-            <a class="list-group-item" href="/2021/08/28/%E5%BE%AE%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E5%99%A8/"><i class="fa  fa-book"></i> 微程序控制器</a>
+            <a class="list-group-item" href="/2021/12/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/%E4%B8%BB%E5%AD%98%E5%82%A8%E5%99%A8/"><i class="fa  fa-book"></i> 主存储器</a>
             
           
         
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
           
             
           

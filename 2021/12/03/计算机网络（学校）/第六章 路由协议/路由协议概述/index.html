@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+  <!-- 元数据 -->
+  <meta charset="utf-8">
+  <link rel="icon" href="">
+  <title>路由协议概述 | Reimilia</title>
+  <meta name="author" content="Reimilia" />
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="robots" content="index,follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="format-detection" content="telphone=no, email=no" />
+  
+    <meta name="keywords" content="网络层" />
+  
+  <meta name="description" content="[toc] 网络层提供的两种服务1. 面向连接的虚电路服务 其思想是可靠通信通过网络来保证，在网络层进行建立连接，建立完后通信双方沿着建立的虚电路发送分组，每个分组使用短的虚电路号标记（构成虚电路的每一段链路都有一个虚电路编号），属于同一条虚电路的分组均按照同一路由进行转发，因为整个过程虚电路只有一条，分组总是顺序到达终点。如果通信方式再使用可靠数据传输的网络协议，就能使方式的分组最终正确到达接收">
+<meta property="og:type" content="article">
+<meta property="og:title" content="路由协议概述">
+<meta property="og:url" content="https://reiscarlet.github.io/2021/12/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%88%E5%AD%A6%E6%A0%A1%EF%BC%89/%E7%AC%AC%E5%85%AD%E7%AB%A0%20%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE/%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E6%A6%82%E8%BF%B0/index.html">
+<meta property="og:site_name" content="Reimilia">
+<meta property="og:description" content="[toc] 网络层提供的两种服务1. 面向连接的虚电路服务 其思想是可靠通信通过网络来保证，在网络层进行建立连接，建立完后通信双方沿着建立的虚电路发送分组，每个分组使用短的虚电路号标记（构成虚电路的每一段链路都有一个虚电路编号），属于同一条虚电路的分组均按照同一路由进行转发，因为整个过程虚电路只有一条，分组总是顺序到达终点。如果通信方式再使用可靠数据传输的网络协议，就能使方式的分组最终正确到达接收">
+<meta property="og:locale">
+<meta property="og:image" content="https://reiscarlet.github.io/null">
+<meta property="article:published_time" content="2021-12-03T06:16:47.974Z">
+<meta property="article:modified_time" content="2021-07-08T08:13:45.620Z">
+<meta property="article:author" content="Reimilia">
+<meta property="article:tag" content="网络层">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://reiscarlet.github.io/null">
+<meta name="twitter:site" content="@null">
+  
+  <!-- 站点验证相关 -->
+  
+    
+    
+    
+  
+  <!-- 样式表文件 -->
+  <link rel="stylesheet" id="kratos-css" href="/css/kratosr.min.css" type="text/css" media="all">
+  
+    <link rel="stylesheet" id="highlight-css" href="/css/highlight/night-eighties.min.css" type="text/css" media="all">
+  
+  
+  <link rel="stylesheet" id="fontawe-css" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" type="text/css" media="all">
+  <link rel="stylesheet" id="nprogress-css" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" type="text/css" media="all">
+  
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  
+    <link rel="stylesheet" id="darkmode-css" href="/css/kr-dark.min.css" type="text/css" media="all">
+  
+  <!-- 不得不预先加载的一些JS文件 -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  
+    <script src="https://cdn.jsdelivr.net/npm/qrcode_js@1.0.0/qrcode.min.js"></script>
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+    <body class="custom-background">
+        <div id="kratos-wrapper">
+    <div id="kratos-page">
+        <div id="kratos-header">
+            <header id="kratos-desktop-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="nav-header">
+                        <nav id="kratos-menu-wrap">
+                            <ul id="kratos-primary-menu" class="sf-menu">
+                                
+                                    
+                                        <li><a href="/"><i class="fa fa-home"></i>首页</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/archives/"><i class="fa fa-file"></i>档案馆</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/friends/"><i class="fa fa-paw"></i>好伙伴</a></li>
+                                    
+                                
+                                    
+                                        <li>
+                                            <a><i class="fa fa-link"></i>链接</a>
+                                            <ul class="sub-menu">
+                                                
+                                                    
+                                                
+                                                    
+                                                        <li><a target="_blank" rel="noopener" href="https://candinya.com">作者博客</a></li>
+                                                    
+                                                
+                                                    
+                                                        <li><a target="_blank" rel="noopener" href="https://github.com/Candinya/Kratos-Rebirth">项目链接</a></li>
+                                                    
+                                                
+                                            </ul>
+                                        </li>
+                                    
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+            <header id="kratos-mobile-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="color-logo"><a href="/">Reimilia</a></div>
+                    <div class="nav-toggle">
+                        <a class="kratos-nav-toggle js-kratos-nav-toggle">
+                            <i></i>
+                        </a>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="kratos-start kratos-hero-2">
+            <!-- <div class="kratos-overlay"></div> -->
+            <div class="kratos-cover kratos-cover-2 text-center">
+                <div class="desc desc2 animate-box">
+                    <a href="/">
+                        <h2>Reimilia</h2> <br />
+                        <span></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="kratos-blog-post">
+            <div class="container">
+                <div id="main" class="row">
+                    
+
+        <section class="col-md-8">
+    <article>
+        <div class="kratos-hentry kratos-post-inner clearfix">
+            <header class="kratos-entry-header">
+                
+                    <h1 class="kratos-entry-title text-center">路由协议概述</h1>
+                
+                
+                <ul class="kratos-post-meta text-center">
+                    <li><i class="fa fa-calendar"></i> 2021-12-03</li>
+                    <li><i class="fa fa-user"></i> 作者 Reimilia</li>
+                    <li>
+                        <i class="fa fa-edit"></i> 
+                        
+                        
+                            ~2.57K
+                        
+                        字
+                    </li>
+                    
+                </ul>
+            </header>
+            <div class="kratos-post-content">
+                <div id="expire-alert" class="alert alert-warning hidden" role="alert">
+                    本文最后编辑于 <time datetime="1625732025620"></time> 前，其中的内容可能需要更新。
+                </div>
+                
+                <hr />
+                <p>[toc]</p>
+<h1 id="网络层提供的两种服务"><a href="#网络层提供的两种服务" class="headerlink" title="网络层提供的两种服务"></a>网络层提供的两种服务</h1><p><strong><font color='red'>1. 面向连接的虚电路服务</font></strong></p>
+<p>其思想是<strong><font color='yellow'>可靠通信通过网络来保证，在网络层进行建立连接</font></strong>，建立完后通信双方<strong><font color='yellow'>沿着建立的虚电路发送分组</font></strong>，<u>每个分组使用短的虚电路号标记（构成虚电路的每一段链路都有一个虚电路编号），属于同一条虚电路的分组均按照同一路由进行转发</u>，<strong>因为整个过程虚电路只有一条，分组总是顺序到达终点</strong>。如果通信方式再使用可靠数据传输的网络协议，就能使方式的分组最终正确到达接收方。<strong><font color='yellow'>通信结束后需要释放建立的虚电路</font></strong></p>
+<p><strong><font color='red'>2. 无连接的数据报服务</font></strong></p>
+<p>其思想是，<strong><font color='yellow'>可靠通信通过用户主机来保证</font></strong>。因为是无连接的，每个分组都有终点的完整地址，且每个分组可走不同的路由，分组也不一定个按序到达目的主机。在这个过程中很难去实现可靠数据传输，所以服务质量的保证很难去实现</p>
+<h1 id="路由选择协议概述"><a href="#路由选择协议概述" class="headerlink" title="路由选择协议概述"></a>路由选择协议概述</h1><p><strong>静态路由选择</strong>：</p>
+<p>由人工配置的网络路由、默认路由、特定主机路由、黑洞路由等。这种配置方式简单、开销小但是不能及时适应网络状态的变化，一般只在小规模网络中</p>
+<p><strong>动态路由选择</strong>：</p>
+<p>通过路由选择协议<strong><font color='red'>自动获取路由信息</font></strong>，能较好的适应网络状态的变化</p>
+<p><strong>特点</strong>：</p>
+<ol>
+<li>自适应：动态路由选择，能较好的适应网络状态的变化</li>
+<li>分布式：路由之间交换路由信息</li>
+<li>分层次：将整个网络划分为许多较小的自治系统AS(Autonomous System)</li>
+</ol>
+<hr>
+<p><strong>自治系统</strong>：</p>
+<p>自治系统内的路由选择为<strong><font color=yellow>域内路由选择</font></strong>，自治系统间的路由选择为<strong><font color='yellow'>域间路由选择</font></strong>;</p>
+<p>域间路由选择使用<strong><font color='yellow'>外部网关协议EGP</font></strong>这个<u>类别</u>的路由选择协议，而域内路由选择使用<strong><font color='yellow'>内部网关协议IGP</font></strong>这个类别的路由选择协议。</p>
+<p>因为早期因特网没有路由器，使用的是网关，所以是只是路由选择的分类名称。现在具体为<strong><font color='yellow'>外部路由协议ERP</font></strong>；<u></u>。自治系统间使用的外部网关协议为<strong><font color='yellow'>边界网关协议BGP</font></strong>。</p>
+<p>一个自治系统内使用的内部网关协议与其他的自治系统无关，例如一个AS使用的内部网关协议为路由信息协议RIP，另一个AS可以是开放式最短路径优先OSPF协议；</p>
+<hr>
+<p><strong>常见的路由选择协议：</strong></p>
+<ol>
+<li>内部网关协议IGP：<ol>
+<li>路由信息协议RIP：基于距离向量，在因特网中最早使用</li>
+<li>内部网关路由协议IGRP</li>
+<li>增强型内部网关路由协议EIGRP</li>
+<li>开放式最短路径优先OSPF：基于链路状态，在各种网络中广泛使用，集化成IS-IS是ISP骨干网上最常用的IGP协议</li>
+<li>中间系统到中间系统IS-IS</li>
+</ol>
+</li>
+<li>外部网关协议EGP：<ol>
+<li>边界网关协议BGP</li>
+</ol>
+</li>
+</ol>
+<p>转发表是从路由表得出，<strong><font color='red'>路由表形式（目的网络，下一跳，路由条目类型）</font></strong></p>
+<h1 id="路由选择标准"><a href="#路由选择标准" class="headerlink" title="路由选择标准"></a>路由选择标准</h1><ol>
+<li>跳数：经过节点数量的多少，越小越好</li>
+<li>地理距离：越小越好</li>
+<li>带宽：传输速度，越大越好</li>
+<li>负载：传输数据的量，越小越好</li>
+<li>通信成本：越小越好</li>
+<li>延迟：通信需要的时间，越小越好</li>
+</ol>
+<h1 id="静态路由配置"><a href="#静态路由配置" class="headerlink" title="静态路由配置"></a>静态路由配置</h1><p><strong>直连路由</strong>：接口与目的网络直连，<strong><font color='red'>下一条不是路由器地址而是接口</font></strong>，（目的网络，接口，直连）</p>
+<p>静态路由的配置：如果路由器R1向R2的所连的目的网络转发IP数据报，R1的下一跳应该转发给R2，但是R1的路由表中无法自动计算出该目的网络的路由条目，所以需要我们手动配置到达该目的网络的路由条目，也就是（目的网络，接口0的网络地址，静态），其中R1的接口1向R2的接口0进行转发，该路由条目类型是<strong><font color='yellow'>静态路由</font></strong></p>
+<p><strong>默认路由</strong>：是对IP数据包中的目的地址找不到存在的其他路由时，路由器所选择的路由。对于<u>路由器中相同下一跳的不同目的网络，用默认路由替代</u>，目的网络为0.0.0.0/0，下一跳为转发到该目的网络所连接的路由器的接口的网络地址（0.0.0.0/0，接口0的网络地址，静态），其中R1的接口1向R2的接口0进行转发。<font color='yellow'>举个例子：如果R1想要转发IP数据报给包含众多网络的因特网，人工一条条配静态路由是不可能的，我们可以直接配到这个因特网默认路由，对于到该因特网的数据报，直接转发给默认路由就是了</font></p>
+<p><strong>特定主机路由</strong>：路由器R1向R2中的某个特定主机的路由条目，R1接口1与R2接口0连接，形式为（特定主机的网络地址，接口0的网络地址，静态）</p>
+<h1 id="路由环路问题"><a href="#路由环路问题" class="headerlink" title="路由环路问题"></a>路由环路问题</h1><p>产生原因：</p>
+<ol>
+<li><strong><font color=red>路由条目的下一条错误配置成其他路由的接口</font></strong>；例如有路由器R1-R2-R3连接着；R2向R1的某个目的地址转发数据报，在R2的路由表根据目的地址找出下一跳，但是R2的路由条目的错误配置成R3的接口，则R2向R3转发，R3在自己的路由表查到要转发到R1的目的地址，首先要将数据报转发给R2，这样数据报又回到了R2，R2又转发给R3，如此便形成了R2-&gt;R3-&gt;R2的环路</li>
+<li><strong><font color=red>聚合了不存在的网络</font></strong>：假如路由器R1-R2相连，R1连着多个网络，R2的路由条目中目的地址对R1的网络进行路由聚合，如果R2的目的地址聚合了不存在的路由，如果R2要转发IP数据报给不存在的网络时，在R2的路由表中找到了聚合路由对应路由器R1的接口为下一跳，这样R2就会向R1转发给数据报，数据报到达R1后，R1进行查表转发，但是数据报的目的地址并不存在，所以R1会向默认路由转发数据报，R1的默认路由为R2，R2收到该数据报后，又转发给R1，所以形成了R2-&gt;R1-&gt;R2的环路</li>
+<li><strong><font color=red>网络故障导致的路由环路问题</font></strong>：假如路由器R1-R2相连，如果R1某个接口所直连的网络出现故障而不可达，R1的路由表会自动删除到达该目的地址的路由条目，之后R2向R1的该故障网络转发数据报，数据报到达R1后，由于找不到该目的网络，所以向默认路由也就是R2转发数据报，R2收到数据报后，又会向R1转发，这样就形成了R2-&gt;R1-&gt;R2的环路</li>
+</ol>
+<p>解决方法：</p>
+<ol>
+<li>对于问题1，只需要在IP数据报设置TTL字段，每次进入路由器TTL-1，只要TTL=0，如果还没到达目的网络，丢弃</li>
+<li>对于问题2，添加对于聚合了不存在的网络的黑洞路由，即下一条为null0，<strong><font color=red>null0为路由器的虚拟接口</font></strong>，目的地址为被聚合的不存在的目的地址时，查表向null0转发数据报，也就是丢弃了该数据报，因为最长匹配原则，查表转发不会匹配到聚合路由的地址，而是匹配到黑洞路由的地址</li>
+<li>对于问题3，在R1的路由表中，添加该故障网络的黑洞路由，R1收到该数据报后会匹配到黑洞路由，则该数据报会进入黑洞，即被丢弃，如果故障网络好了，配置的黑洞路由自动失效，路由器重新自动算出新的直连路由条目，如果又故障了，之前配置的黑洞路由又自动生效</li>
+</ol>
+
+            </div>
+            
+                <div class="kratos-copyright text-center clearfix">
+                    <h5>本作品采用 <a rel="license nofollow" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可</h5>
+                </div>
+            
+            <footer class="kratos-entry-footer clearfix">
+                
+                    <div class="post-like-donate text-center clearfix" id="post-like-donate">
+                    
+                    
+                        <a class="share" href="javascript:;"><i class="fa fa-share-alt"></i> 分享</a>
+                        <div class="share-wrap" style="display: none;">
+    <div class="share-group">
+        <a href="javascript:;" class="share-plain qq" onclick="share('qq');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-qq"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain qzone" onclick="share('qzone');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-star"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weixin pop style-plain" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weixin"></i>
+            </div>
+            <div class="share-int">
+                <div class="qrcode" id="wechat-qr"></div>
+                <p>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</p>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weibo" onclick="share('weibo');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weibo"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain facebook style-plain" onclick="share('facebook');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-facebook"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain twitter style-plain" onclick="share('twitter');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-twitter"></i>
+            </div>
+        </a>
+    </div>
+    <script type="text/javascript">
+        $(()=>{
+            new QRCode("wechat-qr", {
+                text: "https://reiscarlet.github.io/2021/12/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%88%E5%AD%A6%E6%A0%A1%EF%BC%89/%E7%AC%AC%E5%85%AD%E7%AB%A0%20%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE/%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E6%A6%82%E8%BF%B0/",
+                width: 150,
+                height: 150,
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        });
+        function share(dest) {
+            const qqBase        = "https://connect.qq.com/widget/shareqq/index.html?";
+            const weiboBase     = "https://service.weibo.com/share/share.php?";
+            const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
+            const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
+            const twitterBase   = "https://twitter.com/intent/tweet?";
+            const hostUrl       = "https://reiscarlet.github.io/2021/12/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%88%E5%AD%A6%E6%A0%A1%EF%BC%89/%E7%AC%AC%E5%85%AD%E7%AB%A0%20%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE/%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E6%A6%82%E8%BF%B0/";
+            const title         = "「路由协议概述」";
+            const excerpt       = `[toc]
+网络层提供的两种服务1. 面向连接的虚电路服务
+其思想是可靠通信通过网络来保证，在网络层进行建立连接，建立完后通信双方沿着建立的虚电路发送分组，每个分组使用短的虚电路号标记（构成虚电路的每一段链路都有一个虚电路编号），属于...`;
+            let _URL;
+            switch (dest) {
+                case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
+                case "weibo"    : _URL = weiboBase+"url="+hostUrl+"&title="+title+excerpt;                                 break;
+                case "qzone"    : _URL = qzoneBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";  break;
+                case "facebook" : _URL = facebookBase+"u="+hostUrl;                                                        break;
+                case "twitter"  : _URL = twitterBase+"text="+title+excerpt+"&url="+hostUrl;                                break;
+            }
+            window.open(_URL);
+        };
+    </script>
+</div>
+                    
+                    </div>
+                
+                <div class="footer-tag clearfix">
+                    <div class="pull-left">
+                    <i class="fa fa-tags"></i>
+                        <a class="tag-none-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%B1%82/" rel="tag">网络层</a>
+                    </div>
+                    <div class="pull-date">
+                    <span>最后编辑：2021-07-08</span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        
+            <nav class="navigation post-navigation clearfix" role="navigation">
+                
+                <div class="nav-previous clearfix">
+                    <a title=" 外部网关协议" href="/2021/12/03/计算机网络（学校）/第六章 路由协议/外部网关协议/">&lt; 上一篇</a>
+                </div>
+                
+                
+                <div class="nav-next clearfix">
+                    <a title=" 路由算法" href="/2021/12/03/计算机网络（学校）/第六章 路由协议/路由算法/">下一篇 &gt;</a>
+                </div>
+                
+            </nav>
+        
+        
+    </article>
+</section>
+
+                
+            
+
+<section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
+    <!-- 文章和页面根据splitter来分割，没有的话就从头开始设置为sticky -->
+    
+    
+                <aside id="krw-about" class="widget widget-kratos-about clearfix">
+    <div class="photo-background"></div>
+    <div class="photo-wrapper clearfix">
+        <div class="photo-wrapper-tip text-center">
+            <img class="about-photo" src="/images/avator.webp" />
+        </div>
+    </div>
+    <div class="textwidget">
+        <p class="text-center"></p>
+    </div>
+</aside>
+            
+                    <div class="sticky-area">
+                
+                
+  <aside id="krw-categories" class="widget widget-kratos-categories clearfix">
+    <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E5%80%BC%E6%9C%80%E4%BC%98%E5%8C%96/">数值最优化</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E5%AD%A6/">数学</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a><span class="category-list-count">11</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/">存储系统</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E7%AC%AC%E4%BA%8C%E7%AB%A0/">第二章</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/">计算机系统概论</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86-%E4%B8%AD%E5%A4%AE%E5%A4%84%E7%90%86%E5%99%A8/">计算机组成原理 - 中央处理器</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%B3%BB%E7%BB%9F/">计算机组成原理 - 输入输出系统</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a><span class="category-list-count">28</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E4%BA%A4%E6%8D%A2%E6%8A%80%E6%9C%AF/">交换技术</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E5%85%B8%E5%9E%8B%E5%BA%94%E7%94%A8%E5%B1%82%E5%8D%8F%E8%AE%AE/">典型应用层协议</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E5%85%B8%E5%9E%8B%E7%9A%84%E5%BA%94%E7%94%A8%E5%B1%82%E5%8D%8F%E8%AE%AE/">典型的应用层协议</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%AC%AC%E5%9B%9B%E7%AB%A0/">第四章</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%B7%AF%E7%94%B1%E6%8A%80%E6%9C%AF/">路由技术</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA%E6%A8%A1%E5%BC%8F/">对象创建模式</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%AF%B9%E8%B1%A1%E6%80%A7%E8%83%BD%E6%A8%A1%E5%BC%8F/">对象性能模式</a><span class="category-list-count">1</span></li></ul></li></ul>
+  </aside>
+
+
+            
+                
+  <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
+    <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
+      <div class="tag-clouds">
+        <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 0.77em;">IP网络协议</a> <a href="/tags/%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/" style="font-size: 0.63em;">存储系统</a> <a href="/tags/%E5%BA%94%E7%94%A8%E5%B1%82/" style="font-size: 0.74em;">应用层</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 0.6em;">数学</a> <a href="/tags/%E6%95%B0%E5%AD%A6%E8%AF%81%E6%98%8E/" style="font-size: 0.66em;">数学证明</a> <a href="/tags/%E7%89%A9%E7%90%86%E5%B1%82/" style="font-size: 0.71em;">物理层</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 0.8em;">笔记</a> <a href="/tags/%E7%BC%96%E7%A8%8B/" style="font-size: 0.71em;">编程</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 0.71em;">网络传输、设备与企业网架构</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%B1%82/" style="font-size: 0.74em;">网络层</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%BF%B0/" style="font-size: 0.63em;">计算机网络概述</a> <a href="/tags/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" style="font-size: 0.69em;">运算方法和运算器</a> <a href="/tags/%E8%BF%90%E8%BE%93%E5%B1%82/" style="font-size: 0.6em;">运输层</a> <a href="/tags/%E9%93%BE%E8%B7%AF%E5%B1%82/" style="font-size: 0.6em;">链路层</a>
+      </div>
+  </aside>
+
+            
+                
+  <aside id="krw-posts" class="widget widget-kratos-posts">
+  <h4 class="widget-title"><i class="fa fa-file"></i>最新文章</h4>
+  <div class="tab-content">
+      <ul class="list-group">
+        
+        
+          
+          
+            <a class="list-group-item" href="/2021/12/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/%E9%AB%98%E9%80%9F%E7%BC%93%E5%86%B2%E5%AD%98%E5%82%A8%E5%99%A8/"><i class="fa  fa-book"></i> Cache</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2021/12/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/%E9%9A%8F%E6%9C%BA%E8%AF%BB%E5%86%99%E5%AD%98%E5%82%A8%E5%99%A8/"><i class="fa  fa-book"></i> 随机读写存储器</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2021/12/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/%E5%AD%98%E5%82%A8%E5%99%A8%E7%9A%84%E7%BB%84%E6%88%90/"><i class="fa  fa-book"></i> 存储器的组成</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2021/12/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/%E4%B8%BB%E5%AD%98%E5%82%A8%E5%99%A8%E7%9A%84%E8%BF%9E%E6%8E%A5%E4%B8%8E%E6%8E%A7%E5%88%B6/"><i class="fa  fa-book"></i> 主存储器的连接与控制</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2021/12/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/%E4%B8%BB%E5%AD%98%E5%82%A8%E5%99%A8/"><i class="fa  fa-book"></i> 主存储器</a>
+            
+          
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+      </ul>
+  </div>
+  </aside>
+
+            
+    </div>
+</section>
+        
+        </div>
+    </div>
+</div>
+<footer>
+    <div id="footer"  >
+        <div class="kr-tool text-center">
+            <div class="tool">
+                
+                    <div class="box search-box">
+                        <a href="/search/">
+                            <span class="fa fa-search"></span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="box theme-box" id="darkmode-switch">
+                        <span class="fa fa-adjust"></span>
+                    </div>
+                
+                
+            </div>
+            <div class="box gotop-box">
+                <span class="fa fa-chevron-up"></span>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 footer-list text-center">
+                    <ul class="kratos-social-icons">
+                        
+                        
+                        <li><a target="_blank" rel="nofollow" href="https://t.me/CandyUnion"><i class="fa fa-telegram"></i></a></li>
+                        
+                        
+                        
+                        <li><a target="_blank" rel="me" href="https://nya.one/@Candinya"><i class="fa fa fa-share-alt-square"></i></a></li>
+                        <li><a target="_blank" rel="nofollow" href="https://github.com/ReiScarlet"><i class="fa fa-github"></i></a></li>
+                        
+                    </ul>
+                    <ul class="kratos-copyright">
+                        <div>
+                            <li>&copy; 2021 Reimilia 版权所有.</li>
+                            <li>本站已运行<span id="span_dt">Loading...</span></li>
+                        </div>
+                        <div>
+                            <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
+                            <li>Site built with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by Reimilia.</li>
+                        </div>
+                        <div>
+                            <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></li>
+                            <li>Hosted on <a href="https://github.io" target="_blank">Github Pages</a></li>
+                        </div>
+                        <div>
+                            
+                            
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+</div>
+
+        <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+<script>const notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));</script>
+
+<script async src="/js/candy.min.js"></script>
+
+
+    <script defer src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
+<script defer src="/js/kratosr.min.js"></script>
+<script defer src="/js/pjax.min.js"></script>
+
+
+    <script defer src="/js/kr-dark.min.js"></script>
+
+
+
+<!-- Extra support for third-party plguins  -->
+
+
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

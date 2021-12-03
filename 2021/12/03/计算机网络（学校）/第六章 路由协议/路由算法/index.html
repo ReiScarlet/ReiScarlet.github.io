@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+  <!-- 元数据 -->
+  <meta charset="utf-8">
+  <link rel="icon" href="">
+  <title>路由算法 | Reimilia</title>
+  <meta name="author" content="Reimilia" />
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="robots" content="index,follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="format-detection" content="telphone=no, email=no" />
+  
+    <meta name="keywords" content="网络层" />
+  
+  <meta name="description" content="[toc] 1.路由算法的分类 静态路由算法  最短路径算法（Dijkstra）：从起点开始沿着最短路径延申连接网络的各个节点，构成一棵树——汇集树   动态路由算法步骤  测量  收集网络拓扑信息 主要收集自己附近的信息   更新  把收集的信息通知到别的路由器 收到别人的信息要更新自己的数据库   计算 根据收集的信息计算路由表-&gt;转发表      2.动态路由算法2.1 距离矢量算法—">
+<meta property="og:type" content="article">
+<meta property="og:title" content="路由算法">
+<meta property="og:url" content="https://reiscarlet.github.io/2021/12/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%88%E5%AD%A6%E6%A0%A1%EF%BC%89/%E7%AC%AC%E5%85%AD%E7%AB%A0%20%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE/%E8%B7%AF%E7%94%B1%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:site_name" content="Reimilia">
+<meta property="og:description" content="[toc] 1.路由算法的分类 静态路由算法  最短路径算法（Dijkstra）：从起点开始沿着最短路径延申连接网络的各个节点，构成一棵树——汇集树   动态路由算法步骤  测量  收集网络拓扑信息 主要收集自己附近的信息   更新  把收集的信息通知到别的路由器 收到别人的信息要更新自己的数据库   计算 根据收集的信息计算路由表-&gt;转发表      2.动态路由算法2.1 距离矢量算法—">
+<meta property="og:locale">
+<meta property="og:image" content="https://reiscarlet.github.io/null">
+<meta property="article:published_time" content="2021-12-03T06:16:47.978Z">
+<meta property="article:modified_time" content="2021-07-08T08:40:25.081Z">
+<meta property="article:author" content="Reimilia">
+<meta property="article:tag" content="网络层">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://reiscarlet.github.io/null">
+<meta name="twitter:site" content="@null">
+  
+  <!-- 站点验证相关 -->
+  
+    
+    
+    
+  
+  <!-- 样式表文件 -->
+  <link rel="stylesheet" id="kratos-css" href="/css/kratosr.min.css" type="text/css" media="all">
+  
+    <link rel="stylesheet" id="highlight-css" href="/css/highlight/night-eighties.min.css" type="text/css" media="all">
+  
+  
+  <link rel="stylesheet" id="fontawe-css" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" type="text/css" media="all">
+  <link rel="stylesheet" id="nprogress-css" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" type="text/css" media="all">
+  
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  
+    <link rel="stylesheet" id="darkmode-css" href="/css/kr-dark.min.css" type="text/css" media="all">
+  
+  <!-- 不得不预先加载的一些JS文件 -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  
+    <script src="https://cdn.jsdelivr.net/npm/qrcode_js@1.0.0/qrcode.min.js"></script>
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+    <body class="custom-background">
+        <div id="kratos-wrapper">
+    <div id="kratos-page">
+        <div id="kratos-header">
+            <header id="kratos-desktop-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="nav-header">
+                        <nav id="kratos-menu-wrap">
+                            <ul id="kratos-primary-menu" class="sf-menu">
+                                
+                                    
+                                        <li><a href="/"><i class="fa fa-home"></i>首页</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/archives/"><i class="fa fa-file"></i>档案馆</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/friends/"><i class="fa fa-paw"></i>好伙伴</a></li>
+                                    
+                                
+                                    
+                                        <li>
+                                            <a><i class="fa fa-link"></i>链接</a>
+                                            <ul class="sub-menu">
+                                                
+                                                    
+                                                
+                                                    
+                                                        <li><a target="_blank" rel="noopener" href="https://candinya.com">作者博客</a></li>
+                                                    
+                                                
+                                                    
+                                                        <li><a target="_blank" rel="noopener" href="https://github.com/Candinya/Kratos-Rebirth">项目链接</a></li>
+                                                    
+                                                
+                                            </ul>
+                                        </li>
+                                    
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+            <header id="kratos-mobile-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="color-logo"><a href="/">Reimilia</a></div>
+                    <div class="nav-toggle">
+                        <a class="kratos-nav-toggle js-kratos-nav-toggle">
+                            <i></i>
+                        </a>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="kratos-start kratos-hero-2">
+            <!-- <div class="kratos-overlay"></div> -->
+            <div class="kratos-cover kratos-cover-2 text-center">
+                <div class="desc desc2 animate-box">
+                    <a href="/">
+                        <h2>Reimilia</h2> <br />
+                        <span></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="kratos-blog-post">
+            <div class="container">
+                <div id="main" class="row">
+                    
+
+        <section class="col-md-8">
+    <article>
+        <div class="kratos-hentry kratos-post-inner clearfix">
+            <header class="kratos-entry-header">
+                
+                    <h1 class="kratos-entry-title text-center">路由算法</h1>
+                
+                
+                <ul class="kratos-post-meta text-center">
+                    <li><i class="fa fa-calendar"></i> 2021-12-03</li>
+                    <li><i class="fa fa-user"></i> 作者 Reimilia</li>
+                    <li>
+                        <i class="fa fa-edit"></i> 
+                        
+                        
+                            ~3.91K
+                        
+                        字
+                    </li>
+                    
+                </ul>
+            </header>
+            <div class="kratos-post-content">
+                <div id="expire-alert" class="alert alert-warning hidden" role="alert">
+                    本文最后编辑于 <time datetime="1625733625081"></time> 前，其中的内容可能需要更新。
+                </div>
+                
+                <hr />
+                <p>[toc]</p>
+<h1 id="1-路由算法的分类"><a href="#1-路由算法的分类" class="headerlink" title="1.路由算法的分类"></a>1.路由算法的分类</h1><ol>
+<li><p>静态路由算法</p>
+<ol>
+<li>最短路径算法（Dijkstra）：从起点开始沿着最短路径延申连接网络的各个节点，构成一棵树——汇集树</li>
+</ol>
+</li>
+<li><p>动态路由算法步骤</p>
+<ol>
+<li><p>测量</p>
+<ol>
+<li>收集网络拓扑信息</li>
+<li>主要收集自己附近的信息</li>
+</ol>
+</li>
+<li><p>更新</p>
+<ol>
+<li>把收集的信息通知到别的路由器</li>
+<li>收到别人的信息要更新自己的数据库</li>
+</ol>
+</li>
+<li>计算<ol>
+<li>根据收集的信息计算路由表-&gt;转发表</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h1 id="2-动态路由算法"><a href="#2-动态路由算法" class="headerlink" title="2.动态路由算法"></a>2.动态路由算法</h1><h2 id="2-1-距离矢量算法——路由信息协议RIP"><a href="#2-1-距离矢量算法——路由信息协议RIP" class="headerlink" title="2.1 距离矢量算法——路由信息协议RIP"></a>2.1 距离矢量算法——路由信息协议RIP</h2><p>DV（Distance Vector Routing）算法要点：</p>
+<ul>
+<li>仅和<strong><font color=yellow>相邻</font></strong>路由器交换信息；</li>
+<li>路由交换的内容是<strong><font color=yellow>自己的路由表</font></strong>；</li>
+<li><strong><font color=yellow>周期性更新30s</font></strong>；</li>
+</ul>
+<p>RIP是内部网关协议IGP中<strong><font color=yellow>最先</font></strong>得到广泛使用的协议之一，RIP要求自治系统AS的每一个路由器都要维护从它<strong><font color=yellow>自己到AS内其他每一个网络</font></strong>的距离记录，称为<strong><font color=red>距离向量D-V</font></strong>；</p>
+<ul>
+<li>路由器到<strong><font color=yellow>直连</font></strong>网络的距离：1；</li>
+<li>路由器到<strong><font color=yellow>非直连</font></strong>网络的距离：经过路由器数+1；</li>
+<li>一条路径<strong><font color=yellow>最多</font></strong>包含15个路由器，<font color=yellow><strong>距离为16时表示目的不可达</strong></font>，所以<strong><font color=red>RIP只适合小型网络</font></strong>；</li>
+</ul>
+<p>RIP认为<strong><font color=yellow>好的路由</font></strong>就是<strong><font color=yellow>所通过路由器数量最少的路由</font></strong>，当到达同一目的的不同路径所经过的路由一样时，进行<strong><font color=yellow>等价负载均衡</font></strong>策略，即是将通信量<strong><font color=yellow>均衡的</font></strong>分布到多条<strong><font color=yellow>等价的路由</font></strong>上</p>
+<p>RIP包含以下要点：</p>
+<ul>
+<li>和谁交换信息——<strong>相邻</strong>路由器</li>
+<li>交换什么信息——<strong>自己的</strong>路由表</li>
+<li>何时交换信息——<strong>周期性</strong>交换</li>
+</ul>
+<hr>
+<p><strong>基本工作过程</strong>：</p>
+<ol>
+<li>路由器刚开始工作时，只知道自己相连的直连网络的距离为1</li>
+<li>每个路由器只和自己相邻的路由器周期性的更新路由信息，更新规则如下：<ul>
+<li>同一目的网络、下一跳，代表是最新消息，<strong><font color=yellow>虽然距离可能更长，但也要更新</font></strong> </li>
+<li>新的路由条目，添加</li>
+<li>同一目的网络，不同下一跳，<u>新的路由信息距离更短</u>，更新</li>
+<li>同一目的网络，不同下一跳，等价负载均衡</li>
+<li>同一目的网络，不同下一跳，<u>新的路由信息距离更长</u>，不更新</li>
+</ul>
+</li>
+<li><font color=red>经过<strong>若干次</strong>更新，每个路由器都知道本<strong>AS内各网络</strong>的<strong>最短距离</strong>和<strong>下一跳</strong>地址，称为<strong>收敛</strong></font>；</li>
+</ol>
+<hr>
+<p><strong>RIP的“坏消息传播得慢”问题</strong>：</p>
+<p>假设路由器R1和R2相连，R1的直连网络N1发生故障，R1检测到这个问题后，等到更新周期到了，就会发送一个（目的网络=N1，距离=16，下一跳=直连端口）的更新报文给R2，同时R2向R1发送（N1，2，R1）的更新报文，如果R2发送的报文更快到达，则R1会认为N1可以通过R2到达，R1就会向R2发送（N1，3，R2）的更新报文，R2收到后，就会更新报文（N1，4，R1），并且到下一个更新周期又发送给R1，一直重复R1-&gt;R2-&gt;R1的环路进行路由更新，直到发送（N1，16，R2）（N1，16，R1）</p>
+<p>上述问题是<strong><font color=yellow>距离向量</font></strong>的<strong><font color=yellow>固有问题</font></strong>，解决办法如下：</p>
+<ol>
+<li><strong><font color=yellow>限制最大路径距离15</font></strong></li>
+<li>进行<strong>“<font color=yellow>触发更新</font>”</strong>，路由表发生更新立即发送更新报文，而不是周期性发送</li>
+<li>路由器记录到某特定路由信息的接口，而不让同一路由信息再通过此接口向反方向传送（即<strong>“水平分割”</strong>）</li>
+</ol>
+<h2 id="2-2-链路状态路由算法——开放最短路径优先OSPF协议"><a href="#2-2-链路状态路由算法——开放最短路径优先OSPF协议" class="headerlink" title="2.2 链路状态路由算法——开放最短路径优先OSPF协议"></a>2.2 链路状态路由算法——开放最短路径优先OSPF协议</h2><p><strong>基本思想：</strong></p>
+<ol>
+<li>测量——发现邻居，测量与邻居间链路的开销</li>
+<li>更新——把链路信息发送给网络中<strong><font color=yellow>其他所有网络</font></strong>，并建立自己的链路状态数据库-&gt;重构拓扑结构图</li>
+<li>计算——根据最短路径算法计算汇集树-&gt;生成路由表</li>
+</ol>
+<hr>
+<p><strong>距离矢量算法要点：</strong></p>
+<ul>
+<li>和所有的路由器交换信息</li>
+<li>路由器交换的内容是自己<strong><font color=yellow>邻居链路信息</font></strong></li>
+<li><strong><font color=yellow>事件触发更新</font></strong></li>
+</ul>
+<hr>
+<p><strong><font color=red>OSPF采用FPS算法计算路由，所以不会出现路由环路问题</font></strong></p>
+<p>使用OSPF的每个路由都会产生<strong><font color=yellow>链路状态通告（Link State Advertisement, LSA）</font></strong>，LSA包括</p>
+<ul>
+<li>直连网络的链路状态信息</li>
+<li>邻居路由器的链路状态信息</li>
+</ul>
+<p>LSA被封装在<strong><font color=yellow>链路状态更新分组LSU</font></strong>中，采用<strong><font color=red>泛洪发送</font></strong></p>
+<p>使用OSPF的每个路由都有一个<strong><font color=yellow>链路状态数据库LSDB</font></strong>，用于存储LSA</p>
+<p><strong><font color=red>通过各路由器泛洪发送封装有自己的LSA的LSU分组，各路由器的LSDB最终达到一致</font></strong></p>
+<hr>
+<p>OSPF的五种分组类型</p>
+<ul>
+<li>问候分组（HELLO）分组</li>
+<li>数据库描述（Database Description）分组</li>
+<li>链路状态请求（Link State Request）分组</li>
+<li>链路状态更新（Link State Update）分组</li>
+<li>链路状态确认（Link State Acknowledgment）分组</li>
+</ul>
+<hr>
+<ol>
+<li><p>发现邻居：启动路由器后，路由器向每个点到点的线路发送一个携带自己网络地址HELLO分组，另一端收到后发送回一个应答通报自己的网络地址</p>
+<ol>
+<li>HELLO分组封装在IP数据报中，发送到组播地址244.0.0.5</li>
+<li>发送周期为10秒</li>
+<li>40秒末未收到邻居路由器的HELLO分组，则认为邻居路由器不可达</li>
+</ol>
+<p>| 源IP/路由器接口IP | 目的IP(244.0.0.5) | 协议号89 | OSPF首部 | OSPF分组载荷 |<br>| ————————- | ————————- | ———— | ———— | —————— |</p>
+</li>
+<li><p>测量线路开销：路由器发送一个ECHO分组要求对方立刻响应，测量一个来回的时间再除以2就能得到一个延迟估计值，这个值就是该线路的开销，如果要求更精确可以多测几遍然后取平均值</p>
+</li>
+<li><p>构造分组：</p>
+<p>假设每个节点的分组表如下，用（邻居，代价）来表示当且节点到邻居节点需要的代价（延迟，带宽，距离等决定）：    </p>
+<p>| A    | B    | C    | D    | E    | F    |<br>| —— | —— | —— | —— | —— | —— |<br>| 序号 | 序号 | 序号 | 序号 | 序号 | 序号 |<br>| 年龄 | 年龄 | 年龄 | 年龄 | 年龄 | 年龄 |<br>| B-4  | A-4  | B-2  | C-3  | A-5  | B-6  |<br>| E-5  | C-2  | D-3  | F-7  | C-1  | D-7  |<br>|      | F-6  | E-1  |      | F-8  | E-8  |</p>
+<ol>
+<li><p>发布链路状态分组</p>
+<p>以B为例子，相邻路由器为A、C、F，如果节点E的链路状态分组经过A和F到达B，节点B必须再将E的状态分组发送给C，这是因为A和F已经收到了，而B的相邻节点C没有收到，所以向C发送，以此类推，就能够实现向所有的路由器交换信息，最后节点B发送链路状态表如下：</p>
+<p>| 源   | 序号 | 年龄 | A    | C    | F    | A    | C    | F    | 数据 |<br>| —— | —— | —— | —— | —— | —— | —— | —— | —— | —— |<br>| A    | 21   | 60   | 0    | 1    | 1    | 1    | 0    | 0    |      |<br>| F    | 21   | 60   | 1    | 1    | 0    | 0    | 0    | 1    |      |<br>| E    | 21   | 59   | 0    | 1    | 0    | 1    | 0    | 1    |      |<br>| C    | 20   | 60   | 1    | 0    | 1    | 0    | 1    | 0    |      |<br>| D    | 21   | 59   | 1    | 0    | 0    | 0    | 1    | 1    |      |</p>
+<p>其中前三个A、C、F是发送标志，后三个为ACK标志.每一行表示从源A发送的状态分组到达B后，B向哪个节点转发.例如第一行，表示A发送状态分组到达B后，B向C,F发送，所以C，F的发送标志置为1，又B收到A的分组后要向A发送ACK确认，所以A的ACK标志置为1</p>
+</li>
+</ol>
+</li>
+<li><p>后续工作</p>
+<ol>
+<li>收集链路信息建立链路状态数据库LSDB</li>
+<li>重构拓扑图</li>
+<li>根据拓扑图运行最短路径优先算法（SPF）计算汇集树</li>
+<li>计算路由表</li>
+</ol>
+</li>
+</ol>
+<hr>
+<p><strong>问题</strong>：如果一个网络中每个路由器都两两相邻，那么邻居关系数量为$\Large\frac{n(n-1)}{2}$，每次更新都要向n-1个路由器发送LSU分组</p>
+<p><strong>解决方法</strong>：在网络中的路由器选举一个<strong><font color=yellow>指定路由器</font></strong>（designated router）和<strong><font color=yellow>备用的指定路由器</font></strong>（backup designated router），所有的非指定路由器只与指定路由器建立邻居关系，所以非DR/BDR之间通过DR/BDR来交换信息，<strong><font color=yellow>若DR出现问题，则使用BDR</font></strong>。</p>
+<hr>
+<p>为了使OSPF能够用于规模更大的网络，OSPF把一个自治系统在划分为若干个更小的范围，叫做<strong>区域</strong>（Area）</p>
+<p>每个区域都有一个32比特的区域标识符，主干区域标识符必须为0，其他区域的标识符不能为0且不能相同，每个区域最好不要规模太大，不要超过200个路由器。这样就把泛洪交换信息限制在一个小的区域</p>
+<ul>
+<li><p>在一个区域内的路由器叫做<strong><font color=yellow>区域间路由器IR</font></strong></p>
+</li>
+<li><p>为了本区域可以和该自治系统的其他区域连通，每个区域都有一个<strong><font color=yellow>区域边界路由器ABR</font></strong>，它的一个接口连接自身所在的区域，另一个接口连接到主干区域</p>
+</li>
+<li><p>主干区域内的路由器称为<strong><font color=yellow>主干路由器BBR</font></strong></p>
+</li>
+<li>其中主干路由器中还要有一个使得本自治系统和其他自治系统交换路由信息的<strong><font color=yellow>自治系统边界路由器ASBR</font></strong></li>
+</ul>
+<hr>
+<p>LSR的优点：</p>
+<ul>
+<li>路由信息的一致性好，坏消息也一样传播的快</li>
+<li>状态分组长度较短，传输所需要的网络带宽不大，适用于大型网络</li>
+</ul>
+<p>LSR的缺点：</p>
+<ul>
+<li>每个路由器都需要有较大的存储空间</li>
+<li>计算量大，每次都必须计算最短路径</li>
+</ul>
+<p>与距离矢量不同的是，距离矢量没有完整的拓扑图</p>
+
+            </div>
+            
+                <div class="kratos-copyright text-center clearfix">
+                    <h5>本作品采用 <a rel="license nofollow" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可</h5>
+                </div>
+            
+            <footer class="kratos-entry-footer clearfix">
+                
+                    <div class="post-like-donate text-center clearfix" id="post-like-donate">
+                    
+                    
+                        <a class="share" href="javascript:;"><i class="fa fa-share-alt"></i> 分享</a>
+                        <div class="share-wrap" style="display: none;">
+    <div class="share-group">
+        <a href="javascript:;" class="share-plain qq" onclick="share('qq');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-qq"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain qzone" onclick="share('qzone');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-star"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weixin pop style-plain" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weixin"></i>
+            </div>
+            <div class="share-int">
+                <div class="qrcode" id="wechat-qr"></div>
+                <p>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</p>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weibo" onclick="share('weibo');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weibo"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain facebook style-plain" onclick="share('facebook');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-facebook"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain twitter style-plain" onclick="share('twitter');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-twitter"></i>
+            </div>
+        </a>
+    </div>
+    <script type="text/javascript">
+        $(()=>{
+            new QRCode("wechat-qr", {
+                text: "https://reiscarlet.github.io/2021/12/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%88%E5%AD%A6%E6%A0%A1%EF%BC%89/%E7%AC%AC%E5%85%AD%E7%AB%A0%20%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE/%E8%B7%AF%E7%94%B1%E7%AE%97%E6%B3%95/",
+                width: 150,
+                height: 150,
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        });
+        function share(dest) {
+            const qqBase        = "https://connect.qq.com/widget/shareqq/index.html?";
+            const weiboBase     = "https://service.weibo.com/share/share.php?";
+            const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
+            const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
+            const twitterBase   = "https://twitter.com/intent/tweet?";
+            const hostUrl       = "https://reiscarlet.github.io/2021/12/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%88%E5%AD%A6%E6%A0%A1%EF%BC%89/%E7%AC%AC%E5%85%AD%E7%AB%A0%20%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE/%E8%B7%AF%E7%94%B1%E7%AE%97%E6%B3%95/";
+            const title         = "「路由算法」";
+            const excerpt       = `[toc]
+1.路由算法的分类
+静态路由算法
+
+最短路径算法（Dijkstra）：从起点开始沿着最短路径延申连接网络的各个节点，构成一棵树——汇集树
+
+
+动态路由算法步骤
+
+测量
+
+收集网络拓扑信息
+主要收集自己附近的信息
+
+
+更新
+...`;
+            let _URL;
+            switch (dest) {
+                case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
+                case "weibo"    : _URL = weiboBase+"url="+hostUrl+"&title="+title+excerpt;                                 break;
+                case "qzone"    : _URL = qzoneBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";  break;
+                case "facebook" : _URL = facebookBase+"u="+hostUrl;                                                        break;
+                case "twitter"  : _URL = twitterBase+"text="+title+excerpt+"&url="+hostUrl;                                break;
+            }
+            window.open(_URL);
+        };
+    </script>
+</div>
+                    
+                    </div>
+                
+                <div class="footer-tag clearfix">
+                    <div class="pull-left">
+                    <i class="fa fa-tags"></i>
+                        <a class="tag-none-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%B1%82/" rel="tag">网络层</a>
+                    </div>
+                    <div class="pull-date">
+                    <span>最后编辑：2021-07-08</span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        
+            <nav class="navigation post-navigation clearfix" role="navigation">
+                
+                <div class="nav-previous clearfix">
+                    <a title=" 路由协议概述" href="/2021/12/03/计算机网络（学校）/第六章 路由协议/路由协议概述/">&lt; 上一篇</a>
+                </div>
+                
+                
+                <div class="nav-next clearfix">
+                    <a title=" 数据传输过程及以太网帧结构" href="/2021/12/03/计算机网络（学校）/第四章 IP网络基础/4.1数据传输过程及以太网帧结构/">下一篇 &gt;</a>
+                </div>
+                
+            </nav>
+        
+        
+    </article>
+</section>
+
+                
+            
+
+<section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
+    <!-- 文章和页面根据splitter来分割，没有的话就从头开始设置为sticky -->
+    
+    
+                <aside id="krw-about" class="widget widget-kratos-about clearfix">
+    <div class="photo-background"></div>
+    <div class="photo-wrapper clearfix">
+        <div class="photo-wrapper-tip text-center">
+            <img class="about-photo" src="/images/avator.webp" />
+        </div>
+    </div>
+    <div class="textwidget">
+        <p class="text-center"></p>
+    </div>
+</aside>
+            
+                    <div class="sticky-area">
+                
+                
+  <aside id="krw-categories" class="widget widget-kratos-categories clearfix">
+    <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E5%80%BC%E6%9C%80%E4%BC%98%E5%8C%96/">数值最优化</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E5%AD%A6/">数学</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a><span class="category-list-count">11</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/">存储系统</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E7%AC%AC%E4%BA%8C%E7%AB%A0/">第二章</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/">计算机系统概论</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86-%E4%B8%AD%E5%A4%AE%E5%A4%84%E7%90%86%E5%99%A8/">计算机组成原理 - 中央处理器</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%B3%BB%E7%BB%9F/">计算机组成原理 - 输入输出系统</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a><span class="category-list-count">28</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E4%BA%A4%E6%8D%A2%E6%8A%80%E6%9C%AF/">交换技术</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E5%85%B8%E5%9E%8B%E5%BA%94%E7%94%A8%E5%B1%82%E5%8D%8F%E8%AE%AE/">典型应用层协议</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E5%85%B8%E5%9E%8B%E7%9A%84%E5%BA%94%E7%94%A8%E5%B1%82%E5%8D%8F%E8%AE%AE/">典型的应用层协议</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%AC%AC%E5%9B%9B%E7%AB%A0/">第四章</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%B7%AF%E7%94%B1%E6%8A%80%E6%9C%AF/">路由技术</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA%E6%A8%A1%E5%BC%8F/">对象创建模式</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%AF%B9%E8%B1%A1%E6%80%A7%E8%83%BD%E6%A8%A1%E5%BC%8F/">对象性能模式</a><span class="category-list-count">1</span></li></ul></li></ul>
+  </aside>
+
+
+            
+                
+  <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
+    <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
+      <div class="tag-clouds">
+        <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 0.77em;">IP网络协议</a> <a href="/tags/%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/" style="font-size: 0.63em;">存储系统</a> <a href="/tags/%E5%BA%94%E7%94%A8%E5%B1%82/" style="font-size: 0.74em;">应用层</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 0.6em;">数学</a> <a href="/tags/%E6%95%B0%E5%AD%A6%E8%AF%81%E6%98%8E/" style="font-size: 0.66em;">数学证明</a> <a href="/tags/%E7%89%A9%E7%90%86%E5%B1%82/" style="font-size: 0.71em;">物理层</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 0.8em;">笔记</a> <a href="/tags/%E7%BC%96%E7%A8%8B/" style="font-size: 0.71em;">编程</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 0.71em;">网络传输、设备与企业网架构</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%B1%82/" style="font-size: 0.74em;">网络层</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%BF%B0/" style="font-size: 0.63em;">计算机网络概述</a> <a href="/tags/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" style="font-size: 0.69em;">运算方法和运算器</a> <a href="/tags/%E8%BF%90%E8%BE%93%E5%B1%82/" style="font-size: 0.6em;">运输层</a> <a href="/tags/%E9%93%BE%E8%B7%AF%E5%B1%82/" style="font-size: 0.6em;">链路层</a>
+      </div>
+  </aside>
+
+            
+                
+  <aside id="krw-posts" class="widget widget-kratos-posts">
+  <h4 class="widget-title"><i class="fa fa-file"></i>最新文章</h4>
+  <div class="tab-content">
+      <ul class="list-group">
+        
+        
+          
+          
+            <a class="list-group-item" href="/2021/12/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/%E9%AB%98%E9%80%9F%E7%BC%93%E5%86%B2%E5%AD%98%E5%82%A8%E5%99%A8/"><i class="fa  fa-book"></i> Cache</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2021/12/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/%E9%9A%8F%E6%9C%BA%E8%AF%BB%E5%86%99%E5%AD%98%E5%82%A8%E5%99%A8/"><i class="fa  fa-book"></i> 随机读写存储器</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2021/12/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/%E5%AD%98%E5%82%A8%E5%99%A8%E7%9A%84%E7%BB%84%E6%88%90/"><i class="fa  fa-book"></i> 存储器的组成</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2021/12/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/%E4%B8%BB%E5%AD%98%E5%82%A8%E5%99%A8%E7%9A%84%E8%BF%9E%E6%8E%A5%E4%B8%8E%E6%8E%A7%E5%88%B6/"><i class="fa  fa-book"></i> 主存储器的连接与控制</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2021/12/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/%E4%B8%BB%E5%AD%98%E5%82%A8%E5%99%A8/"><i class="fa  fa-book"></i> 主存储器</a>
+            
+          
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+      </ul>
+  </div>
+  </aside>
+
+            
+    </div>
+</section>
+        
+        </div>
+    </div>
+</div>
+<footer>
+    <div id="footer"  >
+        <div class="kr-tool text-center">
+            <div class="tool">
+                
+                    <div class="box search-box">
+                        <a href="/search/">
+                            <span class="fa fa-search"></span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="box theme-box" id="darkmode-switch">
+                        <span class="fa fa-adjust"></span>
+                    </div>
+                
+                
+            </div>
+            <div class="box gotop-box">
+                <span class="fa fa-chevron-up"></span>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 footer-list text-center">
+                    <ul class="kratos-social-icons">
+                        
+                        
+                        <li><a target="_blank" rel="nofollow" href="https://t.me/CandyUnion"><i class="fa fa-telegram"></i></a></li>
+                        
+                        
+                        
+                        <li><a target="_blank" rel="me" href="https://nya.one/@Candinya"><i class="fa fa fa-share-alt-square"></i></a></li>
+                        <li><a target="_blank" rel="nofollow" href="https://github.com/ReiScarlet"><i class="fa fa-github"></i></a></li>
+                        
+                    </ul>
+                    <ul class="kratos-copyright">
+                        <div>
+                            <li>&copy; 2021 Reimilia 版权所有.</li>
+                            <li>本站已运行<span id="span_dt">Loading...</span></li>
+                        </div>
+                        <div>
+                            <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
+                            <li>Site built with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by Reimilia.</li>
+                        </div>
+                        <div>
+                            <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></li>
+                            <li>Hosted on <a href="https://github.io" target="_blank">Github Pages</a></li>
+                        </div>
+                        <div>
+                            
+                            
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+</div>
+
+        <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+<script>const notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));</script>
+
+<script async src="/js/candy.min.js"></script>
+
+
+    <script defer src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
+<script defer src="/js/kratosr.min.js"></script>
+<script defer src="/js/pjax.min.js"></script>
+
+
+    <script defer src="/js/kr-dark.min.js"></script>
+
+
+
+<!-- Extra support for third-party plguins  -->
+
+
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>
