@@ -13,7 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <meta name="format-detection" content="telphone=no, email=no" />
   
-    <meta name="keywords" content="" />
+    <meta name="keywords" content="交换技术" />
   
   <meta name="description" content="[TOC] 媒体接入的基本概念媒体接入控制MAC（Medium Access Control）：协调多个发送核接收站点对一个共享传输媒体的占用 媒体接入控制：  静态划分信道： 预先固定好信道，非常不灵活，对于突发性传输信道利用率很低，通常在无线网络的物理层使用，而不是在数据链路层中使用，分为频分多址，时分多址，码分多址  动态接入信道  受控接入：已被淘汰  集中控制 分散控制   随机接入：">
 <meta property="og:type" content="article">
@@ -24,8 +24,9 @@
 <meta property="og:locale">
 <meta property="og:image" content="https://reiscarlet.github.io/null">
 <meta property="article:published_time" content="2021-12-03T06:16:47.952Z">
-<meta property="article:modified_time" content="2021-07-08T06:55:45.781Z">
+<meta property="article:modified_time" content="2021-12-03T06:33:46.708Z">
 <meta property="article:author" content="Reimilia">
+<meta property="article:tag" content="交换技术">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://reiscarlet.github.io/null">
 <meta name="twitter:site" content="@null">
@@ -158,7 +159,7 @@
             </header>
             <div class="kratos-post-content">
                 <div id="expire-alert" class="alert alert-warning hidden" role="alert">
-                    本文最后编辑于 <time datetime="1625727345781"></time> 前，其中的内容可能需要更新。
+                    本文最后编辑于 <time datetime="1638513226708"></time> 前，其中的内容可能需要更新。
                 </div>
                 
                 <hr />
@@ -189,7 +190,7 @@
 <p><strong>载波监听CS</strong>：每个站在发送帧之前先检测一下总线上是否有其他站点在发送帧，即“先听后说”；若检测到总线空闲96比特时间，则发送这个帧</p>
 <p><strong>碰撞检测CD：</strong>每一个正在发送帧在站边发送边检测碰撞，即是“边说边听”；一旦发现总线上发生碰撞立刻停止发送，一段时间后再次发送</p>
 <p>CSMA/CD协议不适用于无线网络。对于无线网络，可以使用CSMA/CA协议</p>
-<h2 id="CSMA-CD协议——争用期"><a href="#CSMA-CD协议——争用期" class="headerlink" title="CSMA/CD协议——争用期"></a>CSMA/CD协议——争用期</h2><p><img src="C:\Users\Reimilia Scarlet\AppData\Roaming\Typora\typora-user-images\image-20210522151725976.png" alt="image-20210522151725976"></p>
+<h2 id="CSMA-CD协议——争用期"><a href="#CSMA-CD协议——争用期" class="headerlink" title="CSMA/CD协议——争用期"></a>CSMA/CD协议——争用期</h2><p><img src="../img/image-20210522151725976.png" alt="image-20210522151725976"></p>
 <ol>
 <li>主机最多经过<strong>2α</strong>就检测到碰撞（A-&gt;D-&gt;A），所以以太网的端到端往返传播时延2α为<strong>争用期</strong>或<strong>碰撞窗口</strong></li>
 <li>显然，在以太网中发生帧的主机越多，端到端的传播时延越大，发生碰撞的概率就越大。因此，<strong>共享式以太网不能连接太多的主机，使用的总线也不能太长</strong></li>
@@ -217,8 +218,8 @@
 <p>极限的信道利用率$\large S_{max}=\LARGE\frac{T_0}{T_0+\alpha} = \frac{1}{1+\frac{\alpha}{T_0}}$。</p>
 <p>设β=α/T_0。则β应该尽量小，以提高信道利用率；</p>
 <p>以太网端到端的距离应该收到限制，减少α的值；以太网帧的长度应该尽量长些；</p>
-<h2 id="CSMA-CD协议——帧发送过程"><a href="#CSMA-CD协议——帧发送过程" class="headerlink" title="CSMA/CD协议——帧发送过程"></a>CSMA/CD协议——帧发送过程</h2><p><img src="C:\Users\Reimilia Scarlet\AppData\Roaming\Typora\typora-user-images\image-20210522161426440.png" alt="image-20210522161426440"></p>
-<h2 id="CSMA-CD协议——帧接收流程"><a href="#CSMA-CD协议——帧接收流程" class="headerlink" title="CSMA/CD协议——帧接收流程"></a>CSMA/CD协议——帧接收流程</h2><p><img src="C:\Users\Reimilia Scarlet\AppData\Roaming\Typora\typora-user-images\image-20210522162555608.png" alt="image-20210522162555608"></p>
+<h2 id="CSMA-CD协议——帧发送过程"><a href="#CSMA-CD协议——帧发送过程" class="headerlink" title="CSMA/CD协议——帧发送过程"></a>CSMA/CD协议——帧发送过程</h2><p><img src="../img/image-20210522161426440.png" alt="image-20210522161426440"></p>
+<h2 id="CSMA-CD协议——帧接收流程"><a href="#CSMA-CD协议——帧接收流程" class="headerlink" title="CSMA/CD协议——帧接收流程"></a>CSMA/CD协议——帧接收流程</h2><p><img src="../img/image-20210522162555608.png" alt="image-20210522162555608"></p>
 
             </div>
             
@@ -310,10 +311,10 @@
                 <div class="footer-tag clearfix">
                     <div class="pull-left">
                     <i class="fa fa-tags"></i>
-                        
+                        <a class="tag-none-link" href="/tags/%E4%BA%A4%E6%8D%A2%E6%8A%80%E6%9C%AF/" rel="tag">交换技术</a>
                     </div>
                     <div class="pull-date">
-                    <span>最后编辑：2021-07-08</span>
+                    <span>最后编辑：2021-12-03</span>
                     </div>
                 </div>
             </footer>
@@ -360,7 +361,7 @@
                 
   <aside id="krw-categories" class="widget widget-kratos-categories clearfix">
     <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E5%80%BC%E6%9C%80%E4%BC%98%E5%8C%96/">数值最优化</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E5%AD%A6/">数学</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a><span class="category-list-count">11</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/">存储系统</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E7%AC%AC%E4%BA%8C%E7%AB%A0/">第二章</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/">计算机系统概论</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86-%E4%B8%AD%E5%A4%AE%E5%A4%84%E7%90%86%E5%99%A8/">计算机组成原理 - 中央处理器</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%B3%BB%E7%BB%9F/">计算机组成原理 - 输入输出系统</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a><span class="category-list-count">28</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E4%BA%A4%E6%8D%A2%E6%8A%80%E6%9C%AF/">交换技术</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E5%85%B8%E5%9E%8B%E5%BA%94%E7%94%A8%E5%B1%82%E5%8D%8F%E8%AE%AE/">典型应用层协议</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E5%85%B8%E5%9E%8B%E7%9A%84%E5%BA%94%E7%94%A8%E5%B1%82%E5%8D%8F%E8%AE%AE/">典型的应用层协议</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%AC%AC%E5%9B%9B%E7%AB%A0/">第四章</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%B7%AF%E7%94%B1%E6%8A%80%E6%9C%AF/">路由技术</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA%E6%A8%A1%E5%BC%8F/">对象创建模式</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%AF%B9%E8%B1%A1%E6%80%A7%E8%83%BD%E6%A8%A1%E5%BC%8F/">对象性能模式</a><span class="category-list-count">1</span></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E5%80%BC%E6%9C%80%E4%BC%98%E5%8C%96/">数值最优化</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E5%AD%A6/">数学</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/">存储系统</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/">计算机系统概论</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/">运算方法和运算器</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86-%E4%B8%AD%E5%A4%AE%E5%A4%84%E7%90%86%E5%99%A8/">计算机组成原理 - 中央处理器</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86-%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/">计算机组成原理 - 指令系统</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%B3%BB%E7%BB%9F/">计算机组成原理 - 输入输出系统</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a><span class="category-list-count">28</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E5%85%B8%E5%9E%8B%E5%BA%94%E7%94%A8%E5%B1%82%E5%8D%8F%E8%AE%AE/">典型应用层协议</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%AC%AC%E4%B8%83%E7%AB%A0/">第七章</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%AC%AC%E4%B8%89%E7%AB%A0/">第三章</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%AC%AC%E4%BA%8C%E7%AB%A0/">第二章</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%AC%AC%E4%BA%94%E7%AB%A0/">第五章</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%AC%AC%E5%85%AD%E7%AB%A0/">第六章</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%AC%AC%E5%9B%9B%E7%AB%A0/">第四章</a><span class="category-list-count">8</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA%E6%A8%A1%E5%BC%8F/">对象创建模式</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%AF%B9%E8%B1%A1%E6%80%A7%E8%83%BD%E6%A8%A1%E5%BC%8F/">对象性能模式</a><span class="category-list-count">1</span></li></ul></li></ul>
   </aside>
 
 
@@ -369,7 +370,7 @@
   <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
     <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
       <div class="tag-clouds">
-        <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 0.77em;">IP网络协议</a> <a href="/tags/%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/" style="font-size: 0.63em;">存储系统</a> <a href="/tags/%E5%BA%94%E7%94%A8%E5%B1%82/" style="font-size: 0.74em;">应用层</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 0.6em;">数学</a> <a href="/tags/%E6%95%B0%E5%AD%A6%E8%AF%81%E6%98%8E/" style="font-size: 0.66em;">数学证明</a> <a href="/tags/%E7%89%A9%E7%90%86%E5%B1%82/" style="font-size: 0.71em;">物理层</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 0.8em;">笔记</a> <a href="/tags/%E7%BC%96%E7%A8%8B/" style="font-size: 0.71em;">编程</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 0.71em;">网络传输、设备与企业网架构</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%B1%82/" style="font-size: 0.74em;">网络层</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%BF%B0/" style="font-size: 0.63em;">计算机网络概述</a> <a href="/tags/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" style="font-size: 0.69em;">运算方法和运算器</a> <a href="/tags/%E8%BF%90%E8%BE%93%E5%B1%82/" style="font-size: 0.6em;">运输层</a> <a href="/tags/%E9%93%BE%E8%B7%AF%E5%B1%82/" style="font-size: 0.6em;">链路层</a>
+        <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 0.78em;">IP网络协议</a> <a href="/tags/%E4%BA%A4%E6%8D%A2%E6%8A%80%E6%9C%AF/" style="font-size: 0.68em;">交换技术</a> <a href="/tags/%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/" style="font-size: 0.63em;">存储系统</a> <a href="/tags/%E5%BA%94%E7%94%A8%E5%B1%82/" style="font-size: 0.73em;">应用层</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 0.6em;">数学</a> <a href="/tags/%E6%95%B0%E5%AD%A6%E8%AF%81%E6%98%8E/" style="font-size: 0.65em;">数学证明</a> <a href="/tags/%E7%89%A9%E7%90%86%E5%B1%82/" style="font-size: 0.7em;">物理层</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 0.8em;">笔记</a> <a href="/tags/%E7%BC%96%E7%A8%8B/" style="font-size: 0.7em;">编程</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 0.7em;">网络传输、设备与企业网架构</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%B1%82/" style="font-size: 0.75em;">网络层</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%BF%B0/" style="font-size: 0.63em;">计算机网络概述</a> <a href="/tags/%E8%B7%AF%E7%94%B1%E6%8A%80%E6%9C%AF/" style="font-size: 0.65em;">路由技术</a> <a href="/tags/%E8%BF%90%E8%BE%93%E5%B1%82/" style="font-size: 0.6em;">运输层</a> <a href="/tags/%E9%93%BE%E8%B7%AF%E5%B1%82/" style="font-size: 0.6em;">链路层</a>
       </div>
   </aside>
 
