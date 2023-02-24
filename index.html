@@ -134,52 +134,42 @@
     
         
         
-            <article class="kratos-hentry kratos-entry-border-new clearfix">
-                <div class="kratos-status">
+            <article class="kratos-hentry clearfix">
+                <div class="kratos-entry-border-new clearfix">
                     
-                        <i class="fa fa-refresh"></i>
-                    
-                    <div class="kratos-status-inner">
-                        <div class="kratos-status-content">
+                    <div class="kratos-entry-thumb-new">
+                        <a href="/2023/02/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%8A%B6%E6%80%81%E5%8F%98%E5%8C%96%E6%A8%A1%E5%BC%8F/%E8%81%8C%E8%B4%A3%E9%93%BE%E6%A8%A1%E5%BC%8F/">
                             
-                                <h1 id="1-职责链模式Chain-of-Responsibility"><a href="#1-职责链模式Chain-of-Responsibility" class="headerlink" title="1. 职责链模式Chain of Responsibility"></a>1. 职责链模式Chain of Responsibility</h1><h2 id="1-1-动机"><a href="#1-1-动机" class="headerlink" title="1.1 动机"></a>1.1 动机</h2><p>在软件构建过程，一个请求可能被多个对象处理，但是每个请求在运行时只能有一个接受者，如果显式指定，将必不可少地带来请求发送者与接受者的紧耦合</p>
-<p>如何使请求的发送者不需要指定具体的接受者？让请求的接受者自己在运行时决定来处理请求，从而使两者解耦</p>
-<h2 id="1-2-代码讲解"><a href="#1-2-代码讲解" class="headerlink" title="1.2 代码讲解"></a>1.2 代码讲解</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">enum</span> <span class="keyword">class</span> <span class="title">RequestType</span> &#123;</span></span><br><span class="line">    REQ_HANDLER1,</span><br><span class="line">    REQ_HANDLER2,</span><br><span class="line">    REQ_HANDLER3</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Request</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    string description;</span><br><span class="line">    RequestType reqType;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Request</span>(<span class="keyword">const</span> string&amp; desc, RequestType type) :</span><br><span class="line">    	<span class="built_in">description</span>(desc), <span class="built_in">reqType</span>(type)</span><br><span class="line">        &#123;        </span><br><span class="line">        &#125;</span><br><span class="line">    <span class="function">RequestType <span class="title">getReqType</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123; <span class="keyword">return</span> reqType; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">const</span> string&amp; <span class="title">getDescription</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123; <span class="keyword">return</span> description; &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ChainHandler</span>&#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    ChainHandler *nextChain;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">sendRequestToNextHandler</span><span class="params">(<span class="keyword">const</span> Reqest&amp; req)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(nextChain!=<span class="literal">nullptr</span>)</span><br><span class="line">            nextChain-&gt;<span class="built_in">handle</span>(req);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">bool</span> <span class="title">canHandlerRequest</span><span class="params">(<span class="keyword">const</span> Request&amp; req)</span> </span>= <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">processRequest</span><span class="params">(<span class="keyword">const</span> Request&amp; req)</span> </span>= <span class="number">0</span>;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">ChainHandler</span>() &#123; nextChian = <span class="literal">nullptr</span>; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setNextChain</span><span class="params">(ChainHandler *next)</span> </span>&#123; nextChian = next; &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">handler</span><span class="params">(<span class="keyword">const</span> Request&amp; req)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">canHandlerRequest</span>(req))</span><br><span class="line">            <span class="built_in">processRequest</span>(req);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="built_in">sendRequestToNextHandler</span>(req);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Handler1</span> :</span> <span class="keyword">public</span> ChainHandler &#123;</span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">canHandlerRequest</span><span class="params">(<span class="keyword">const</span> Request&amp; req)</span> <span class="keyword">override</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> req.<span class="built_in">getReqType</span>()==RequestType::REQ_HANDLER1;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">processRequest</span><span class="params">(<span class="keyword">const</span> Request&amp; req)</span> <span class="keyword">override</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;Handler1 is handle request: &quot;</span> &lt;&lt; req.<span class="built_in">getDescription</span>() &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>看上面的代码，会发现很像一个链表的实现，事实上就是一种链表实现，但有需要注意：<strong>ChainHandler是一个基类，可以发现nextChian应该具有多态性，形成了多态链表</strong>。</p>
-<h2 id="1-3-模式定义"><a href="#1-3-模式定义" class="headerlink" title="1.3 模式定义"></a>1.3 模式定义</h2><p>使多个对象都有机会处理请求，从而避免请求的发送者和接受者之间的耦合关系。将这些对象连成一条链，并沿着这条链传递请求，直到有一个对象处理它为止。</p>
-<p>责任链模式是一种对象行为型模式，其主要优点如下。</p>
-<ol>
-<li>降低了对象之间的耦合度。该模式使得一个对象无须知道到底是哪一个对象处理其请求以及链的结构，发送者和接收者也无须拥有对方的明确信息。</li>
-<li>增强了系统的可扩展性。可以根据需要增加新的请求处理类，满足开闭原则。</li>
-<li>增强了给对象指派职责的灵活性。当工作流程发生变化，可以动态地改变链内的成员或者调动它们的次序，也可动态地新增或者删除责任。</li>
-<li>责任链简化了对象之间的连接。每个对象只需保持一个指向其后继者的引用，不需保持其他所有处理者的引用，这避免了使用众多的 if 或者 if···else 语句。</li>
-<li>责任分担。每个类只需要处理自己该处理的工作，不该处理的传递给下一个对象完成，明确各类的责任范围，符合类的单一职责原则。</li>
-</ol>
-<p>其主要缺点如下。</p>
-<ol>
-<li>不能保证每个请求一定被处理。由于一个请求没有明确的接收者，所以不能保证它一定会被处理，该请求可能一直传到链的末端都得不到处理。</li>
-<li>对比较长的职责链，请求的处理可能涉及多个处理对象，系统性能将受到一定影响。</li>
-<li>职责链建立的合理性要靠客户端来保证，增加了客户端的复杂性，可能会由于职责链的错误设置而导致系统出错，如可能会造成循环调用。</li>
-</ol>
-<h2 id="1-4-结构"><a href="#1-4-结构" class="headerlink" title="1.4 结构"></a>1.4 结构</h2><p><img src="../img/职责链结构.png" alt=""></p>
-<h2 id="1-5-要点总结"><a href="#1-5-要点总结" class="headerlink" title="1.5 要点总结"></a>1.5 要点总结</h2><ol>
-<li>Chain of Responsibility模式的应用场合在于“<strong>一个请求可能有个接受者，但是最后真正的接受者只有一个</strong>”，这时候请求发送者与接受者的耦合有可能出现“变化脆弱”的症状，职责链的目的就是将二者解耦，从而更好地应对变化</li>
-<li>应用了Chain of Resposibility模式后，对象的职责分派将更具灵活性。我们可以在运行时动态添加/修改请求的处理职责</li>
-<li>如果请求传递到职责链的末尾仍得不到处理，应该有一个合理的缺省处理。这也是每一个接受对象的责任，而不是发出请求的对象的责任</li>
-</ol>
-
+                                <img class="kratos-entry-thumb-new-img">
                             
+                        </a>
+                    </div>
+                    <div class="kratos-post-inner-new">
+                        <header class="kratos-entry-header-new">
+                                <a class="label-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a> <a class="label-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%8A%B6%E6%80%81%E5%8F%98%E5%8C%96%E6%A8%A1%E5%BC%8F/">状态变化模式</a>
+                            <h2 class="kratos-entry-title-new"><a href="/2023/02/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%8A%B6%E6%80%81%E5%8F%98%E5%8C%96%E6%A8%A1%E5%BC%8F/%E8%81%8C%E8%B4%A3%E9%93%BE%E6%A8%A1%E5%BC%8F/">职责链模式</a>
+                        </header>
+                        <div class="kratos-entry-content-new">
+                            <p>
+                                
+                                    1. 职责链模式Chain of Responsibility1.1 动机在软件构建过程，一个请求可能被多个对象处理，但是每个请求在运行时只能有一个接受者，如果显式指定，将必不可少地带来请求发送者与接受者的紧耦合
+如何使请求的发送者不...
+                                
+                            </p>
                         </div>
                     </div>
-                </div>
-                
                     <footer class="kratos-post-meta-new">
                         <span class="pull-left">
-                            <a><i class="fa fa-calendar"></i></a><a>2023-02-24</a>
-                            
+                            <a>
+                                <i class="fa fa-calendar"></i>
+                                2023-02-24
+                            </a>
+                            <a>
+                                
+                                    <i class="fa fa-tags"></i>
+                                    <a class="tag-none-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a>
+                                
+                            </a>
                             
                                 <!-- 当前仅支持valine/waline自带的统计功能 -->
                                 
@@ -189,57 +179,52 @@
                                 
                             
                         </span>
-                        
-                        
-                            <span class="pull-right">
-                                <a class="read-more" href="/2023/02/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%8A%B6%E6%80%81%E5%8F%98%E5%8C%96%E6%A8%A1%E5%BC%8F/%E8%81%8C%E8%B4%A3%E9%93%BE%E6%A8%A1%E5%BC%8F/" title="留言">留言<i class="fa fa-chevron-circle-right"></i></a>
-                            </span>
-                        
-
+                        <span class="pull-right">
+                            <a class="read-more" href="/2023/02/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%8A%B6%E6%80%81%E5%8F%98%E5%8C%96%E6%A8%A1%E5%BC%8F/%E8%81%8C%E8%B4%A3%E9%93%BE%E6%A8%A1%E5%BC%8F/" title="阅读全文">阅读全文<i class="fa fa-chevron-circle-right"></i></a>
+                        </span>
                     </footer>
-                
+                </div>
             </article>
         
     
         
         
-            <article class="kratos-hentry kratos-entry-border-new clearfix">
-                <div class="kratos-status">
+            <article class="kratos-hentry clearfix">
+                <div class="kratos-entry-border-new clearfix">
                     
-                        <i class="fa fa-refresh"></i>
-                    
-                    <div class="kratos-status-inner">
-                        <div class="kratos-status-content">
+                    <div class="kratos-entry-thumb-new">
+                        <a href="/2023/02/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%8A%B6%E6%80%81%E5%8F%98%E5%8C%96%E6%A8%A1%E5%BC%8F/%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F/">
                             
-                                <h1 id="状态模式-State"><a href="#状态模式-State" class="headerlink" title="状态模式 State"></a>状态模式 State</h1><h2 id="1-1-动机"><a href="#1-1-动机" class="headerlink" title="1.1 动机"></a>1.1 动机</h2><p>在软件构建过程中，某些对象的状态如果改变，其行为也会随之而发生变化，比如文档处于只读状态，其支持的行为和读写状态支持的行为可能完全不同</p>
-<p>如何在运行时根据对象的状态来透明地改变对象的行为？而不会为对象操作和状态转化之间引入紧耦合？</p>
-<h2 id="1-2-代码讲解"><a href="#1-2-代码讲解" class="headerlink" title="1.2 代码讲解"></a>1.2 代码讲解</h2><p>假设我们要根据网络的状态进行行为的调整，实现如下：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">NetworkState</span> &#123;</span></span><br><span class="line">    Network_Open,</span><br><span class="line">    Network_Close,</span><br><span class="line">    Network_Connect</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NetworkProcess</span> &#123;</span></span><br><span class="line">    NetworkState state;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Operator1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (state == Network_Open) &#123;</span><br><span class="line">            <span class="comment">//......</span></span><br><span class="line">            state = Network_Connect;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span>(state == Network_Close) &#123;</span><br><span class="line">            <span class="comment">//......</span></span><br><span class="line">            state = Network_Open;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span>(state == Network_Connect) &#123;</span><br><span class="line">            <span class="comment">//......</span></span><br><span class="line">            state = Network_Close;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Operator2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (state == Network_Open) &#123;</span><br><span class="line">            <span class="comment">//......</span></span><br><span class="line">            state = Network_Connect;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span>(state == Network_Close) &#123;</span><br><span class="line">            <span class="comment">//......</span></span><br><span class="line">            state = Network_Open;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span>(state == Network_Connect) &#123;</span><br><span class="line">            <span class="comment">//......</span></span><br><span class="line">            state = Network_Close;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>在上面的代码中，最大的问题是，如果我们<code>NetworkState</code>的枚举类中添加一个状态，那么为了添加相关的操作，我们还得在<code>Operator1()</code>和<code>Operator2()</code>的方法里添加<code>else-if</code>来判断，进行操作和状态切换。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NetworkState</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	NetworkState *pNext;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">Operator1</span><span class="params">()</span></span>=<span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">Operator2</span><span class="params">()</span></span>=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">NetworkState</span>()&#123;&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">OpenState</span> :</span> <span class="keyword">public</span> NetworkState &#123;</span><br><span class="line">	<span class="keyword">static</span> NetworkState *m_instance;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">static</span> NetworkState* <span class="title">getInstance</span><span class="params">()</span> </span>&#123; <span class="comment">//返回当前状态</span></span><br><span class="line">        <span class="keyword">if</span>(m_instance == <span class="literal">nullptr</span>)</span><br><span class="line">            m_instance = <span class="keyword">new</span> <span class="built_in">OpenState</span>();</span><br><span class="line">        <span class="keyword">return</span> m_instance;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Operator1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//...</span></span><br><span class="line">        pNext = CloseState::<span class="built_in">getInstance</span>(); <span class="comment">//状态的切换</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Operator2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//...</span></span><br><span class="line">        pNext = ConnectState::<span class="built_in">getInstance</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//以此类推，还有CloseState和ConnectState两个状态类</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NetworkProcessor</span> &#123;</span></span><br><span class="line">    NetworkState* pState;<span class="comment">//多态</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">NetworkProcessor</span>(NetworkState* pState) &#123;<span class="comment">//状态初始化</span></span><br><span class="line">        <span class="keyword">this</span>-&gt;pState = pState;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Operator1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//...</span></span><br><span class="line">        pState-&gt;<span class="built_in">Operator1</span>();<span class="comment">//多态方法</span></span><br><span class="line">        pState = pState-&gt;pNext;<span class="comment">//状态发生变化</span></span><br><span class="line">        <span class="comment">//...</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Operator2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//...</span></span><br><span class="line">        pState-&gt;<span class="built_in">Operator2</span>();</span><br><span class="line">        pState = pState-&gt;pNext;</span><br><span class="line">        <span class="comment">//...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>和策略模式一样，我们先把与原先枚举类<code>NetworkState</code>状态有关的操作（如<code>Operator1()</code>和<code>Operator2()</code>）提取到一个接口，并且添加一个<code>指向状态的指向pNext</code>用来以后的状态的切换。</p>
-<p>然后我们就把三种状态声明成三个类，这三个类实现NetworkState接口，然后在NetworkProcessor中声明一个NetworkState变量的指针pState，这个指针用来控制类的状态。即<code>pState=pState-&gt;pNext</code>。又在类中的Operator方法中调用当前状态的操作，由于pState是基类，我们就可以通过多态实现在不同的状态下(在构造函数初始化状态，在操作中状态变化)调用不同状态(即子类)下的操作，实现NetworkProcessor的不变。</p>
-<h2 id="1-3-模式定义"><a href="#1-3-模式定义" class="headerlink" title="1.3 模式定义"></a>1.3 模式定义</h2><p>允许一个对象在其内部状态改变时改变它的行为。从而使对象看起来似乎修改了其行为</p>
-<h2 id="1-4-结构"><a href="#1-4-结构" class="headerlink" title="1.4 结构"></a>1.4 结构</h2><p><img src="../img/状态模式结构.png" alt=""></p>
-<h2 id="1-5-要点总结"><a href="#1-5-要点总结" class="headerlink" title="1.5 要点总结"></a>1.5 要点总结</h2><ol>
-<li>State模式将所有与一个特定状态相关的行为都放入一个State的子类对象中，在对象状态切换时，切换相应的对象；但同时维持State的接口，这样实现了具体操作与状态转换之间的解耦</li>
-<li>为不同的状态引入不同的对象使得状态转换变得更加明确，而且可以保证不会出现状态不一致的情况，因为转换是原子性的——即要么彻底转换过来，要么不转换</li>
-<li>如果State对象没有实例变量，那么各个上下文可以共享同一个State对象，从而节省对象开销</li>
-</ol>
-<h2 id="1-6-策略模式和状态模式的区别"><a href="#1-6-策略模式和状态模式的区别" class="headerlink" title="1.6 策略模式和状态模式的区别"></a>1.6 策略模式和状态模式的区别</h2><p>状态模式将各个状态所对应的操作分离开来，即对于不同的状态，由不同的子类实现具体操作，<u>不同状态的切换由子类实现</u>，当发现传入参数不是自己这个状态所对应的参数，则自己给Context类切换状态；而策略模式是直接依赖注入到Context类的参数进行选择策略，<u>不存在切换状态的操作。</u></p>
-<p>状态模式中类有状态，状态的修改会改变整个类行为。<br>策略模式没有状态，策略的选择由<strong>客户</strong>决定。</p>
-
+                                <img class="kratos-entry-thumb-new-img">
                             
+                        </a>
+                    </div>
+                    <div class="kratos-post-inner-new">
+                        <header class="kratos-entry-header-new">
+                                <a class="label-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a> <a class="label-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%8A%B6%E6%80%81%E5%8F%98%E5%8C%96%E6%A8%A1%E5%BC%8F/">状态变化模式</a>
+                            <h2 class="kratos-entry-title-new"><a href="/2023/02/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%8A%B6%E6%80%81%E5%8F%98%E5%8C%96%E6%A8%A1%E5%BC%8F/%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F/">状态模式</a>
+                        </header>
+                        <div class="kratos-entry-content-new">
+                            <p>
+                                
+                                    状态模式 State1.1 动机在软件构建过程中，某些对象的状态如果改变，其行为也会随之而发生变化，比如文档处于只读状态，其支持的行为和读写状态支持的行为可能完全不同
+如何在运行时根据对象的状态来透明地改变对象的行为？而不会为对象操作...
+                                
+                            </p>
                         </div>
                     </div>
-                </div>
-                
                     <footer class="kratos-post-meta-new">
                         <span class="pull-left">
-                            <a><i class="fa fa-calendar"></i></a><a>2023-02-24</a>
-                            
+                            <a>
+                                <i class="fa fa-calendar"></i>
+                                2023-02-24
+                            </a>
+                            <a>
+                                
+                                    <i class="fa fa-tags"></i>
+                                    <a class="tag-none-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a>
+                                
+                            </a>
                             
                                 <!-- 当前仅支持valine/waline自带的统计功能 -->
                                 
@@ -249,49 +234,52 @@
                                 
                             
                         </span>
-                        
-                        
-                            <span class="pull-right">
-                                <a class="read-more" href="/2023/02/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%8A%B6%E6%80%81%E5%8F%98%E5%8C%96%E6%A8%A1%E5%BC%8F/%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F/" title="留言">留言<i class="fa fa-chevron-circle-right"></i></a>
-                            </span>
-                        
-
+                        <span class="pull-right">
+                            <a class="read-more" href="/2023/02/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%8A%B6%E6%80%81%E5%8F%98%E5%8C%96%E6%A8%A1%E5%BC%8F/%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F/" title="阅读全文">阅读全文<i class="fa fa-chevron-circle-right"></i></a>
+                        </span>
                     </footer>
-                
+                </div>
             </article>
         
     
         
         
-            <article class="kratos-hentry kratos-entry-border-new clearfix">
-                <div class="kratos-status">
+            <article class="kratos-hentry clearfix">
+                <div class="kratos-entry-border-new clearfix">
                     
-                        <i class="fa fa-refresh"></i>
-                    
-                    <div class="kratos-status-inner">
-                        <div class="kratos-status-content">
+                    <div class="kratos-entry-thumb-new">
+                        <a href="/2023/02/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%8A%B6%E6%80%81%E5%8F%98%E5%8C%96%E6%A8%A1%E5%BC%8F/%E5%A4%87%E5%BF%98%E5%BD%95%E6%A8%A1%E5%BC%8F/">
                             
-                                <h1 id="1-备忘录模式memento"><a href="#1-备忘录模式memento" class="headerlink" title="1. 备忘录模式memento"></a>1. 备忘录模式memento</h1><h2 id="1-1-动机"><a href="#1-1-动机" class="headerlink" title="1.1 动机"></a>1.1 动机</h2><p>在软件构建过程中，某些对象的状态在转换过程中，可能由于某种需要，要求程序能够回溯到对象之前处于某个点时的状态。如果使用一些公有接口来让其他对象得到对象的状态。便会暴露对象的细节实现</p>
-<p>如何实现对象状态的良好保存与恢复？但同时又不会因此而破坏对象本身的封装性？</p>
-<h2 id="1-2-代码讲解"><a href="#1-2-代码讲解" class="headerlink" title="1.2 代码讲解"></a>1.2 代码讲解</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Memento</span>&#123;</span></span><br><span class="line">    string state;<span class="comment">//要保存的状态</span></span><br><span class="line">    <span class="comment">//......</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Memento</span>(<span class="keyword">const</span> string &amp;s) : <span class="built_in">state</span>(s) &#123;&#125;</span><br><span class="line">    <span class="function">string <span class="title">getState</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123; <span class="keyword">return</span> state; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setState</span><span class="params">(<span class="keyword">const</span> string &amp;s)</span> </span>&#123; state = s; &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Originator</span> &#123;</span></span><br><span class="line">	string state;</span><br><span class="line">    <span class="comment">//......</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Originator</span>() &#123;&#125;</span><br><span class="line">    <span class="function">Momento <span class="title">createMomento</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="function">Memento <span class="title">m</span><span class="params">(state)</span></span>;</span><br><span class="line">        <span class="keyword">return</span> m;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setMomento</span><span class="params">(<span class="keyword">const</span> Memento &amp;m)</span> </span>&#123; state = m.<span class="built_in">getState</span>(); &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Originator originator;</span><br><span class="line">    Memento mem = originator.<span class="built_in">createMomento</span>();</span><br><span class="line">    originator.<span class="built_in">setMomento</span>(memento);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="1-3-模式定义"><a href="#1-3-模式定义" class="headerlink" title="1.3 模式定义"></a>1.3 模式定义</h2><p>在不破坏封装性的前提下，捕获一个对象的内部状态，并在该对象之外保存这个状态。这样以后就可以将该对象恢复到原先保存的状态</p>
-<h2 id="1-4-结构"><a href="#1-4-结构" class="headerlink" title="1.4 结构"></a>1.4 结构</h2><h2 id="1-5-要点总结"><a href="#1-5-要点总结" class="headerlink" title="1.5 要点总结"></a>1.5 要点总结</h2><ol>
-<li>备忘录(Memento)存储原发器(Originator)对象的内部状态，在需要时回复原发器状态</li>
-<li>Memento模式的核心是信息隐藏，即Originator需要向外隐藏信息，保持其封装性。但同时又需要状态保持到外界(Memento)</li>
-<li>由于现代语言运行时都具有相当的对象序列化支持，因此往往采用效率较高，又容易正确实现的序列化方案来实现Memento模式</li>
-</ol>
-
+                                <img class="kratos-entry-thumb-new-img">
                             
+                        </a>
+                    </div>
+                    <div class="kratos-post-inner-new">
+                        <header class="kratos-entry-header-new">
+                                <a class="label-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a> <a class="label-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%8A%B6%E6%80%81%E5%8F%98%E5%8C%96%E6%A8%A1%E5%BC%8F/">状态变化模式</a>
+                            <h2 class="kratos-entry-title-new"><a href="/2023/02/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%8A%B6%E6%80%81%E5%8F%98%E5%8C%96%E6%A8%A1%E5%BC%8F/%E5%A4%87%E5%BF%98%E5%BD%95%E6%A8%A1%E5%BC%8F/">备忘录模式</a>
+                        </header>
+                        <div class="kratos-entry-content-new">
+                            <p>
+                                
+                                    1. 备忘录模式memento1.1 动机在软件构建过程中，某些对象的状态在转换过程中，可能由于某种需要，要求程序能够回溯到对象之前处于某个点时的状态。如果使用一些公有接口来让其他对象得到对象的状态。便会暴露对象的细节实现
+如何实现对...
+                                
+                            </p>
                         </div>
                     </div>
-                </div>
-                
                     <footer class="kratos-post-meta-new">
                         <span class="pull-left">
-                            <a><i class="fa fa-calendar"></i></a><a>2023-02-24</a>
-                            
+                            <a>
+                                <i class="fa fa-calendar"></i>
+                                2023-02-24
+                            </a>
+                            <a>
+                                
+                                    <i class="fa fa-tags"></i>
+                                    <a class="tag-none-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a>
+                                
+                            </a>
                             
                                 <!-- 当前仅支持valine/waline自带的统计功能 -->
                                 
@@ -301,49 +289,52 @@
                                 
                             
                         </span>
-                        
-                        
-                            <span class="pull-right">
-                                <a class="read-more" href="/2023/02/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%8A%B6%E6%80%81%E5%8F%98%E5%8C%96%E6%A8%A1%E5%BC%8F/%E5%A4%87%E5%BF%98%E5%BD%95%E6%A8%A1%E5%BC%8F/" title="留言">留言<i class="fa fa-chevron-circle-right"></i></a>
-                            </span>
-                        
-
+                        <span class="pull-right">
+                            <a class="read-more" href="/2023/02/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%8A%B6%E6%80%81%E5%8F%98%E5%8C%96%E6%A8%A1%E5%BC%8F/%E5%A4%87%E5%BF%98%E5%BD%95%E6%A8%A1%E5%BC%8F/" title="阅读全文">阅读全文<i class="fa fa-chevron-circle-right"></i></a>
+                        </span>
                     </footer>
-                
+                </div>
             </article>
         
     
         
         
-            <article class="kratos-hentry kratos-entry-border-new clearfix">
-                <div class="kratos-status">
+            <article class="kratos-hentry clearfix">
+                <div class="kratos-entry-border-new clearfix">
                     
-                        <i class="fa fa-refresh"></i>
-                    
-                    <div class="kratos-status-inner">
-                        <div class="kratos-status-content">
+                    <div class="kratos-entry-thumb-new">
+                        <a href="/2023/02/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%A1%8C%E4%B8%BA%E5%8F%98%E5%8C%96%E6%A8%A1%E5%BC%8F/%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F/">
                             
-                                <h1 id="1-命令模式Command"><a href="#1-命令模式Command" class="headerlink" title="1. 命令模式Command"></a>1. 命令模式Command</h1><h2 id="1-1-动机"><a href="#1-1-动机" class="headerlink" title="1.1 动机"></a>1.1 动机</h2><p>在软件构建过程中，”行为请求者“与”行为实现者“通常呈现一种”紧耦合“。但在某些场合——比如需要对行为进行记录、撤销/重做、事务等处理，这种无法抵御变化的紧耦合是不合适的。</p>
-<p>在这种情况下，如何将”行为请求者“与”行为实现者“解耦？将一组行为抽象，可以实现两者之间的松耦合</p>
-<h2 id="1-2-代码"><a href="#1-2-代码" class="headerlink" title="1.2 代码"></a>1.2 代码</h2><p>在CPP中，直接用函数对象来实现就行了，性能更好</p>
-<h2 id="1-3-模式定义"><a href="#1-3-模式定义" class="headerlink" title="1.3 模式定义"></a>1.3 模式定义</h2><p>将一个请求封装为一个对象，从而使你可用不同的请求对客户进行参数化；对请求排队或记录请求日志，以及支持可撤销的操作</p>
-<h2 id="1-4-结构"><a href="#1-4-结构" class="headerlink" title="1.4 结构"></a>1.4 结构</h2><p><img src="../img/命令模式结构.png" alt=""></p>
-<pre><code>## 1.5 要点总结
-</code></pre><ol>
-<li>command模式的根本目的在于将”行为请求者“与”行为实现者“解耦，在面向对象语言中，常见的实现手段是”将行为抽象为对象“</li>
-<li>实现Command接口的具体命令对象ConcreteCommand有时候根据需要可能会保存一些额外的状态信息。通过使用Composite模式，可以将多个”命令“封装为一个”复合命令“MacroCommand</li>
-<li>Command模式与C++中的函数对象有些类似。但两者定义行为接口的规范有所区别：Command以面向对象中的”接口-实现“来定义行为接口规范，更严格，但有性能损失；C++函数对象以函数签名来定义行为接口规范，更灵活，性能更高。</li>
-</ol>
-
+                                <img class="kratos-entry-thumb-new-img">
                             
+                        </a>
+                    </div>
+                    <div class="kratos-post-inner-new">
+                        <header class="kratos-entry-header-new">
+                                <a class="label-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a> <a class="label-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%80%A7%E4%B8%BA%E5%8F%98%E5%8C%96%E6%A8%A1%E5%BC%8F/">性为变化模式</a>
+                            <h2 class="kratos-entry-title-new"><a href="/2023/02/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%A1%8C%E4%B8%BA%E5%8F%98%E5%8C%96%E6%A8%A1%E5%BC%8F/%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F/">命令模式</a>
+                        </header>
+                        <div class="kratos-entry-content-new">
+                            <p>
+                                
+                                    1. 命令模式Command1.1 动机在软件构建过程中，”行为请求者“与”行为实现者“通常呈现一种”紧耦合“。但在某些场合——比如需要对行为进行记录、撤销/重做、事务等处理，这种无法抵御变化的紧耦合是不合适的。
+在这种情况下，如何将...
+                                
+                            </p>
                         </div>
                     </div>
-                </div>
-                
                     <footer class="kratos-post-meta-new">
                         <span class="pull-left">
-                            <a><i class="fa fa-calendar"></i></a><a>2023-02-24</a>
-                            
+                            <a>
+                                <i class="fa fa-calendar"></i>
+                                2023-02-24
+                            </a>
+                            <a>
+                                
+                                    <i class="fa fa-tags"></i>
+                                    <a class="tag-none-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a>
+                                
+                            </a>
                             
                                 <!-- 当前仅支持valine/waline自带的统计功能 -->
                                 
@@ -353,48 +344,51 @@
                                 
                             
                         </span>
-                        
-                        
-                            <span class="pull-right">
-                                <a class="read-more" href="/2023/02/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%A1%8C%E4%B8%BA%E5%8F%98%E5%8C%96%E6%A8%A1%E5%BC%8F/%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F/" title="留言">留言<i class="fa fa-chevron-circle-right"></i></a>
-                            </span>
-                        
-
+                        <span class="pull-right">
+                            <a class="read-more" href="/2023/02/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%A1%8C%E4%B8%BA%E5%8F%98%E5%8C%96%E6%A8%A1%E5%BC%8F/%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F/" title="阅读全文">阅读全文<i class="fa fa-chevron-circle-right"></i></a>
+                        </span>
                     </footer>
-                
+                </div>
             </article>
         
     
         
         
-            <article class="kratos-hentry kratos-entry-border-new clearfix">
-                <div class="kratos-status">
+            <article class="kratos-hentry clearfix">
+                <div class="kratos-entry-border-new clearfix">
                     
-                        <i class="fa fa-refresh"></i>
-                    
-                    <div class="kratos-status-inner">
-                        <div class="kratos-status-content">
+                    <div class="kratos-entry-thumb-new">
+                        <a href="/2023/02/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%A8%A1%E5%BC%8F/%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F/">
                             
-                                <h1 id="1-迭代器Iterator"><a href="#1-迭代器Iterator" class="headerlink" title="1  迭代器Iterator"></a>1  迭代器Iterator</h1><h2 id="1-1-动机"><a href="#1-1-动机" class="headerlink" title="1.1 动机"></a>1.1 动机</h2><p>在软件构建过程中，集合对象内部数据结构常常变化各异。但对于这些集合对象，我们希望在不暴露其内部结构的同时，可以让外部客户代码透明的访问其中的元素；同时这种“透明遍历”也为“同一种算法在多种集合对象上进行操作”提供了可能。</p>
-<p>使用面向对象技术将这种遍历机制为“迭代器对象”为应对变化中的集合对象“提供了一种优雅的方式”</p>
-<h2 id="1-2-代码讲解"><a href="#1-2-代码讲解" class="headerlink" title="1.2 代码讲解"></a>1.2 代码讲解</h2><p>C++不是基于面向对象实现的了，现在都是基于泛型编程实现。因为虚函数的调用过程有性能损失，而C++又接受编译时多态</p>
-<h2 id="1-3-模式定义"><a href="#1-3-模式定义" class="headerlink" title="1.3 模式定义"></a>1.3 模式定义</h2><p>提供一种方法顺序访问一个集合对象中的各个元素，而又不暴露该对象的内部表示</p>
-<h2 id="1-4-结构"><a href="#1-4-结构" class="headerlink" title="1.4 结构"></a>1.4 结构</h2><p><img src="../img/迭代器结构.png" alt=""></p>
-<h2 id="1-5-要点总结"><a href="#1-5-要点总结" class="headerlink" title="1.5 要点总结"></a>1.5 要点总结</h2><ol>
-<li>迭代抽象：访问一个集合对象的内容而无需暴露它的内部表示</li>
-<li>迭代多态：为遍历不同的集合结构提供一个同一的接口，从而支持同样的算法在不同集合结构上进行操作</li>
-<li>迭代器的健壮性考虑：遍历的同时更改迭代器所在的集合结构会导致问题</li>
-</ol>
-
+                                <img class="kratos-entry-thumb-new-img">
                             
+                        </a>
+                    </div>
+                    <div class="kratos-post-inner-new">
+                        <header class="kratos-entry-header-new">
+                                <a class="label-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a> <a class="label-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%A8%A1%E5%BC%8F/">数据结构模式</a>
+                            <h2 class="kratos-entry-title-new"><a href="/2023/02/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%A8%A1%E5%BC%8F/%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F/">迭代器模式</a>
+                        </header>
+                        <div class="kratos-entry-content-new">
+                            <p>
+                                
+                                    1  迭代器Iterator1.1 动机在软件构建过程中，集合对象内部数据结构常常变化各异。但对于这些集合对象，我们希望在不暴露其内部结构的同时，可以让外部客户代码透明的访问其中的元素；同时这种“透明遍历”也为“同一种算法在多种集合对...
+                                
+                            </p>
                         </div>
                     </div>
-                </div>
-                
                     <footer class="kratos-post-meta-new">
                         <span class="pull-left">
-                            <a><i class="fa fa-calendar"></i></a><a>2023-02-24</a>
-                            
+                            <a>
+                                <i class="fa fa-calendar"></i>
+                                2023-02-24
+                            </a>
+                            <a>
+                                
+                                    <i class="fa fa-tags"></i>
+                                    <a class="tag-none-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a>
+                                
+                            </a>
                             
                                 <!-- 当前仅支持valine/waline自带的统计功能 -->
                                 
@@ -404,53 +398,52 @@
                                 
                             
                         </span>
-                        
-                        
-                            <span class="pull-right">
-                                <a class="read-more" href="/2023/02/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%A8%A1%E5%BC%8F/%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F/" title="留言">留言<i class="fa fa-chevron-circle-right"></i></a>
-                            </span>
-                        
-
+                        <span class="pull-right">
+                            <a class="read-more" href="/2023/02/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%A8%A1%E5%BC%8F/%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F/" title="阅读全文">阅读全文<i class="fa fa-chevron-circle-right"></i></a>
+                        </span>
                     </footer>
-                
+                </div>
             </article>
         
     
         
         
-            <article class="kratos-hentry kratos-entry-border-new clearfix">
-                <div class="kratos-status">
+            <article class="kratos-hentry clearfix">
+                <div class="kratos-entry-border-new clearfix">
                     
-                        <i class="fa fa-refresh"></i>
-                    
-                    <div class="kratos-status-inner">
-                        <div class="kratos-status-content">
+                    <div class="kratos-entry-thumb-new">
+                        <a href="/2023/02/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%A8%A1%E5%BC%8F/%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F/">
                             
-                                <h1 id="1-组合模式Composite"><a href="#1-组合模式Composite" class="headerlink" title="1 组合模式Composite"></a>1 组合模式Composite</h1><h2 id="1-1-动机"><a href="#1-1-动机" class="headerlink" title="1.1 动机"></a>1.1 动机</h2><p>在软件在某些情况下，客户代码过多地依赖对象容器复杂的内部实现结构，对象容器内部实现结构的变化将引起客户代码的频繁变化，带来代码的维护性、可拓展性等弊端</p>
-<p>如何将“客户代码与复杂的对象容器结构”解耦？让对象容器自己来实现自身的复杂结构，从而使得客户代码就像处理简单对象一样来处理复杂的对象容器</p>
-<h2 id="1-2-代码讲解"><a href="#1-2-代码讲解" class="headerlink" title="1.2 代码讲解"></a>1.2 代码讲解</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Component</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">process</span><span class="params">()</span></span>=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">Component</span>() &#123;&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>Leaf和Composite中的共同操作，以便之后利用多态性</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Composite</span> :</span> <span class="keyword">public</span> Component &#123;</span><br><span class="line">    string name;</span><br><span class="line">    list&lt;Component*&gt; elements;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Composite</span>(<span class="keyword">const</span> string &amp;s) : <span class="built_in">name</span>(s) &#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(Component* element)</span> </span>&#123; elements.<span class="built_in">push_back</span>(element); &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">remove</span><span class="params">(Component* element)</span> </span>&#123; elements.<span class="built_in">remove</span>(element); &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">process</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 处理当前节点</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> &amp;e : elements) <span class="comment">// 处理子节点</span></span><br><span class="line">            e-&gt;<span class="built_in">process</span>() <span class="comment">// 多态调用</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>上面的Composite即类似树中的根节点，在process处理中，由于elements是一个Component的list对象，所以e-&gt;process()是一个多态的调用，如果e是一个Leaf则调用其process()，即是到达了叶子节点，如果e是一个Composite对象，则调用其process()类似一个递归调用，直到Leaf节点才调用结束。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Leaf</span> :</span> <span class="keyword">public</span> Component &#123;</span><br><span class="line">    string name;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Leaf</span>(string s) : <span class="built_in">name</span>(s) &#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">process</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 处理当前结点</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>在上面的代码中，用Leaf类和Composite类来当作树中的根节点和叶子节点使用，又将它们的操作抽象出一个Component接口，两个类都实现了这个接口后，就可以通过多态来实现对叶子和根的分别处理，同时又提供一致的接口给用户使用(在这里就是process)。对于用户，无论是处理叶子还是根，无非就是调用其process函数。</p>
-<h2 id="1-3-模式定义"><a href="#1-3-模式定义" class="headerlink" title="1.3 模式定义"></a>1.3 模式定义</h2><p>将对象组合成树形结构以表示“部分-整体”的层次结构。Composite使得客户对单个对象和组合对象的使用具有一致性</p>
-<h2 id="1-4-结构"><a href="#1-4-结构" class="headerlink" title="1.4 结构"></a>1.4 结构</h2><p><img src="../img/组合模式结构.png" alt=""></p>
-<h2 id="1-5-要点总结"><a href="#1-5-要点总结" class="headerlink" title="1.5 要点总结"></a>1.5 要点总结</h2><ol>
-<li>Composite模式采用树形结构来实现普遍存在的对象容器，从而将“一对多”的关系转为“一对一”的关系，使得客户代码可以<u>一致地</u>处理对象和对象容器，无需关心处理的单个对象，还是组合的对象容器</li>
-<li>将“客户代码与复杂的对象容器结构”解耦是Composite模式的核心思想，解耦之后，客户代码将与纯粹的抽象接口——而非对象容器的内部实现结构——发生依赖，从而更能“应对变化”</li>
-<li>Composite模式在具体实现中，可以让父对象中的子对象反向追溯；如果父对象有频繁的遍历需求，可使用缓存技巧来改善效率</li>
-</ol>
-
+                                <img class="kratos-entry-thumb-new-img">
                             
+                        </a>
+                    </div>
+                    <div class="kratos-post-inner-new">
+                        <header class="kratos-entry-header-new">
+                                <a class="label-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a> <a class="label-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%A8%A1%E5%BC%8F/">数据结构模式</a>
+                            <h2 class="kratos-entry-title-new"><a href="/2023/02/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%A8%A1%E5%BC%8F/%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F/">组合模式</a>
+                        </header>
+                        <div class="kratos-entry-content-new">
+                            <p>
+                                
+                                    1 组合模式Composite1.1 动机在软件在某些情况下，客户代码过多地依赖对象容器复杂的内部实现结构，对象容器内部实现结构的变化将引起客户代码的频繁变化，带来代码的维护性、可拓展性等弊端
+如何将“客户代码与复杂的对象容器结构”解...
+                                
+                            </p>
                         </div>
                     </div>
-                </div>
-                
                     <footer class="kratos-post-meta-new">
                         <span class="pull-left">
-                            <a><i class="fa fa-calendar"></i></a><a>2023-02-24</a>
-                            
+                            <a>
+                                <i class="fa fa-calendar"></i>
+                                2023-02-24
+                            </a>
+                            <a>
+                                
+                                    <i class="fa fa-tags"></i>
+                                    <a class="tag-none-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a>
+                                
+                            </a>
                             
                                 <!-- 当前仅支持valine/waline自带的统计功能 -->
                                 
@@ -460,61 +453,52 @@
                                 
                             
                         </span>
-                        
-                        
-                            <span class="pull-right">
-                                <a class="read-more" href="/2023/02/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%A8%A1%E5%BC%8F/%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F/" title="留言">留言<i class="fa fa-chevron-circle-right"></i></a>
-                            </span>
-                        
-
+                        <span class="pull-right">
+                            <a class="read-more" href="/2023/02/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%A8%A1%E5%BC%8F/%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F/" title="阅读全文">阅读全文<i class="fa fa-chevron-circle-right"></i></a>
+                        </span>
                     </footer>
-                
+                </div>
             </article>
         
     
         
         
-            <article class="kratos-hentry kratos-entry-border-new clearfix">
-                <div class="kratos-status">
+            <article class="kratos-hentry clearfix">
+                <div class="kratos-entry-border-new clearfix">
                     
-                        <i class="fa fa-refresh"></i>
-                    
-                    <div class="kratos-status-inner">
-                        <div class="kratos-status-content">
+                    <div class="kratos-entry-thumb-new">
+                        <a href="/2023/02/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E6%A8%A1%E5%BC%8F/%E9%97%A8%E9%9D%A2%E6%A8%A1%E5%BC%8F/">
                             
-                                <h1 id="接口隔离模式"><a href="#接口隔离模式" class="headerlink" title="接口隔离模式"></a>接口隔离模式</h1><p>在组件构建过程中，某些接口之间直接的依赖常常会带来很多问题、甚至根本无法实现。采用添加一层间接（稳定）接口，来隔离本来互相紧密关联的接口是一种常见的解决方案</p>
-<h1 id="Facade门面模式"><a href="#Facade门面模式" class="headerlink" title="Facade门面模式"></a>Facade门面模式</h1><h2 id="1-1-动机"><a href="#1-1-动机" class="headerlink" title="1.1 动机"></a>1.1 动机</h2><p>如果某个方案的组件的客户和组件中各个复杂的子系统有了过多的耦合，随着外部客户程序和各子系统的演化，这种过多的耦合面临着很多变化的挑战</p>
-<p>如何简化外部客户程序和系统间的交互接口？如何将外部客户程序的演化和内部子系统之间的依赖相互解耦？</p>
-<h2 id="1-2-讲解"><a href="#1-2-讲解" class="headerlink" title="1.2 讲解"></a>1.2 讲解</h2><p>在这个模式中，更重要的是如何划分一个系统的边界。</p>
-<p>例如，图书馆是一个非常复杂的系统，虽然图书按照一定规则摆放，但也只有内部人员比较清楚，作为一位初次来的访客，想要快速找到一本书，最好的办法是直接问图书管理员，而不是先了解这个图书馆的设计，因为你可能要来回在各个楼宇间奔走，借书的流程可能也比较长。</p>
-<p>图书管理员就起到了<strong>简化图书馆子系统复杂度</strong>的作用，我们只要凡事询问图书管理员即可，而不需要关心他是如何与图书馆内部系统打交道的。</p>
-<p>一般来说，外观模式可以在以下情况使用</p>
-<ol>
-<li>首先，在设计初期阶段，应该要有意识的将不同的两个层分离，比如经典的三层架构，就需要考虑在数据访问层和业务逻辑层、业务逻辑层和表示层的层与层之间建立一个外观Facade，这个可以为复杂的子系统提供一个简单的接口，降低耦合。</li>
-<li>其次，在开发阶段，子系统往往因为不断的重构演化而变得越来越复杂，大多数的模式使用时也会产生一些很多的小类，增加外观Facade可以提供一个简单的接口，减少他们之间的依赖。<br>第三，在维护一个遗留的大型系统时，可能这个系统已经非常难以维护和扩展了，但因为它包含非常重要的功能，新的需求开发必须依赖它。</li>
-<li>你可以为新系统开发一个外观Facade类，来提供设计粗糙或高度复杂的遗留代码的比较清晰接口，让新系统与Facade对象交互，Facade与遗留代码交互所有复杂的工作。</li>
-</ol>
-<h2 id="1-3-模式定义"><a href="#1-3-模式定义" class="headerlink" title="1.3 模式定义"></a>1.3 模式定义</h2><p>为子系统中的一组接口提供一个一致(稳定)的界面，Facade模式定义一个高层接口，这个接口使得这一子系统更加容易使用(复用)</p>
-<h2 id="1-4-结构"><a href="#1-4-结构" class="headerlink" title="1.4 结构"></a>1.4 结构</h2><p>不同软件的Facade模式实现差别很大，但主要的差别大概如下</p>
-<p><img src="../img/facade模式结构.png" alt=""></p>
-<h2 id="1-5-要点总结"><a href="#1-5-要点总结" class="headerlink" title="1.5 要点总结"></a>1.5 要点总结</h2><ol>
-<li>从客户程序的角度看，Facade模式简化了整个组件系统的接口，对于组件内部与外部客户来说，达到了一种”解耦”的效果——内部子系统的任何变化不会影响到Facade接口的变化</li>
-<li>Facade设计模式更注重从架构的层次来看整个系统，而不是单个类的层次。Facade很多时候更是一种架构设计模式</li>
-<li>Facade设计模式并非一个集装箱，可以任意地放进任何多个对象。Facade模式中组件的内部应该是”相互耦合关系比较大的一系列组件”，而不是一个简单的功能集合。</li>
-</ol>
-<p><strong>弊端</strong></p>
-<p>外观模式并不适合于所有场景，当子系统足够易用时，再使用外观模式就是画蛇添足。</p>
-<p>另外，当系统难以抽象出通用功能时，外观模式的设计可能也无所适从，因为设计的高层接口可能适用范围很窄，此时外观模式的意义就比较小</p>
-
+                                <img class="kratos-entry-thumb-new-img">
                             
+                        </a>
+                    </div>
+                    <div class="kratos-post-inner-new">
+                        <header class="kratos-entry-header-new">
+                                <a class="label-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a> <a class="label-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E6%A8%A1%E5%BC%8F/">接口隔离模式</a>
+                            <h2 class="kratos-entry-title-new"><a href="/2023/02/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E6%A8%A1%E5%BC%8F/%E9%97%A8%E9%9D%A2%E6%A8%A1%E5%BC%8F/">Facade模式</a>
+                        </header>
+                        <div class="kratos-entry-content-new">
+                            <p>
+                                
+                                    接口隔离模式在组件构建过程中，某些接口之间直接的依赖常常会带来很多问题、甚至根本无法实现。采用添加一层间接（稳定）接口，来隔离本来互相紧密关联的接口是一种常见的解决方案
+Facade门面模式1.1 动机如果某个方案的组件的客户和组件中...
+                                
+                            </p>
                         </div>
                     </div>
-                </div>
-                
                     <footer class="kratos-post-meta-new">
                         <span class="pull-left">
-                            <a><i class="fa fa-calendar"></i></a><a>2023-02-24</a>
-                            
+                            <a>
+                                <i class="fa fa-calendar"></i>
+                                2023-02-24
+                            </a>
+                            <a>
+                                
+                                    <i class="fa fa-tags"></i>
+                                    <a class="tag-none-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a>
+                                
+                            </a>
                             
                                 <!-- 当前仅支持valine/waline自带的统计功能 -->
                                 
@@ -524,56 +508,52 @@
                                 
                             
                         </span>
-                        
-                        
-                            <span class="pull-right">
-                                <a class="read-more" href="/2023/02/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E6%A8%A1%E5%BC%8F/%E9%97%A8%E9%9D%A2%E6%A8%A1%E5%BC%8F/" title="留言">留言<i class="fa fa-chevron-circle-right"></i></a>
-                            </span>
-                        
-
+                        <span class="pull-right">
+                            <a class="read-more" href="/2023/02/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E6%A8%A1%E5%BC%8F/%E9%97%A8%E9%9D%A2%E6%A8%A1%E5%BC%8F/" title="阅读全文">阅读全文<i class="fa fa-chevron-circle-right"></i></a>
+                        </span>
                     </footer>
-                
+                </div>
             </article>
         
     
         
         
-            <article class="kratos-hentry kratos-entry-border-new clearfix">
-                <div class="kratos-status">
+            <article class="kratos-hentry clearfix">
+                <div class="kratos-entry-border-new clearfix">
                     
-                        <i class="fa fa-refresh"></i>
-                    
-                    <div class="kratos-status-inner">
-                        <div class="kratos-status-content">
+                    <div class="kratos-entry-thumb-new">
+                        <a href="/2023/02/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E6%A8%A1%E5%BC%8F/%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/">
                             
-                                <h1 id="适配器Adapter"><a href="#适配器Adapter" class="headerlink" title="适配器Adapter"></a>适配器Adapter</h1><h2 id="1-1-动机"><a href="#1-1-动机" class="headerlink" title="1.1 动机"></a>1.1 动机</h2><p>在软件系统中，由于应用环境的变化，常常需要将”一些现存的对象”放在新的环境中应用，但是新环境要求的接口是这些现存对象所不满足的</p>
-<p>如何应对这种”迁移的变化”?如何既能利用现有对象的良好实现，同时又能满足新的应用环境所要求的新接口？</p>
-<h2 id="1-2-讲解"><a href="#1-2-讲解" class="headerlink" title="1.2 讲解"></a>1.2 讲解</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ITarget</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">process</span><span class="params">()</span></span>=<span class="number">0</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">IAdaptee</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">foo</span><span class="params">(<span class="keyword">int</span> data)</span></span>=<span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">int</span> <span class="title">bar</span><span class="params">()</span></span>=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Adapter</span> :</span> <span class="keyword">public</span> ITarget&#123;</span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">    IAdaptee* pAdaptee;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Adapter</span>(IAdaptee* pAdaptee)&#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;pAdaptee = pAdaptee;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">process</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">// 在新的接口里使用老的接口</span></span><br><span class="line">        <span class="keyword">int</span> data = pAdaptee-&gt;<span class="built_in">bar</span>();</span><br><span class="line">        pAdaptee-&gt;<span class="built_in">foo</span>(data);</span><br><span class="line">        <span class="comment">//...各种处理</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这样通过继承新的接口，组成老的接口，在新的接口的实现里处理老的接口，实现老接口与新接口的适配。使用如下</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">OldClass</span> :</span> <span class="keyword">public</span> IAdaptee&#123;</span><br><span class="line">	<span class="comment">//....</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    IAdaptee* pAdaptee = <span class="keyword">new</span> <span class="built_in">OldClass</span>();</span><br><span class="line">    ITarget* pTarget = <span class="keyword">new</span> <span class="built_in">Adapter</span>(pAdaptee);<span class="comment">//适配</span></span><br><span class="line">    pTarget-&gt;<span class="built_in">process</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>上面继承+组合的放在在《设计模式——可复用面向对象软件的基础》称为对象适配器，但书里里还定义了一种叫”类适配器”的适配器。即是全部通过继承来实现，一般是public继承一个Target接口，private继承一个Adaptee接口，有如下形式</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Adapter</span> :</span> <span class="keyword">public</span> ITarget, <span class="keyword">private</span> IAdaptee&#123;</span><br><span class="line">    <span class="comment">//....</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>但是这样的话有个问题，我们怎么把<code>OldClass</code>传进去？所以我们像下面的写法写</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Adapter</span> :</span> <span class="keyword">public</span> ITarget, <span class="keyword">private</span> OldClass&#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>但这样写的话有另一个问题，Adapter类依赖于一个具体类，这样不利于未来我们进行拓展。</p>
-<p>而使用对象适配器，我们可以在Adapter中放一个IAdaptee的抽象类，然后通过多态实现具体类和Adapter的松耦合</p>
-<p><strong>所以现实中我们一般都是用对象适配器而不是类适配器</strong></p>
-<h2 id="1-4-结构"><a href="#1-4-结构" class="headerlink" title="1.4 结构"></a>1.4 结构</h2><p><img src="../img/对象适配器结构.png" alt=""></p>
-<h2 id="1-5-要点总结"><a href="#1-5-要点总结" class="headerlink" title="1.5 要点总结"></a>1.5 要点总结</h2><ol>
-<li>Adapter模式主要应用于”希望复用一些现存的类，但是接口又与复用环境要求不一致的情况”，在遗留代码复用、类库迁移等方面非常有用</li>
-<li>GoF 23定义了两种Adapter模式的实现结构：对象适配器和类适配器。但类适配器采用”多继承”的实现方式，一般不推荐使用。对象适配器采用”对象组合”的方式，更符合松耦合精神</li>
-<li>Adapter模式可以实现得非常灵活，不必拘泥于GoF23中定义的两种结构。例如，完全可以将Adapter模式中的”现存对象”作为新的接口方法参数，来达到适配的目的</li>
-</ol>
-
+                                <img class="kratos-entry-thumb-new-img">
                             
+                        </a>
+                    </div>
+                    <div class="kratos-post-inner-new">
+                        <header class="kratos-entry-header-new">
+                                <a class="label-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a> <a class="label-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E6%A8%A1%E5%BC%8F/">接口隔离模式</a>
+                            <h2 class="kratos-entry-title-new"><a href="/2023/02/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E6%A8%A1%E5%BC%8F/%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/">适配器模式</a>
+                        </header>
+                        <div class="kratos-entry-content-new">
+                            <p>
+                                
+                                    适配器Adapter1.1 动机在软件系统中，由于应用环境的变化，常常需要将”一些现存的对象”放在新的环境中应用，但是新环境要求的接口是这些现存对象所不满足的
+如何应对这种”迁移的变化”?如何既能利用现有对象的良好实现，同时又能满足新...
+                                
+                            </p>
                         </div>
                     </div>
-                </div>
-                
                     <footer class="kratos-post-meta-new">
                         <span class="pull-left">
-                            <a><i class="fa fa-calendar"></i></a><a>2023-02-24</a>
-                            
+                            <a>
+                                <i class="fa fa-calendar"></i>
+                                2023-02-24
+                            </a>
+                            <a>
+                                
+                                    <i class="fa fa-tags"></i>
+                                    <a class="tag-none-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a>
+                                
+                            </a>
                             
                                 <!-- 当前仅支持valine/waline自带的统计功能 -->
                                 
@@ -583,66 +563,52 @@
                                 
                             
                         </span>
-                        
-                        
-                            <span class="pull-right">
-                                <a class="read-more" href="/2023/02/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E6%A8%A1%E5%BC%8F/%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/" title="留言">留言<i class="fa fa-chevron-circle-right"></i></a>
-                            </span>
-                        
-
+                        <span class="pull-right">
+                            <a class="read-more" href="/2023/02/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E6%A8%A1%E5%BC%8F/%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/" title="阅读全文">阅读全文<i class="fa fa-chevron-circle-right"></i></a>
+                        </span>
                     </footer>
-                
+                </div>
             </article>
         
     
         
         
-            <article class="kratos-hentry kratos-entry-border-new clearfix">
-                <div class="kratos-status">
+            <article class="kratos-hentry clearfix">
+                <div class="kratos-entry-border-new clearfix">
                     
-                        <i class="fa fa-refresh"></i>
-                    
-                    <div class="kratos-status-inner">
-                        <div class="kratos-status-content">
+                    <div class="kratos-entry-thumb-new">
+                        <a href="/2023/02/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E6%A8%A1%E5%BC%8F/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/">
                             
-                                <h1 id="Proxy代理模式"><a href="#Proxy代理模式" class="headerlink" title="Proxy代理模式"></a>Proxy代理模式</h1><h2 id="1-1-动机"><a href="#1-1-动机" class="headerlink" title="1.1 动机"></a>1.1 动机</h2><p>在面向对象系统中，有些对象由于某种原因(比如对象创建的开销很大，或者某些操作需要安全控制，或者需要进程外访问等)，直接访问会给使用者、或者系统结构带来很多麻烦</p>
-<p>如何在不失去透明操作对象的同时来管理/控制这些对象特有的复杂性？增加一层间接层是软件开发中常见的解决方式</p>
-<h2 id="1-2-讲解"><a href="#1-2-讲解" class="headerlink" title="1.2 讲解"></a>1.2 讲解</h2><p>例如，如果我们要实现一个可以嵌入图像对象的文档编辑器。</p>
-<p>有些图形对象的创建开销很大，但是打开文档必须很迅速，因此我们在打开文档时应避免一次性创建所有开销很大的对象。而这些对象在文档中也不都是同时可见的，所以也没必要同时创建这些对象，而是当一个图象变为可见时才来创建这类对象。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Graphic</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">Graphic</span>();</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">Draw</span><span class="params">(<span class="keyword">const</span> Point&amp; at)</span></span>=<span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">HandleMouse</span><span class="params">(Event&amp; event)</span></span>=<span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">const</span> Point* <span class="title">GetExtent</span><span class="params">()</span></span>=<span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">Load</span><span class="params">(istream&amp; from)</span></span>=<span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">Save</span><span class="params">(ostream&amp; to)</span></span>=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">    <span class="built_in">Graphic</span>();</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Image</span> :</span> <span class="keyword">public</span> Graphic&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Image</span>(<span class="keyword">const</span> <span class="keyword">char</span>* file);</span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">Image</span>();</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">Draw</span><span class="params">(<span class="keyword">const</span> Point&amp; at)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">HandleMouse</span><span class="params">(Event&amp; event)</span></span>;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">const</span> Point* <span class="title">GetExtent</span><span class="params">()</span></span>;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">Load</span><span class="params">(istream&amp; from)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">Save</span><span class="params">(ostream&amp; to)</span></span>;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    ......</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ImageProxy</span> :</span> <span class="keyword">public</span> Graphic&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Image</span>(<span class="keyword">const</span> <span class="keyword">char</span>* file);</span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">Image</span>();</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">Draw</span><span class="params">(<span class="keyword">const</span> Point&amp; at)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">HandleMouse</span><span class="params">(Event&amp; event)</span></span>;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">const</span> Point* <span class="title">GetExtent</span><span class="params">()</span></span>;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">Load</span><span class="params">(istream&amp; from)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">Save</span><span class="params">(ostream&amp; to)</span></span>;</span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">    <span class="function">Image* <span class="title">GetImage</span><span class="params">()</span></span>;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    Image* _image;</span><br><span class="line">    Point _extent;</span><br><span class="line">    <span class="keyword">char</span>* _fileName;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>可以看到，ImageProxy和Image都实现了Graphic的接口，然后ImageProxy里有个Image的对象。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Image* <span class="title">ImageProxy::GetImage</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(_image == <span class="number">0</span>)&#123;</span><br><span class="line">		_image = <span class="keyword">new</span> <span class="built_in">Image</span>(_fileName);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> _image;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ImageProxy::Draw</span><span class="params">(<span class="keyword">const</span> Point&amp; at)</span></span>&#123;</span><br><span class="line">    <span class="built_in">GetImage</span>()-&gt;<span class="built_in">Draw</span>(at);	<span class="comment">//调用Image的Draw</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">const</span> Point&amp; <span class="title">ImageProxy::GetExtent</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(_extent == Point::Zero)&#123;</span><br><span class="line">        _extent = <span class="built_in">GetImage</span>()-&gt;<span class="built_in">GetExtent</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ImageProxy::HandleMouse</span><span class="params">(Event&amp; event)</span></span>&#123;</span><br><span class="line">    <span class="built_in">GetImage</span>()-&gt;<span class="built_in">HandleMouse</span>(event);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ImageProxy::Save</span><span class="params">(ostream&amp; to)</span> </span>&#123;</span><br><span class="line">	to &lt;&lt; _extent &lt;&lt; _fileName;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ImageProxy::Load</span><span class="params">(istream&amp; from)</span></span>&#123;</span><br><span class="line">    from &gt;&gt; _extent &gt;&gt; _fileName;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>ImageProxy通过对自己类里的image操作，对客户程序隐藏了image的处理过程。之后对Image的一切操作都通过ImageProxy来进行，如下</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TextDocument</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">TextDocment</span>();</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Insert</span><span class="params">(Graphic*)</span></span>;</span><br><span class="line">    ......</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">TextDocument* text = <span class="keyword">new</span> TextDocument;</span><br><span class="line"><span class="comment">//....</span></span><br><span class="line"><span class="comment">//通过ImageProxy来操作Image对象</span></span><br><span class="line">text-&gt;<span class="built_in">Insert</span>(<span class="keyword">new</span> <span class="built_in">ImageProxy</span>(<span class="string">&quot;anImageFileName&quot;</span>));</span><br></pre></td></tr></table></figure>
-<h2 id="1-3-适用性"><a href="#1-3-适用性" class="headerlink" title="1.3 适用性"></a>1.3 适用性</h2><ol>
-<li>远程代理(remote proxy)：负责对请求及其参数进行编码，并向不同地址空间中的实体发送已编码的请求</li>
-<li>虚代理(virtual proxy)：可以缓存实体的附加信息，以便延迟对它的访问</li>
-<li>保护代理(protection proxy)：检查调用者是否具有实现一个请求所必需的访问权限</li>
-<li>智能指引(smart reference)：取代简单的指针，他在访问对象时执行一些附加操作</li>
-</ol>
-<h2 id="1-4-结构"><a href="#1-4-结构" class="headerlink" title="1.4 结构"></a>1.4 结构</h2><p><img src="../img/代理模式结构.png" alt=""></p>
-<h2 id="1-5-要点总结"><a href="#1-5-要点总结" class="headerlink" title="1.5 要点总结"></a>1.5 要点总结</h2><ol>
-<li>“增加一层间接层”是软件系统中对许多复杂问题的一种常见解决方案。在面向对象中，直接使用某些对象会带来很多问题，作为间接层的proxy对象便是解决这一问题的常用手段</li>
-<li>具体proxy设计模式的实现方法、实现粒度相差很大、有些可能对单个对象做细粒度的控制，如copy-on-write技术，有些可能组件模块提供抽象代理层，在架构层次对对象做proxy</li>
-<li>Proxy并不一定要求保持接口完整的一致性，只要能够实现间接控制，有时候损及一些透明性是可以接受的</li>
-</ol>
-<h2 id="1-6-和装饰器模式的区别"><a href="#1-6-和装饰器模式的区别" class="headerlink" title="1.6 和装饰器模式的区别"></a>1.6 和装饰器模式的区别</h2><ol>
-<li>装饰模式的功能实现是由上层调用者决定的，而代理模式的功能已经写死了，不能够实现灵活的拓展</li>
-<li>两者都是对类的方法进行增强，但装饰器模式强调的是增强自身，在被装饰之后你能够够在被增强的类上使用增强后的方法。增强过后还是你，只不过能力变强了。而代理模式则强调要别人帮你去做一些本身与你业务没有太多关系的职责。代理模式是为了实现对象的控制，因为被代理的对象往往难以直接获得或者是其内部不想暴露出来</li>
-<li>代理模式最终客户端调用的是代理类，是通过代理类去操作原对象，而装饰器模式最终客户端调用的还是原对象</li>
-</ol>
-
+                                <img class="kratos-entry-thumb-new-img">
                             
+                        </a>
+                    </div>
+                    <div class="kratos-post-inner-new">
+                        <header class="kratos-entry-header-new">
+                                <a class="label-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a> <a class="label-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E6%A8%A1%E5%BC%8F/">接口隔离模式</a>
+                            <h2 class="kratos-entry-title-new"><a href="/2023/02/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E6%A8%A1%E5%BC%8F/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/">代理模式</a>
+                        </header>
+                        <div class="kratos-entry-content-new">
+                            <p>
+                                
+                                    Proxy代理模式1.1 动机在面向对象系统中，有些对象由于某种原因(比如对象创建的开销很大，或者某些操作需要安全控制，或者需要进程外访问等)，直接访问会给使用者、或者系统结构带来很多麻烦
+如何在不失去透明操作对象的同时来管理/控制这...
+                                
+                            </p>
                         </div>
                     </div>
-                </div>
-                
                     <footer class="kratos-post-meta-new">
                         <span class="pull-left">
-                            <a><i class="fa fa-calendar"></i></a><a>2023-02-24</a>
-                            
+                            <a>
+                                <i class="fa fa-calendar"></i>
+                                2023-02-24
+                            </a>
+                            <a>
+                                
+                                    <i class="fa fa-tags"></i>
+                                    <a class="tag-none-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a>
+                                
+                            </a>
                             
                                 <!-- 当前仅支持valine/waline自带的统计功能 -->
                                 
@@ -652,60 +618,52 @@
                                 
                             
                         </span>
-                        
-                        
-                            <span class="pull-right">
-                                <a class="read-more" href="/2023/02/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E6%A8%A1%E5%BC%8F/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/" title="留言">留言<i class="fa fa-chevron-circle-right"></i></a>
-                            </span>
-                        
-
+                        <span class="pull-right">
+                            <a class="read-more" href="/2023/02/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E6%A8%A1%E5%BC%8F/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/" title="阅读全文">阅读全文<i class="fa fa-chevron-circle-right"></i></a>
+                        </span>
                     </footer>
-                
+                </div>
             </article>
         
     
         
         
-            <article class="kratos-hentry kratos-entry-border-new clearfix">
-                <div class="kratos-status">
+            <article class="kratos-hentry clearfix">
+                <div class="kratos-entry-border-new clearfix">
                     
-                        <i class="fa fa-refresh"></i>
-                    
-                    <div class="kratos-status-inner">
-                        <div class="kratos-status-content">
+                    <div class="kratos-entry-thumb-new">
+                        <a href="/2023/02/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E6%A8%A1%E5%BC%8F/%E4%B8%AD%E4%BB%8B%E8%80%85%E6%A8%A1%E5%BC%8F/">
                             
-                                <h1 id="中介者模式Mediator"><a href="#中介者模式Mediator" class="headerlink" title="中介者模式Mediator"></a>中介者模式Mediator</h1><h2 id="1-1-动机"><a href="#1-1-动机" class="headerlink" title="1.1 动机"></a>1.1 动机</h2><p>在软件构建过程中，经常会出现<strong>多个对象互相关联交互</strong>的情况，对象之间常常会维持一种复杂的引用关系，如果遇到一些需求的更改，这种直接引用关系将面临不断的变化</p>
-<p>虽然将一个系统分割成许多对象通常可以增加可复用性，但是对象间的相互连接的激增又会降低其可复用性。大量相互连接使得一个对象似乎不太可能在没有其他对象的支持下工作——系统表现为一个不可分割的整体。而且，任何对系统的性为进行较大的改动都十分困难，因为行为被分布在许多对象中。结果是，你可能不得不定义很多子类以定制系统的行为</p>
-<p>在这种情况下，我们可使用一个”中介对象”来管理对象见的关联关系，避免相互交互的对象之间的紧耦合关系，从而更好的抵御变化</p>
-<h2 id="1-2-讲解"><a href="#1-2-讲解" class="headerlink" title="1.2 讲解"></a>1.2 讲解</h2><p>例如，对话框中的窗口组件间存在依赖关系。如按钮、菜单和输入等。这些依赖关系如果都用生成子类的办法来定制会很冗长，我们可以通过将集体行为封装在一个<strong>中介者(mediator)</strong>，中介者负责控制和协调一组对象间的交互</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DialogDirector</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">DialogDirector</span>();</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">ShowDialog</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">WidgetChanged</span><span class="params">(Widget*)</span></span>=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">    <span class="built_in">DialogDirector</span>();</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">CreateWidgets</span><span class="params">()</span></span>=<span class="number">0</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><code>DialogDirector</code>为一个中介者接口，为具体的中介者提供行为的抽象，两个纯虚函数<code>WidgetChanged</code>发生在窗口发生变化时，<code>CreateWidgets</code>发生在创建新窗口时</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Widget</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Widget</span>(DialogDirector*);</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">Changed</span><span class="params">()</span></span>;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">HandleMouse</span><span class="params">(MouseEvent&amp; event)</span></span>;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">    DialogDirector* _director;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Widget::Changed</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    _director-&gt;<span class="built_in">WidgetChanged</span>(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ListBox</span> :</span> <span class="keyword">public</span> Widget&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">ListBox</span>(DialogDirector* director) &#123;</span><br><span class="line">        Widget::<span class="built_in">Widget</span>(director);</span><br><span class="line">        <span class="comment">//...</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">const</span> <span class="keyword">char</span>* <span class="title">GetSelection</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">SetList</span><span class="params">(List&lt;<span class="keyword">char</span>*&gt;* listItems)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">HandleMouse</span><span class="params">(MouseEvent&amp; event)</span></span>;</span><br><span class="line">	<span class="comment">//...</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">EntryField</span> :</span> <span class="keyword">public</span> Widget&#123;</span><br><span class="line">    <span class="built_in">EntryFeild</span>(DialogDirector* director) &#123;</span><br><span class="line">        Widget::<span class="built_in">Widget</span>(director);</span><br><span class="line">        <span class="comment">//...</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">SetText</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* text)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">const</span> <span class="keyword">char</span>* <span class="title">GetText</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">HandleMouse</span><span class="params">(MouseEvent&amp; event)</span></span>;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Button</span> :</span> <span class="keyword">public</span> Widget&#123;</span><br><span class="line">    <span class="built_in">Button</span>(DialogDirector* director) &#123;</span><br><span class="line">        Widget::<span class="built_in">Widget</span>(director);</span><br><span class="line">        <span class="comment">//...</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">SetText</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* text)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">HandleMouse</span><span class="params">(MouseEvent&amp; event)</span></span>;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Button::HandleMouse</span><span class="params">(MouseEvent&amp; event)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">    <span class="built_in">Changed</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在Widget，以及Widget衍生三个具体类的Button，ListBox和EntryField都维护一个DIalogDirector的对象，以便能够访问中介者。</p>
-<p>然后每个类的对象和另一个类的对象通信时，与它的中介者通信。这样将每个类的依赖关系转移到与类与中介者的依赖，从而减少了多个具体类的耦合，使得该系统更具有鲁棒性</p>
-<p>在这里，注意因为DialogDirector对象是protected的，所以public继承后一并继承过来，所以Widget子类不需要额外定义</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FontDialogDirector</span> :</span> <span class="keyword">public</span> DialogDirector&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">FontDialogDirector</span>();</span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">FontDialogDirector</span>();</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">WidgetChanged</span><span class="params">(Widget*)</span></span>;</span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">CreateWidgets</span><span class="params">()</span></span>;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    Button *_ok;</span><br><span class="line">    Button *_cancel;</span><br><span class="line">    ListBox *_fontList;</span><br><span class="line">    EntryField *_fontName;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FontDialogDirector::CreateWidgets</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    _ok = <span class="keyword">new</span> <span class="built_in">Button</span>(<span class="keyword">this</span>);<span class="comment">//this为FontDialogDirector类</span></span><br><span class="line">    _cancel = <span class="keyword">new</span> <span class="built_in">Button</span>(<span class="keyword">this</span>);</span><br><span class="line">    _fontList = <span class="keyword">new</span> <span class="built_in">FontList</span>(<span class="keyword">this</span>);</span><br><span class="line">    _fontName = <span class="keyword">new</span> <span class="built_in">EntryField</span>(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FontDialogDirector::WidgetChanged</span><span class="params">(Widget* theChangedWidget)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(theChangedWidget == _fontList) &#123;</span><br><span class="line">        _fontName-&gt;<span class="built_in">SetText</span>(_fontList-&gt;<span class="built_in">GetSelection</span>());</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(theChangedWidget == _ok) &#123;</span><br><span class="line">        <span class="comment">//...</span></span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(theChangedWidget == _cancel)&#123;</span><br><span class="line">        <span class="comment">//...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>最后通过中介所的一个具体中介者也就是FontDialogDirector，管理对象见的关联关系，并且一个具体的中介者需要了解并维护使用中介者的对象。</p>
-<p>在这里，我们在WidgetChanged里对对象间的关联进行管理。而我们抽象出一个DialogDirector也是为了Button，EntryField和ListBox不直接使用FontDialogDirector，通过多态将编译时的依赖转移到运行时。从而对其解耦合</p>
-<h2 id="1-3-模式定义"><a href="#1-3-模式定义" class="headerlink" title="1.3 模式定义"></a>1.3 模式定义</h2><p>用一个中介者来封装一系列对象交互。中介者使各对象不需要显示的相互依赖（编译时依赖-&gt;运行时依赖），从而使其耦合松散(管理变化)，从而可以独立地改变它们之间地交互</p>
-<h2 id="1-4-结构"><a href="#1-4-结构" class="headerlink" title="1.4 结构"></a>1.4 结构</h2><p><img src="../img/中介者模式结构.png" alt=""></p>
-<h2 id="1-5-要点总结"><a href="#1-5-要点总结" class="headerlink" title="1.5 要点总结"></a>1.5 要点总结</h2><ol>
-<li>将多个对象间复杂关系的关联关系解耦，Mediator模式将多个对象间的控制逻辑进行集中管理，变”多个对象相互关联”为”多个对象和一个中介者关联”，简化了系统的维护，抵御了可能的变化</li>
-<li>随着控制逻辑的复杂化，Mediator具体对象的实现可能相当复杂。这时候可以对Mediator进行分解处理</li>
-<li>Facade模式是解耦系统(单向)的对象关联方式；Mediator模式是解耦系统内各个对象间(双向)的关联关系</li>
-</ol>
-
+                                <img class="kratos-entry-thumb-new-img">
                             
+                        </a>
+                    </div>
+                    <div class="kratos-post-inner-new">
+                        <header class="kratos-entry-header-new">
+                                <a class="label-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a> <a class="label-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E6%A8%A1%E5%BC%8F/">接口隔离模式</a>
+                            <h2 class="kratos-entry-title-new"><a href="/2023/02/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E6%A8%A1%E5%BC%8F/%E4%B8%AD%E4%BB%8B%E8%80%85%E6%A8%A1%E5%BC%8F/">中介者模式</a>
+                        </header>
+                        <div class="kratos-entry-content-new">
+                            <p>
+                                
+                                    中介者模式Mediator1.1 动机在软件构建过程中，经常会出现多个对象互相关联交互的情况，对象之间常常会维持一种复杂的引用关系，如果遇到一些需求的更改，这种直接引用关系将面临不断的变化
+虽然将一个系统分割成许多对象通常可以增加可复...
+                                
+                            </p>
                         </div>
                     </div>
-                </div>
-                
                     <footer class="kratos-post-meta-new">
                         <span class="pull-left">
-                            <a><i class="fa fa-calendar"></i></a><a>2023-02-24</a>
-                            
+                            <a>
+                                <i class="fa fa-calendar"></i>
+                                2023-02-24
+                            </a>
+                            <a>
+                                
+                                    <i class="fa fa-tags"></i>
+                                    <a class="tag-none-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a>
+                                
+                            </a>
                             
                                 <!-- 当前仅支持valine/waline自带的统计功能 -->
                                 
@@ -715,15 +673,11 @@
                                 
                             
                         </span>
-                        
-                        
-                            <span class="pull-right">
-                                <a class="read-more" href="/2023/02/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E6%A8%A1%E5%BC%8F/%E4%B8%AD%E4%BB%8B%E8%80%85%E6%A8%A1%E5%BC%8F/" title="留言">留言<i class="fa fa-chevron-circle-right"></i></a>
-                            </span>
-                        
-
+                        <span class="pull-right">
+                            <a class="read-more" href="/2023/02/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E6%A8%A1%E5%BC%8F/%E4%B8%AD%E4%BB%8B%E8%80%85%E6%A8%A1%E5%BC%8F/" title="阅读全文">阅读全文<i class="fa fa-chevron-circle-right"></i></a>
+                        </span>
                     </footer>
-                
+                </div>
             </article>
         
     
@@ -767,7 +721,7 @@
                 
   <aside id="krw-categories" class="widget widget-kratos-categories clearfix">
     <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E5%80%BC%E6%9C%80%E4%BC%98%E5%8C%96/">数值最优化</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E5%AD%A6/">数学</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a><span class="category-list-count">16</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E4%B8%AD%E5%A4%AE%E5%A4%84%E7%90%86%E5%99%A8/">中央处理器</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/">存储系统</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/">指令系统</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/">计算机系统概论</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%B3%BB%E7%BB%9F/">输入输出系统</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/">运算方法和运算器</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a><span class="category-list-count">27</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%AC%AC%E4%B8%83%E7%AB%A0/">第七章</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%AC%AC%E4%B8%89%E7%AB%A0/">第三章</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%AC%AC%E4%BA%8C%E7%AB%A0/">第二章</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%AC%AC%E4%BA%94%E7%AB%A0/">第五章</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%AC%AC%E5%85%AD%E7%AB%A0/">第六章</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%AC%AC%E5%9B%9B%E7%AB%A0/">第四章</a><span class="category-list-count">8</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA%E6%A8%A1%E5%BC%8F/">对象创建模式</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%AF%B9%E8%B1%A1%E6%80%A7%E8%83%BD%E6%A8%A1%E5%BC%8F/">对象性能模式</a><span class="category-list-count">1</span></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E5%80%BC%E6%9C%80%E4%BC%98%E5%8C%96/">数值最优化</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E5%AD%A6/">数学</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a><span class="category-list-count">16</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E4%B8%AD%E5%A4%AE%E5%A4%84%E7%90%86%E5%99%A8/">中央处理器</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/">存储系统</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/">指令系统</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/">计算机系统概论</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%B3%BB%E7%BB%9F/">输入输出系统</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/">运算方法和运算器</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a><span class="category-list-count">27</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%AC%AC%E4%B8%83%E7%AB%A0/">第七章</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%AC%AC%E4%B8%89%E7%AB%A0/">第三章</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%AC%AC%E4%BA%8C%E7%AB%A0/">第二章</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%AC%AC%E4%BA%94%E7%AB%A0/">第五章</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%AC%AC%E5%85%AD%E7%AB%A0/">第六章</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%AC%AC%E5%9B%9B%E7%AB%A0/">第四章</a><span class="category-list-count">8</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a><span class="category-list-count">21</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E6%A8%A1%E5%BC%8F/">单一职责模式</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA%E6%A8%A1%E5%BC%8F/">对象创建模式</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%AF%B9%E8%B1%A1%E6%80%A7%E8%83%BD%E6%A8%A1%E5%BC%8F/">对象性能模式</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%80%A7%E4%B8%BA%E5%8F%98%E5%8C%96%E6%A8%A1%E5%BC%8F/">性为变化模式</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E6%A8%A1%E5%BC%8F/">接口隔离模式</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%A8%A1%E5%BC%8F/">数据结构模式</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%8A%B6%E6%80%81%E5%8F%98%E5%8C%96%E6%A8%A1%E5%BC%8F/">状态变化模式</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%BB%84%E4%BB%B6%E5%8D%8F%E4%BD%9C%E6%A8%A1%E5%BC%8F/">组件协作模式</a><span class="category-list-count">3</span></li></ul></li></ul>
   </aside>
 
 
@@ -776,7 +730,7 @@
   <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
     <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
       <div class="tag-clouds">
-        <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 0.77em;">IP网络协议</a> <a href="/tags/%E4%BA%A4%E6%8D%A2%E6%8A%80%E6%9C%AF/" style="font-size: 0.69em;">交换技术</a> <a href="/tags/%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/" style="font-size: 0.63em;">存储系统</a> <a href="/tags/%E5%BA%94%E7%94%A8%E5%B1%82/" style="font-size: 0.71em;">应用层</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 0.6em;">数学</a> <a href="/tags/%E6%95%B0%E5%AD%A6%E8%AF%81%E6%98%8E/" style="font-size: 0.66em;">数学证明</a> <a href="/tags/%E7%89%A9%E7%90%86%E5%B1%82/" style="font-size: 0.71em;">物理层</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 0.8em;">笔记</a> <a href="/tags/%E7%BC%96%E7%A8%8B/" style="font-size: 0.63em;">编程</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 0.71em;">网络传输、设备与企业网架构</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%B1%82/" style="font-size: 0.74em;">网络层</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%BF%B0/" style="font-size: 0.63em;">计算机网络概述</a> <a href="/tags/%E8%B7%AF%E7%94%B1%E6%8A%80%E6%9C%AF/" style="font-size: 0.66em;">路由技术</a> <a href="/tags/%E8%BF%90%E8%BE%93%E5%B1%82/" style="font-size: 0.6em;">运输层</a> <a href="/tags/%E9%93%BE%E8%B7%AF%E5%B1%82/" style="font-size: 0.6em;">链路层</a>
+        <a href="/tags/IP%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 0.75em;">IP网络协议</a> <a href="/tags/%E4%BA%A4%E6%8D%A2%E6%8A%80%E6%9C%AF/" style="font-size: 0.68em;">交换技术</a> <a href="/tags/%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/" style="font-size: 0.63em;">存储系统</a> <a href="/tags/%E5%BA%94%E7%94%A8%E5%B1%82/" style="font-size: 0.7em;">应用层</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 0.6em;">数学</a> <a href="/tags/%E6%95%B0%E5%AD%A6%E8%AF%81%E6%98%8E/" style="font-size: 0.65em;">数学证明</a> <a href="/tags/%E7%89%A9%E7%90%86%E5%B1%82/" style="font-size: 0.7em;">物理层</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 0.78em;">笔记</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E3%80%81%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%BC%81%E4%B8%9A%E7%BD%91%E6%9E%B6%E6%9E%84/" style="font-size: 0.7em;">网络传输、设备与企业网架构</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%B1%82/" style="font-size: 0.73em;">网络层</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%BF%B0/" style="font-size: 0.63em;">计算机网络概述</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 0.8em;">设计模式</a> <a href="/tags/%E8%B7%AF%E7%94%B1%E6%8A%80%E6%9C%AF/" style="font-size: 0.65em;">路由技术</a> <a href="/tags/%E8%BF%90%E8%BE%93%E5%B1%82/" style="font-size: 0.6em;">运输层</a> <a href="/tags/%E9%93%BE%E8%B7%AF%E5%B1%82/" style="font-size: 0.6em;">链路层</a>
       </div>
   </aside>
 
@@ -790,91 +744,72 @@
         
           
           
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-            <a class="list-group-item" href="/2023/02/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%AF%B9%E8%B1%A1%E6%80%A7%E8%83%BD%E6%A8%A1%E5%BC%8F/%E5%8D%95%E4%BB%B6%E6%A8%A1%E5%BC%8F/"><i class="fa  fa-book"></i> 单件模式Singleton</a>
+            <a class="list-group-item" href="/2023/02/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%8A%B6%E6%80%81%E5%8F%98%E5%8C%96%E6%A8%A1%E5%BC%8F/%E8%81%8C%E8%B4%A3%E9%93%BE%E6%A8%A1%E5%BC%8F/"><i class="fa  fa-book"></i> 职责链模式</a>
             
           
         
           
           
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-            <a class="list-group-item" href="/2021/12/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/%E9%AB%98%E9%80%9F%E7%BC%93%E5%86%B2%E5%AD%98%E5%82%A8%E5%99%A8/"><i class="fa  fa-book"></i> Cache</a>
+            <a class="list-group-item" href="/2023/02/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%8A%B6%E6%80%81%E5%8F%98%E5%8C%96%E6%A8%A1%E5%BC%8F/%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F/"><i class="fa  fa-book"></i> 状态模式</a>
             
           
         
           
           
-            <a class="list-group-item" href="/2021/12/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/%E9%9A%8F%E6%9C%BA%E8%AF%BB%E5%86%99%E5%AD%98%E5%82%A8%E5%99%A8/"><i class="fa  fa-book"></i> 随机读写存储器</a>
+            <a class="list-group-item" href="/2023/02/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%8A%B6%E6%80%81%E5%8F%98%E5%8C%96%E6%A8%A1%E5%BC%8F/%E5%A4%87%E5%BF%98%E5%BD%95%E6%A8%A1%E5%BC%8F/"><i class="fa  fa-book"></i> 备忘录模式</a>
             
           
         
           
           
-            <a class="list-group-item" href="/2021/12/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/%E5%AD%98%E5%82%A8%E5%99%A8%E7%9A%84%E7%BB%84%E6%88%90/"><i class="fa  fa-book"></i> 存储器的组成</a>
+            <a class="list-group-item" href="/2023/02/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%A1%8C%E4%B8%BA%E5%8F%98%E5%8C%96%E6%A8%A1%E5%BC%8F/%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F/"><i class="fa  fa-book"></i> 命令模式</a>
             
           
         
           
           
-            <a class="list-group-item" href="/2021/12/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/%E4%B8%BB%E5%AD%98%E5%82%A8%E5%99%A8%E7%9A%84%E8%BF%9E%E6%8E%A5%E4%B8%8E%E6%8E%A7%E5%88%B6/"><i class="fa  fa-book"></i> 主存储器的连接与控制</a>
+            <a class="list-group-item" href="/2023/02/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%A8%A1%E5%BC%8F/%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F/"><i class="fa  fa-book"></i> 迭代器模式</a>
             
           
         
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
           
             
           
